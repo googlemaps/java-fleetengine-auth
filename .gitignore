@@ -1,0 +1,10 @@
+*.jar
+*.war
+*.ear
+.gradle
+build/
+build/sample/
+
+# Keep gradle wrapper
+!gradle-wrapper.jar
+
