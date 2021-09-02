@@ -1,0 +1,19 @@
+branches:
+  - main
+plugins:
+  - "@semantic-release/commit-analyzer"
+  - "@semantic-release/release-notes-generator"
+  - - "@google/semantic-release-replace-plugin"
+    - replacements:
+        - files:
+            - "./gradle.properties"
+          from: "\\blibVersion=.*"
+          to: "libVersion=${nextRelease.version}-SNAPSHOT"
+  - - "@semantic-release/exec"
+    - prepareCmd: "./gradlew build --info --stacktrace"
+  - - "@semantic-release/git"
+    - assets:
+        - "./gradle.properties"
+  - "@semantic-release/github"
+options:
+  debug: true
