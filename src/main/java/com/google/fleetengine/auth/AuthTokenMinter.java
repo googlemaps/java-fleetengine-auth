@@ -186,10 +186,10 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
     public abstract Builder setServerSigner(Signer serverSigner);
 
     /** Sets the Signer responsible for signing driver keys. */
-    public abstract Builder setDriverSigner(Signer serverSigner);
+    public abstract Builder setDriverSigner(Signer driverSigner);
 
     /** Sets the Signer responsible for signing consumer keys. */
-    public abstract Builder setConsumerSigner(Signer serverSigner);
+    public abstract Builder setConsumerSigner(Signer consumerSigner);
 
     /** Sets the Signer responsible for signing tokens that are not tied to a standard role. */
     public abstract Builder setCustomSigner(Signer customSigner);
