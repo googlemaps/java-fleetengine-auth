@@ -31,10 +31,6 @@ import java.util.Arrays;
 /**
  * Signs a Fleet Engine Token by impersonating a GCP service account.
  *
- * <p>The default service account that the application is running under <b>MUST</b> have the
- * iam.serviceAccounts.signBlob permission. This is typically acquired through the "Service Account
- * Token Creator" role.
- *
  * <p>The impersonated service account should match the role according to the {@link
  * com.google.fleetengine.auth.token.FleetEngineTokenType} of the token being signed.
  */
@@ -48,6 +44,10 @@ public class ImpersonatedSigner implements Signer {
 
   /**
    * Creates signer that impersonates a given service account.
+   *
+   * <p>The default service account that the application is running under <b>MUST</b> have the
+   * iam.serviceAccounts.signBlob permission. This is typically acquired through the "Service
+   * Account Token Creator" role.
    *
    * @param serviceAccount service account to impersonate that will sign Fleet Engine tokens
    */
@@ -63,10 +63,18 @@ public class ImpersonatedSigner implements Signer {
     return create(serviceAccount, defaultCredentials);
   }
 
-  @VisibleForTesting
-  static ImpersonatedSigner create(String serviceAccount, GoogleCredentials defaultCredentials) {
+  /**
+   * Creates signer that impersonates a given service account using authenticated credentials
+   *
+   * <p>The <code>credentials</code> provided <b>MUST</b> have the iam.serviceAccounts.signBlob
+   * permission. This is typically acquired through the "Service Account Token Creator" role.
+   *
+   * @param serviceAccount service account to impersonate that will sign Fleet Engine tokens
+   * @param credentials used to sign on behalf of <code>serviceAccount</code>
+   */
+  public static ImpersonatedSigner create(String serviceAccount, GoogleCredentials credentials) {
     ImpersonatedCredentials impersonatedCredentials =
-        createImpersonatedCredentials(serviceAccount, defaultCredentials).build();
+        createImpersonatedCredentials(serviceAccount, credentials).build();
     return new ImpersonatedSigner(
         new ImpersonatedAccountSignerCredentials(impersonatedCredentials));
   }
@@ -83,9 +91,9 @@ public class ImpersonatedSigner implements Signer {
    * <p>Strictly exists for unit testing purposes since {@code AutoValue} classes cannot be mocked.
    */
   private static ImpersonatedCredentials.Builder createImpersonatedCredentials(
-      String serviceAccount, GoogleCredentials defaultCredentials) {
+      String serviceAccount, GoogleCredentials credentials) {
     return ImpersonatedCredentials.newBuilder()
-        .setSourceCredentials(defaultCredentials)
+        .setSourceCredentials(credentials)
         // Sets the service account that the signer was created with.
         .setTargetPrincipal(serviceAccount)
         .setScopes(IAM_SCOPE);
