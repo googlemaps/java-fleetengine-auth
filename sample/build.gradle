@@ -41,9 +41,9 @@ dependencies {
     implementation 'com.google.api:gax:1.65.1'
     implementation 'com.google.api:gax-grpc:1.65.1'
 
-    implementation project(':proto-google-cloud-maps-fleetengine-v1-java')
-    implementation project(':gapic-google-cloud-maps-fleetengine-v1-java')
-    implementation project(':grpc-google-cloud-maps-fleetengine-v1-java')
+    implementation project(':proto-google-maps-fleetengine-v1-java')
+    implementation project(':gapic-google-maps-fleetengine-v1-java')
+    implementation project(':grpc-google-maps-fleetengine-v1-java')
     implementation project(':fleetengine-auth')
 
     testImplementation 'junit:junit:4.13.1'
