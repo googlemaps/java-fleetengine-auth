@@ -12,8 +12,8 @@ plugins {
 
 apply plugin: 'java'                              // standard Java tasks
 
-group 'com.google.maps'
-version libVersion
+group = 'com.google.maps'
+version = libVersion
 ext.artifactId = 'fleetengine-auth'
 
 repositories {   // repositories for Jar's you access in your code
