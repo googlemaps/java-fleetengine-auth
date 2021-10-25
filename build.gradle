@@ -7,12 +7,14 @@ buildscript {    // Configuration for building
 
 plugins {
     id 'java-library'
+    id 'maven-publish'
 }
 
 apply plugin: 'java'                              // standard Java tasks
 
 group 'com.google.maps'
 version libVersion
+ext.artifactId = 'fleetengine-auth'
 
 repositories {   // repositories for Jar's you access in your code
     maven {
@@ -20,6 +22,58 @@ repositories {   // repositories for Jar's you access in your code
     }
     mavenCentral()
     jcenter()
+}
+
+publishing {
+    publications {
+        authLib(MavenPublication) {
+            pom {
+                name = 'Fleet Engine Auth Library'
+                description = 'Provides a set of tools to simplify the Fleet Engine setup process.'
+                url = 'https://github.com/googlemaps/java-fleetengine-auth'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                organization {
+                    name = 'Google, Inc.'
+                    url = 'http://www.google.com'
+                }
+                issueManagement {
+                    system = 'GitHub Issues'
+                    url = 'http://github.com/googlemaps/java-fleetengine-auth/issues'
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/googlemaps/java-fleetengine-auth.git'
+                    developerConnection = 'scm:git:ssh://github.com/googlemaps/java-fleetengine-auth.git'
+                    url = 'http://github.com/googlemaps/java-fleetengine-auth/'
+                    tag = 'HEAD'
+                }
+                developers {
+                    developer {
+                        id = 'danielfbright'
+                        name = 'Daniel Bright'
+                    }
+                }
+            }
+            groupId group
+            artifactId project.ext.artifactId
+            version version
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = "mavencentral"
+            url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials {
+                username System.getenv('SONATYPE_NEXUS_USERNAME')
+                password System.getenv('SONATYPE_NEXUS_PASSWORD')
+            }
+        }
+    }
 }
 
 dependencies {
@@ -40,4 +94,3 @@ dependencies {
     testImplementation 'com.google.truth:truth:1.1+'
     testImplementation 'org.mockito:mockito-core:3+'
 }
-
