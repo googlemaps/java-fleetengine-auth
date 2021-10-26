@@ -14,7 +14,7 @@ plugins:
       publishCmd: "./gradlew publish --warn --stacktrace"
   - - "@semantic-release/git"
     - assets:
-        - "./build.gradle"
+        - "./version.properties"
   - "@semantic-release/github"
 options:
   debug: true
