@@ -6,14 +6,15 @@ plugins:
   - - "@google/semantic-release-replace-plugin"
     - replacements:
         - files:
-            - "./gradle.properties"
-          from: "\\blibVersion=.*"
-          to: "libVersion=${nextRelease.version}-SNAPSHOT"
+            - "./build.gradle"
+          from: "version = '.*'"
+          to: "version = '${nextRelease.version}'"
   - - "@semantic-release/exec"
-    - prepareCmd: "./gradlew build --info --stacktrace"
+    - prepareCmd: "./gradlew build --warn --stacktrace"
+      publishCmd: "./gradlew publish --warn --stacktrace"
   - - "@semantic-release/git"
     - assets:
-        - "./gradle.properties"
+        - "./build.gradle"
   - "@semantic-release/github"
 options:
   debug: true
