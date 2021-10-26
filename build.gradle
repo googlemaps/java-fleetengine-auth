@@ -74,8 +74,8 @@ publishing {
             name = "mavencentral"
             url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
             credentials {
-                username System.getenv('SONATYPE_NEXUS_USERNAME')
-                password System.getenv('SONATYPE_NEXUS_PASSWORD')
+                username sonatypeUsername
+                password sonatypePassword
             }
         }
     }
