@@ -12,9 +12,14 @@ plugins {
 
 apply plugin: 'java'                              // standard Java tasks
 
+def props = new Properties()
+file("version.properties").withInputStream { props.load(it) }
+
 group 'com.google.maps'
-version libVersion
+version props.libVersion
 ext.artifactId = 'fleetengine-auth'
+
+
 
 repositories {   // repositories for Jar's you access in your code
     maven {
