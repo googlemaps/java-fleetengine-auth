@@ -12,9 +12,14 @@ plugins {
 
 apply plugin: 'java'                              // standard Java tasks
 
+def props = new Properties()
+file("version.properties").withInputStream { props.load(it) }
+
 group 'com.google.maps'
-version libVersion
+version props.libVersion
 ext.artifactId = 'fleetengine-auth'
+
+
 
 repositories {   // repositories for Jar's you access in your code
     maven {
@@ -69,8 +74,8 @@ publishing {
             name = "mavencentral"
             url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
             credentials {
-                username System.getenv('SONATYPE_NEXUS_USERNAME')
-                password System.getenv('SONATYPE_NEXUS_PASSWORD')
+                username sonatypeUsername
+                password sonatypePassword
             }
         }
     }
