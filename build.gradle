@@ -8,6 +8,7 @@ buildscript {    // Configuration for building
 plugins {
     id 'java-library'
     id 'maven-publish'
+    id 'signing'
 }
 
 apply plugin: 'java'                              // standard Java tasks
@@ -98,4 +99,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     testImplementation 'com.google.truth:truth:1.1+'
     testImplementation 'org.mockito:mockito-core:3+'
+}
+
+signing {
+    sign publishing.publications.authLib
 }
