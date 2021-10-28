@@ -92,15 +92,33 @@ dependencies {
     implementation 'com.google.api:gax:1.55.0'
     implementation 'com.google.auth:google-auth-library-oauth2-http:0.26.0'
     implementation 'com.google.auto.value:auto-value-annotations:1.6.2'
-    implementation 'com.google.guava:guava:16+'
+    implementation 'com.google.guava:guava:16.0'
     implementation 'javax.annotation:javax.annotation-api:1.2'
     implementation 'io.grpc:grpc-core:1.9.1'
 
     testImplementation 'junit:junit:4.13.1'
-    testImplementation 'com.google.truth:truth:1.1+'
-    testImplementation 'org.mockito:mockito-core:3+'
+    testImplementation 'com.google.truth:truth:1.1'
+    testImplementation 'org.mockito:mockito-core:3.12.4'
 }
 
 signing {
     sign publishing.publications.authLib
 }
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from 'build/docs/javadoc'
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+compileJava.options.encoding = 'UTF-8'
+javadoc.options.encoding = 'UTF-8'
