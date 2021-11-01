@@ -19,7 +19,7 @@ You can add the library to your project via Maven or Gradle.
 ```
 <dependency>
   <groupId>com.google.maps</groupId>
-  <artifactId>gfleetengine-auth</artifactId>
+  <artifactId>fleetengine-auth</artifactId>
   <version>(insert latest version)</version>
 </dependency>
 <dependency>
