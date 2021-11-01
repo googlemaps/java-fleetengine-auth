@@ -111,14 +111,22 @@ task javadocJar(type: Jar) {
 }
 
 task sourcesJar(type: Jar) {
-    classifier = 'sources'
     from sourceSets.main.allSource
+    classifier = 'sources'
 }
 
 artifacts {
+    archives jar
     archives javadocJar
     archives sourcesJar
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+
 compileJava.options.encoding = 'UTF-8'
 javadoc.options.encoding = 'UTF-8'
+
