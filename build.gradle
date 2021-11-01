@@ -20,7 +20,8 @@ group 'com.google.maps'
 version props.libVersion
 ext.artifactId = 'fleetengine-auth'
 
-
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {   // repositories for Jar's you access in your code
     maven {
