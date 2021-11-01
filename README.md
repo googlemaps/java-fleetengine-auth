@@ -11,6 +11,45 @@ and JWT Signers.
 Sample scripts are provided in the sample directory. To learn more, see:
 [sample/README.md](sample/README.md).
 
+## Installation
+
+You can add the library to your project via Maven or Gradle.
+
+### Maven
+```
+<dependency>
+  <groupId>com.google.maps</groupId>
+  <artifactId>gfleetengine-auth</artifactId>
+  <version>(insert latest version)</version>
+</dependency>
+<dependency>
+  <groupId>com.auth0</groupId>
+  <artifactId>java-jwt</artifactId>
+  <version>3.10.2</version>
+</dependency>
+<dependency>
+  <groupId>com.google.guava</groupId>
+  <artifactId>guava</artifactId>
+  <version>1.55.0</version>
+</dependency>
+<dependency>
+  <groupId>com.google.auth</groupId>
+  <artifactId>google-auth-library-oauth2-http</artifactId>
+  <version>0.26.0</version>
+</dependency>
+```
+
+
+### Gradle
+```
+dependencies {
+  implementation 'com.google.maps:fleetengine-auth:(insert latest version here)'
+  implementation 'com.auth0:java-jwt:3.10.2'
+  implementation 'com.google.guava:guava:1.55.0'
+  implementation 'com.google.auth:google-auth-library-oauth2-http:0.26.0'
+}
+```
+
 ## Concepts
 
 ### Fleet Engine Roles
@@ -102,38 +141,6 @@ xxxxx.yyyyy.zzzzz
 
 HTTP Header:
 Authorization: Bearer xxxxx.yyyyy.zzzzz
-```
-
-## Setting up
-
-### First Time Setup
-
-Clone the git repo and run gradle. Gradle version 5.0 and above is required. In
-order to build through gradle wrapper, run:
-
-```
-./gradlew jar
-```
-
-The library is located under `$BUILD_OUTPUT_DIR/libs/fleetengine-auth.jar`.
-
-In order to include within your gradle project, copy the jar to an accessible
-directory and add the following to build.gradle:
-
-```
-dependencies {
-  implementation fileTree(dir: 'libs', include: ['*.jar'])
-}
-```
-
-The following 3rd party dependencies are also needed:
-
-```
-dependencies {
-  implementation 'com.auth0:java-jwt:3+'
-  implementation 'com.google.guava:guava:16+'
-  implementation 'com.google.auth:google-auth-library-oauth2-http:0+'
-}
 ```
 
 ## Working with Generated Clients
