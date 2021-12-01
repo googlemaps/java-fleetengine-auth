@@ -16,7 +16,7 @@ Sample scripts are provided in the sample directory. To learn more, see:
 You can add the library to your project via Maven or Gradle.
 
 ### Maven
-```
+```xml
 <dependency>
   <groupId>com.google.maps</groupId>
   <artifactId>fleetengine-auth</artifactId>
@@ -41,7 +41,7 @@ You can add the library to your project via Maven or Gradle.
 
 
 ### Gradle
-```
+```groovy
 dependencies {
   implementation 'com.google.maps:fleetengine-auth:(insert latest version here)'
   implementation 'com.auth0:java-jwt:3.10.2'
@@ -55,7 +55,8 @@ dependencies {
 ### Fleet Engine Roles
 
 Fleet Engine Requests are always made on behalf of a service account defined in
-your GCP project. Each service account is tied a pre-defined Fleet Engine Role.
+your GCP project. Each service account is tied to a pre-defined Fleet Engine
+Role.
 
 The supported Fleet Engine roles are:
 
@@ -103,7 +104,7 @@ To use, first associate a `Signer` with a service account and a type of token.
 
 For example:
 
-```
+```java
 AuthTokenMinter minter = AuthTokenMinter.builder()
   .setServerTokenSigner(DefaultServiceAccountSigner.create())
   .setDriverSigner(ImpersonatedAccountSignerCredentials.create("driver@gcp-project.com")
@@ -114,7 +115,7 @@ AuthTokenMinter minter = AuthTokenMinter.builder()
 The minter provides a getter method for each of the token types. Each getter
 returns an instance of `com.google.fleetengine.auth.token.FleetEngineToken`:
 
-```
+```java
 FleetEngineToken serverToken = minter.getServerToken();
 
 FleetEngineToken consumerToken = minter.getConsumerToken(TripClaims.create("trip-id-123"));
@@ -125,7 +126,7 @@ FleetEngineToken driverToken = minter.getDriverToken(VehicleClaims.create("vehic
 A `FleetEngineToken` has several attributes, but in most cases, only the base64
 encoded JWT is needed `com.google.fleetengine.auth.token.FleetEngineToken#jwt`.
 
-```
+```java
 System.out.println("Base64 encoded JWT:");
 System.out.println(serverToken.jwt());
 
@@ -153,7 +154,7 @@ stubs and GAPIC clients.
 Both mechanisms require a FleetEngineTokenProvider which is an interface that
 has just one method:
 
-```
+```java
 package com.google.fleetengine.auth.client;
 
 /** Provides non-expired, signed JWTs. */
@@ -172,7 +173,7 @@ For convenience, `com.google.fleetengine.auth.AuthTokenMinter` implements
 gRPC stubs are initialized from `io.grpc.ManagedChannel`s and allows
 functionality to be injected using interceptors:
 
-```
+```java
 FleetEngineTokenProvider fleetEngineTokenProvider = getTokenProvider();
 
 ManagedChannel channel = ManagedChannelBuilder.forTarget(fleetEngineAddress)
@@ -190,7 +191,7 @@ are built with using a builder. The
 `ClientSettings.Builder`s such that outbound requests made from the
 corresponding client have valid authorization headers.
 
-```
+```java
 FleetEngineClientSettingsModifier<VehicleServiceSettings, VehicleServiceSettings.Builder> modifier =
   new FleetEngineClientSettingsModifier<>(tokenProvider);
 
