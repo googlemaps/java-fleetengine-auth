@@ -53,8 +53,11 @@ import java.util.UUID;
 /** Sample app for auth library. */
 public final class SampleApp {
 
-  private static final double EXAMPLE_LATITUDE = 37.419645;
-  private static final double EXAMPLE_LONGITUDE = -122.073884;
+  private static final LatLng EXAMPLE_LAT_LNG =
+      LatLng.newBuilder().setLatitude(37.4194945).setLongitude(-122.0761644).build();
+
+  private static final LatLng DEST_EXAMPLE_LAT_LNG =
+      LatLng.newBuilder().setLatitude(37.419645).setLongitude(-122.073884).build();
 
   private SampleApp() {}
 
@@ -121,14 +124,7 @@ public final class SampleApp {
             .addSupportedTripTypes(TripType.EXCLUSIVE)
 
             // Set the last vehicle location to a hardcoded value
-            .setLastLocation(
-                VehicleLocation.newBuilder()
-                    .setLocation(
-                        LatLng.newBuilder()
-                            .setLatitude(EXAMPLE_LATITUDE)
-                            .setLongitude(EXAMPLE_LONGITUDE)
-                            .build())
-                    .build())
+            .setLastLocation(VehicleLocation.newBuilder().setLocation(EXAMPLE_LAT_LNG).build())
             .build();
 
     // Create the created vehicle request with the vehicle object above
@@ -171,20 +167,8 @@ public final class SampleApp {
             .setNumberOfPassengers(1)
 
             // Set the pick up and drop off points
-            .setPickupPoint(
-                TerminalLocation.newBuilder()
-                    .setPoint(
-                        LatLng.newBuilder()
-                            .setLatitude(EXAMPLE_LATITUDE)
-                            .setLongitude(EXAMPLE_LONGITUDE)
-                            .build()))
-            .setDropoffPoint(
-                TerminalLocation.newBuilder()
-                    .setPoint(
-                        LatLng.newBuilder()
-                            .setLatitude(EXAMPLE_LATITUDE)
-                            .setLongitude(EXAMPLE_LONGITUDE)
-                            .build()))
+            .setPickupPoint(TerminalLocation.newBuilder().setPoint(EXAMPLE_LAT_LNG).build())
+            .setDropoffPoint(TerminalLocation.newBuilder().setPoint(DEST_EXAMPLE_LAT_LNG).build())
             .build();
 
     CreateTripRequest request =
@@ -243,14 +227,7 @@ public final class SampleApp {
             .setParent(String.format("providers/%s", Configuration.PROVIDER_ID))
 
             // Look for vehicles around a specific Lat \ Lng
-            .setPickupPoint(
-                TerminalLocation.newBuilder()
-                    .setPoint(
-                        LatLng.newBuilder()
-                            .setLatitude(EXAMPLE_LATITUDE)
-                            .setLongitude(EXAMPLE_LONGITUDE)
-                            .build()))
-
+            .setPickupPoint(TerminalLocation.newBuilder().setPoint(EXAMPLE_LAT_LNG).build())
             // Look for vehicles that can handle at least 1 passenger with trip type exclusive
             .setMinimumCapacity(1)
             .addTripTypes(TripType.EXCLUSIVE)
