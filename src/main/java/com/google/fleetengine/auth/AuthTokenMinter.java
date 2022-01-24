@@ -16,8 +16,11 @@ package com.google.fleetengine.auth;
 
 import com.google.auto.value.AutoValue;
 import com.google.fleetengine.auth.client.FleetEngineTokenProvider;
+import com.google.fleetengine.auth.token.DeliveryVehicleClaims;
 import com.google.fleetengine.auth.token.FleetEngineToken;
 import com.google.fleetengine.auth.token.FleetEngineTokenClaims;
+import com.google.fleetengine.auth.token.TaskClaims;
+import com.google.fleetengine.auth.token.TrackingClaims;
 import com.google.fleetengine.auth.token.TripClaims;
 import com.google.fleetengine.auth.token.VehicleClaims;
 import com.google.fleetengine.auth.token.factory.FleetEngineTokenFactory;
@@ -68,6 +71,26 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
   @Nullable
   public abstract Signer consumerSigner();
 
+  /** Signer responsible for signing JWTs with a delivery server key. */
+  @Nullable
+  public abstract Signer deliveryServerSigner();
+
+  /** Signer responsible for signing JWTs with a delivery consumer key. */
+  @Nullable
+  public abstract Signer deliveryConsumerSigner();
+
+  /** Signer responsible for signing JWTs with an untrusted delivery driver key. */
+  @Nullable
+  public abstract Signer untrustedDeliveryDriverSigner();
+
+  /** Signer responsible for signing JWTs with a trusted delivery driver key. */
+  @Nullable
+  public abstract Signer trustedDeliveryDriverSigner();
+
+  /** Signer responsible for signing JWTs with a delivery fleet reader key. */
+  @Nullable
+  public abstract Signer deliveryFleetReaderSigner();
+
   /** Signer responsible for signing JWTs with that aren't tied to the standard role set. */
   @Nullable
   public abstract Signer customSigner();
@@ -106,7 +129,8 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
   }
 
   /**
-   * Returns a non expired Fleet Engine Token that was signed with the driver signer.
+   * Returns a non expired Fleet Engine Token that was signed with the driver signer
+   * and authorized for use with vehicles matching the specified claim.
    *
    * <p>Tokens will have an expiration of at least {@link
    * FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION}.
@@ -127,7 +151,8 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
   }
 
   /**
-   * Returns a non expired Fleet Engine Token that was signed with the consumer signer.
+   * Returns a non expired Fleet Engine Token that was signed with the consumer signer
+   * and authorized for use with trips matching the specified claim.
    *
    * <p>Tokens will have an expiration of at least {@link
    * FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION}.
@@ -148,7 +173,135 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
   }
 
   /**
-   * Returns a non expired Fleet Engine Token that was signed with the custom signer.
+   * Returns a non expired Fleet Engine Token that was signed with the delivery server signer.
+   *
+   * <p>Tokens will have an expiration of at least {@link
+   * FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION}.
+   *
+   * @throws SigningTokenException if the delivery server signer was not set, or if there is an
+   *     issue while signing the token.
+   * @return Fleet Engine token with the "Delivery Super User" role, guaranteed to be valid for
+   *     {@link FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION} minutes.
+   */
+  public FleetEngineToken getDeliveryServerToken() throws SigningTokenException {
+    FleetEngineToken unsignedToken = tokenFactory().createDeliveryServerToken();
+    return tokenStateManager().signToken(deliveryServerSigner(), unsignedToken);
+  }
+
+  /**
+   * Returns a non expired Fleet Engine Token that was signed with the delivery consumer signer
+   * and authorized for use with tasks matching the specified claim.
+   *
+   * <p>Tokens will have an expiration of at least {@link
+   * FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION}.
+   *
+   * @param claims task claims
+   * @throws SigningTokenException if the delivery consumer signer was not set, or if there is an
+   *     issue while signing the token.
+   * @return Fleet Engine token with the "Delivery Consumer" role, guaranteed to be valid for {@link
+   *     FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION} minutes.
+   */
+  public FleetEngineToken getDeliveryConsumerToken(TaskClaims claims) throws SigningTokenException {
+    if (deliveryConsumerSigner() == null) {
+      throw new SigningTokenException(
+          "Unable to sign delivery consumer tokens due to the delivery consumer signer not being"
+              + " set.");
+    }
+    FleetEngineToken unsignedToken = tokenFactory().createDeliveryConsumerToken(claims);
+    return tokenStateManager().signToken(deliveryConsumerSigner(), unsignedToken);
+  }
+
+  /**
+   * Returns a non expired Fleet Engine Token that was signed with the delivery consumer signer
+   * and authorized for use with tasks that have the same tracking id specified within the claim.
+   *
+   * <p>Tokens will have an expiration of at least {@link
+   * FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION}.
+   *
+   * @param claims tracking claims
+   * @throws SigningTokenException if the delivery consumer signer was not set, or if there is an
+   *     issue while signing the token.
+   * @return Fleet Engine token with the "Delivery Consumer" role, guaranteed to be valid for {@link
+   *     FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION} minutes.
+   */
+  public FleetEngineToken getDeliveryConsumerToken(TrackingClaims claims)
+      throws SigningTokenException {
+    if (deliveryConsumerSigner() == null) {
+      throw new SigningTokenException(
+          "Unable to sign delivery consumer tokens due to the delivery consumer signer not being"
+              + " set.");
+    }
+    FleetEngineToken unsignedToken = tokenFactory().createDeliveryConsumerToken(claims);
+    return tokenStateManager().signToken(deliveryConsumerSigner(), unsignedToken);
+  }
+
+  /**
+   * Returns a non expired Fleet Engine Token that was signed with the untrusted delivery driver
+   * signer and authorized for use with delivery vehicles matching the specified claim.
+   *
+   * <p>Tokens will have an expiration of at least {@link
+   * FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION}.
+   *
+   * @param claims delivery vehicle claims
+   * @throws SigningTokenException if the untrusted delivery driver signer was not set, or if there
+   *     is an issue while signing the token.
+   * @return Fleet Engine token with the "Untrusted Delivery Driver" role, guaranteed to be valid
+   *     for {@link FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION} minutes.
+   */
+  public FleetEngineToken getUntrustedDeliveryVehicleToken(DeliveryVehicleClaims claims)
+      throws SigningTokenException {
+    if (untrustedDeliveryDriverSigner() == null) {
+      throw new SigningTokenException(
+          "Unable to sign untrusted delivery driver tokens due to the untrusted delivery driver "
+              + "signer not being set.");
+    }
+    FleetEngineToken unsignedToken = tokenFactory().createUntrustedDeliveryDriverToken(claims);
+    return tokenStateManager().signToken(untrustedDeliveryDriverSigner(), unsignedToken);
+  }
+
+  /**
+   * Returns a non expired Fleet Engine Token that was signed with the trusted delivery driver
+   * signer and authorized for use with delivery vehicles matching the specified claim.
+   *
+   * <p>Tokens will have an expiration of at least {@link
+   * FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION}.
+   *
+   * @param claims delivery vehicle claims
+   * @throws SigningTokenException if the trusted delivery driver signer was not set, or if there
+   *     is an issue while signing the token.
+   * @return Fleet Engine token with the "Trusted Delivery Driver" role, guaranteed to be valid
+   *     for {@link FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION} minutes.
+   */
+  public FleetEngineToken getTrustedDeliveryVehicleToken(DeliveryVehicleClaims claims)
+      throws SigningTokenException {
+    if (trustedDeliveryDriverSigner() == null) {
+      throw new SigningTokenException(
+          "Unable to sign trusted delivery driver tokens due to the trusted delivery driver "
+              + "signer not being set.");
+    }
+    FleetEngineToken unsignedToken = tokenFactory().createTrustedDeliveryDriverToken(claims);
+    return tokenStateManager().signToken(trustedDeliveryDriverSigner(), unsignedToken);
+  }
+
+  /**
+   * Returns a non expired Fleet Engine Token that was signed with the delivery consumer signer.
+   *
+   * <p>Tokens will have an expiration of at least {@link
+   * FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION}.
+   *
+   * @throws SigningTokenException if the delivery server signer was not set, or if there is an
+   *     issue while signing the token.
+   * @return Fleet Engine token with the "Delivery Fleet Reader" role, guaranteed to be valid for
+   *     {@link FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION} minutes.
+   */
+  public FleetEngineToken getDeliveryFleetReaderToken() throws SigningTokenException {
+    FleetEngineToken unsignedToken = tokenFactory().createDeliveryFleetReaderToken();
+    return tokenStateManager().signToken(deliveryFleetReaderSigner(), unsignedToken);
+  }
+
+  /**
+   * Returns a non expired Fleet Engine Token that was signed with the custom signer
+   * and authorized for use with entities matching the specified claim.
    *
    * <p>Tokens will have an expiration of at least {@link
    * FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION}.
@@ -193,6 +346,21 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
 
     /** Sets the Signer responsible for signing tokens that are not tied to a standard role. */
     public abstract Builder setCustomSigner(Signer customSigner);
+
+    /** Sets the signer responsible for signing delivery server JWTs. */
+    public abstract Builder setDeliveryServerSigner(Signer deliveryServerSigner);
+
+    /** Sets the signer responsible for signing delivery consumer JWTs. */
+    public abstract Builder setDeliveryConsumerSigner(Signer deliverConsumerSigner);
+
+    /** Sets the signer responsible for signing untrusted delivery driver JWTs. */
+    public abstract Builder setUntrustedDeliveryDriverSigner(Signer untrustedDeliveryDriverSigner);
+
+    /** Sets the signer responsible for signing trusted delivery driver JWTs. */
+    public abstract Builder setTrustedDeliveryDriverSigner(Signer trustedDeliveryDriverSigner);
+
+    /** Sets the signer responsible for signing delivery fleet JWTs. */
+    public abstract Builder setDeliveryFleetReaderSigner(Signer deliveryFleetReaderSigner);
 
     /**
      * Sets token factory that creates unsigned tokens.

@@ -1,0 +1,37 @@
+package com.google.fleetengine.auth.token;
+
+import com.google.common.collect.ImmutableMap;
+
+/** Special claim for delivery fleet reader claims. Authorizes a token for use with all tasks
+ * and delivery vehicles.
+ */
+public class DeliveryFleetReaderClaims implements FleetEngineTokenClaims {
+
+  private static final String WILDCARD = "*";
+  private static final DeliveryFleetReaderClaims SINGLETON = new DeliveryFleetReaderClaims();
+  private final ImmutableMap<String, String> map;
+
+  /** Creates a delivery fleet reader token claims object. */
+  public static DeliveryFleetReaderClaims create() {
+    return SINGLETON;
+  }
+
+  private DeliveryFleetReaderClaims() {
+    // Load all claims with a wild card.
+    map =
+        ImmutableMap.of(
+            TaskClaims.CLAIM_TASK_ID, WILDCARD,
+            TrackingClaims.CLAIM_TRACKING_ID, WILDCARD,
+            DeliveryVehicleClaims.CLAIM_DELIVERY_VEHICLE_ID, WILDCARD);
+  }
+
+  @Override
+  public ImmutableMap<String, String> toMap() {
+    return map;
+  }
+
+  @Override
+  public boolean isWildcard() {
+    return true;
+  }
+}

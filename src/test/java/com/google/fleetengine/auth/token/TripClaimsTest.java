@@ -34,6 +34,7 @@ public class TripClaimsTest {
     ImmutableMap<String, String> returnedToken = claims.toMap();
 
     assertThat(returnedToken).containsEntry(CLAIM_TRIP_ID, WILDCARD);
+    assertThat(claims.isWildcard()).isTrue();
   }
 
   @Test
@@ -43,5 +44,6 @@ public class TripClaimsTest {
     ImmutableMap<String, String> returnedToken = claims.toMap();
 
     assertThat(returnedToken).containsEntry(CLAIM_TRIP_ID, TEST_TRIP_ID);
+    assertThat(claims.isWildcard()).isFalse();
   }
 }

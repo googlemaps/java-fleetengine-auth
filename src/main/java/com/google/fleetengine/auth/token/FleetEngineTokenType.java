@@ -34,7 +34,36 @@ public enum FleetEngineTokenType {
    */
   DRIVER,
 
+  /**
+   * Delivery server tokens are usually service accounts associated with the Fleet Engine Delivery
+   * Super User role on the Google Cloud project.
+   */
+  DELIVERY_SERVER,
+
+  /**
+   * Driver tokens are usually service accounts associated with the Fleet Engine Delivery Consumer
+   * User role on the Google Cloud project.
+   */
+  DELIVERY_CONSUMER,
+
+  /**
+   * Driver tokens are usually service accounts associated with the Fleet Engine Delivery Untrusted
+   * Driver User role on the Google Cloud project.
+   */
+  UNTRUSTED_DELIVERY_DRIVER,
+
+  /**
+   * Driver tokens are usually service accounts associated with the Fleet Engine Delivery Trusted
+   * Driver User role on the Google Cloud project.
+   */
+  TRUSTED_DELIVERY_DRIVER,
+
+  /**
+   * Fleet reader tokens are usually service accounts associated with the Fleet Engine Delivery
+   * Fleet Reader User role on the Google Cloud project.
+   */
+  DELIVERY_FLEET_READER,
+
   /** Custom token type associated with any Fleet Engine Role on the Google Cloud project. */
   CUSTOM,
-  ;
 }

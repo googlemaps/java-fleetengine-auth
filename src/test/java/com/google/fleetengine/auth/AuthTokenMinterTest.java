@@ -20,8 +20,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.google.fleetengine.auth.token.DeliveryVehicleClaims;
 import com.google.fleetengine.auth.token.FleetEngineToken;
 import com.google.fleetengine.auth.token.FleetEngineTokenType;
+import com.google.fleetengine.auth.token.TaskClaims;
 import com.google.fleetengine.auth.token.TripClaims;
 import com.google.fleetengine.auth.token.VehicleClaims;
 import com.google.fleetengine.auth.token.factory.TokenFactory;
@@ -39,10 +41,19 @@ import org.junit.runners.JUnit4;
 public class AuthTokenMinterTest {
   private static final VehicleClaims FAKE_VEHICLE = VehicleClaims.create("fakeVehicleId");
   private static final TripClaims FAKE_TRIP = TripClaims.create("fakeTripId");
+  private static final TaskClaims FAKE_TASK = TaskClaims.create("fakeTaskId");
+  private static final TaskClaims FAKE_TRACKING = TaskClaims.create("fakeTrackingId");
+  private static final DeliveryVehicleClaims FAKE_DELIVERY_VEHICLE =
+      DeliveryVehicleClaims.create("fakeDeliveryVehicleId");
 
   private Signer serverSigner;
   private Signer driverSigner;
   private Signer consumerSigner;
+  private Signer deliveryServerSigner;
+  private Signer deliveryConsumerSigner;
+  private Signer untrustedDeliveryDriverSigner;
+  private Signer trustedDeliveryDriverSigner;
+  private Signer deliveryFleetReaderSigner;
   private Signer customSigner;
   private FleetEngineAuthTokenStateManager authStateManager;
   private AuthTokenMinter.Builder defaultFleetEngineAuthBuilder;
@@ -54,6 +65,11 @@ public class AuthTokenMinterTest {
     this.serverSigner = mock(Signer.class);
     this.driverSigner = mock(Signer.class);
     this.consumerSigner = mock(Signer.class);
+    this.deliveryServerSigner = mock(Signer.class);
+    this.deliveryConsumerSigner = mock(Signer.class);
+    this.untrustedDeliveryDriverSigner = mock(Signer.class);
+    this.trustedDeliveryDriverSigner = mock(Signer.class);
+    this.deliveryFleetReaderSigner = mock(Signer.class);
     this.customSigner = mock(Signer.class);
     this.authStateManager = mock(FleetEngineAuthTokenStateManager.class);
     this.tokenFactory = mock(TokenFactory.class);
@@ -61,6 +77,8 @@ public class AuthTokenMinterTest {
     this.defaultFleetEngineAuthBuilder =
         AuthTokenMinter.builder()
             .setServerSigner(serverSigner)
+            .setDeliveryServerSigner(deliveryServerSigner)
+            .setDeliveryFleetReaderSigner(deliveryFleetReaderSigner)
             .setTokenStateManager(authStateManager)
             .setTokenFactory(tokenFactory);
 
@@ -86,7 +104,7 @@ public class AuthTokenMinterTest {
   }
 
   @Test
-  public void getServerToken_whenDriverSignerSet_signsWithSetDriverSigner()
+  public void getDriverToken_whenDriverSignerSet_signsWithSetDriverSigner()
       throws SigningTokenException {
     AuthTokenMinter baseFleetEngineAuth =
         defaultFleetEngineAuthBuilder.setDriverSigner(driverSigner).build();
@@ -99,7 +117,7 @@ public class AuthTokenMinterTest {
   }
 
   @Test
-  public void getServerToken_whenConsumerSignerSet_signsWithSetConsumerSigner()
+  public void getConsumerToken_whenConsumerSignerSet_signsWithSetConsumerSigner()
       throws SigningTokenException {
     AuthTokenMinter baseFleetEngineAuth =
         defaultFleetEngineAuthBuilder.setConsumerSigner(consumerSigner).build();
@@ -112,7 +130,97 @@ public class AuthTokenMinterTest {
   }
 
   @Test
-  public void getServerToken_whenCustomSignerSet_signsWithSetCustomSigner()
+  public void getDeliveryServerToken_whenDeliveryServerSignerSet_signsWithSetDeliveryServerSigner()
+      throws SigningTokenException {
+    AuthTokenMinter baseFleetEngineAuth =
+        defaultFleetEngineAuthBuilder.setDeliveryServerSigner(deliveryServerSigner).build();
+    when(tokenFactory.createDeliveryServerToken()).thenReturn(fleetEngineToken);
+
+    baseFleetEngineAuth.getDeliveryServerToken();
+
+    verify(authStateManager, times(1)).signToken(eq(deliveryServerSigner), eq(fleetEngineToken));
+  }
+
+  @Test
+  public void
+      getDeliveryConsumerToken_whenDeliveryConsumerSignerSet_signsWithSetDeliveryConsumerSigner()
+          throws SigningTokenException {
+    AuthTokenMinter baseFleetEngineAuth =
+        defaultFleetEngineAuthBuilder.setDeliveryConsumerSigner(deliveryConsumerSigner).build();
+    when(tokenFactory.createDeliveryConsumerToken(eq(FAKE_TASK))).thenReturn(fleetEngineToken);
+
+    baseFleetEngineAuth.getDeliveryConsumerToken(FAKE_TASK);
+
+    verify(tokenFactory, times(1)).createDeliveryConsumerToken(eq(FAKE_TASK));
+    verify(authStateManager, times(1)).signToken(deliveryConsumerSigner, fleetEngineToken);
+  }
+
+  @Test
+  public void
+  getDeliveryConsumerToken_whenDeliveryConsumerSignerSet_signsWithSetDeliveryConsumerSignerAndTrackingId()
+      throws SigningTokenException {
+    AuthTokenMinter baseFleetEngineAuth =
+        defaultFleetEngineAuthBuilder.setDeliveryConsumerSigner(deliveryConsumerSigner).build();
+    when(tokenFactory.createDeliveryConsumerToken(eq(FAKE_TRACKING))).thenReturn(fleetEngineToken);
+
+    baseFleetEngineAuth.getDeliveryConsumerToken(FAKE_TRACKING);
+
+    verify(tokenFactory, times(1)).createDeliveryConsumerToken(eq(FAKE_TRACKING));
+    verify(authStateManager, times(1)).signToken(deliveryConsumerSigner, fleetEngineToken);
+  }
+
+  @Test
+  public void
+      getUntrustedDeliveryDriverToken_whenUntrustedDeliveryDriverSignerSet_signsWithSetDeliveryDriverSigner()
+          throws SigningTokenException {
+    AuthTokenMinter baseFleetEngineAuth =
+        defaultFleetEngineAuthBuilder
+            .setUntrustedDeliveryDriverSigner(untrustedDeliveryDriverSigner)
+            .build();
+    when(tokenFactory.createUntrustedDeliveryDriverToken(eq(FAKE_DELIVERY_VEHICLE)))
+        .thenReturn(fleetEngineToken);
+
+    baseFleetEngineAuth.getUntrustedDeliveryVehicleToken(FAKE_DELIVERY_VEHICLE);
+
+    verify(tokenFactory, times(1)).createUntrustedDeliveryDriverToken(eq(FAKE_DELIVERY_VEHICLE));
+    verify(authStateManager, times(1)).signToken(untrustedDeliveryDriverSigner, fleetEngineToken);
+  }
+
+  @Test
+  public void
+  getTrustedDeliveryDriverToken_whenTrustedDeliveryDriverSignerSet_signsWithSetDeliveryDriverSigner()
+      throws SigningTokenException {
+    AuthTokenMinter baseFleetEngineAuth =
+        defaultFleetEngineAuthBuilder
+            .setTrustedDeliveryDriverSigner(trustedDeliveryDriverSigner)
+            .build();
+    when(tokenFactory.createTrustedDeliveryDriverToken(eq(FAKE_DELIVERY_VEHICLE)))
+        .thenReturn(fleetEngineToken);
+
+    baseFleetEngineAuth.getTrustedDeliveryVehicleToken(FAKE_DELIVERY_VEHICLE);
+
+    verify(tokenFactory, times(1)).createTrustedDeliveryDriverToken(eq(FAKE_DELIVERY_VEHICLE));
+    verify(authStateManager, times(1)).signToken(trustedDeliveryDriverSigner, fleetEngineToken);
+  }
+
+  @Test
+  public void
+      getDeliveryFleetReaderToken_whenDeliveryFleetReaderSignerSet_signsWithSetDeliveryFleetReaderSigner()
+          throws SigningTokenException {
+    AuthTokenMinter baseFleetEngineAuth =
+        defaultFleetEngineAuthBuilder
+            .setDeliveryFleetReaderSigner(deliveryFleetReaderSigner)
+            .build();
+    when(tokenFactory.createDeliveryFleetReaderToken()).thenReturn(fleetEngineToken);
+
+    baseFleetEngineAuth.getDeliveryFleetReaderToken();
+
+    verify(authStateManager, times(1))
+        .signToken(eq(deliveryFleetReaderSigner), eq(fleetEngineToken));
+  }
+
+  @Test
+  public void getCustomToken_whenCustomSignerSet_signsWithSetCustomSigner()
       throws SigningTokenException {
     AuthTokenMinter baseFleetEngineAuth =
         defaultFleetEngineAuthBuilder.setCustomSigner(customSigner).build();
@@ -125,7 +233,7 @@ public class AuthTokenMinterTest {
   }
 
   @Test
-  public void getServerToken_whenDriverSignerNull_throwsSigningTokenException() {
+  public void getDriverToken_whenDriverSignerNull_throwsSigningTokenException() {
     AuthTokenMinter baseFleetEngineAuth =
         defaultFleetEngineAuthBuilder.setDriverSigner(null).build();
 
@@ -149,5 +257,26 @@ public class AuthTokenMinterTest {
 
     Assert.assertThrows(
         SigningTokenException.class, () -> baseFleetEngineAuth.getCustomToken(FAKE_TRIP));
+  }
+
+  @Test
+  public void
+      getDeliveryConsumerToken_whenDeliveryConsumerSignerNull_throwsSigningTokenException() {
+    AuthTokenMinter baseFleetEngineAuth =
+        defaultFleetEngineAuthBuilder.setDeliveryConsumerSigner(null).build();
+
+    Assert.assertThrows(
+        SigningTokenException.class, () -> baseFleetEngineAuth.getDeliveryConsumerToken(FAKE_TASK));
+  }
+
+  @Test
+  public void
+      getUntrustedDeliveryDriverToken_whenUntrustedDeliveryDriverSignerNull_throwsSigningTokenException() {
+    AuthTokenMinter baseFleetEngineAuth =
+        defaultFleetEngineAuthBuilder.setUntrustedDeliveryDriverSigner(null).build();
+
+    Assert.assertThrows(
+        SigningTokenException.class,
+        () -> baseFleetEngineAuth.getUntrustedDeliveryVehicleToken(null));
   }
 }

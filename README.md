@@ -65,6 +65,11 @@ Role                           | Description
 Fleet Engine Consumer SDK User | Grants permission to search for vehicles and to retrieve information about vehicles and trips. Tokens minted by a service account with this role can be used from your ridesharing consumer app mobile devices.
 Fleet Engine Driver SDK User   | Grants permission to update vehicle locations and routes and to retrieve information about vehicles and trips. Tokens minted by a service account with this role can be used from your ridesharing driver app mobile devices.
 FleetEngine Service Super User | Grants permission to all vehicles and trips APIs. Tokens minted by a service account with this role can be used from your backend servers.
+Fleet Engine Delivery Consumer SDK User | Grants permission to search for tasks using a tracking ID, and to read but not update task information. Tokens minted by a service account with this role are typically used from a delivery consumer's web browser.
+Fleet Engine Delivery Untrusted Driver User | Grants permission to update delivery vehicle location. Tokens minted by a service account with this role are typically used from your delivery driver's mobile devices.
+Fleet Engine Delivery Trusted Driver User | Grants permission to create and update delivery vehicles and tasks, including updating the delivery vehicle location and task status or outcome. Tokens minted by a service account with this role are typically used from your delivery driver's mobile devices or from your backend servers.
+Fleet Engine Delivery Fleet Reader | Grants permission to read delivery vehicles and tasks and to search for tasks using a tracking ID. Tokens minted by a service account with this role are typically used from a delivery fleet operator's web browser.
+Fleet Engine Delivery Super User| Grants permission to all delivery vehicles and tasks APIs. Tokens minted by a service account with this role are typically used from your backend servers.
 
 Each role is tied to a `com.google.fleetengine.auth.token.FleetEngineTokenType`,
 and each type of token can be constrained to a specific resource:
@@ -74,6 +79,12 @@ Role                                | Token Type                      | Resource
 Fleet Engine Consumer SDK User      | `FleetEngineTokenType#CONSUMER` | trip id
 Fleet Engine Driver SDK User        | `FleetEngineTokenType#DRIVER`   | vehicle id
 Fleet Engine Service Super SDK User | `FleetEngineTokenType#SERVER`   | (no constraint)
+Fleet Engine Delivery Consumer SDK User      | `FleetEngineTokenType#DELIVERY_CONSUMER` | task id OR tracking id
+Fleet Engine Delivery Untrusted Driver SDK User        | `FleetEngineTokenType#UNTRUSTED_DELIVERY_DRIVER`   | delivery vehicle id
+Fleet Engine Delivery Trusted Driver SDK User | `FleetEngineTokenType#TRUSTED_DELIVERY_DRIVER`   | delivery vehicle id and task id
+Fleet Engine Delivery Fleet Reader SDK User | `FleetEngineTokenType#DELIVERY_FLEET_READER`   | (no constraint)
+Fleet Engine Delivery Super SDK User | `FleetEngineTokenType#DELIVERY_SERVER`   | (no constraint)
+
 
 ### JWT Signers
 

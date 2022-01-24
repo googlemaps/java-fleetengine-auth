@@ -15,10 +15,15 @@
 package com.google.fleetengine.auth.token.factory;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.fleetengine.auth.token.DeliveryFleetReaderClaims;
+import com.google.fleetengine.auth.token.DeliveryServerTokenClaims;
+import com.google.fleetengine.auth.token.DeliveryVehicleClaims;
 import com.google.fleetengine.auth.token.FleetEngineToken;
 import com.google.fleetengine.auth.token.FleetEngineTokenClaims;
 import com.google.fleetengine.auth.token.FleetEngineTokenType;
 import com.google.fleetengine.auth.token.ServerTokenClaims;
+import com.google.fleetengine.auth.token.TaskClaims;
+import com.google.fleetengine.auth.token.TrackingClaims;
 import com.google.fleetengine.auth.token.TripClaims;
 import com.google.fleetengine.auth.token.VehicleClaims;
 import java.sql.Date;
@@ -59,27 +64,68 @@ public final class FleetEngineTokenFactory implements TokenFactory {
 
   /** {@inheritDoc} */
   @Override
-  public final FleetEngineToken createServerToken() {
+  public FleetEngineToken createServerToken() {
     return createToken(FleetEngineTokenType.SERVER, ServerTokenClaims.create());
   }
 
   /** {@inheritDoc} */
   @Override
-  public final FleetEngineToken createDriverToken(VehicleClaims claims) {
+  public FleetEngineToken createDriverToken(VehicleClaims claims) {
     Objects.requireNonNull(claims);
     return createToken(FleetEngineTokenType.DRIVER, claims);
   }
 
   /** {@inheritDoc} */
   @Override
-  public final FleetEngineToken createConsumerToken(TripClaims claims) {
+  public FleetEngineToken createConsumerToken(TripClaims claims) {
     Objects.requireNonNull(claims);
     return createToken(FleetEngineTokenType.CONSUMER, claims);
   }
 
   /** {@inheritDoc} */
   @Override
-  public final FleetEngineToken createCustomToken(FleetEngineTokenClaims claims) {
+  public FleetEngineToken createDeliveryServerToken() {
+    return createToken(FleetEngineTokenType.DELIVERY_SERVER, DeliveryServerTokenClaims.create());
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public FleetEngineToken createDeliveryConsumerToken(TaskClaims claims) {
+    Objects.requireNonNull(claims);
+    return createToken(FleetEngineTokenType.DELIVERY_CONSUMER, claims);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public FleetEngineToken createDeliveryConsumerToken(TrackingClaims claims) {
+    Objects.requireNonNull(claims);
+    return createToken(FleetEngineTokenType.DELIVERY_CONSUMER, claims);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public FleetEngineToken createUntrustedDeliveryDriverToken(DeliveryVehicleClaims claims) {
+    Objects.requireNonNull(claims);
+    return createToken(FleetEngineTokenType.UNTRUSTED_DELIVERY_DRIVER, claims);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public FleetEngineToken createTrustedDeliveryDriverToken(DeliveryVehicleClaims claims) {
+    Objects.requireNonNull(claims);
+    return createToken(FleetEngineTokenType.TRUSTED_DELIVERY_DRIVER, claims);
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public FleetEngineToken createDeliveryFleetReaderToken() {
+    return createToken(
+        FleetEngineTokenType.DELIVERY_FLEET_READER, DeliveryFleetReaderClaims.create());
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public FleetEngineToken createCustomToken(FleetEngineTokenClaims claims) {
     Objects.requireNonNull(claims);
     return createToken(FleetEngineTokenType.CUSTOM, claims);
   }
