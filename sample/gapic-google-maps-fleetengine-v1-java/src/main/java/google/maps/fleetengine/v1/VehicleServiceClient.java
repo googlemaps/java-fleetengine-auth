@@ -154,31 +154,35 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * CreateVehicle instantiates a new vehicle associated with a rideshare provider in the Fleet
-   * Engine. Vehicles must have a unique vehicle ID.
+   * Instantiates a new vehicle associated with an on-demand rideshare or deliveries provider. Each
+   * `Vehicle` must have a unique vehicle ID.
    *
-   * <p>The following Vehicle fields are required when creating a Vehicle:
+   * <p>The following `Vehicle` fields are required when creating a `Vehicle`:
    *
    * <ul>
-   *   <li> vehicleState
-   *   <li> supportedTripTypes
-   *   <li> maximumCapacity
-   *   <li> vehicleType
+   *   <li> `vehicleState`
+   *   <li> `supportedTripTypes`
+   *   <li> `maximumCapacity`
+   *   <li> `vehicleType`
    * </ul>
    *
-   * <p>The following Vehicle fields are ignored when creating a Vehicle:
+   * <p>The following `Vehicle` fields are ignored when creating a `Vehicle`:
    *
    * <ul>
-   *   <li> name
-   *   <li> currentTrips
-   *   <li> availableCapacity
-   *   <li> current_route_segment
-   *   <li> current_route_segment_version
-   *   <li> waypoint
-   *   <li> waypoints_version
-   *   <li> remaining_distance_meters
-   *   <li> eta_to_next_waypoint
-   *   <li> navigation_status
+   *   <li> `name`
+   *   <li> `currentTrips`
+   *   <li> `availableCapacity`
+   *   <li> `current_route_segment`
+   *   <li> `current_route_segment_end_point`
+   *   <li> `current_route_segment_version`
+   *   <li> `current_route_segment_traffic`
+   *   <li> `route`
+   *   <li> `waypoints`
+   *   <li> `waypoints_version`
+   *   <li> `remaining_distance_meters`
+   *   <li> `remaining_time_seconds`
+   *   <li> `eta_to_next_waypoint`
+   *   <li> `navigation_status`
    * </ul>
    *
    * <p>All other fields are optional and used if provided.
@@ -207,31 +211,35 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * CreateVehicle instantiates a new vehicle associated with a rideshare provider in the Fleet
-   * Engine. Vehicles must have a unique vehicle ID.
+   * Instantiates a new vehicle associated with an on-demand rideshare or deliveries provider. Each
+   * `Vehicle` must have a unique vehicle ID.
    *
-   * <p>The following Vehicle fields are required when creating a Vehicle:
+   * <p>The following `Vehicle` fields are required when creating a `Vehicle`:
    *
    * <ul>
-   *   <li> vehicleState
-   *   <li> supportedTripTypes
-   *   <li> maximumCapacity
-   *   <li> vehicleType
+   *   <li> `vehicleState`
+   *   <li> `supportedTripTypes`
+   *   <li> `maximumCapacity`
+   *   <li> `vehicleType`
    * </ul>
    *
-   * <p>The following Vehicle fields are ignored when creating a Vehicle:
+   * <p>The following `Vehicle` fields are ignored when creating a `Vehicle`:
    *
    * <ul>
-   *   <li> name
-   *   <li> currentTrips
-   *   <li> availableCapacity
-   *   <li> current_route_segment
-   *   <li> current_route_segment_version
-   *   <li> waypoint
-   *   <li> waypoints_version
-   *   <li> remaining_distance_meters
-   *   <li> eta_to_next_waypoint
-   *   <li> navigation_status
+   *   <li> `name`
+   *   <li> `currentTrips`
+   *   <li> `availableCapacity`
+   *   <li> `current_route_segment`
+   *   <li> `current_route_segment_end_point`
+   *   <li> `current_route_segment_version`
+   *   <li> `current_route_segment_traffic`
+   *   <li> `route`
+   *   <li> `waypoints`
+   *   <li> `waypoints_version`
+   *   <li> `remaining_distance_meters`
+   *   <li> `remaining_time_seconds`
+   *   <li> `eta_to_next_waypoint`
+   *   <li> `navigation_status`
    * </ul>
    *
    * <p>All other fields are optional and used if provided.
@@ -259,7 +267,7 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * GetVehicle returns a vehicle from the Fleet Engine.
+   * Returns a vehicle from the Fleet Engine.
    *
    * <p>Sample code:
    *
@@ -285,7 +293,7 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * GetVehicle returns a vehicle from the Fleet Engine.
+   * Returns a vehicle from the Fleet Engine.
    *
    * <p>Sample code:
    *
@@ -310,22 +318,24 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * UpdateVehicle writes updated vehicle data to the Fleet Engine.
+   * Writes updated vehicle data to the Fleet Engine.
    *
-   * <p>When updating a Vehicle, the following fields cannot be updated since they are managed by
-   * the Fleet Engine:
+   * <p>When updating a `Vehicle`, the following fields cannot be updated since they are managed by
+   * the server:
    *
    * <ul>
-   *   <li> currentTrips
-   *   <li> availableCapacity
-   *   <li> current_route_segment_version
-   *   <li> waypoints_version
+   *   <li> `currentTrips`
+   *   <li> `availableCapacity`
+   *   <li> `current_route_segment_version`
+   *   <li> `waypoints_version`
    * </ul>
    *
-   * <p>The vehicle name also cannot be updated.
+   * <p>The vehicle `name` also cannot be updated.
    *
-   * <p>The waypoints field can be updated, but must contain all the waypoints currently on the
-   * vehicle, and no other waypoints.
+   * <p>If the `attributes` field is updated, &#42;&#42;all&#42;&#42; the vehicle's attributes are
+   * replaced with the attributes provided in the request. If you want to update only some
+   * attributes, see the `UpdateVehicleAttributes` method. Likewise, the `waypoints` field can be
+   * updated, but must contain all the waypoints currently on the vehicle, and no other waypoints.
    *
    * <p>Sample code:
    *
@@ -351,22 +361,24 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * UpdateVehicle writes updated vehicle data to the Fleet Engine.
+   * Writes updated vehicle data to the Fleet Engine.
    *
-   * <p>When updating a Vehicle, the following fields cannot be updated since they are managed by
-   * the Fleet Engine:
+   * <p>When updating a `Vehicle`, the following fields cannot be updated since they are managed by
+   * the server:
    *
    * <ul>
-   *   <li> currentTrips
-   *   <li> availableCapacity
-   *   <li> current_route_segment_version
-   *   <li> waypoints_version
+   *   <li> `currentTrips`
+   *   <li> `availableCapacity`
+   *   <li> `current_route_segment_version`
+   *   <li> `waypoints_version`
    * </ul>
    *
-   * <p>The vehicle name also cannot be updated.
+   * <p>The vehicle `name` also cannot be updated.
    *
-   * <p>The waypoints field can be updated, but must contain all the waypoints currently on the
-   * vehicle, and no other waypoints.
+   * <p>If the `attributes` field is updated, &#42;&#42;all&#42;&#42; the vehicle's attributes are
+   * replaced with the attributes provided in the request. If you want to update only some
+   * attributes, see the `UpdateVehicleAttributes` method. Likewise, the `waypoints` field can be
+   * updated, but must contain all the waypoints currently on the vehicle, and no other waypoints.
    *
    * <p>Sample code:
    *
@@ -391,8 +403,8 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * UpdateVehicleLocation updates the location of the vehicle. This method is deprecated. Use
-   * UpdateVehicle method instead.
+   * Deprecated: Use the `UpdateVehicle` method instead. UpdateVehicleLocation updates the location
+   * of the vehicle.
    *
    * <p>Sample code:
    *
@@ -420,8 +432,8 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * UpdateVehicleLocation updates the location of the vehicle. This method is deprecated. Use
-   * UpdateVehicle method instead.
+   * Deprecated: Use the `UpdateVehicle` method instead. UpdateVehicleLocation updates the location
+   * of the vehicle.
    *
    * <p>Sample code:
    *
@@ -451,10 +463,10 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * UpdateVehicleAttributes partially updates a vehicle's attributes. Only the attributes mentioned
-   * in the request will be updated, other attributes will NOT be altered. Note: this is different
-   * in UpdateVehicle, where the whole `attributes` field will be replaced by the one in
-   * UpdateVehicleRequest, attributes not in the request would be removed.
+   * Partially updates a vehicle's attributes. Only the attributes mentioned in the request will be
+   * updated, other attributes will NOT be altered. Note: this is different in `UpdateVehicle`,
+   * where the whole `attributes` field will be replaced by the one in `UpdateVehicleRequest`,
+   * attributes not in the request would be removed.
    *
    * <p>Sample code:
    *
@@ -481,10 +493,10 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * UpdateVehicleAttributes partially updates a vehicle's attributes. Only the attributes mentioned
-   * in the request will be updated, other attributes will NOT be altered. Note: this is different
-   * in UpdateVehicle, where the whole `attributes` field will be replaced by the one in
-   * UpdateVehicleRequest, attributes not in the request would be removed.
+   * Partially updates a vehicle's attributes. Only the attributes mentioned in the request will be
+   * updated, other attributes will NOT be altered. Note: this is different in `UpdateVehicle`,
+   * where the whole `attributes` field will be replaced by the one in `UpdateVehicleRequest`,
+   * attributes not in the request would be removed.
    *
    * <p>Sample code:
    *
@@ -510,8 +522,7 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * ListVehicles returns a paginated list of vehicles associated with a provider that match the
-   * request options.
+   * Returns a paginated list of vehicles associated with a provider that match the request options.
    *
    * <p>Sample code:
    *
@@ -548,8 +559,7 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * ListVehicles returns a paginated list of vehicles associated with a provider that match the
-   * request options.
+   * Returns a paginated list of vehicles associated with a provider that match the request options.
    *
    * <p>Sample code:
    *
@@ -587,8 +597,7 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * ListVehicles returns a paginated list of vehicles associated with a provider that match the
-   * request options.
+   * Returns a paginated list of vehicles associated with a provider that match the request options.
    *
    * <p>Sample code:
    *
@@ -631,7 +640,7 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * SearchVehicles returns a list of vehicles that match the request options.
+   * Returns a list of vehicles that match the request options.
    *
    * <p>Sample code:
    *
@@ -668,7 +677,7 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * SearchVehicles returns a list of vehicles that match the request options.
+   * Returns a list of vehicles that match the request options.
    *
    * <p>Sample code:
    *
@@ -706,10 +715,10 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * SearchFuzzedVehicles returns a list of vehicles that match the request options with their
-   * locations fuzzed. Request does not support 'order_by' field. Vehicle matches in response will
-   * be in order of distance from pickup point. Vehicle matches in response will only have 'vehicle'
-   * and 'trip_type' field set.
+   * Returns a list of vehicles that match the request options, but the vehicle locations will be
+   * somewhat altered for privacy. This method does not support the `SearchVehicleRequest.order_by`
+   * field. Vehicle matches in the response will be in order of distance from the pickup point. Only
+   * the `vehicle` and `trip_type` fields will be populated.
    *
    * <p>Sample code:
    *
@@ -746,10 +755,10 @@ public class VehicleServiceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD.
   /**
-   * SearchFuzzedVehicles returns a list of vehicles that match the request options with their
-   * locations fuzzed. Request does not support 'order_by' field. Vehicle matches in response will
-   * be in order of distance from pickup point. Vehicle matches in response will only have 'vehicle'
-   * and 'trip_type' field set.
+   * Returns a list of vehicles that match the request options, but the vehicle locations will be
+   * somewhat altered for privacy. This method does not support the `SearchVehicleRequest.order_by`
+   * field. Vehicle matches in the response will be in order of distance from the pickup point. Only
+   * the `vehicle` and `trip_type` fields will be populated.
    *
    * <p>Sample code:
    *

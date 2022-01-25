@@ -38,7 +38,9 @@ public interface VehicleMatchOrBuilder extends
    * <pre>
    * The vehicle's driving ETA to the pickup point specified in the
    * request. An empty value indicates a failure in calculating ETA for the
-   * vehicle.
+   * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+   * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+   * required to complete the current active trip.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -49,7 +51,9 @@ public interface VehicleMatchOrBuilder extends
    * <pre>
    * The vehicle's driving ETA to the pickup point specified in the
    * request. An empty value indicates a failure in calculating ETA for the
-   * vehicle.
+   * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+   * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+   * required to complete the current active trip.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -60,7 +64,9 @@ public interface VehicleMatchOrBuilder extends
    * <pre>
    * The vehicle's driving ETA to the pickup point specified in the
    * request. An empty value indicates a failure in calculating ETA for the
-   * vehicle.
+   * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+   * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+   * required to complete the current active trip.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -69,10 +75,13 @@ public interface VehicleMatchOrBuilder extends
 
   /**
    * <pre>
-   * The vehicle's driving distance to the pickup point specified in
-   * the request, including any intermediate pickup or dropoff points for
-   * an existing ride.  An empty value indicates a failure in calculating
-   * distance for the vehicle.
+   * The distance from the Vehicle's current location to the pickup point
+   * specified in the request, including any intermediate pickup or dropoff
+   * points for existing trips. This distance comprises the calculated driving
+   * (route) distance, plus the straight line distance between the navigation
+   * end point and the requested pickup point. (The distance between the
+   * navigation end point and the requested pickup point is typically small.) An
+   * empty value indicates an error in calculating the distance.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -81,10 +90,13 @@ public interface VehicleMatchOrBuilder extends
   boolean hasVehiclePickupDistanceMeters();
   /**
    * <pre>
-   * The vehicle's driving distance to the pickup point specified in
-   * the request, including any intermediate pickup or dropoff points for
-   * an existing ride.  An empty value indicates a failure in calculating
-   * distance for the vehicle.
+   * The distance from the Vehicle's current location to the pickup point
+   * specified in the request, including any intermediate pickup or dropoff
+   * points for existing trips. This distance comprises the calculated driving
+   * (route) distance, plus the straight line distance between the navigation
+   * end point and the requested pickup point. (The distance between the
+   * navigation end point and the requested pickup point is typically small.) An
+   * empty value indicates an error in calculating the distance.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -93,10 +105,13 @@ public interface VehicleMatchOrBuilder extends
   com.google.protobuf.Int32Value getVehiclePickupDistanceMeters();
   /**
    * <pre>
-   * The vehicle's driving distance to the pickup point specified in
-   * the request, including any intermediate pickup or dropoff points for
-   * an existing ride.  An empty value indicates a failure in calculating
-   * distance for the vehicle.
+   * The distance from the Vehicle's current location to the pickup point
+   * specified in the request, including any intermediate pickup or dropoff
+   * points for existing trips. This distance comprises the calculated driving
+   * (route) distance, plus the straight line distance between the navigation
+   * end point and the requested pickup point. (The distance between the
+   * navigation end point and the requested pickup point is typically small.) An
+   * empty value indicates an error in calculating the distance.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -105,9 +120,8 @@ public interface VehicleMatchOrBuilder extends
 
   /**
    * <pre>
-   * Required. The straight-line distance between the vehicle and the pickup
-   * point specified in the request, including intermediate waypoints for
-   * existing trips.
+   * Required. The straight-line distance between the vehicle and the pickup point
+   * specified in the request.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -116,9 +130,8 @@ public interface VehicleMatchOrBuilder extends
   boolean hasVehiclePickupStraightLineDistanceMeters();
   /**
    * <pre>
-   * Required. The straight-line distance between the vehicle and the pickup
-   * point specified in the request, including intermediate waypoints for
-   * existing trips.
+   * Required. The straight-line distance between the vehicle and the pickup point
+   * specified in the request.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -127,9 +140,8 @@ public interface VehicleMatchOrBuilder extends
   com.google.protobuf.Int32Value getVehiclePickupStraightLineDistanceMeters();
   /**
    * <pre>
-   * Required. The straight-line distance between the vehicle and the pickup
-   * point specified in the request, including intermediate waypoints for
-   * existing trips.
+   * Required. The straight-line distance between the vehicle and the pickup point
+   * specified in the request.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -138,13 +150,11 @@ public interface VehicleMatchOrBuilder extends
 
   /**
    * <pre>
-   * The complete vehicle's driving ETA to the drop off point
-   * specified in the request. The ETA includes any required visits for active
-   * trips that must be completed before the vehicle visits the dropoff_point
-   * specified in the request. The value will only be populated when a
-   * dropoff_point is specified in the request. An empty value indicates
-   * a failure in calculating the ETA for the vehicle to reach
-   * the dropoff_point.
+   * The complete vehicle's driving ETA to the drop off point specified in the
+   * request. The ETA includes stopping at any waypoints before the
+   * `dropoff_point` specified in the request. The value will only be populated
+   * when a drop off point is specified in the request. An empty value indicates
+   * an error calculating the ETA.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -153,13 +163,11 @@ public interface VehicleMatchOrBuilder extends
   boolean hasVehicleDropoffEta();
   /**
    * <pre>
-   * The complete vehicle's driving ETA to the drop off point
-   * specified in the request. The ETA includes any required visits for active
-   * trips that must be completed before the vehicle visits the dropoff_point
-   * specified in the request. The value will only be populated when a
-   * dropoff_point is specified in the request. An empty value indicates
-   * a failure in calculating the ETA for the vehicle to reach
-   * the dropoff_point.
+   * The complete vehicle's driving ETA to the drop off point specified in the
+   * request. The ETA includes stopping at any waypoints before the
+   * `dropoff_point` specified in the request. The value will only be populated
+   * when a drop off point is specified in the request. An empty value indicates
+   * an error calculating the ETA.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -168,13 +176,11 @@ public interface VehicleMatchOrBuilder extends
   com.google.protobuf.Timestamp getVehicleDropoffEta();
   /**
    * <pre>
-   * The complete vehicle's driving ETA to the drop off point
-   * specified in the request. The ETA includes any required visits for active
-   * trips that must be completed before the vehicle visits the dropoff_point
-   * specified in the request. The value will only be populated when a
-   * dropoff_point is specified in the request. An empty value indicates
-   * a failure in calculating the ETA for the vehicle to reach
-   * the dropoff_point.
+   * The complete vehicle's driving ETA to the drop off point specified in the
+   * request. The ETA includes stopping at any waypoints before the
+   * `dropoff_point` specified in the request. The value will only be populated
+   * when a drop off point is specified in the request. An empty value indicates
+   * an error calculating the ETA.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -188,9 +194,9 @@ public interface VehicleMatchOrBuilder extends
    * between the two points and does not include the vehicle location or any
    * other points that must be visited before the vehicle visits either the
    * pickup point or dropoff point. The value will only be populated when a
-   * dropoff_point is specified in the request. An empty value indicates
+   * `dropoff_point` is specified in the request. An empty value indicates
    * a failure in calculating the distance from the pickup to
-   * dropoff points specified in the request.
+   * drop off point specified in the request.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -204,9 +210,9 @@ public interface VehicleMatchOrBuilder extends
    * between the two points and does not include the vehicle location or any
    * other points that must be visited before the vehicle visits either the
    * pickup point or dropoff point. The value will only be populated when a
-   * dropoff_point is specified in the request. An empty value indicates
+   * `dropoff_point` is specified in the request. An empty value indicates
    * a failure in calculating the distance from the pickup to
-   * dropoff points specified in the request.
+   * drop off point specified in the request.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -220,9 +226,9 @@ public interface VehicleMatchOrBuilder extends
    * between the two points and does not include the vehicle location or any
    * other points that must be visited before the vehicle visits either the
    * pickup point or dropoff point. The value will only be populated when a
-   * dropoff_point is specified in the request. An empty value indicates
+   * `dropoff_point` is specified in the request. An empty value indicates
    * a failure in calculating the distance from the pickup to
-   * dropoff points specified in the request.
+   * drop off point specified in the request.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -253,8 +259,8 @@ public interface VehicleMatchOrBuilder extends
   /**
    * <pre>
    * The ordered list of waypoints used to calculate the ETA. The list
-   * will include the vehicle location, the pickup/drop off points of active
-   * trips for the vehicle and the pickup/dropoff points provided in the
+   * includes vehicle location, the pickup/drop off points of active
+   * trips for the vehicle, and the pickup/drop off points provided in the
    * request. An empty list indicates a failure in calculating ETA for the
    * vehicle.
    * </pre>
@@ -266,8 +272,8 @@ public interface VehicleMatchOrBuilder extends
   /**
    * <pre>
    * The ordered list of waypoints used to calculate the ETA. The list
-   * will include the vehicle location, the pickup/drop off points of active
-   * trips for the vehicle and the pickup/dropoff points provided in the
+   * includes vehicle location, the pickup/drop off points of active
+   * trips for the vehicle, and the pickup/drop off points provided in the
    * request. An empty list indicates a failure in calculating ETA for the
    * vehicle.
    * </pre>
@@ -278,8 +284,8 @@ public interface VehicleMatchOrBuilder extends
   /**
    * <pre>
    * The ordered list of waypoints used to calculate the ETA. The list
-   * will include the vehicle location, the pickup/drop off points of active
-   * trips for the vehicle and the pickup/dropoff points provided in the
+   * includes vehicle location, the pickup/drop off points of active
+   * trips for the vehicle, and the pickup/drop off points provided in the
    * request. An empty list indicates a failure in calculating ETA for the
    * vehicle.
    * </pre>
@@ -290,8 +296,8 @@ public interface VehicleMatchOrBuilder extends
   /**
    * <pre>
    * The ordered list of waypoints used to calculate the ETA. The list
-   * will include the vehicle location, the pickup/drop off points of active
-   * trips for the vehicle and the pickup/dropoff points provided in the
+   * includes vehicle location, the pickup/drop off points of active
+   * trips for the vehicle, and the pickup/drop off points provided in the
    * request. An empty list indicates a failure in calculating ETA for the
    * vehicle.
    * </pre>
@@ -303,8 +309,8 @@ public interface VehicleMatchOrBuilder extends
   /**
    * <pre>
    * The ordered list of waypoints used to calculate the ETA. The list
-   * will include the vehicle location, the pickup/drop off points of active
-   * trips for the vehicle and the pickup/dropoff points provided in the
+   * includes vehicle location, the pickup/drop off points of active
+   * trips for the vehicle, and the pickup/drop off points provided in the
    * request. An empty list indicates a failure in calculating ETA for the
    * vehicle.
    * </pre>
@@ -335,7 +341,7 @@ public interface VehicleMatchOrBuilder extends
 
   /**
    * <pre>
-   * The method the caller requested for sorting vehicle matches.
+   * The order requested for sorting vehicle matches.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder requested_ordered_by = 9;</code>
@@ -344,7 +350,7 @@ public interface VehicleMatchOrBuilder extends
   int getRequestedOrderedByValue();
   /**
    * <pre>
-   * The method the caller requested for sorting vehicle matches.
+   * The order requested for sorting vehicle matches.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder requested_ordered_by = 9;</code>
@@ -354,10 +360,10 @@ public interface VehicleMatchOrBuilder extends
 
   /**
    * <pre>
-   * The actual method that is used to order this vehicle. In normal cases this
-   * will match the 'order_by' field from the request, however in certain
-   * circumstances such as a failure of google maps backends, a different method
-   * may be used (such as PICKUP_POINT_STRAIGHT_DISTANCE).
+   * The actual order that was used for this vehicle. Normally this
+   * will match the 'order_by' field from the request; however, in certain
+   * circumstances such as an internal server error, a different method
+   * may be used (such as `PICKUP_POINT_STRAIGHT_DISTANCE`).
    * </pre>
    *
    * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder ordered_by = 10;</code>
@@ -366,10 +372,10 @@ public interface VehicleMatchOrBuilder extends
   int getOrderedByValue();
   /**
    * <pre>
-   * The actual method that is used to order this vehicle. In normal cases this
-   * will match the 'order_by' field from the request, however in certain
-   * circumstances such as a failure of google maps backends, a different method
-   * may be used (such as PICKUP_POINT_STRAIGHT_DISTANCE).
+   * The actual order that was used for this vehicle. Normally this
+   * will match the 'order_by' field from the request; however, in certain
+   * circumstances such as an internal server error, a different method
+   * may be used (such as `PICKUP_POINT_STRAIGHT_DISTANCE`).
    * </pre>
    *
    * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder ordered_by = 10;</code>

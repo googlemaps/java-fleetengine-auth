@@ -9,19 +9,19 @@ public interface TripOrBuilder extends
 
   /**
    * <pre>
-   * In the format "providers/{provider}/trips/{trip}"
+   * Output only. In the format "providers/{provider}/trips/{trip}"
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The name.
    */
   java.lang.String getName();
   /**
    * <pre>
-   * In the format "providers/{provider}/trips/{trip}"
+   * Output only. In the format "providers/{provider}/trips/{trip}"
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The bytes for name.
    */
   com.google.protobuf.ByteString
@@ -183,31 +183,31 @@ public interface TripOrBuilder extends
 
   /**
    * <pre>
-   * Either the estimated future time when the rider(s) will be picked up, or
+   * Output only. Either the estimated future time when the rider(s) will be picked up, or
    * the actual time when they were picked up.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp pickup_time = 6;</code>
+   * <code>.google.protobuf.Timestamp pickup_time = 6 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return Whether the pickupTime field is set.
    */
   boolean hasPickupTime();
   /**
    * <pre>
-   * Either the estimated future time when the rider(s) will be picked up, or
+   * Output only. Either the estimated future time when the rider(s) will be picked up, or
    * the actual time when they were picked up.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp pickup_time = 6;</code>
+   * <code>.google.protobuf.Timestamp pickup_time = 6 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The pickupTime.
    */
   com.google.protobuf.Timestamp getPickupTime();
   /**
    * <pre>
-   * Either the estimated future time when the rider(s) will be picked up, or
+   * Output only. Either the estimated future time when the rider(s) will be picked up, or
    * the actual time when they were picked up.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp pickup_time = 6;</code>
+   * <code>.google.protobuf.Timestamp pickup_time = 6 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.TimestampOrBuilder getPickupTimeOrBuilder();
 
@@ -497,31 +497,31 @@ public interface TripOrBuilder extends
 
   /**
    * <pre>
-   * Either the estimated future time when the rider(s) will be dropped off at
+   * Output only. Either the estimated future time when the rider(s) will be dropped off at
    * the final destination, or the actual time when they were dropped off.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp dropoff_time = 8;</code>
+   * <code>.google.protobuf.Timestamp dropoff_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return Whether the dropoffTime field is set.
    */
   boolean hasDropoffTime();
   /**
    * <pre>
-   * Either the estimated future time when the rider(s) will be dropped off at
+   * Output only. Either the estimated future time when the rider(s) will be dropped off at
    * the final destination, or the actual time when they were dropped off.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp dropoff_time = 8;</code>
+   * <code>.google.protobuf.Timestamp dropoff_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The dropoffTime.
    */
   com.google.protobuf.Timestamp getDropoffTime();
   /**
    * <pre>
-   * Either the estimated future time when the rider(s) will be dropped off at
+   * Output only. Either the estimated future time when the rider(s) will be dropped off at
    * the final destination, or the actual time when they were dropped off.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp dropoff_time = 8;</code>
+   * <code>.google.protobuf.Timestamp dropoff_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.TimestampOrBuilder getDropoffTimeOrBuilder();
 
@@ -650,103 +650,227 @@ public interface TripOrBuilder extends
 
   /**
    * <pre>
-   * Anticipated route for this trip to the first entry in remaining_waypoints.
-   * If back_to_back or shared trips are enabled, the waypoint may belong to a
+   * Output only. Anticipated route for this trip to the first entry in remaining_waypoints.
+   * If back_to_back or shared trips are enabled, the waypoints may belong to a
    * different trip.
    * </pre>
    *
-   * <code>repeated .google.type.LatLng route = 9;</code>
+   * <code>repeated .google.type.LatLng route = 9 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   java.util.List<com.google.type.LatLng> 
       getRouteList();
   /**
    * <pre>
-   * Anticipated route for this trip to the first entry in remaining_waypoints.
-   * If back_to_back or shared trips are enabled, the waypoint may belong to a
+   * Output only. Anticipated route for this trip to the first entry in remaining_waypoints.
+   * If back_to_back or shared trips are enabled, the waypoints may belong to a
    * different trip.
    * </pre>
    *
-   * <code>repeated .google.type.LatLng route = 9;</code>
+   * <code>repeated .google.type.LatLng route = 9 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.type.LatLng getRoute(int index);
   /**
    * <pre>
-   * Anticipated route for this trip to the first entry in remaining_waypoints.
-   * If back_to_back or shared trips are enabled, the waypoint may belong to a
+   * Output only. Anticipated route for this trip to the first entry in remaining_waypoints.
+   * If back_to_back or shared trips are enabled, the waypoints may belong to a
    * different trip.
    * </pre>
    *
-   * <code>repeated .google.type.LatLng route = 9;</code>
+   * <code>repeated .google.type.LatLng route = 9 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   int getRouteCount();
   /**
    * <pre>
-   * Anticipated route for this trip to the first entry in remaining_waypoints.
-   * If back_to_back or shared trips are enabled, the waypoint may belong to a
+   * Output only. Anticipated route for this trip to the first entry in remaining_waypoints.
+   * If back_to_back or shared trips are enabled, the waypoints may belong to a
    * different trip.
    * </pre>
    *
-   * <code>repeated .google.type.LatLng route = 9;</code>
+   * <code>repeated .google.type.LatLng route = 9 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   java.util.List<? extends com.google.type.LatLngOrBuilder> 
       getRouteOrBuilderList();
   /**
    * <pre>
-   * Anticipated route for this trip to the first entry in remaining_waypoints.
-   * If back_to_back or shared trips are enabled, the waypoint may belong to a
+   * Output only. Anticipated route for this trip to the first entry in remaining_waypoints.
+   * If back_to_back or shared trips are enabled, the waypoints may belong to a
    * different trip.
    * </pre>
    *
-   * <code>repeated .google.type.LatLng route = 9;</code>
+   * <code>repeated .google.type.LatLng route = 9 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.type.LatLngOrBuilder getRouteOrBuilder(
       int index);
 
   /**
    * <pre>
-   * The waypoint where current_route_segment ends. This can be supplied by
+   * Output only. An encoded path to the next waypoint. This field facilitates journey
+   * sharing between a Driver app and a Rider app. Your driver app is
+   * responsible for setting this field on all of its current trips by passing
+   * Vehicle.current_route_segment to UpdateVehicle. Note: This field is
+   * intended only for use by the Driver SDK and Consumer SDK.
+   * </pre>
+   *
+   * <code>string current_route_segment = 21 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   * @return The currentRouteSegment.
+   */
+  java.lang.String getCurrentRouteSegment();
+  /**
+   * <pre>
+   * Output only. An encoded path to the next waypoint. This field facilitates journey
+   * sharing between a Driver app and a Rider app. Your driver app is
+   * responsible for setting this field on all of its current trips by passing
+   * Vehicle.current_route_segment to UpdateVehicle. Note: This field is
+   * intended only for use by the Driver SDK and Consumer SDK.
+   * </pre>
+   *
+   * <code>string current_route_segment = 21 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   * @return The bytes for currentRouteSegment.
+   */
+  com.google.protobuf.ByteString
+      getCurrentRouteSegmentBytes();
+
+  /**
+   * <pre>
+   * Output only. Indicates the last time the route was modified.  Note: This field is
+   * intended only for use by the Driver SDK and Consumer SDK.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp current_route_segment_version = 17 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   * @return Whether the currentRouteSegmentVersion field is set.
+   */
+  boolean hasCurrentRouteSegmentVersion();
+  /**
+   * <pre>
+   * Output only. Indicates the last time the route was modified.  Note: This field is
+   * intended only for use by the Driver SDK and Consumer SDK.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp current_route_segment_version = 17 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   * @return The currentRouteSegmentVersion.
+   */
+  com.google.protobuf.Timestamp getCurrentRouteSegmentVersion();
+  /**
+   * <pre>
+   * Output only. Indicates the last time the route was modified.  Note: This field is
+   * intended only for use by the Driver SDK and Consumer SDK.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp current_route_segment_version = 17 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   */
+  com.google.protobuf.TimestampOrBuilder getCurrentRouteSegmentVersionOrBuilder();
+
+  /**
+   * <pre>
+   * Output only. When available, the traffic conditions along the
+   * current_route_segment. Note: This field is intended only
+   * for use by the Driver SDK and Consumer SDK.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline current_route_segment_traffic = 28 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   * @return Whether the currentRouteSegmentTraffic field is set.
+   */
+  boolean hasCurrentRouteSegmentTraffic();
+  /**
+   * <pre>
+   * Output only. When available, the traffic conditions along the
+   * current_route_segment. Note: This field is intended only
+   * for use by the Driver SDK and Consumer SDK.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline current_route_segment_traffic = 28 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   * @return The currentRouteSegmentTraffic.
+   */
+  google.maps.fleetengine.v1.ConsumableTrafficPolyline getCurrentRouteSegmentTraffic();
+  /**
+   * <pre>
+   * Output only. When available, the traffic conditions along the
+   * current_route_segment. Note: This field is intended only
+   * for use by the Driver SDK and Consumer SDK.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline current_route_segment_traffic = 28 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   */
+  google.maps.fleetengine.v1.ConsumableTrafficPolylineOrBuilder getCurrentRouteSegmentTrafficOrBuilder();
+
+  /**
+   * <pre>
+   * Output only. Indicates the last time the current_route_segment_traffic was modified.
+   * Note: This field is intended only for use by the Driver SDK and Consumer
+   * SDK.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp current_route_segment_traffic_version = 30 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   * @return Whether the currentRouteSegmentTrafficVersion field is set.
+   */
+  boolean hasCurrentRouteSegmentTrafficVersion();
+  /**
+   * <pre>
+   * Output only. Indicates the last time the current_route_segment_traffic was modified.
+   * Note: This field is intended only for use by the Driver SDK and Consumer
+   * SDK.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp current_route_segment_traffic_version = 30 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   * @return The currentRouteSegmentTrafficVersion.
+   */
+  com.google.protobuf.Timestamp getCurrentRouteSegmentTrafficVersion();
+  /**
+   * <pre>
+   * Output only. Indicates the last time the current_route_segment_traffic was modified.
+   * Note: This field is intended only for use by the Driver SDK and Consumer
+   * SDK.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp current_route_segment_traffic_version = 30 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   */
+  com.google.protobuf.TimestampOrBuilder getCurrentRouteSegmentTrafficVersionOrBuilder();
+
+  /**
+   * <pre>
+   * Output only. The waypoint where current_route_segment ends. This can be supplied by
    * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-   * latlng, or as a the last latlng of the current_route_segment. FleetEngine
+   * latlng, or as a the last latlng of the current_route_segment. Fleet Engine
    * will then do its best to interpolate to an actual waypoint if it is not
    * fully specified. It will be returned in GetTrip calls. It is not respected
    * in Create/Update Trip calls.
    * </pre>
    *
-   * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
+   * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return Whether the currentRouteSegmentEndPoint field is set.
    */
   boolean hasCurrentRouteSegmentEndPoint();
   /**
    * <pre>
-   * The waypoint where current_route_segment ends. This can be supplied by
+   * Output only. The waypoint where current_route_segment ends. This can be supplied by
    * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-   * latlng, or as a the last latlng of the current_route_segment. FleetEngine
+   * latlng, or as a the last latlng of the current_route_segment. Fleet Engine
    * will then do its best to interpolate to an actual waypoint if it is not
    * fully specified. It will be returned in GetTrip calls. It is not respected
    * in Create/Update Trip calls.
    * </pre>
    *
-   * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
+   * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The currentRouteSegmentEndPoint.
    */
   google.maps.fleetengine.v1.TripWaypoint getCurrentRouteSegmentEndPoint();
   /**
    * <pre>
-   * The waypoint where current_route_segment ends. This can be supplied by
+   * Output only. The waypoint where current_route_segment ends. This can be supplied by
    * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-   * latlng, or as a the last latlng of the current_route_segment. FleetEngine
+   * latlng, or as a the last latlng of the current_route_segment. Fleet Engine
    * will then do its best to interpolate to an actual waypoint if it is not
    * fully specified. It will be returned in GetTrip calls. It is not respected
    * in Create/Update Trip calls.
    * </pre>
    *
-   * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
+   * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   google.maps.fleetengine.v1.TripWaypointOrBuilder getCurrentRouteSegmentEndPointOrBuilder();
 
   /**
    * <pre>
-   * The remaining driving distance in Trip.current_route_segment field.
+   * Output only. The remaining driving distance in Trip.current_route_segment field.
    * This field facilitates journey sharing between a driver and rider and
    * Fleet Engine does not update it. Your driver app is responsible for setting
    * field on all of its current trips by passing
@@ -756,13 +880,13 @@ public interface TripOrBuilder extends
    * value.
    * </pre>
    *
-   * <code>.google.protobuf.Int32Value remaining_distance_meters = 12;</code>
+   * <code>.google.protobuf.Int32Value remaining_distance_meters = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return Whether the remainingDistanceMeters field is set.
    */
   boolean hasRemainingDistanceMeters();
   /**
    * <pre>
-   * The remaining driving distance in Trip.current_route_segment field.
+   * Output only. The remaining driving distance in Trip.current_route_segment field.
    * This field facilitates journey sharing between a driver and rider and
    * Fleet Engine does not update it. Your driver app is responsible for setting
    * field on all of its current trips by passing
@@ -772,13 +896,13 @@ public interface TripOrBuilder extends
    * value.
    * </pre>
    *
-   * <code>.google.protobuf.Int32Value remaining_distance_meters = 12;</code>
+   * <code>.google.protobuf.Int32Value remaining_distance_meters = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The remainingDistanceMeters.
    */
   com.google.protobuf.Int32Value getRemainingDistanceMeters();
   /**
    * <pre>
-   * The remaining driving distance in Trip.current_route_segment field.
+   * Output only. The remaining driving distance in Trip.current_route_segment field.
    * This field facilitates journey sharing between a driver and rider and
    * Fleet Engine does not update it. Your driver app is responsible for setting
    * field on all of its current trips by passing
@@ -788,7 +912,7 @@ public interface TripOrBuilder extends
    * value.
    * </pre>
    *
-   * <code>.google.protobuf.Int32Value remaining_distance_meters = 12;</code>
+   * <code>.google.protobuf.Int32Value remaining_distance_meters = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.Int32ValueOrBuilder getRemainingDistanceMetersOrBuilder();
 
@@ -875,118 +999,118 @@ public interface TripOrBuilder extends
 
   /**
    * <pre>
-   * Indicates the last time that `remaining_waypoints` was changed (a
+   * Output only. Indicates the last time that `remaining_waypoints` was changed (a
    * waypoint was added, removed, or changed).
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp remaining_waypoints_version = 19;</code>
+   * <code>.google.protobuf.Timestamp remaining_waypoints_version = 19 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return Whether the remainingWaypointsVersion field is set.
    */
   boolean hasRemainingWaypointsVersion();
   /**
    * <pre>
-   * Indicates the last time that `remaining_waypoints` was changed (a
+   * Output only. Indicates the last time that `remaining_waypoints` was changed (a
    * waypoint was added, removed, or changed).
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp remaining_waypoints_version = 19;</code>
+   * <code>.google.protobuf.Timestamp remaining_waypoints_version = 19 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The remainingWaypointsVersion.
    */
   com.google.protobuf.Timestamp getRemainingWaypointsVersion();
   /**
    * <pre>
-   * Indicates the last time that `remaining_waypoints` was changed (a
+   * Output only. Indicates the last time that `remaining_waypoints` was changed (a
    * waypoint was added, removed, or changed).
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp remaining_waypoints_version = 19;</code>
+   * <code>.google.protobuf.Timestamp remaining_waypoints_version = 19 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.TimestampOrBuilder getRemainingWaypointsVersionOrBuilder();
 
   /**
    * <pre>
-   * Indicates the last time the remaining_waypoints.path_to_waypoint and
-   * remaining_waypoints.traffic_to_waypoint were modified. Your client app
-   * should cache this value and pass it in GetTripRequest to ensure the
-   * paths and traffic for remaining_waypoints are only returned if updated.
+   * Output only. Indicates the last time the `remaining_waypoints.path_to_waypoint` and
+   * `remaining_waypoints.traffic_to_waypoint` were modified. Your client app
+   * should cache this value and pass it in `GetTripRequest` to ensure the
+   * paths and traffic for `remaining_waypoints` are only returned if updated.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp remaining_waypoints_route_version = 29;</code>
+   * <code>.google.protobuf.Timestamp remaining_waypoints_route_version = 29 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return Whether the remainingWaypointsRouteVersion field is set.
    */
   boolean hasRemainingWaypointsRouteVersion();
   /**
    * <pre>
-   * Indicates the last time the remaining_waypoints.path_to_waypoint and
-   * remaining_waypoints.traffic_to_waypoint were modified. Your client app
-   * should cache this value and pass it in GetTripRequest to ensure the
-   * paths and traffic for remaining_waypoints are only returned if updated.
+   * Output only. Indicates the last time the `remaining_waypoints.path_to_waypoint` and
+   * `remaining_waypoints.traffic_to_waypoint` were modified. Your client app
+   * should cache this value and pass it in `GetTripRequest` to ensure the
+   * paths and traffic for `remaining_waypoints` are only returned if updated.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp remaining_waypoints_route_version = 29;</code>
+   * <code>.google.protobuf.Timestamp remaining_waypoints_route_version = 29 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The remainingWaypointsRouteVersion.
    */
   com.google.protobuf.Timestamp getRemainingWaypointsRouteVersion();
   /**
    * <pre>
-   * Indicates the last time the remaining_waypoints.path_to_waypoint and
-   * remaining_waypoints.traffic_to_waypoint were modified. Your client app
-   * should cache this value and pass it in GetTripRequest to ensure the
-   * paths and traffic for remaining_waypoints are only returned if updated.
+   * Output only. Indicates the last time the `remaining_waypoints.path_to_waypoint` and
+   * `remaining_waypoints.traffic_to_waypoint` were modified. Your client app
+   * should cache this value and pass it in `GetTripRequest` to ensure the
+   * paths and traffic for `remaining_waypoints` are only returned if updated.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp remaining_waypoints_route_version = 29;</code>
+   * <code>.google.protobuf.Timestamp remaining_waypoints_route_version = 29 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.TimestampOrBuilder getRemainingWaypointsRouteVersionOrBuilder();
 
   /**
    * <pre>
-   * Indicates the number of passengers on this trip and does not include the
-   * driver. A vehicle must have available_capacity to be returned
-   * in SearchTrips.
+   * Immutable. Indicates the number of passengers on this trip and does not include the
+   * driver. A vehicle must have available capacity to be returned
+   * in SearchVehicles.
    * </pre>
    *
-   * <code>int32 number_of_passengers = 10;</code>
+   * <code>int32 number_of_passengers = 10 [(.google.api.field_behavior) = IMMUTABLE];</code>
    * @return The numberOfPassengers.
    */
   int getNumberOfPassengers();
 
   /**
    * <pre>
-   * Indicates the last reported location of the vehicle along the route.
+   * Output only. Indicates the last reported location of the vehicle along the route.
    * </pre>
    *
-   * <code>.maps.fleetengine.v1.VehicleLocation last_location = 11;</code>
+   * <code>.maps.fleetengine.v1.VehicleLocation last_location = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return Whether the lastLocation field is set.
    */
   boolean hasLastLocation();
   /**
    * <pre>
-   * Indicates the last reported location of the vehicle along the route.
+   * Output only. Indicates the last reported location of the vehicle along the route.
    * </pre>
    *
-   * <code>.maps.fleetengine.v1.VehicleLocation last_location = 11;</code>
+   * <code>.maps.fleetengine.v1.VehicleLocation last_location = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The lastLocation.
    */
   google.maps.fleetengine.v1.VehicleLocation getLastLocation();
   /**
    * <pre>
-   * Indicates the last reported location of the vehicle along the route.
+   * Output only. Indicates the last reported location of the vehicle along the route.
    * </pre>
    *
-   * <code>.maps.fleetengine.v1.VehicleLocation last_location = 11;</code>
+   * <code>.maps.fleetengine.v1.VehicleLocation last_location = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   google.maps.fleetengine.v1.VehicleLocationOrBuilder getLastLocationOrBuilder();
 
   /**
    * <pre>
-   * Indicates whether the vehicle's last_location can be snapped to
+   * Output only. Indicates whether the vehicle's last_location can be snapped to
    * the current_route_segment. False if last_location or current_route_segment
    * doesn't exist.
    * It is computed by Fleet Engine. Any update from clients will be ignored.
    * </pre>
    *
-   * <code>bool last_location_snappable = 26;</code>
+   * <code>bool last_location_snappable = 26 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The lastLocationSnappable.
    */
   boolean getLastLocationSnappable();

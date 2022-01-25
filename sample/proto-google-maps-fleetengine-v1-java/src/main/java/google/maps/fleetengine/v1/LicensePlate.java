@@ -5,8 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * The license plate information of the Vehicle.  This is used to support
- * congestion pricing restrictions in certain areas.  To avoid storing
+ * The license plate information of the Vehicle.  To avoid storing
  * personally-identifiable information, only the minimum information
  * about the license plate is stored as part of the entity.
  * </pre>
@@ -105,8 +104,8 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object countryCode_;
   /**
    * <pre>
-   * Required. CLDR Country/Region Code.  For example, "US" for United States,
-   * or "IN" for India.
+   * Required. CLDR Country/Region Code.  For example, `US` for United States,
+   * or `IN` for India.
    * </pre>
    *
    * <code>string country_code = 1 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -127,8 +126,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. CLDR Country/Region Code.  For example, "US" for United States,
-   * or "IN" for India.
+   * Required. CLDR Country/Region Code.  For example, `US` for United States,
+   * or `IN` for India.
    * </pre>
    *
    * <code>string country_code = 1 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -154,7 +153,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The last digit of the license plate or "-1" to denote no numeric value
-   * present in the license plate.
+   * is present in the license plate.
    * * "ABC 1234" -&gt; "4"
    * * "AB 123 CD" -&gt; "3"
    * * "ABCDEF" -&gt; "-1"
@@ -179,7 +178,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The last digit of the license plate or "-1" to denote no numeric value
-   * present in the license plate.
+   * is present in the license plate.
    * * "ABC 1234" -&gt; "4"
    * * "AB 123 CD" -&gt; "3"
    * * "ABCDEF" -&gt; "-1"
@@ -217,10 +216,10 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getCountryCodeBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(countryCode_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, countryCode_);
     }
-    if (!getLastCharacterBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(lastCharacter_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, lastCharacter_);
     }
     unknownFields.writeTo(output);
@@ -232,10 +231,10 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getCountryCodeBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(countryCode_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, countryCode_);
     }
-    if (!getLastCharacterBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(lastCharacter_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, lastCharacter_);
     }
     size += unknownFields.getSerializedSize();
@@ -369,8 +368,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The license plate information of the Vehicle.  This is used to support
-   * congestion pricing restrictions in certain areas.  To avoid storing
+   * The license plate information of the Vehicle.  To avoid storing
    * personally-identifiable information, only the minimum information
    * about the license plate is stored as part of the entity.
    * </pre>
@@ -532,8 +530,8 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object countryCode_ = "";
     /**
      * <pre>
-     * Required. CLDR Country/Region Code.  For example, "US" for United States,
-     * or "IN" for India.
+     * Required. CLDR Country/Region Code.  For example, `US` for United States,
+     * or `IN` for India.
      * </pre>
      *
      * <code>string country_code = 1 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -553,8 +551,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. CLDR Country/Region Code.  For example, "US" for United States,
-     * or "IN" for India.
+     * Required. CLDR Country/Region Code.  For example, `US` for United States,
+     * or `IN` for India.
      * </pre>
      *
      * <code>string country_code = 1 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -575,8 +573,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. CLDR Country/Region Code.  For example, "US" for United States,
-     * or "IN" for India.
+     * Required. CLDR Country/Region Code.  For example, `US` for United States,
+     * or `IN` for India.
      * </pre>
      *
      * <code>string country_code = 1 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -595,8 +593,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. CLDR Country/Region Code.  For example, "US" for United States,
-     * or "IN" for India.
+     * Required. CLDR Country/Region Code.  For example, `US` for United States,
+     * or `IN` for India.
      * </pre>
      *
      * <code>string country_code = 1 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -610,8 +608,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. CLDR Country/Region Code.  For example, "US" for United States,
-     * or "IN" for India.
+     * Required. CLDR Country/Region Code.  For example, `US` for United States,
+     * or `IN` for India.
      * </pre>
      *
      * <code>string country_code = 1 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -634,7 +632,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The last digit of the license plate or "-1" to denote no numeric value
-     * present in the license plate.
+     * is present in the license plate.
      * * "ABC 1234" -&gt; "4"
      * * "AB 123 CD" -&gt; "3"
      * * "ABCDEF" -&gt; "-1"
@@ -658,7 +656,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The last digit of the license plate or "-1" to denote no numeric value
-     * present in the license plate.
+     * is present in the license plate.
      * * "ABC 1234" -&gt; "4"
      * * "AB 123 CD" -&gt; "3"
      * * "ABCDEF" -&gt; "-1"
@@ -683,7 +681,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The last digit of the license plate or "-1" to denote no numeric value
-     * present in the license plate.
+     * is present in the license plate.
      * * "ABC 1234" -&gt; "4"
      * * "AB 123 CD" -&gt; "3"
      * * "ABCDEF" -&gt; "-1"
@@ -706,7 +704,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The last digit of the license plate or "-1" to denote no numeric value
-     * present in the license plate.
+     * is present in the license plate.
      * * "ABC 1234" -&gt; "4"
      * * "AB 123 CD" -&gt; "3"
      * * "ABCDEF" -&gt; "-1"
@@ -724,7 +722,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The last digit of the license plate or "-1" to denote no numeric value
-     * present in the license plate.
+     * is present in the license plate.
      * * "ABC 1234" -&gt; "4"
      * * "AB 123 CD" -&gt; "3"
      * * "ABCDEF" -&gt; "-1"

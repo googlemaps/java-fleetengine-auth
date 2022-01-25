@@ -5,8 +5,8 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * VehicleMatch contains the vehicle, ETA, and distance calculations for a
- * vehicle that matches the SearchVehiclesRequest.
+ * Contains the vehicle and related estimates for a vehicle that match the
+ * points of active trips for the vehicle `SearchVehiclesRequest`.
  * </pre>
  *
  * Protobuf type {@code maps.fleetengine.v1.VehicleMatch}
@@ -224,7 +224,8 @@ private static final long serialVersionUID = 0L;
     UNKNOWN(0),
     /**
      * <pre>
-     * Exclusive vehicle trip match
+     * The vehicle currently has no trip assigned to it and can proceed to the
+     * pickup point.
      * </pre>
      *
      * <code>EXCLUSIVE = 1;</code>
@@ -232,7 +233,9 @@ private static final long serialVersionUID = 0L;
     EXCLUSIVE(1),
     /**
      * <pre>
-     * Back to back ride match.
+     * The vehicle is currently assigned to a trip, but can proceed to the
+     * pickup point after completing the in-progress trip.  ETA and distance
+     * calculations take the existing trip into account.
      * </pre>
      *
      * <code>BACK_TO_BACK = 2;</code>
@@ -240,7 +243,7 @@ private static final long serialVersionUID = 0L;
     BACK_TO_BACK(2),
     /**
      * <pre>
-     * Carpool ride match.
+     * The vehicle has sufficient capacity for a shared ride.
      * </pre>
      *
      * <code>CARPOOL = 3;</code>
@@ -248,7 +251,9 @@ private static final long serialVersionUID = 0L;
     CARPOOL(3),
     /**
      * <pre>
-     * Carpool ride match. The car has an active exclusive trip.
+     * The vehicle will finish its current, active trip before proceeding to the
+     * pickup point.  ETA and distance calculations take the existing trip into
+     * account.
      * </pre>
      *
      * <code>CARPOOL_BACK_TO_BACK = 4;</code>
@@ -267,7 +272,8 @@ private static final long serialVersionUID = 0L;
     public static final int UNKNOWN_VALUE = 0;
     /**
      * <pre>
-     * Exclusive vehicle trip match
+     * The vehicle currently has no trip assigned to it and can proceed to the
+     * pickup point.
      * </pre>
      *
      * <code>EXCLUSIVE = 1;</code>
@@ -275,7 +281,9 @@ private static final long serialVersionUID = 0L;
     public static final int EXCLUSIVE_VALUE = 1;
     /**
      * <pre>
-     * Back to back ride match.
+     * The vehicle is currently assigned to a trip, but can proceed to the
+     * pickup point after completing the in-progress trip.  ETA and distance
+     * calculations take the existing trip into account.
      * </pre>
      *
      * <code>BACK_TO_BACK = 2;</code>
@@ -283,7 +291,7 @@ private static final long serialVersionUID = 0L;
     public static final int BACK_TO_BACK_VALUE = 2;
     /**
      * <pre>
-     * Carpool ride match.
+     * The vehicle has sufficient capacity for a shared ride.
      * </pre>
      *
      * <code>CARPOOL = 3;</code>
@@ -291,7 +299,9 @@ private static final long serialVersionUID = 0L;
     public static final int CARPOOL_VALUE = 3;
     /**
      * <pre>
-     * Carpool ride match. The car has an active exclusive trip.
+     * The vehicle will finish its current, active trip before proceeding to the
+     * pickup point.  ETA and distance calculations take the existing trip into
+     * account.
      * </pre>
      *
      * <code>CARPOOL_BACK_TO_BACK = 4;</code>
@@ -428,7 +438,9 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * The vehicle's driving ETA to the pickup point specified in the
    * request. An empty value indicates a failure in calculating ETA for the
-   * vehicle.
+   * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+   * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+   * required to complete the current active trip.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -442,7 +454,9 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * The vehicle's driving ETA to the pickup point specified in the
    * request. An empty value indicates a failure in calculating ETA for the
-   * vehicle.
+   * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+   * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+   * required to complete the current active trip.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -456,7 +470,9 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * The vehicle's driving ETA to the pickup point specified in the
    * request. An empty value indicates a failure in calculating ETA for the
-   * vehicle.
+   * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+   * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+   * required to complete the current active trip.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -470,10 +486,13 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Int32Value vehiclePickupDistanceMeters_;
   /**
    * <pre>
-   * The vehicle's driving distance to the pickup point specified in
-   * the request, including any intermediate pickup or dropoff points for
-   * an existing ride.  An empty value indicates a failure in calculating
-   * distance for the vehicle.
+   * The distance from the Vehicle's current location to the pickup point
+   * specified in the request, including any intermediate pickup or dropoff
+   * points for existing trips. This distance comprises the calculated driving
+   * (route) distance, plus the straight line distance between the navigation
+   * end point and the requested pickup point. (The distance between the
+   * navigation end point and the requested pickup point is typically small.) An
+   * empty value indicates an error in calculating the distance.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -485,10 +504,13 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The vehicle's driving distance to the pickup point specified in
-   * the request, including any intermediate pickup or dropoff points for
-   * an existing ride.  An empty value indicates a failure in calculating
-   * distance for the vehicle.
+   * The distance from the Vehicle's current location to the pickup point
+   * specified in the request, including any intermediate pickup or dropoff
+   * points for existing trips. This distance comprises the calculated driving
+   * (route) distance, plus the straight line distance between the navigation
+   * end point and the requested pickup point. (The distance between the
+   * navigation end point and the requested pickup point is typically small.) An
+   * empty value indicates an error in calculating the distance.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -500,10 +522,13 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The vehicle's driving distance to the pickup point specified in
-   * the request, including any intermediate pickup or dropoff points for
-   * an existing ride.  An empty value indicates a failure in calculating
-   * distance for the vehicle.
+   * The distance from the Vehicle's current location to the pickup point
+   * specified in the request, including any intermediate pickup or dropoff
+   * points for existing trips. This distance comprises the calculated driving
+   * (route) distance, plus the straight line distance between the navigation
+   * end point and the requested pickup point. (The distance between the
+   * navigation end point and the requested pickup point is typically small.) An
+   * empty value indicates an error in calculating the distance.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -517,9 +542,8 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Int32Value vehiclePickupStraightLineDistanceMeters_;
   /**
    * <pre>
-   * Required. The straight-line distance between the vehicle and the pickup
-   * point specified in the request, including intermediate waypoints for
-   * existing trips.
+   * Required. The straight-line distance between the vehicle and the pickup point
+   * specified in the request.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -531,9 +555,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. The straight-line distance between the vehicle and the pickup
-   * point specified in the request, including intermediate waypoints for
-   * existing trips.
+   * Required. The straight-line distance between the vehicle and the pickup point
+   * specified in the request.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -545,9 +568,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. The straight-line distance between the vehicle and the pickup
-   * point specified in the request, including intermediate waypoints for
-   * existing trips.
+   * Required. The straight-line distance between the vehicle and the pickup point
+   * specified in the request.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -561,13 +583,11 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Timestamp vehicleDropoffEta_;
   /**
    * <pre>
-   * The complete vehicle's driving ETA to the drop off point
-   * specified in the request. The ETA includes any required visits for active
-   * trips that must be completed before the vehicle visits the dropoff_point
-   * specified in the request. The value will only be populated when a
-   * dropoff_point is specified in the request. An empty value indicates
-   * a failure in calculating the ETA for the vehicle to reach
-   * the dropoff_point.
+   * The complete vehicle's driving ETA to the drop off point specified in the
+   * request. The ETA includes stopping at any waypoints before the
+   * `dropoff_point` specified in the request. The value will only be populated
+   * when a drop off point is specified in the request. An empty value indicates
+   * an error calculating the ETA.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -579,13 +599,11 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The complete vehicle's driving ETA to the drop off point
-   * specified in the request. The ETA includes any required visits for active
-   * trips that must be completed before the vehicle visits the dropoff_point
-   * specified in the request. The value will only be populated when a
-   * dropoff_point is specified in the request. An empty value indicates
-   * a failure in calculating the ETA for the vehicle to reach
-   * the dropoff_point.
+   * The complete vehicle's driving ETA to the drop off point specified in the
+   * request. The ETA includes stopping at any waypoints before the
+   * `dropoff_point` specified in the request. The value will only be populated
+   * when a drop off point is specified in the request. An empty value indicates
+   * an error calculating the ETA.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -597,13 +615,11 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The complete vehicle's driving ETA to the drop off point
-   * specified in the request. The ETA includes any required visits for active
-   * trips that must be completed before the vehicle visits the dropoff_point
-   * specified in the request. The value will only be populated when a
-   * dropoff_point is specified in the request. An empty value indicates
-   * a failure in calculating the ETA for the vehicle to reach
-   * the dropoff_point.
+   * The complete vehicle's driving ETA to the drop off point specified in the
+   * request. The ETA includes stopping at any waypoints before the
+   * `dropoff_point` specified in the request. The value will only be populated
+   * when a drop off point is specified in the request. An empty value indicates
+   * an error calculating the ETA.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -622,9 +638,9 @@ private static final long serialVersionUID = 0L;
    * between the two points and does not include the vehicle location or any
    * other points that must be visited before the vehicle visits either the
    * pickup point or dropoff point. The value will only be populated when a
-   * dropoff_point is specified in the request. An empty value indicates
+   * `dropoff_point` is specified in the request. An empty value indicates
    * a failure in calculating the distance from the pickup to
-   * dropoff points specified in the request.
+   * drop off point specified in the request.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -641,9 +657,9 @@ private static final long serialVersionUID = 0L;
    * between the two points and does not include the vehicle location or any
    * other points that must be visited before the vehicle visits either the
    * pickup point or dropoff point. The value will only be populated when a
-   * dropoff_point is specified in the request. An empty value indicates
+   * `dropoff_point` is specified in the request. An empty value indicates
    * a failure in calculating the distance from the pickup to
-   * dropoff points specified in the request.
+   * drop off point specified in the request.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -660,9 +676,9 @@ private static final long serialVersionUID = 0L;
    * between the two points and does not include the vehicle location or any
    * other points that must be visited before the vehicle visits either the
    * pickup point or dropoff point. The value will only be populated when a
-   * dropoff_point is specified in the request. An empty value indicates
+   * `dropoff_point` is specified in the request. An empty value indicates
    * a failure in calculating the distance from the pickup to
-   * dropoff points specified in the request.
+   * drop off point specified in the request.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -706,8 +722,8 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The ordered list of waypoints used to calculate the ETA. The list
-   * will include the vehicle location, the pickup/drop off points of active
-   * trips for the vehicle and the pickup/dropoff points provided in the
+   * includes vehicle location, the pickup/drop off points of active
+   * trips for the vehicle, and the pickup/drop off points provided in the
    * request. An empty list indicates a failure in calculating ETA for the
    * vehicle.
    * </pre>
@@ -721,8 +737,8 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The ordered list of waypoints used to calculate the ETA. The list
-   * will include the vehicle location, the pickup/drop off points of active
-   * trips for the vehicle and the pickup/dropoff points provided in the
+   * includes vehicle location, the pickup/drop off points of active
+   * trips for the vehicle, and the pickup/drop off points provided in the
    * request. An empty list indicates a failure in calculating ETA for the
    * vehicle.
    * </pre>
@@ -737,8 +753,8 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The ordered list of waypoints used to calculate the ETA. The list
-   * will include the vehicle location, the pickup/drop off points of active
-   * trips for the vehicle and the pickup/dropoff points provided in the
+   * includes vehicle location, the pickup/drop off points of active
+   * trips for the vehicle, and the pickup/drop off points provided in the
    * request. An empty list indicates a failure in calculating ETA for the
    * vehicle.
    * </pre>
@@ -752,8 +768,8 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The ordered list of waypoints used to calculate the ETA. The list
-   * will include the vehicle location, the pickup/drop off points of active
-   * trips for the vehicle and the pickup/dropoff points provided in the
+   * includes vehicle location, the pickup/drop off points of active
+   * trips for the vehicle, and the pickup/drop off points provided in the
    * request. An empty list indicates a failure in calculating ETA for the
    * vehicle.
    * </pre>
@@ -767,8 +783,8 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The ordered list of waypoints used to calculate the ETA. The list
-   * will include the vehicle location, the pickup/drop off points of active
-   * trips for the vehicle and the pickup/dropoff points provided in the
+   * includes vehicle location, the pickup/drop off points of active
+   * trips for the vehicle, and the pickup/drop off points provided in the
    * request. An empty list indicates a failure in calculating ETA for the
    * vehicle.
    * </pre>
@@ -812,7 +828,7 @@ private static final long serialVersionUID = 0L;
   private int requestedOrderedBy_;
   /**
    * <pre>
-   * The method the caller requested for sorting vehicle matches.
+   * The order requested for sorting vehicle matches.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder requested_ordered_by = 9;</code>
@@ -823,7 +839,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The method the caller requested for sorting vehicle matches.
+   * The order requested for sorting vehicle matches.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder requested_ordered_by = 9;</code>
@@ -839,10 +855,10 @@ private static final long serialVersionUID = 0L;
   private int orderedBy_;
   /**
    * <pre>
-   * The actual method that is used to order this vehicle. In normal cases this
-   * will match the 'order_by' field from the request, however in certain
-   * circumstances such as a failure of google maps backends, a different method
-   * may be used (such as PICKUP_POINT_STRAIGHT_DISTANCE).
+   * The actual order that was used for this vehicle. Normally this
+   * will match the 'order_by' field from the request; however, in certain
+   * circumstances such as an internal server error, a different method
+   * may be used (such as `PICKUP_POINT_STRAIGHT_DISTANCE`).
    * </pre>
    *
    * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder ordered_by = 10;</code>
@@ -853,10 +869,10 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The actual method that is used to order this vehicle. In normal cases this
-   * will match the 'order_by' field from the request, however in certain
-   * circumstances such as a failure of google maps backends, a different method
-   * may be used (such as PICKUP_POINT_STRAIGHT_DISTANCE).
+   * The actual order that was used for this vehicle. Normally this
+   * will match the 'order_by' field from the request; however, in certain
+   * circumstances such as an internal server error, a different method
+   * may be used (such as `PICKUP_POINT_STRAIGHT_DISTANCE`).
    * </pre>
    *
    * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder ordered_by = 10;</code>
@@ -1163,8 +1179,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * VehicleMatch contains the vehicle, ETA, and distance calculations for a
-   * vehicle that matches the SearchVehiclesRequest.
+   * Contains the vehicle and related estimates for a vehicle that match the
+   * points of active trips for the vehicle `SearchVehiclesRequest`.
    * </pre>
    *
    * Protobuf type {@code maps.fleetengine.v1.VehicleMatch}
@@ -1621,7 +1637,9 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle's driving ETA to the pickup point specified in the
      * request. An empty value indicates a failure in calculating ETA for the
-     * vehicle.
+     * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+     * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+     * required to complete the current active trip.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -1634,7 +1652,9 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle's driving ETA to the pickup point specified in the
      * request. An empty value indicates a failure in calculating ETA for the
-     * vehicle.
+     * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+     * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+     * required to complete the current active trip.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -1651,7 +1671,9 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle's driving ETA to the pickup point specified in the
      * request. An empty value indicates a failure in calculating ETA for the
-     * vehicle.
+     * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+     * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+     * required to complete the current active trip.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -1673,7 +1695,9 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle's driving ETA to the pickup point specified in the
      * request. An empty value indicates a failure in calculating ETA for the
-     * vehicle.
+     * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+     * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+     * required to complete the current active trip.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -1693,7 +1717,9 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle's driving ETA to the pickup point specified in the
      * request. An empty value indicates a failure in calculating ETA for the
-     * vehicle.
+     * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+     * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+     * required to complete the current active trip.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -1717,7 +1743,9 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle's driving ETA to the pickup point specified in the
      * request. An empty value indicates a failure in calculating ETA for the
-     * vehicle.
+     * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+     * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+     * required to complete the current active trip.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -1737,7 +1765,9 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle's driving ETA to the pickup point specified in the
      * request. An empty value indicates a failure in calculating ETA for the
-     * vehicle.
+     * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+     * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+     * required to complete the current active trip.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -1751,7 +1781,9 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle's driving ETA to the pickup point specified in the
      * request. An empty value indicates a failure in calculating ETA for the
-     * vehicle.
+     * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+     * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+     * required to complete the current active trip.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -1768,7 +1800,9 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle's driving ETA to the pickup point specified in the
      * request. An empty value indicates a failure in calculating ETA for the
-     * vehicle.
+     * vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+     * this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+     * required to complete the current active trip.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_pickup_eta = 2;</code>
@@ -1792,10 +1826,13 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Int32Value, com.google.protobuf.Int32Value.Builder, com.google.protobuf.Int32ValueOrBuilder> vehiclePickupDistanceMetersBuilder_;
     /**
      * <pre>
-     * The vehicle's driving distance to the pickup point specified in
-     * the request, including any intermediate pickup or dropoff points for
-     * an existing ride.  An empty value indicates a failure in calculating
-     * distance for the vehicle.
+     * The distance from the Vehicle's current location to the pickup point
+     * specified in the request, including any intermediate pickup or dropoff
+     * points for existing trips. This distance comprises the calculated driving
+     * (route) distance, plus the straight line distance between the navigation
+     * end point and the requested pickup point. (The distance between the
+     * navigation end point and the requested pickup point is typically small.) An
+     * empty value indicates an error in calculating the distance.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -1806,10 +1843,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The vehicle's driving distance to the pickup point specified in
-     * the request, including any intermediate pickup or dropoff points for
-     * an existing ride.  An empty value indicates a failure in calculating
-     * distance for the vehicle.
+     * The distance from the Vehicle's current location to the pickup point
+     * specified in the request, including any intermediate pickup or dropoff
+     * points for existing trips. This distance comprises the calculated driving
+     * (route) distance, plus the straight line distance between the navigation
+     * end point and the requested pickup point. (The distance between the
+     * navigation end point and the requested pickup point is typically small.) An
+     * empty value indicates an error in calculating the distance.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -1824,10 +1864,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The vehicle's driving distance to the pickup point specified in
-     * the request, including any intermediate pickup or dropoff points for
-     * an existing ride.  An empty value indicates a failure in calculating
-     * distance for the vehicle.
+     * The distance from the Vehicle's current location to the pickup point
+     * specified in the request, including any intermediate pickup or dropoff
+     * points for existing trips. This distance comprises the calculated driving
+     * (route) distance, plus the straight line distance between the navigation
+     * end point and the requested pickup point. (The distance between the
+     * navigation end point and the requested pickup point is typically small.) An
+     * empty value indicates an error in calculating the distance.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -1847,10 +1890,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The vehicle's driving distance to the pickup point specified in
-     * the request, including any intermediate pickup or dropoff points for
-     * an existing ride.  An empty value indicates a failure in calculating
-     * distance for the vehicle.
+     * The distance from the Vehicle's current location to the pickup point
+     * specified in the request, including any intermediate pickup or dropoff
+     * points for existing trips. This distance comprises the calculated driving
+     * (route) distance, plus the straight line distance between the navigation
+     * end point and the requested pickup point. (The distance between the
+     * navigation end point and the requested pickup point is typically small.) An
+     * empty value indicates an error in calculating the distance.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -1868,10 +1914,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The vehicle's driving distance to the pickup point specified in
-     * the request, including any intermediate pickup or dropoff points for
-     * an existing ride.  An empty value indicates a failure in calculating
-     * distance for the vehicle.
+     * The distance from the Vehicle's current location to the pickup point
+     * specified in the request, including any intermediate pickup or dropoff
+     * points for existing trips. This distance comprises the calculated driving
+     * (route) distance, plus the straight line distance between the navigation
+     * end point and the requested pickup point. (The distance between the
+     * navigation end point and the requested pickup point is typically small.) An
+     * empty value indicates an error in calculating the distance.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -1893,10 +1942,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The vehicle's driving distance to the pickup point specified in
-     * the request, including any intermediate pickup or dropoff points for
-     * an existing ride.  An empty value indicates a failure in calculating
-     * distance for the vehicle.
+     * The distance from the Vehicle's current location to the pickup point
+     * specified in the request, including any intermediate pickup or dropoff
+     * points for existing trips. This distance comprises the calculated driving
+     * (route) distance, plus the straight line distance between the navigation
+     * end point and the requested pickup point. (The distance between the
+     * navigation end point and the requested pickup point is typically small.) An
+     * empty value indicates an error in calculating the distance.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -1914,10 +1966,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The vehicle's driving distance to the pickup point specified in
-     * the request, including any intermediate pickup or dropoff points for
-     * an existing ride.  An empty value indicates a failure in calculating
-     * distance for the vehicle.
+     * The distance from the Vehicle's current location to the pickup point
+     * specified in the request, including any intermediate pickup or dropoff
+     * points for existing trips. This distance comprises the calculated driving
+     * (route) distance, plus the straight line distance between the navigation
+     * end point and the requested pickup point. (The distance between the
+     * navigation end point and the requested pickup point is typically small.) An
+     * empty value indicates an error in calculating the distance.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -1929,10 +1984,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The vehicle's driving distance to the pickup point specified in
-     * the request, including any intermediate pickup or dropoff points for
-     * an existing ride.  An empty value indicates a failure in calculating
-     * distance for the vehicle.
+     * The distance from the Vehicle's current location to the pickup point
+     * specified in the request, including any intermediate pickup or dropoff
+     * points for existing trips. This distance comprises the calculated driving
+     * (route) distance, plus the straight line distance between the navigation
+     * end point and the requested pickup point. (The distance between the
+     * navigation end point and the requested pickup point is typically small.) An
+     * empty value indicates an error in calculating the distance.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -1947,10 +2005,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The vehicle's driving distance to the pickup point specified in
-     * the request, including any intermediate pickup or dropoff points for
-     * an existing ride.  An empty value indicates a failure in calculating
-     * distance for the vehicle.
+     * The distance from the Vehicle's current location to the pickup point
+     * specified in the request, including any intermediate pickup or dropoff
+     * points for existing trips. This distance comprises the calculated driving
+     * (route) distance, plus the straight line distance between the navigation
+     * end point and the requested pickup point. (The distance between the
+     * navigation end point and the requested pickup point is typically small.) An
+     * empty value indicates an error in calculating the distance.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_distance_meters = 3;</code>
@@ -1974,9 +2035,8 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Int32Value, com.google.protobuf.Int32Value.Builder, com.google.protobuf.Int32ValueOrBuilder> vehiclePickupStraightLineDistanceMetersBuilder_;
     /**
      * <pre>
-     * Required. The straight-line distance between the vehicle and the pickup
-     * point specified in the request, including intermediate waypoints for
-     * existing trips.
+     * Required. The straight-line distance between the vehicle and the pickup point
+     * specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1987,9 +2047,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The straight-line distance between the vehicle and the pickup
-     * point specified in the request, including intermediate waypoints for
-     * existing trips.
+     * Required. The straight-line distance between the vehicle and the pickup point
+     * specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2004,9 +2063,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The straight-line distance between the vehicle and the pickup
-     * point specified in the request, including intermediate waypoints for
-     * existing trips.
+     * Required. The straight-line distance between the vehicle and the pickup point
+     * specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2026,9 +2084,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The straight-line distance between the vehicle and the pickup
-     * point specified in the request, including intermediate waypoints for
-     * existing trips.
+     * Required. The straight-line distance between the vehicle and the pickup point
+     * specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2046,9 +2103,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The straight-line distance between the vehicle and the pickup
-     * point specified in the request, including intermediate waypoints for
-     * existing trips.
+     * Required. The straight-line distance between the vehicle and the pickup point
+     * specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2070,9 +2126,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The straight-line distance between the vehicle and the pickup
-     * point specified in the request, including intermediate waypoints for
-     * existing trips.
+     * Required. The straight-line distance between the vehicle and the pickup point
+     * specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2090,9 +2145,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The straight-line distance between the vehicle and the pickup
-     * point specified in the request, including intermediate waypoints for
-     * existing trips.
+     * Required. The straight-line distance between the vehicle and the pickup point
+     * specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2104,9 +2158,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The straight-line distance between the vehicle and the pickup
-     * point specified in the request, including intermediate waypoints for
-     * existing trips.
+     * Required. The straight-line distance between the vehicle and the pickup point
+     * specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2121,9 +2174,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The straight-line distance between the vehicle and the pickup
-     * point specified in the request, including intermediate waypoints for
-     * existing trips.
+     * Required. The straight-line distance between the vehicle and the pickup point
+     * specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_straight_line_distance_meters = 11 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2147,13 +2199,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> vehicleDropoffEtaBuilder_;
     /**
      * <pre>
-     * The complete vehicle's driving ETA to the drop off point
-     * specified in the request. The ETA includes any required visits for active
-     * trips that must be completed before the vehicle visits the dropoff_point
-     * specified in the request. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
-     * a failure in calculating the ETA for the vehicle to reach
-     * the dropoff_point.
+     * The complete vehicle's driving ETA to the drop off point specified in the
+     * request. The ETA includes stopping at any waypoints before the
+     * `dropoff_point` specified in the request. The value will only be populated
+     * when a drop off point is specified in the request. An empty value indicates
+     * an error calculating the ETA.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -2164,13 +2214,11 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The complete vehicle's driving ETA to the drop off point
-     * specified in the request. The ETA includes any required visits for active
-     * trips that must be completed before the vehicle visits the dropoff_point
-     * specified in the request. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
-     * a failure in calculating the ETA for the vehicle to reach
-     * the dropoff_point.
+     * The complete vehicle's driving ETA to the drop off point specified in the
+     * request. The ETA includes stopping at any waypoints before the
+     * `dropoff_point` specified in the request. The value will only be populated
+     * when a drop off point is specified in the request. An empty value indicates
+     * an error calculating the ETA.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -2185,13 +2233,11 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The complete vehicle's driving ETA to the drop off point
-     * specified in the request. The ETA includes any required visits for active
-     * trips that must be completed before the vehicle visits the dropoff_point
-     * specified in the request. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
-     * a failure in calculating the ETA for the vehicle to reach
-     * the dropoff_point.
+     * The complete vehicle's driving ETA to the drop off point specified in the
+     * request. The ETA includes stopping at any waypoints before the
+     * `dropoff_point` specified in the request. The value will only be populated
+     * when a drop off point is specified in the request. An empty value indicates
+     * an error calculating the ETA.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -2211,13 +2257,11 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The complete vehicle's driving ETA to the drop off point
-     * specified in the request. The ETA includes any required visits for active
-     * trips that must be completed before the vehicle visits the dropoff_point
-     * specified in the request. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
-     * a failure in calculating the ETA for the vehicle to reach
-     * the dropoff_point.
+     * The complete vehicle's driving ETA to the drop off point specified in the
+     * request. The ETA includes stopping at any waypoints before the
+     * `dropoff_point` specified in the request. The value will only be populated
+     * when a drop off point is specified in the request. An empty value indicates
+     * an error calculating the ETA.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -2235,13 +2279,11 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The complete vehicle's driving ETA to the drop off point
-     * specified in the request. The ETA includes any required visits for active
-     * trips that must be completed before the vehicle visits the dropoff_point
-     * specified in the request. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
-     * a failure in calculating the ETA for the vehicle to reach
-     * the dropoff_point.
+     * The complete vehicle's driving ETA to the drop off point specified in the
+     * request. The ETA includes stopping at any waypoints before the
+     * `dropoff_point` specified in the request. The value will only be populated
+     * when a drop off point is specified in the request. An empty value indicates
+     * an error calculating the ETA.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -2263,13 +2305,11 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The complete vehicle's driving ETA to the drop off point
-     * specified in the request. The ETA includes any required visits for active
-     * trips that must be completed before the vehicle visits the dropoff_point
-     * specified in the request. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
-     * a failure in calculating the ETA for the vehicle to reach
-     * the dropoff_point.
+     * The complete vehicle's driving ETA to the drop off point specified in the
+     * request. The ETA includes stopping at any waypoints before the
+     * `dropoff_point` specified in the request. The value will only be populated
+     * when a drop off point is specified in the request. An empty value indicates
+     * an error calculating the ETA.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -2287,13 +2327,11 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The complete vehicle's driving ETA to the drop off point
-     * specified in the request. The ETA includes any required visits for active
-     * trips that must be completed before the vehicle visits the dropoff_point
-     * specified in the request. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
-     * a failure in calculating the ETA for the vehicle to reach
-     * the dropoff_point.
+     * The complete vehicle's driving ETA to the drop off point specified in the
+     * request. The ETA includes stopping at any waypoints before the
+     * `dropoff_point` specified in the request. The value will only be populated
+     * when a drop off point is specified in the request. An empty value indicates
+     * an error calculating the ETA.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -2305,13 +2343,11 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The complete vehicle's driving ETA to the drop off point
-     * specified in the request. The ETA includes any required visits for active
-     * trips that must be completed before the vehicle visits the dropoff_point
-     * specified in the request. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
-     * a failure in calculating the ETA for the vehicle to reach
-     * the dropoff_point.
+     * The complete vehicle's driving ETA to the drop off point specified in the
+     * request. The ETA includes stopping at any waypoints before the
+     * `dropoff_point` specified in the request. The value will only be populated
+     * when a drop off point is specified in the request. An empty value indicates
+     * an error calculating the ETA.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -2326,13 +2362,11 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The complete vehicle's driving ETA to the drop off point
-     * specified in the request. The ETA includes any required visits for active
-     * trips that must be completed before the vehicle visits the dropoff_point
-     * specified in the request. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
-     * a failure in calculating the ETA for the vehicle to reach
-     * the dropoff_point.
+     * The complete vehicle's driving ETA to the drop off point specified in the
+     * request. The ETA includes stopping at any waypoints before the
+     * `dropoff_point` specified in the request. The value will only be populated
+     * when a drop off point is specified in the request. An empty value indicates
+     * an error calculating the ETA.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp vehicle_dropoff_eta = 4;</code>
@@ -2361,9 +2395,9 @@ private static final long serialVersionUID = 0L;
      * between the two points and does not include the vehicle location or any
      * other points that must be visited before the vehicle visits either the
      * pickup point or dropoff point. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
+     * `dropoff_point` is specified in the request. An empty value indicates
      * a failure in calculating the distance from the pickup to
-     * dropoff points specified in the request.
+     * drop off point specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -2379,9 +2413,9 @@ private static final long serialVersionUID = 0L;
      * between the two points and does not include the vehicle location or any
      * other points that must be visited before the vehicle visits either the
      * pickup point or dropoff point. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
+     * `dropoff_point` is specified in the request. An empty value indicates
      * a failure in calculating the distance from the pickup to
-     * dropoff points specified in the request.
+     * drop off point specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -2401,9 +2435,9 @@ private static final long serialVersionUID = 0L;
      * between the two points and does not include the vehicle location or any
      * other points that must be visited before the vehicle visits either the
      * pickup point or dropoff point. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
+     * `dropoff_point` is specified in the request. An empty value indicates
      * a failure in calculating the distance from the pickup to
-     * dropoff points specified in the request.
+     * drop off point specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -2428,9 +2462,9 @@ private static final long serialVersionUID = 0L;
      * between the two points and does not include the vehicle location or any
      * other points that must be visited before the vehicle visits either the
      * pickup point or dropoff point. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
+     * `dropoff_point` is specified in the request. An empty value indicates
      * a failure in calculating the distance from the pickup to
-     * dropoff points specified in the request.
+     * drop off point specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -2453,9 +2487,9 @@ private static final long serialVersionUID = 0L;
      * between the two points and does not include the vehicle location or any
      * other points that must be visited before the vehicle visits either the
      * pickup point or dropoff point. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
+     * `dropoff_point` is specified in the request. An empty value indicates
      * a failure in calculating the distance from the pickup to
-     * dropoff points specified in the request.
+     * drop off point specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -2482,9 +2516,9 @@ private static final long serialVersionUID = 0L;
      * between the two points and does not include the vehicle location or any
      * other points that must be visited before the vehicle visits either the
      * pickup point or dropoff point. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
+     * `dropoff_point` is specified in the request. An empty value indicates
      * a failure in calculating the distance from the pickup to
-     * dropoff points specified in the request.
+     * drop off point specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -2507,9 +2541,9 @@ private static final long serialVersionUID = 0L;
      * between the two points and does not include the vehicle location or any
      * other points that must be visited before the vehicle visits either the
      * pickup point or dropoff point. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
+     * `dropoff_point` is specified in the request. An empty value indicates
      * a failure in calculating the distance from the pickup to
-     * dropoff points specified in the request.
+     * drop off point specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -2526,9 +2560,9 @@ private static final long serialVersionUID = 0L;
      * between the two points and does not include the vehicle location or any
      * other points that must be visited before the vehicle visits either the
      * pickup point or dropoff point. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
+     * `dropoff_point` is specified in the request. An empty value indicates
      * a failure in calculating the distance from the pickup to
-     * dropoff points specified in the request.
+     * drop off point specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -2548,9 +2582,9 @@ private static final long serialVersionUID = 0L;
      * between the two points and does not include the vehicle location or any
      * other points that must be visited before the vehicle visits either the
      * pickup point or dropoff point. The value will only be populated when a
-     * dropoff_point is specified in the request. An empty value indicates
+     * `dropoff_point` is specified in the request. An empty value indicates
      * a failure in calculating the distance from the pickup to
-     * dropoff points specified in the request.
+     * drop off point specified in the request.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value vehicle_pickup_to_dropoff_distance_meters = 5;</code>
@@ -2663,8 +2697,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2681,8 +2715,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2699,8 +2733,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2717,8 +2751,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2742,8 +2776,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2764,8 +2798,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2788,8 +2822,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2813,8 +2847,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2835,8 +2869,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2857,8 +2891,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2880,8 +2914,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2901,8 +2935,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2922,8 +2956,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2937,8 +2971,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2955,8 +2989,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2974,8 +3008,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -2989,8 +3023,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -3005,8 +3039,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The ordered list of waypoints used to calculate the ETA. The list
-     * will include the vehicle location, the pickup/drop off points of active
-     * trips for the vehicle and the pickup/dropoff points provided in the
+     * includes vehicle location, the pickup/drop off points of active
+     * trips for the vehicle, and the pickup/drop off points provided in the
      * request. An empty list indicates a failure in calculating ETA for the
      * vehicle.
      * </pre>
@@ -3109,7 +3143,7 @@ private static final long serialVersionUID = 0L;
     private int requestedOrderedBy_ = 0;
     /**
      * <pre>
-     * The method the caller requested for sorting vehicle matches.
+     * The order requested for sorting vehicle matches.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder requested_ordered_by = 9;</code>
@@ -3120,7 +3154,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The method the caller requested for sorting vehicle matches.
+     * The order requested for sorting vehicle matches.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder requested_ordered_by = 9;</code>
@@ -3135,7 +3169,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The method the caller requested for sorting vehicle matches.
+     * The order requested for sorting vehicle matches.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder requested_ordered_by = 9;</code>
@@ -3149,7 +3183,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The method the caller requested for sorting vehicle matches.
+     * The order requested for sorting vehicle matches.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder requested_ordered_by = 9;</code>
@@ -3167,7 +3201,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The method the caller requested for sorting vehicle matches.
+     * The order requested for sorting vehicle matches.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder requested_ordered_by = 9;</code>
@@ -3183,10 +3217,10 @@ private static final long serialVersionUID = 0L;
     private int orderedBy_ = 0;
     /**
      * <pre>
-     * The actual method that is used to order this vehicle. In normal cases this
-     * will match the 'order_by' field from the request, however in certain
-     * circumstances such as a failure of google maps backends, a different method
-     * may be used (such as PICKUP_POINT_STRAIGHT_DISTANCE).
+     * The actual order that was used for this vehicle. Normally this
+     * will match the 'order_by' field from the request; however, in certain
+     * circumstances such as an internal server error, a different method
+     * may be used (such as `PICKUP_POINT_STRAIGHT_DISTANCE`).
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder ordered_by = 10;</code>
@@ -3197,10 +3231,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The actual method that is used to order this vehicle. In normal cases this
-     * will match the 'order_by' field from the request, however in certain
-     * circumstances such as a failure of google maps backends, a different method
-     * may be used (such as PICKUP_POINT_STRAIGHT_DISTANCE).
+     * The actual order that was used for this vehicle. Normally this
+     * will match the 'order_by' field from the request; however, in certain
+     * circumstances such as an internal server error, a different method
+     * may be used (such as `PICKUP_POINT_STRAIGHT_DISTANCE`).
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder ordered_by = 10;</code>
@@ -3215,10 +3249,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The actual method that is used to order this vehicle. In normal cases this
-     * will match the 'order_by' field from the request, however in certain
-     * circumstances such as a failure of google maps backends, a different method
-     * may be used (such as PICKUP_POINT_STRAIGHT_DISTANCE).
+     * The actual order that was used for this vehicle. Normally this
+     * will match the 'order_by' field from the request; however, in certain
+     * circumstances such as an internal server error, a different method
+     * may be used (such as `PICKUP_POINT_STRAIGHT_DISTANCE`).
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder ordered_by = 10;</code>
@@ -3232,10 +3266,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The actual method that is used to order this vehicle. In normal cases this
-     * will match the 'order_by' field from the request, however in certain
-     * circumstances such as a failure of google maps backends, a different method
-     * may be used (such as PICKUP_POINT_STRAIGHT_DISTANCE).
+     * The actual order that was used for this vehicle. Normally this
+     * will match the 'order_by' field from the request; however, in certain
+     * circumstances such as an internal server error, a different method
+     * may be used (such as `PICKUP_POINT_STRAIGHT_DISTANCE`).
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder ordered_by = 10;</code>
@@ -3253,10 +3287,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The actual method that is used to order this vehicle. In normal cases this
-     * will match the 'order_by' field from the request, however in certain
-     * circumstances such as a failure of google maps backends, a different method
-     * may be used (such as PICKUP_POINT_STRAIGHT_DISTANCE).
+     * The actual order that was used for this vehicle. Normally this
+     * will match the 'order_by' field from the request; however, in certain
+     * circumstances such as an internal server error, a different method
+     * may be used (such as `PICKUP_POINT_STRAIGHT_DISTANCE`).
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder ordered_by = 10;</code>

@@ -174,7 +174,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. Must be in the format
    * `providers/{provider}/trips/{trip}`. The provider must
-   * be the Project ID (for example, sample-consumer-project) of the Google
+   * be the Project ID (for example, `sample-consumer-project`) of the Google
    * Cloud Project of which the service account making this call is a member.
    * </pre>
    *
@@ -198,7 +198,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. Must be in the format
    * `providers/{provider}/trips/{trip}`. The provider must
-   * be the Project ID (for example, sample-consumer-project) of the Google
+   * be the Project ID (for example, `sample-consumer-project`) of the Google
    * Cloud Project of which the service account making this call is a member.
    * </pre>
    *
@@ -227,17 +227,23 @@ private static final long serialVersionUID = 0L;
    * Required. The Trip associated with the update.
    * The following fields are maintained by the Fleet Engine. Do not update
    * them using Trip.update.
-   * * current_route_segment
-   * * current_route_segment_version
-   * * eta_to_next_waypoint
-   * * intermediate_destinations_version
-   * * last_location
-   * * name
-   * * number_of_passengers
-   * * remaining_distance_meters
-   * * remaining_time_to_first_waypoint
-   * * remaining_waypoints
-   * * remaining_waypoints_version
+   * * `current_route_segment`
+   * * `current_route_segment_end_point`
+   * * `current_route_segment_traffic`
+   * * `current_route_segment_traffic_version`
+   * * `current_route_segment_version`
+   * * `dropoff_time`
+   * * `eta_to_next_waypoint`
+   * * `intermediate_destinations_version`
+   * * `last_location`
+   * * `name`
+   * * `number_of_passengers`
+   * * `pickup_time`
+   * * `remaining_distance_meters`
+   * * `remaining_time_to_first_waypoint`
+   * * `remaining_waypoints`
+   * * `remaining_waypoints_version`
+   * * `route`
    * When you update the `Trip.vehicle_id` for a shared trip, you must supply
    * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
    * waypoints, otherwise the order will be undetermined.
@@ -248,7 +254,7 @@ private static final long serialVersionUID = 0L;
    * destinations come before the drop-off point. An `EXCLUSIVE` trip's
    * waypoints must not interleave with any other trips.
    * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-   * other TripWaypoint fields in vehicle_waypoints are ignored.
+   * other TripWaypoint fields in `vehicle_waypoints` are ignored.
    * To avoid a race condition for trips with multiple destinations, you
    * should provide `Trip.intermediate_destinations_version` when updating
    * the trip status to `ENROUTE_TO_INTERMEDIATE_DESTINATION`. The
@@ -268,17 +274,23 @@ private static final long serialVersionUID = 0L;
    * Required. The Trip associated with the update.
    * The following fields are maintained by the Fleet Engine. Do not update
    * them using Trip.update.
-   * * current_route_segment
-   * * current_route_segment_version
-   * * eta_to_next_waypoint
-   * * intermediate_destinations_version
-   * * last_location
-   * * name
-   * * number_of_passengers
-   * * remaining_distance_meters
-   * * remaining_time_to_first_waypoint
-   * * remaining_waypoints
-   * * remaining_waypoints_version
+   * * `current_route_segment`
+   * * `current_route_segment_end_point`
+   * * `current_route_segment_traffic`
+   * * `current_route_segment_traffic_version`
+   * * `current_route_segment_version`
+   * * `dropoff_time`
+   * * `eta_to_next_waypoint`
+   * * `intermediate_destinations_version`
+   * * `last_location`
+   * * `name`
+   * * `number_of_passengers`
+   * * `pickup_time`
+   * * `remaining_distance_meters`
+   * * `remaining_time_to_first_waypoint`
+   * * `remaining_waypoints`
+   * * `remaining_waypoints_version`
+   * * `route`
    * When you update the `Trip.vehicle_id` for a shared trip, you must supply
    * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
    * waypoints, otherwise the order will be undetermined.
@@ -289,7 +301,7 @@ private static final long serialVersionUID = 0L;
    * destinations come before the drop-off point. An `EXCLUSIVE` trip's
    * waypoints must not interleave with any other trips.
    * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-   * other TripWaypoint fields in vehicle_waypoints are ignored.
+   * other TripWaypoint fields in `vehicle_waypoints` are ignored.
    * To avoid a race condition for trips with multiple destinations, you
    * should provide `Trip.intermediate_destinations_version` when updating
    * the trip status to `ENROUTE_TO_INTERMEDIATE_DESTINATION`. The
@@ -309,17 +321,23 @@ private static final long serialVersionUID = 0L;
    * Required. The Trip associated with the update.
    * The following fields are maintained by the Fleet Engine. Do not update
    * them using Trip.update.
-   * * current_route_segment
-   * * current_route_segment_version
-   * * eta_to_next_waypoint
-   * * intermediate_destinations_version
-   * * last_location
-   * * name
-   * * number_of_passengers
-   * * remaining_distance_meters
-   * * remaining_time_to_first_waypoint
-   * * remaining_waypoints
-   * * remaining_waypoints_version
+   * * `current_route_segment`
+   * * `current_route_segment_end_point`
+   * * `current_route_segment_traffic`
+   * * `current_route_segment_traffic_version`
+   * * `current_route_segment_version`
+   * * `dropoff_time`
+   * * `eta_to_next_waypoint`
+   * * `intermediate_destinations_version`
+   * * `last_location`
+   * * `name`
+   * * `number_of_passengers`
+   * * `pickup_time`
+   * * `remaining_distance_meters`
+   * * `remaining_time_to_first_waypoint`
+   * * `remaining_waypoints`
+   * * `remaining_waypoints_version`
+   * * `route`
    * When you update the `Trip.vehicle_id` for a shared trip, you must supply
    * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
    * waypoints, otherwise the order will be undetermined.
@@ -330,7 +348,7 @@ private static final long serialVersionUID = 0L;
    * destinations come before the drop-off point. An `EXCLUSIVE` trip's
    * waypoints must not interleave with any other trips.
    * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-   * other TripWaypoint fields in vehicle_waypoints are ignored.
+   * other TripWaypoint fields in `vehicle_waypoints` are ignored.
    * To avoid a race condition for trips with multiple destinations, you
    * should provide `Trip.intermediate_destinations_version` when updating
    * the trip status to `ENROUTE_TO_INTERMEDIATE_DESTINATION`. The
@@ -350,7 +368,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Required. The field mask indicating which fields in Trip to update.
-   * The update_mask must contain at least one field.
+   * The `update_mask` must contain at least one field.
    * </pre>
    *
    * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -363,7 +381,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Required. The field mask indicating which fields in Trip to update.
-   * The update_mask must contain at least one field.
+   * The `update_mask` must contain at least one field.
    * </pre>
    *
    * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -376,7 +394,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Required. The field mask indicating which fields in Trip to update.
-   * The update_mask must contain at least one field.
+   * The `update_mask` must contain at least one field.
    * </pre>
    *
    * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -403,7 +421,7 @@ private static final long serialVersionUID = 0L;
     if (header_ != null) {
       output.writeMessage(1, getHeader());
     }
-    if (!getNameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
     }
     if (trip_ != null) {
@@ -425,7 +443,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getHeader());
     }
-    if (!getNameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
     }
     if (trip_ != null) {
@@ -942,7 +960,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Must be in the format
      * `providers/{provider}/trips/{trip}`. The provider must
-     * be the Project ID (for example, sample-consumer-project) of the Google
+     * be the Project ID (for example, `sample-consumer-project`) of the Google
      * Cloud Project of which the service account making this call is a member.
      * </pre>
      *
@@ -965,7 +983,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Must be in the format
      * `providers/{provider}/trips/{trip}`. The provider must
-     * be the Project ID (for example, sample-consumer-project) of the Google
+     * be the Project ID (for example, `sample-consumer-project`) of the Google
      * Cloud Project of which the service account making this call is a member.
      * </pre>
      *
@@ -989,7 +1007,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Must be in the format
      * `providers/{provider}/trips/{trip}`. The provider must
-     * be the Project ID (for example, sample-consumer-project) of the Google
+     * be the Project ID (for example, `sample-consumer-project`) of the Google
      * Cloud Project of which the service account making this call is a member.
      * </pre>
      *
@@ -1011,7 +1029,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Must be in the format
      * `providers/{provider}/trips/{trip}`. The provider must
-     * be the Project ID (for example, sample-consumer-project) of the Google
+     * be the Project ID (for example, `sample-consumer-project`) of the Google
      * Cloud Project of which the service account making this call is a member.
      * </pre>
      *
@@ -1028,7 +1046,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Must be in the format
      * `providers/{provider}/trips/{trip}`. The provider must
-     * be the Project ID (for example, sample-consumer-project) of the Google
+     * be the Project ID (for example, `sample-consumer-project`) of the Google
      * Cloud Project of which the service account making this call is a member.
      * </pre>
      *
@@ -1056,17 +1074,23 @@ private static final long serialVersionUID = 0L;
      * Required. The Trip associated with the update.
      * The following fields are maintained by the Fleet Engine. Do not update
      * them using Trip.update.
-     * * current_route_segment
-     * * current_route_segment_version
-     * * eta_to_next_waypoint
-     * * intermediate_destinations_version
-     * * last_location
-     * * name
-     * * number_of_passengers
-     * * remaining_distance_meters
-     * * remaining_time_to_first_waypoint
-     * * remaining_waypoints
-     * * remaining_waypoints_version
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_traffic`
+     * * `current_route_segment_traffic_version`
+     * * `current_route_segment_version`
+     * * `dropoff_time`
+     * * `eta_to_next_waypoint`
+     * * `intermediate_destinations_version`
+     * * `last_location`
+     * * `name`
+     * * `number_of_passengers`
+     * * `pickup_time`
+     * * `remaining_distance_meters`
+     * * `remaining_time_to_first_waypoint`
+     * * `remaining_waypoints`
+     * * `remaining_waypoints_version`
+     * * `route`
      * When you update the `Trip.vehicle_id` for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints, otherwise the order will be undetermined.
@@ -1077,7 +1101,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * To avoid a race condition for trips with multiple destinations, you
      * should provide `Trip.intermediate_destinations_version` when updating
      * the trip status to `ENROUTE_TO_INTERMEDIATE_DESTINATION`. The
@@ -1096,17 +1120,23 @@ private static final long serialVersionUID = 0L;
      * Required. The Trip associated with the update.
      * The following fields are maintained by the Fleet Engine. Do not update
      * them using Trip.update.
-     * * current_route_segment
-     * * current_route_segment_version
-     * * eta_to_next_waypoint
-     * * intermediate_destinations_version
-     * * last_location
-     * * name
-     * * number_of_passengers
-     * * remaining_distance_meters
-     * * remaining_time_to_first_waypoint
-     * * remaining_waypoints
-     * * remaining_waypoints_version
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_traffic`
+     * * `current_route_segment_traffic_version`
+     * * `current_route_segment_version`
+     * * `dropoff_time`
+     * * `eta_to_next_waypoint`
+     * * `intermediate_destinations_version`
+     * * `last_location`
+     * * `name`
+     * * `number_of_passengers`
+     * * `pickup_time`
+     * * `remaining_distance_meters`
+     * * `remaining_time_to_first_waypoint`
+     * * `remaining_waypoints`
+     * * `remaining_waypoints_version`
+     * * `route`
      * When you update the `Trip.vehicle_id` for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints, otherwise the order will be undetermined.
@@ -1117,7 +1147,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * To avoid a race condition for trips with multiple destinations, you
      * should provide `Trip.intermediate_destinations_version` when updating
      * the trip status to `ENROUTE_TO_INTERMEDIATE_DESTINATION`. The
@@ -1140,17 +1170,23 @@ private static final long serialVersionUID = 0L;
      * Required. The Trip associated with the update.
      * The following fields are maintained by the Fleet Engine. Do not update
      * them using Trip.update.
-     * * current_route_segment
-     * * current_route_segment_version
-     * * eta_to_next_waypoint
-     * * intermediate_destinations_version
-     * * last_location
-     * * name
-     * * number_of_passengers
-     * * remaining_distance_meters
-     * * remaining_time_to_first_waypoint
-     * * remaining_waypoints
-     * * remaining_waypoints_version
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_traffic`
+     * * `current_route_segment_traffic_version`
+     * * `current_route_segment_version`
+     * * `dropoff_time`
+     * * `eta_to_next_waypoint`
+     * * `intermediate_destinations_version`
+     * * `last_location`
+     * * `name`
+     * * `number_of_passengers`
+     * * `pickup_time`
+     * * `remaining_distance_meters`
+     * * `remaining_time_to_first_waypoint`
+     * * `remaining_waypoints`
+     * * `remaining_waypoints_version`
+     * * `route`
      * When you update the `Trip.vehicle_id` for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints, otherwise the order will be undetermined.
@@ -1161,7 +1197,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * To avoid a race condition for trips with multiple destinations, you
      * should provide `Trip.intermediate_destinations_version` when updating
      * the trip status to `ENROUTE_TO_INTERMEDIATE_DESTINATION`. The
@@ -1189,17 +1225,23 @@ private static final long serialVersionUID = 0L;
      * Required. The Trip associated with the update.
      * The following fields are maintained by the Fleet Engine. Do not update
      * them using Trip.update.
-     * * current_route_segment
-     * * current_route_segment_version
-     * * eta_to_next_waypoint
-     * * intermediate_destinations_version
-     * * last_location
-     * * name
-     * * number_of_passengers
-     * * remaining_distance_meters
-     * * remaining_time_to_first_waypoint
-     * * remaining_waypoints
-     * * remaining_waypoints_version
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_traffic`
+     * * `current_route_segment_traffic_version`
+     * * `current_route_segment_version`
+     * * `dropoff_time`
+     * * `eta_to_next_waypoint`
+     * * `intermediate_destinations_version`
+     * * `last_location`
+     * * `name`
+     * * `number_of_passengers`
+     * * `pickup_time`
+     * * `remaining_distance_meters`
+     * * `remaining_time_to_first_waypoint`
+     * * `remaining_waypoints`
+     * * `remaining_waypoints_version`
+     * * `route`
      * When you update the `Trip.vehicle_id` for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints, otherwise the order will be undetermined.
@@ -1210,7 +1252,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * To avoid a race condition for trips with multiple destinations, you
      * should provide `Trip.intermediate_destinations_version` when updating
      * the trip status to `ENROUTE_TO_INTERMEDIATE_DESTINATION`. The
@@ -1236,17 +1278,23 @@ private static final long serialVersionUID = 0L;
      * Required. The Trip associated with the update.
      * The following fields are maintained by the Fleet Engine. Do not update
      * them using Trip.update.
-     * * current_route_segment
-     * * current_route_segment_version
-     * * eta_to_next_waypoint
-     * * intermediate_destinations_version
-     * * last_location
-     * * name
-     * * number_of_passengers
-     * * remaining_distance_meters
-     * * remaining_time_to_first_waypoint
-     * * remaining_waypoints
-     * * remaining_waypoints_version
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_traffic`
+     * * `current_route_segment_traffic_version`
+     * * `current_route_segment_version`
+     * * `dropoff_time`
+     * * `eta_to_next_waypoint`
+     * * `intermediate_destinations_version`
+     * * `last_location`
+     * * `name`
+     * * `number_of_passengers`
+     * * `pickup_time`
+     * * `remaining_distance_meters`
+     * * `remaining_time_to_first_waypoint`
+     * * `remaining_waypoints`
+     * * `remaining_waypoints_version`
+     * * `route`
      * When you update the `Trip.vehicle_id` for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints, otherwise the order will be undetermined.
@@ -1257,7 +1305,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * To avoid a race condition for trips with multiple destinations, you
      * should provide `Trip.intermediate_destinations_version` when updating
      * the trip status to `ENROUTE_TO_INTERMEDIATE_DESTINATION`. The
@@ -1287,17 +1335,23 @@ private static final long serialVersionUID = 0L;
      * Required. The Trip associated with the update.
      * The following fields are maintained by the Fleet Engine. Do not update
      * them using Trip.update.
-     * * current_route_segment
-     * * current_route_segment_version
-     * * eta_to_next_waypoint
-     * * intermediate_destinations_version
-     * * last_location
-     * * name
-     * * number_of_passengers
-     * * remaining_distance_meters
-     * * remaining_time_to_first_waypoint
-     * * remaining_waypoints
-     * * remaining_waypoints_version
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_traffic`
+     * * `current_route_segment_traffic_version`
+     * * `current_route_segment_version`
+     * * `dropoff_time`
+     * * `eta_to_next_waypoint`
+     * * `intermediate_destinations_version`
+     * * `last_location`
+     * * `name`
+     * * `number_of_passengers`
+     * * `pickup_time`
+     * * `remaining_distance_meters`
+     * * `remaining_time_to_first_waypoint`
+     * * `remaining_waypoints`
+     * * `remaining_waypoints_version`
+     * * `route`
      * When you update the `Trip.vehicle_id` for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints, otherwise the order will be undetermined.
@@ -1308,7 +1362,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * To avoid a race condition for trips with multiple destinations, you
      * should provide `Trip.intermediate_destinations_version` when updating
      * the trip status to `ENROUTE_TO_INTERMEDIATE_DESTINATION`. The
@@ -1334,17 +1388,23 @@ private static final long serialVersionUID = 0L;
      * Required. The Trip associated with the update.
      * The following fields are maintained by the Fleet Engine. Do not update
      * them using Trip.update.
-     * * current_route_segment
-     * * current_route_segment_version
-     * * eta_to_next_waypoint
-     * * intermediate_destinations_version
-     * * last_location
-     * * name
-     * * number_of_passengers
-     * * remaining_distance_meters
-     * * remaining_time_to_first_waypoint
-     * * remaining_waypoints
-     * * remaining_waypoints_version
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_traffic`
+     * * `current_route_segment_traffic_version`
+     * * `current_route_segment_version`
+     * * `dropoff_time`
+     * * `eta_to_next_waypoint`
+     * * `intermediate_destinations_version`
+     * * `last_location`
+     * * `name`
+     * * `number_of_passengers`
+     * * `pickup_time`
+     * * `remaining_distance_meters`
+     * * `remaining_time_to_first_waypoint`
+     * * `remaining_waypoints`
+     * * `remaining_waypoints_version`
+     * * `route`
      * When you update the `Trip.vehicle_id` for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints, otherwise the order will be undetermined.
@@ -1355,7 +1415,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * To avoid a race condition for trips with multiple destinations, you
      * should provide `Trip.intermediate_destinations_version` when updating
      * the trip status to `ENROUTE_TO_INTERMEDIATE_DESTINATION`. The
@@ -1375,17 +1435,23 @@ private static final long serialVersionUID = 0L;
      * Required. The Trip associated with the update.
      * The following fields are maintained by the Fleet Engine. Do not update
      * them using Trip.update.
-     * * current_route_segment
-     * * current_route_segment_version
-     * * eta_to_next_waypoint
-     * * intermediate_destinations_version
-     * * last_location
-     * * name
-     * * number_of_passengers
-     * * remaining_distance_meters
-     * * remaining_time_to_first_waypoint
-     * * remaining_waypoints
-     * * remaining_waypoints_version
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_traffic`
+     * * `current_route_segment_traffic_version`
+     * * `current_route_segment_version`
+     * * `dropoff_time`
+     * * `eta_to_next_waypoint`
+     * * `intermediate_destinations_version`
+     * * `last_location`
+     * * `name`
+     * * `number_of_passengers`
+     * * `pickup_time`
+     * * `remaining_distance_meters`
+     * * `remaining_time_to_first_waypoint`
+     * * `remaining_waypoints`
+     * * `remaining_waypoints_version`
+     * * `route`
      * When you update the `Trip.vehicle_id` for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints, otherwise the order will be undetermined.
@@ -1396,7 +1462,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * To avoid a race condition for trips with multiple destinations, you
      * should provide `Trip.intermediate_destinations_version` when updating
      * the trip status to `ENROUTE_TO_INTERMEDIATE_DESTINATION`. The
@@ -1419,17 +1485,23 @@ private static final long serialVersionUID = 0L;
      * Required. The Trip associated with the update.
      * The following fields are maintained by the Fleet Engine. Do not update
      * them using Trip.update.
-     * * current_route_segment
-     * * current_route_segment_version
-     * * eta_to_next_waypoint
-     * * intermediate_destinations_version
-     * * last_location
-     * * name
-     * * number_of_passengers
-     * * remaining_distance_meters
-     * * remaining_time_to_first_waypoint
-     * * remaining_waypoints
-     * * remaining_waypoints_version
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_traffic`
+     * * `current_route_segment_traffic_version`
+     * * `current_route_segment_version`
+     * * `dropoff_time`
+     * * `eta_to_next_waypoint`
+     * * `intermediate_destinations_version`
+     * * `last_location`
+     * * `name`
+     * * `number_of_passengers`
+     * * `pickup_time`
+     * * `remaining_distance_meters`
+     * * `remaining_time_to_first_waypoint`
+     * * `remaining_waypoints`
+     * * `remaining_waypoints_version`
+     * * `route`
      * When you update the `Trip.vehicle_id` for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints, otherwise the order will be undetermined.
@@ -1440,7 +1512,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * To avoid a race condition for trips with multiple destinations, you
      * should provide `Trip.intermediate_destinations_version` when updating
      * the trip status to `ENROUTE_TO_INTERMEDIATE_DESTINATION`. The
@@ -1470,7 +1542,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. The field mask indicating which fields in Trip to update.
-     * The update_mask must contain at least one field.
+     * The `update_mask` must contain at least one field.
      * </pre>
      *
      * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1482,7 +1554,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. The field mask indicating which fields in Trip to update.
-     * The update_mask must contain at least one field.
+     * The `update_mask` must contain at least one field.
      * </pre>
      *
      * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1498,7 +1570,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. The field mask indicating which fields in Trip to update.
-     * The update_mask must contain at least one field.
+     * The `update_mask` must contain at least one field.
      * </pre>
      *
      * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1519,7 +1591,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. The field mask indicating which fields in Trip to update.
-     * The update_mask must contain at least one field.
+     * The `update_mask` must contain at least one field.
      * </pre>
      *
      * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1538,7 +1610,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. The field mask indicating which fields in Trip to update.
-     * The update_mask must contain at least one field.
+     * The `update_mask` must contain at least one field.
      * </pre>
      *
      * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1561,7 +1633,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. The field mask indicating which fields in Trip to update.
-     * The update_mask must contain at least one field.
+     * The `update_mask` must contain at least one field.
      * </pre>
      *
      * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1580,7 +1652,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. The field mask indicating which fields in Trip to update.
-     * The update_mask must contain at least one field.
+     * The `update_mask` must contain at least one field.
      * </pre>
      *
      * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1593,7 +1665,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. The field mask indicating which fields in Trip to update.
-     * The update_mask must contain at least one field.
+     * The `update_mask` must contain at least one field.
      * </pre>
      *
      * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1609,7 +1681,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. The field mask indicating which fields in Trip to update.
-     * The update_mask must contain at least one field.
+     * The `update_mask` must contain at least one field.
      * </pre>
      *
      * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = REQUIRED];</code>

@@ -5,7 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * UpdateVehicleAttributes response message.
+ * `UpdateVehicleAttributes` response message.
  * </pre>
  *
  * Protobuf type {@code maps.fleetengine.v1.UpdateVehicleAttributesResponse}
@@ -322,7 +322,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * UpdateVehicleAttributes response message.
+   * `UpdateVehicleAttributes` response message.
    * </pre>
    *
    * Protobuf type {@code maps.fleetengine.v1.UpdateVehicleAttributesResponse}

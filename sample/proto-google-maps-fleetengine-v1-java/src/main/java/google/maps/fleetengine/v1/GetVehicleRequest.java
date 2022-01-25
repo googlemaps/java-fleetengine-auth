@@ -5,7 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * GetVehicle request message.
+ * `GetVehicle` request message.
  * </pre>
  *
  * Protobuf type {@code maps.fleetengine.v1.GetVehicleRequest}
@@ -173,8 +173,8 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Required. Must be in the format
-   * "providers/{provider}/vehicles/{vehicle}".
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * `providers/{provider}/vehicles/{vehicle}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -198,8 +198,8 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Required. Must be in the format
-   * "providers/{provider}/vehicles/{vehicle}".
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * `providers/{provider}/vehicles/{vehicle}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -227,10 +227,10 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Indicates the minimum timestamp (exclusive) for which
-   * vehicle.current_route_segment is retrieved.
-   * If route is unchanged since this timestamp, the current_route_segment
+   * `Vehicle.current_route_segment` is retrieved.
+   * If the route is unchanged since this timestamp, the `current_route_segment`
    * field is not set in the response. If a minimum is unspecified, the
-   * current_route_segment is always retrieved.
+   * `current_route_segment` is always retrieved.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp current_route_segment_version = 4;</code>
@@ -243,10 +243,10 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Indicates the minimum timestamp (exclusive) for which
-   * vehicle.current_route_segment is retrieved.
-   * If route is unchanged since this timestamp, the current_route_segment
+   * `Vehicle.current_route_segment` is retrieved.
+   * If the route is unchanged since this timestamp, the `current_route_segment`
    * field is not set in the response. If a minimum is unspecified, the
-   * current_route_segment is always retrieved.
+   * `current_route_segment` is always retrieved.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp current_route_segment_version = 4;</code>
@@ -259,10 +259,10 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Indicates the minimum timestamp (exclusive) for which
-   * vehicle.current_route_segment is retrieved.
-   * If route is unchanged since this timestamp, the current_route_segment
+   * `Vehicle.current_route_segment` is retrieved.
+   * If the route is unchanged since this timestamp, the `current_route_segment`
    * field is not set in the response. If a minimum is unspecified, the
-   * current_route_segment is always retrieved.
+   * `current_route_segment` is always retrieved.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp current_route_segment_version = 4;</code>
@@ -276,10 +276,10 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Timestamp waypointsVersion_;
   /**
    * <pre>
-   * Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-   * data is retrieved. If data is unchanged since this timestamp, the
-   * vehicle.waypoints data is not set in the response. If this field is
-   * unspecified, vehicle.waypoints is always retrieved.
+   * Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+   * data is retrieved. If the waypoints are unchanged since this timestamp, the
+   * `vehicle.waypoints` data is not set in the response. If this field is
+   * unspecified, `vehicle.waypoints` is always retrieved.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp waypoints_version = 5;</code>
@@ -291,10 +291,10 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-   * data is retrieved. If data is unchanged since this timestamp, the
-   * vehicle.waypoints data is not set in the response. If this field is
-   * unspecified, vehicle.waypoints is always retrieved.
+   * Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+   * data is retrieved. If the waypoints are unchanged since this timestamp, the
+   * `vehicle.waypoints` data is not set in the response. If this field is
+   * unspecified, `vehicle.waypoints` is always retrieved.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp waypoints_version = 5;</code>
@@ -306,10 +306,10 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-   * data is retrieved. If data is unchanged since this timestamp, the
-   * vehicle.waypoints data is not set in the response. If this field is
-   * unspecified, vehicle.waypoints is always retrieved.
+   * Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+   * data is retrieved. If the waypoints are unchanged since this timestamp, the
+   * `vehicle.waypoints` data is not set in the response. If this field is
+   * unspecified, `vehicle.waypoints` is always retrieved.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp waypoints_version = 5;</code>
@@ -336,7 +336,7 @@ private static final long serialVersionUID = 0L;
     if (header_ != null) {
       output.writeMessage(1, getHeader());
     }
-    if (!getNameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
     }
     if (currentRouteSegmentVersion_ != null) {
@@ -358,7 +358,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getHeader());
     }
-    if (!getNameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
     }
     if (currentRouteSegmentVersion_ != null) {
@@ -523,7 +523,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * GetVehicle request message.
+   * `GetVehicle` request message.
    * </pre>
    *
    * Protobuf type {@code maps.fleetengine.v1.GetVehicleRequest}
@@ -874,8 +874,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * `providers/{provider}/vehicles/{vehicle}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -898,8 +898,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * `providers/{provider}/vehicles/{vehicle}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -923,8 +923,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * `providers/{provider}/vehicles/{vehicle}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -946,8 +946,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * `providers/{provider}/vehicles/{vehicle}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -964,8 +964,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * `providers/{provider}/vehicles/{vehicle}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -992,10 +992,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Indicates the minimum timestamp (exclusive) for which
-     * vehicle.current_route_segment is retrieved.
-     * If route is unchanged since this timestamp, the current_route_segment
+     * `Vehicle.current_route_segment` is retrieved.
+     * If the route is unchanged since this timestamp, the `current_route_segment`
      * field is not set in the response. If a minimum is unspecified, the
-     * current_route_segment is always retrieved.
+     * `current_route_segment` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp current_route_segment_version = 4;</code>
@@ -1007,10 +1007,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Indicates the minimum timestamp (exclusive) for which
-     * vehicle.current_route_segment is retrieved.
-     * If route is unchanged since this timestamp, the current_route_segment
+     * `Vehicle.current_route_segment` is retrieved.
+     * If the route is unchanged since this timestamp, the `current_route_segment`
      * field is not set in the response. If a minimum is unspecified, the
-     * current_route_segment is always retrieved.
+     * `current_route_segment` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp current_route_segment_version = 4;</code>
@@ -1026,10 +1026,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Indicates the minimum timestamp (exclusive) for which
-     * vehicle.current_route_segment is retrieved.
-     * If route is unchanged since this timestamp, the current_route_segment
+     * `Vehicle.current_route_segment` is retrieved.
+     * If the route is unchanged since this timestamp, the `current_route_segment`
      * field is not set in the response. If a minimum is unspecified, the
-     * current_route_segment is always retrieved.
+     * `current_route_segment` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp current_route_segment_version = 4;</code>
@@ -1050,10 +1050,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Indicates the minimum timestamp (exclusive) for which
-     * vehicle.current_route_segment is retrieved.
-     * If route is unchanged since this timestamp, the current_route_segment
+     * `Vehicle.current_route_segment` is retrieved.
+     * If the route is unchanged since this timestamp, the `current_route_segment`
      * field is not set in the response. If a minimum is unspecified, the
-     * current_route_segment is always retrieved.
+     * `current_route_segment` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp current_route_segment_version = 4;</code>
@@ -1072,10 +1072,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Indicates the minimum timestamp (exclusive) for which
-     * vehicle.current_route_segment is retrieved.
-     * If route is unchanged since this timestamp, the current_route_segment
+     * `Vehicle.current_route_segment` is retrieved.
+     * If the route is unchanged since this timestamp, the `current_route_segment`
      * field is not set in the response. If a minimum is unspecified, the
-     * current_route_segment is always retrieved.
+     * `current_route_segment` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp current_route_segment_version = 4;</code>
@@ -1098,10 +1098,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Indicates the minimum timestamp (exclusive) for which
-     * vehicle.current_route_segment is retrieved.
-     * If route is unchanged since this timestamp, the current_route_segment
+     * `Vehicle.current_route_segment` is retrieved.
+     * If the route is unchanged since this timestamp, the `current_route_segment`
      * field is not set in the response. If a minimum is unspecified, the
-     * current_route_segment is always retrieved.
+     * `current_route_segment` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp current_route_segment_version = 4;</code>
@@ -1120,10 +1120,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Indicates the minimum timestamp (exclusive) for which
-     * vehicle.current_route_segment is retrieved.
-     * If route is unchanged since this timestamp, the current_route_segment
+     * `Vehicle.current_route_segment` is retrieved.
+     * If the route is unchanged since this timestamp, the `current_route_segment`
      * field is not set in the response. If a minimum is unspecified, the
-     * current_route_segment is always retrieved.
+     * `current_route_segment` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp current_route_segment_version = 4;</code>
@@ -1136,10 +1136,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Indicates the minimum timestamp (exclusive) for which
-     * vehicle.current_route_segment is retrieved.
-     * If route is unchanged since this timestamp, the current_route_segment
+     * `Vehicle.current_route_segment` is retrieved.
+     * If the route is unchanged since this timestamp, the `current_route_segment`
      * field is not set in the response. If a minimum is unspecified, the
-     * current_route_segment is always retrieved.
+     * `current_route_segment` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp current_route_segment_version = 4;</code>
@@ -1155,10 +1155,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Indicates the minimum timestamp (exclusive) for which
-     * vehicle.current_route_segment is retrieved.
-     * If route is unchanged since this timestamp, the current_route_segment
+     * `Vehicle.current_route_segment` is retrieved.
+     * If the route is unchanged since this timestamp, the `current_route_segment`
      * field is not set in the response. If a minimum is unspecified, the
-     * current_route_segment is always retrieved.
+     * `current_route_segment` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp current_route_segment_version = 4;</code>
@@ -1182,10 +1182,10 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> waypointsVersionBuilder_;
     /**
      * <pre>
-     * Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-     * data is retrieved. If data is unchanged since this timestamp, the
-     * vehicle.waypoints data is not set in the response. If this field is
-     * unspecified, vehicle.waypoints is always retrieved.
+     * Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+     * data is retrieved. If the waypoints are unchanged since this timestamp, the
+     * `vehicle.waypoints` data is not set in the response. If this field is
+     * unspecified, `vehicle.waypoints` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp waypoints_version = 5;</code>
@@ -1196,10 +1196,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-     * data is retrieved. If data is unchanged since this timestamp, the
-     * vehicle.waypoints data is not set in the response. If this field is
-     * unspecified, vehicle.waypoints is always retrieved.
+     * Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+     * data is retrieved. If the waypoints are unchanged since this timestamp, the
+     * `vehicle.waypoints` data is not set in the response. If this field is
+     * unspecified, `vehicle.waypoints` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp waypoints_version = 5;</code>
@@ -1214,10 +1214,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-     * data is retrieved. If data is unchanged since this timestamp, the
-     * vehicle.waypoints data is not set in the response. If this field is
-     * unspecified, vehicle.waypoints is always retrieved.
+     * Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+     * data is retrieved. If the waypoints are unchanged since this timestamp, the
+     * `vehicle.waypoints` data is not set in the response. If this field is
+     * unspecified, `vehicle.waypoints` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp waypoints_version = 5;</code>
@@ -1237,10 +1237,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-     * data is retrieved. If data is unchanged since this timestamp, the
-     * vehicle.waypoints data is not set in the response. If this field is
-     * unspecified, vehicle.waypoints is always retrieved.
+     * Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+     * data is retrieved. If the waypoints are unchanged since this timestamp, the
+     * `vehicle.waypoints` data is not set in the response. If this field is
+     * unspecified, `vehicle.waypoints` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp waypoints_version = 5;</code>
@@ -1258,10 +1258,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-     * data is retrieved. If data is unchanged since this timestamp, the
-     * vehicle.waypoints data is not set in the response. If this field is
-     * unspecified, vehicle.waypoints is always retrieved.
+     * Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+     * data is retrieved. If the waypoints are unchanged since this timestamp, the
+     * `vehicle.waypoints` data is not set in the response. If this field is
+     * unspecified, `vehicle.waypoints` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp waypoints_version = 5;</code>
@@ -1283,10 +1283,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-     * data is retrieved. If data is unchanged since this timestamp, the
-     * vehicle.waypoints data is not set in the response. If this field is
-     * unspecified, vehicle.waypoints is always retrieved.
+     * Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+     * data is retrieved. If the waypoints are unchanged since this timestamp, the
+     * `vehicle.waypoints` data is not set in the response. If this field is
+     * unspecified, `vehicle.waypoints` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp waypoints_version = 5;</code>
@@ -1304,10 +1304,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-     * data is retrieved. If data is unchanged since this timestamp, the
-     * vehicle.waypoints data is not set in the response. If this field is
-     * unspecified, vehicle.waypoints is always retrieved.
+     * Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+     * data is retrieved. If the waypoints are unchanged since this timestamp, the
+     * `vehicle.waypoints` data is not set in the response. If this field is
+     * unspecified, `vehicle.waypoints` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp waypoints_version = 5;</code>
@@ -1319,10 +1319,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-     * data is retrieved. If data is unchanged since this timestamp, the
-     * vehicle.waypoints data is not set in the response. If this field is
-     * unspecified, vehicle.waypoints is always retrieved.
+     * Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+     * data is retrieved. If the waypoints are unchanged since this timestamp, the
+     * `vehicle.waypoints` data is not set in the response. If this field is
+     * unspecified, `vehicle.waypoints` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp waypoints_version = 5;</code>
@@ -1337,10 +1337,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-     * data is retrieved. If data is unchanged since this timestamp, the
-     * vehicle.waypoints data is not set in the response. If this field is
-     * unspecified, vehicle.waypoints is always retrieved.
+     * Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+     * data is retrieved. If the waypoints are unchanged since this timestamp, the
+     * `vehicle.waypoints` data is not set in the response. If this field is
+     * unspecified, `vehicle.waypoints` is always retrieved.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp waypoints_version = 5;</code>

@@ -10,10 +10,10 @@ public interface VehicleLocationOrBuilder extends
   /**
    * <pre>
    * The location of the vehicle.
-   * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+   * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
    * When you receive it in a response, the vehicle's location can be either a
-   * GPS location or a supplemental location. The source is specified in the
-   * field 'location_sensor'.
+   * GPS location, a supplemental location, or some other estimated location.
+   * The source is specified in `location_sensor`.
    * </pre>
    *
    * <code>.google.type.LatLng location = 1;</code>
@@ -23,10 +23,10 @@ public interface VehicleLocationOrBuilder extends
   /**
    * <pre>
    * The location of the vehicle.
-   * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+   * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
    * When you receive it in a response, the vehicle's location can be either a
-   * GPS location or a supplemental location. The source is specified in the
-   * field 'location_sensor'.
+   * GPS location, a supplemental location, or some other estimated location.
+   * The source is specified in `location_sensor`.
    * </pre>
    *
    * <code>.google.type.LatLng location = 1;</code>
@@ -36,10 +36,10 @@ public interface VehicleLocationOrBuilder extends
   /**
    * <pre>
    * The location of the vehicle.
-   * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+   * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
    * When you receive it in a response, the vehicle's location can be either a
-   * GPS location or a supplemental location. The source is specified in the
-   * field 'location_sensor'.
+   * GPS location, a supplemental location, or some other estimated location.
+   * The source is specified in `location_sensor`.
    * </pre>
    *
    * <code>.google.type.LatLng location = 1;</code>
@@ -48,7 +48,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Deprecated. Use latlng_accuracy instead.
+   * Deprecated: Use `latlng_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -57,7 +57,7 @@ public interface VehicleLocationOrBuilder extends
   @java.lang.Deprecated boolean hasHorizontalAccuracy();
   /**
    * <pre>
-   * Deprecated. Use latlng_accuracy instead.
+   * Deprecated: Use `latlng_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -66,7 +66,7 @@ public interface VehicleLocationOrBuilder extends
   @java.lang.Deprecated com.google.protobuf.DoubleValue getHorizontalAccuracy();
   /**
    * <pre>
-   * Deprecated. Use latlng_accuracy instead.
+   * Deprecated: Use `latlng_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -75,7 +75,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+   * Accuracy of `location` in meters as a radius.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -84,7 +84,7 @@ public interface VehicleLocationOrBuilder extends
   boolean hasLatlngAccuracy();
   /**
    * <pre>
-   * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+   * Accuracy of `location` in meters as a radius.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -93,7 +93,7 @@ public interface VehicleLocationOrBuilder extends
   com.google.protobuf.DoubleValue getLatlngAccuracy();
   /**
    * <pre>
-   * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+   * Accuracy of `location` in meters as a radius.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -132,7 +132,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Deprecated. Use heading_accuracy instead.
+   * Deprecated: Use `heading_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -141,7 +141,7 @@ public interface VehicleLocationOrBuilder extends
   @java.lang.Deprecated boolean hasBearingAccuracy();
   /**
    * <pre>
-   * Deprecated. Use heading_accuracy instead.
+   * Deprecated: Use `heading_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -150,7 +150,7 @@ public interface VehicleLocationOrBuilder extends
   @java.lang.Deprecated com.google.protobuf.DoubleValue getBearingAccuracy();
   /**
    * <pre>
-   * Deprecated. Use heading_accuracy instead.
+   * Deprecated: Use `heading_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -159,7 +159,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Accuracy of heading (bearing) in degrees.
+   * Accuracy of `heading` in degrees.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -168,7 +168,7 @@ public interface VehicleLocationOrBuilder extends
   boolean hasHeadingAccuracy();
   /**
    * <pre>
-   * Accuracy of heading (bearing) in degrees.
+   * Accuracy of `heading` in degrees.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -177,7 +177,7 @@ public interface VehicleLocationOrBuilder extends
   com.google.protobuf.DoubleValue getHeadingAccuracy();
   /**
    * <pre>
-   * Accuracy of heading (bearing) in degrees.
+   * Accuracy of `heading` in degrees.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -213,7 +213,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Deprecated. Use altitude_accurarcy instead.
+   * Deprecated: Use `altitude_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -222,7 +222,7 @@ public interface VehicleLocationOrBuilder extends
   @java.lang.Deprecated boolean hasVerticalAccuracy();
   /**
    * <pre>
-   * Deprecated. Use altitude_accurarcy instead.
+   * Deprecated: Use `altitude_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -231,7 +231,7 @@ public interface VehicleLocationOrBuilder extends
   @java.lang.Deprecated com.google.protobuf.DoubleValue getVerticalAccuracy();
   /**
    * <pre>
-   * Deprecated. Use altitude_accurarcy instead.
+   * Deprecated: Use `altitude_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -240,7 +240,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Accuracy of altitude measurement in meters.
+   * Accuracy of `altitude` in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -249,7 +249,7 @@ public interface VehicleLocationOrBuilder extends
   boolean hasAltitudeAccuracy();
   /**
    * <pre>
-   * Accuracy of altitude measurement in meters.
+   * Accuracy of `altitude` in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -258,7 +258,7 @@ public interface VehicleLocationOrBuilder extends
   com.google.protobuf.DoubleValue getAltitudeAccuracy();
   /**
    * <pre>
-   * Accuracy of altitude measurement in meters.
+   * Accuracy of `altitude` in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -268,7 +268,7 @@ public interface VehicleLocationOrBuilder extends
   /**
    * <pre>
    * Speed of the vehicle in kilometers per hour.
-   * Deprecated. Use speed instead.
+   * Deprecated: Use `speed` instead.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -278,7 +278,7 @@ public interface VehicleLocationOrBuilder extends
   /**
    * <pre>
    * Speed of the vehicle in kilometers per hour.
-   * Deprecated. Use speed instead.
+   * Deprecated: Use `speed` instead.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -288,7 +288,7 @@ public interface VehicleLocationOrBuilder extends
   /**
    * <pre>
    * Speed of the vehicle in kilometers per hour.
-   * Deprecated. Use speed instead.
+   * Deprecated: Use `speed` instead.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -324,7 +324,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Accuracy of speed in meters/second.
+   * Accuracy of `speed` in meters/second.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -333,7 +333,7 @@ public interface VehicleLocationOrBuilder extends
   boolean hasSpeedAccuracy();
   /**
    * <pre>
-   * Accuracy of speed in meters/second.
+   * Accuracy of `speed` in meters/second.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -342,7 +342,7 @@ public interface VehicleLocationOrBuilder extends
   com.google.protobuf.DoubleValue getSpeedAccuracy();
   /**
    * <pre>
-   * Accuracy of speed in meters/second.
+   * Accuracy of `speed` in meters/second.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -351,7 +351,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * The time when the location was recorded.
+   * The time when `location` was reported by the sensor.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -360,7 +360,7 @@ public interface VehicleLocationOrBuilder extends
   boolean hasUpdateTime();
   /**
    * <pre>
-   * The time when the location was recorded.
+   * The time when `location` was reported by the sensor.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -369,7 +369,7 @@ public interface VehicleLocationOrBuilder extends
   com.google.protobuf.Timestamp getUpdateTime();
   /**
    * <pre>
-   * The time when the location was recorded.
+   * The time when `location` was reported by the sensor.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -378,8 +378,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Output only. The time when the server receives the location information, filled by
-   * FleetEngine.
+   * Output only. The time when the server received the location information.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -388,8 +387,7 @@ public interface VehicleLocationOrBuilder extends
   boolean hasServerTime();
   /**
    * <pre>
-   * Output only. The time when the server receives the location information, filled by
-   * FleetEngine.
+   * Output only. The time when the server received the location information.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -398,8 +396,7 @@ public interface VehicleLocationOrBuilder extends
   com.google.protobuf.Timestamp getServerTime();
   /**
    * <pre>
-   * Output only. The time when the server receives the location information, filled by
-   * FleetEngine.
+   * Output only. The time when the server received the location information.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -408,7 +405,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Provider of location data (for example, "gps").
+   * Provider of location data (for example, `GPS`).
    * </pre>
    *
    * <code>.maps.fleetengine.v1.LocationSensor location_sensor = 11;</code>
@@ -417,7 +414,7 @@ public interface VehicleLocationOrBuilder extends
   int getLocationSensorValue();
   /**
    * <pre>
-   * Provider of location data (for example, "gps").
+   * Provider of location data (for example, `GPS`).
    * </pre>
    *
    * <code>.maps.fleetengine.v1.LocationSensor location_sensor = 11;</code>
@@ -427,10 +424,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Whether the vehicle location given by "location" field is snapped to a road
-   * closest to the location given by "raw_location".
-   * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-   * Unset value will be treated as true.
+   * Whether `location` is snapped to a road.
    * </pre>
    *
    * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -439,10 +433,7 @@ public interface VehicleLocationOrBuilder extends
   boolean hasIsRoadSnapped();
   /**
    * <pre>
-   * Whether the vehicle location given by "location" field is snapped to a road
-   * closest to the location given by "raw_location".
-   * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-   * Unset value will be treated as true.
+   * Whether `location` is snapped to a road.
    * </pre>
    *
    * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -451,10 +442,7 @@ public interface VehicleLocationOrBuilder extends
   com.google.protobuf.BoolValue getIsRoadSnapped();
   /**
    * <pre>
-   * Whether the vehicle location given by "location" field is snapped to a road
-   * closest to the location given by "raw_location".
-   * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-   * Unset value will be treated as true.
+   * Whether `location` is snapped to a road.
    * </pre>
    *
    * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -463,7 +451,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Input only. Indicates whether the GPS sensor is enabled.
+   * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
    * </pre>
    *
    * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -472,7 +460,7 @@ public interface VehicleLocationOrBuilder extends
   boolean hasIsGpsSensorEnabled();
   /**
    * <pre>
-   * Input only. Indicates whether the GPS sensor is enabled.
+   * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
    * </pre>
    *
    * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -481,7 +469,7 @@ public interface VehicleLocationOrBuilder extends
   com.google.protobuf.BoolValue getIsGpsSensorEnabled();
   /**
    * <pre>
-   * Input only. Indicates whether the GPS sensor is enabled.
+   * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
    * </pre>
    *
    * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -490,7 +478,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Input only. Time (in seconds) since this location sample was first sent to the server.
+   * Input only. Time (in seconds) since this location was first sent to the server.
    * This will be zero for the first update. If the time is unknown
    * (for example, when the app restarts), this value resets to zero.
    * </pre>
@@ -501,7 +489,7 @@ public interface VehicleLocationOrBuilder extends
   boolean hasTimeSinceUpdate();
   /**
    * <pre>
-   * Input only. Time (in seconds) since this location sample was first sent to the server.
+   * Input only. Time (in seconds) since this location was first sent to the server.
    * This will be zero for the first update. If the time is unknown
    * (for example, when the app restarts), this value resets to zero.
    * </pre>
@@ -512,7 +500,7 @@ public interface VehicleLocationOrBuilder extends
   com.google.protobuf.Int32Value getTimeSinceUpdate();
   /**
    * <pre>
-   * Input only. Time (in seconds) since this location sample was first sent to the server.
+   * Input only. Time (in seconds) since this location was first sent to the server.
    * This will be zero for the first update. If the time is unknown
    * (for example, when the app restarts), this value resets to zero.
    * </pre>
@@ -523,7 +511,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Input only. Number of additional attempts to send the current location to the server.
+   * Input only. Number of additional attempts to send this location to the server.
    * If this value is zero, then it is not stale.
    * </pre>
    *
@@ -533,7 +521,7 @@ public interface VehicleLocationOrBuilder extends
   boolean hasNumStaleUpdates();
   /**
    * <pre>
-   * Input only. Number of additional attempts to send the current location to the server.
+   * Input only. Number of additional attempts to send this location to the server.
    * If this value is zero, then it is not stale.
    * </pre>
    *
@@ -543,7 +531,7 @@ public interface VehicleLocationOrBuilder extends
   com.google.protobuf.Int32Value getNumStaleUpdates();
   /**
    * <pre>
-   * Input only. Number of additional attempts to send the current location to the server.
+   * Input only. Number of additional attempts to send this location to the server.
    * If this value is zero, then it is not stale.
    * </pre>
    *
@@ -626,7 +614,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+   * Input only. Accuracy of `raw_location` as a radius, in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -635,7 +623,7 @@ public interface VehicleLocationOrBuilder extends
   boolean hasRawLocationAccuracy();
   /**
    * <pre>
-   * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+   * Input only. Accuracy of `raw_location` as a radius, in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -644,7 +632,7 @@ public interface VehicleLocationOrBuilder extends
   com.google.protobuf.DoubleValue getRawLocationAccuracy();
   /**
    * <pre>
-   * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+   * Input only. Accuracy of `raw_location` as a radius, in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -729,8 +717,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-   * meters.
+   * Input only. Accuracy of `supplemental_location` as a radius, in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -739,8 +726,7 @@ public interface VehicleLocationOrBuilder extends
   boolean hasSupplementalLocationAccuracy();
   /**
    * <pre>
-   * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-   * meters.
+   * Input only. Accuracy of `supplemental_location` as a radius, in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -749,8 +735,7 @@ public interface VehicleLocationOrBuilder extends
   com.google.protobuf.DoubleValue getSupplementalLocationAccuracy();
   /**
    * <pre>
-   * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-   * meters.
+   * Input only. Accuracy of `supplemental_location` as a radius, in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -759,7 +744,7 @@ public interface VehicleLocationOrBuilder extends
 
   /**
    * <pre>
-   * Deprecated, use is_road_snapped instead.
+   * Deprecated: Use `is_road_snapped` instead.
    * </pre>
    *
    * <code>bool road_snapped = 26 [deprecated = true];</code>

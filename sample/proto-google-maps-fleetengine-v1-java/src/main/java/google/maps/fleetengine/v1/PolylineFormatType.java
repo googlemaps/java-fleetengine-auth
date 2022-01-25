@@ -14,7 +14,7 @@ public enum PolylineFormatType
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
    * <pre>
-   * Unspecified format type.
+   * The format is unspecified or unknown.
    * </pre>
    *
    * <code>UNKNOWN_FORMAT_TYPE = 0;</code>
@@ -22,7 +22,7 @@ public enum PolylineFormatType
   UNKNOWN_FORMAT_TYPE(0),
   /**
    * <pre>
-   * Repeated LatLng.
+   * A list of `google.type.LatLng`.
    * </pre>
    *
    * <code>LAT_LNG_LIST_TYPE = 1;</code>
@@ -42,7 +42,7 @@ public enum PolylineFormatType
 
   /**
    * <pre>
-   * Unspecified format type.
+   * The format is unspecified or unknown.
    * </pre>
    *
    * <code>UNKNOWN_FORMAT_TYPE = 0;</code>
@@ -50,7 +50,7 @@ public enum PolylineFormatType
   public static final int UNKNOWN_FORMAT_TYPE_VALUE = 0;
   /**
    * <pre>
-   * Repeated LatLng.
+   * A list of `google.type.LatLng`.
    * </pre>
    *
    * <code>LAT_LNG_LIST_TYPE = 1;</code>

@@ -219,6 +219,8 @@ public class TripServiceClient implements BackgroundResource {
    *           .setCurrentRouteSegmentVersion(Timestamp.newBuilder().build())
    *           .setRemainingWaypointsVersion(Timestamp.newBuilder().build())
    *           .setRouteFormatType(PolylineFormatType.forNumber(0))
+   *           .setCurrentRouteSegmentTrafficVersion(Timestamp.newBuilder().build())
+   *           .setRemainingWaypointsRouteVersion(Timestamp.newBuilder().build())
    *           .build();
    *   Trip response = tripServiceClient.getTrip(request);
    * }
@@ -247,6 +249,8 @@ public class TripServiceClient implements BackgroundResource {
    *           .setCurrentRouteSegmentVersion(Timestamp.newBuilder().build())
    *           .setRemainingWaypointsVersion(Timestamp.newBuilder().build())
    *           .setRouteFormatType(PolylineFormatType.forNumber(0))
+   *           .setCurrentRouteSegmentTrafficVersion(Timestamp.newBuilder().build())
+   *           .setRemainingWaypointsRouteVersion(Timestamp.newBuilder().build())
    *           .build();
    *   ApiFuture<Trip> future = tripServiceClient.getTripCallable().futureCall(request);
    *   // Do something.

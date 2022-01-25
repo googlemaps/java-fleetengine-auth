@@ -14,7 +14,7 @@ public enum WaypointType
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
    * <pre>
-   * Default, unknown waypoint type
+   * Unknown or unspecified waypoint type.
    * </pre>
    *
    * <code>UNKNOWN_WAYPOINT_TYPE = 0;</code>
@@ -22,7 +22,7 @@ public enum WaypointType
   UNKNOWN_WAYPOINT_TYPE(0),
   /**
    * <pre>
-   * Waypoints for picking up customers or merchandise.
+   * Waypoints for picking up riders or items.
    * </pre>
    *
    * <code>PICKUP_WAYPOINT_TYPE = 1;</code>
@@ -30,7 +30,7 @@ public enum WaypointType
   PICKUP_WAYPOINT_TYPE(1),
   /**
    * <pre>
-   * Waypoints for dropping off customers or merchandise.
+   * Waypoints for dropping off riders or items.
    * </pre>
    *
    * <code>DROP_OFF_WAYPOINT_TYPE = 2;</code>
@@ -49,7 +49,7 @@ public enum WaypointType
 
   /**
    * <pre>
-   * Default, unknown waypoint type
+   * Unknown or unspecified waypoint type.
    * </pre>
    *
    * <code>UNKNOWN_WAYPOINT_TYPE = 0;</code>
@@ -57,7 +57,7 @@ public enum WaypointType
   public static final int UNKNOWN_WAYPOINT_TYPE_VALUE = 0;
   /**
    * <pre>
-   * Waypoints for picking up customers or merchandise.
+   * Waypoints for picking up riders or items.
    * </pre>
    *
    * <code>PICKUP_WAYPOINT_TYPE = 1;</code>
@@ -65,7 +65,7 @@ public enum WaypointType
   public static final int PICKUP_WAYPOINT_TYPE_VALUE = 1;
   /**
    * <pre>
-   * Waypoints for dropping off customers or merchandise.
+   * Waypoints for dropping off riders or items.
    * </pre>
    *
    * <code>DROP_OFF_WAYPOINT_TYPE = 2;</code>

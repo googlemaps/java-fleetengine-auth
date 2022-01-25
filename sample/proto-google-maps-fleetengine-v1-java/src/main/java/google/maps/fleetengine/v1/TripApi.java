@@ -68,7 +68,7 @@ public final class TripApi {
       "fleetengine.v1.RequestHeader\0227\n\006parent\030\003" +
       " \001(\tB\'\340A\002\372A!\n\037fleetengine.googleapis.com" +
       "/Trip\022\024\n\007trip_id\030\005 \001(\tB\003\340A\002\022,\n\004trip\030\004 \001(" +
-      "\0132\031.maps.fleetengine.v1.TripB\003\340A\002\"\360\002\n\016Ge" +
+      "\0132\031.maps.fleetengine.v1.TripB\003\340A\002\"\202\004\n\016Ge" +
       "tTripRequest\0222\n\006header\030\001 \001(\0132\".maps.flee" +
       "tengine.v1.RequestHeader\0225\n\004name\030\003 \001(\tB\'" +
       "\340A\002\372A!\n\037fleetengine.googleapis.com/Trip\022" +
@@ -78,49 +78,53 @@ public final class TripApi {
       "ning_waypoints_version\030\007 \001(\0132\032.google.pr" +
       "otobuf.Timestamp\022B\n\021route_format_type\030\010 " +
       "\001(\0162\'.maps.fleetengine.v1.PolylineFormat" +
-      "Type\"\315\002\n\031ReportBillableTripRequest\022\021\n\004na" +
-      "me\030\002 \001(\tB\003\340A\002\022\031\n\014country_code\030\003 \001(\tB\003\340A\002" +
-      "\022@\n\010platform\030\005 \001(\0162..maps.fleetengine.v1" +
-      ".BillingPlatformIdentifier\022\023\n\013related_id" +
-      "s\030\006 \003(\t\022R\n\rsolution_type\030\007 \001(\0162;.maps.fl" +
-      "eetengine.v1.ReportBillableTripRequest.S" +
-      "olutionType\"W\n\014SolutionType\022\035\n\031SOLUTION_" +
-      "TYPE_UNSPECIFIED\020\000\022(\n$ON_DEMAND_RIDESHAR" +
-      "ING_AND_DELIVERIES\020\001\"\276\001\n\021UpdateTripReque" +
-      "st\0222\n\006header\030\001 \001(\0132\".maps.fleetengine.v1" +
-      ".RequestHeader\022\021\n\004name\030\003 \001(\tB\003\340A\002\022,\n\004tri" +
-      "p\030\004 \001(\0132\031.maps.fleetengine.v1.TripB\003\340A\002\022" +
-      "4\n\013update_mask\030\005 \001(\0132\032.google.protobuf.F" +
-      "ieldMaskB\003\340A\002\"\351\001\n\022SearchTripsRequest\0222\n\006" +
-      "header\030\001 \001(\0132\".maps.fleetengine.v1.Reque" +
-      "stHeader\022\023\n\006parent\030\003 \001(\tB\003\340A\002\022\022\n\nvehicle" +
-      "_id\030\004 \001(\t\022\031\n\021active_trips_only\030\005 \001(\010\022\021\n\t" +
-      "page_size\030\006 \001(\005\022\022\n\npage_token\030\007 \001(\t\0224\n\021m" +
-      "inimum_staleness\030\010 \001(\0132\031.google.protobuf" +
-      ".Duration\"X\n\023SearchTripsResponse\022(\n\005trip" +
-      "s\030\001 \003(\0132\031.maps.fleetengine.v1.Trip\022\027\n\017ne" +
-      "xt_page_token\030\002 \001(\t2\313\005\n\013TripService\022}\n\nC" +
-      "reateTrip\022&.maps.fleetengine.v1.CreateTr" +
-      "ipRequest\032\031.maps.fleetengine.v1.Trip\",\202\323" +
-      "\344\223\002&\"\036/v1/{parent=providers/*}/trips:\004tr" +
-      "ip\022q\n\007GetTrip\022#.maps.fleetengine.v1.GetT" +
-      "ripRequest\032\031.maps.fleetengine.v1.Trip\"&\202" +
-      "\323\344\223\002 \022\036/v1/{name=providers/*/trips/*}\022\226\001" +
-      "\n\022ReportBillableTrip\022..maps.fleetengine." +
-      "v1.ReportBillableTripRequest\032\026.google.pr" +
-      "otobuf.Empty\"8\202\323\344\223\0022\"-/v1/{name=provider" +
-      "s/*/billableTrips/*}:report:\001*\022\222\001\n\013Searc" +
-      "hTrips\022\'.maps.fleetengine.v1.SearchTrips" +
-      "Request\032(.maps.fleetengine.v1.SearchTrip" +
-      "sResponse\"0\202\323\344\223\002*\"%/v1/{parent=providers" +
-      "/*}/trips:search:\001*\022}\n\nUpdateTrip\022&.maps" +
-      ".fleetengine.v1.UpdateTripRequest\032\031.maps" +
-      ".fleetengine.v1.Trip\",\202\323\344\223\002&\032\036/v1/{name=" +
-      "providers/*/trips/*}:\004trip\032\035\312A\032fleetengi" +
-      "ne.googleapis.comBt\n\032google.maps.fleeten" +
-      "gine.v1B\007TripApiP\001ZEgoogle.golang.org/ge" +
-      "nproto/googleapis/maps/fleetengine/v1;fl" +
-      "eetengine\242\002\003CFEb\006proto3"
+      "Type\022I\n%current_route_segment_traffic_ve" +
+      "rsion\030\t \001(\0132\032.google.protobuf.Timestamp\022" +
+      "E\n!remaining_waypoints_route_version\030\n \001" +
+      "(\0132\032.google.protobuf.Timestamp\"\315\002\n\031Repor" +
+      "tBillableTripRequest\022\021\n\004name\030\002 \001(\tB\003\340A\002\022" +
+      "\031\n\014country_code\030\003 \001(\tB\003\340A\002\022@\n\010platform\030\005" +
+      " \001(\0162..maps.fleetengine.v1.BillingPlatfo" +
+      "rmIdentifier\022\023\n\013related_ids\030\006 \003(\t\022R\n\rsol" +
+      "ution_type\030\007 \001(\0162;.maps.fleetengine.v1.R" +
+      "eportBillableTripRequest.SolutionType\"W\n" +
+      "\014SolutionType\022\035\n\031SOLUTION_TYPE_UNSPECIFI" +
+      "ED\020\000\022(\n$ON_DEMAND_RIDESHARING_AND_DELIVE" +
+      "RIES\020\001\"\276\001\n\021UpdateTripRequest\0222\n\006header\030\001" +
+      " \001(\0132\".maps.fleetengine.v1.RequestHeader" +
+      "\022\021\n\004name\030\003 \001(\tB\003\340A\002\022,\n\004trip\030\004 \001(\0132\031.maps" +
+      ".fleetengine.v1.TripB\003\340A\002\0224\n\013update_mask" +
+      "\030\005 \001(\0132\032.google.protobuf.FieldMaskB\003\340A\002\"" +
+      "\351\001\n\022SearchTripsRequest\0222\n\006header\030\001 \001(\0132\"" +
+      ".maps.fleetengine.v1.RequestHeader\022\023\n\006pa" +
+      "rent\030\003 \001(\tB\003\340A\002\022\022\n\nvehicle_id\030\004 \001(\t\022\031\n\021a" +
+      "ctive_trips_only\030\005 \001(\010\022\021\n\tpage_size\030\006 \001(" +
+      "\005\022\022\n\npage_token\030\007 \001(\t\0224\n\021minimum_stalene" +
+      "ss\030\010 \001(\0132\031.google.protobuf.Duration\"X\n\023S" +
+      "earchTripsResponse\022(\n\005trips\030\001 \003(\0132\031.maps" +
+      ".fleetengine.v1.Trip\022\027\n\017next_page_token\030" +
+      "\002 \001(\t2\313\005\n\013TripService\022}\n\nCreateTrip\022&.ma" +
+      "ps.fleetengine.v1.CreateTripRequest\032\031.ma" +
+      "ps.fleetengine.v1.Trip\",\202\323\344\223\002&\"\036/v1/{par" +
+      "ent=providers/*}/trips:\004trip\022q\n\007GetTrip\022" +
+      "#.maps.fleetengine.v1.GetTripRequest\032\031.m" +
+      "aps.fleetengine.v1.Trip\"&\202\323\344\223\002 \022\036/v1/{na" +
+      "me=providers/*/trips/*}\022\226\001\n\022ReportBillab" +
+      "leTrip\022..maps.fleetengine.v1.ReportBilla" +
+      "bleTripRequest\032\026.google.protobuf.Empty\"8" +
+      "\202\323\344\223\0022\"-/v1/{name=providers/*/billableTr" +
+      "ips/*}:report:\001*\022\222\001\n\013SearchTrips\022\'.maps." +
+      "fleetengine.v1.SearchTripsRequest\032(.maps" +
+      ".fleetengine.v1.SearchTripsResponse\"0\202\323\344" +
+      "\223\002*\"%/v1/{parent=providers/*}/trips:sear" +
+      "ch:\001*\022}\n\nUpdateTrip\022&.maps.fleetengine.v" +
+      "1.UpdateTripRequest\032\031.maps.fleetengine.v" +
+      "1.Trip\",\202\323\344\223\002&\032\036/v1/{name=providers/*/tr" +
+      "ips/*}:\004trip\032\035\312A\032fleetengine.googleapis." +
+      "comBt\n\032google.maps.fleetengine.v1B\007TripA" +
+      "piP\001ZEgoogle.golang.org/genproto/googlea" +
+      "pis/maps/fleetengine/v1;fleetengine\242\002\003CF" +
+      "Eb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -148,7 +152,7 @@ public final class TripApi {
     internal_static_maps_fleetengine_v1_GetTripRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_maps_fleetengine_v1_GetTripRequest_descriptor,
-        new java.lang.String[] { "Header", "Name", "View", "CurrentRouteSegmentVersion", "RemainingWaypointsVersion", "RouteFormatType", });
+        new java.lang.String[] { "Header", "Name", "View", "CurrentRouteSegmentVersion", "RemainingWaypointsVersion", "RouteFormatType", "CurrentRouteSegmentTrafficVersion", "RemainingWaypointsRouteVersion", });
     internal_static_maps_fleetengine_v1_ReportBillableTripRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_maps_fleetengine_v1_ReportBillableTripRequest_fieldAccessorTable = new

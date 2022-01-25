@@ -5,7 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * ListVehicles response message.
+ * `ListVehicles` response message.
  * </pre>
  *
  * Protobuf type {@code maps.fleetengine.v1.ListVehiclesResponse}
@@ -114,8 +114,8 @@ private static final long serialVersionUID = 0L;
   private java.util.List<google.maps.fleetengine.v1.Vehicle> vehicles_;
   /**
    * <pre>
-   * Depends on vehicles matching request criteria.
-   * There will be a maximum number of vehicles returned based on the page_size
+   * Vehicles matching the criteria in the request.
+   * The maximum number of vehicles returned is determined by the `page_size`
    * field in the request.
    * </pre>
    *
@@ -127,8 +127,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Depends on vehicles matching request criteria.
-   * There will be a maximum number of vehicles returned based on the page_size
+   * Vehicles matching the criteria in the request.
+   * The maximum number of vehicles returned is determined by the `page_size`
    * field in the request.
    * </pre>
    *
@@ -141,8 +141,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Depends on vehicles matching request criteria.
-   * There will be a maximum number of vehicles returned based on the page_size
+   * Vehicles matching the criteria in the request.
+   * The maximum number of vehicles returned is determined by the `page_size`
    * field in the request.
    * </pre>
    *
@@ -154,8 +154,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Depends on vehicles matching request criteria.
-   * There will be a maximum number of vehicles returned based on the page_size
+   * Vehicles matching the criteria in the request.
+   * The maximum number of vehicles returned is determined by the `page_size`
    * field in the request.
    * </pre>
    *
@@ -167,8 +167,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Depends on vehicles matching request criteria.
-   * There will be a maximum number of vehicles returned based on the page_size
+   * Vehicles matching the criteria in the request.
+   * The maximum number of vehicles returned is determined by the `page_size`
    * field in the request.
    * </pre>
    *
@@ -185,7 +185,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Token to retrieve the next page of vehicles, or empty if there are no
-   * more vehicles in the list.
+   * more vehicles that meet the request criteria.
    * </pre>
    *
    * <code>string next_page_token = 2;</code>
@@ -207,7 +207,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Token to retrieve the next page of vehicles, or empty if there are no
-   * more vehicles in the list.
+   * more vehicles that meet the request criteria.
    * </pre>
    *
    * <code>string next_page_token = 2;</code>
@@ -232,7 +232,7 @@ private static final long serialVersionUID = 0L;
   private long totalSize_;
   /**
    * <pre>
-   * Required. Total number of vehicles matching request criteria across all pages.
+   * Required. Total number of vehicles matching the request criteria across all pages.
    * </pre>
    *
    * <code>int64 total_size = 3 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -260,7 +260,7 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < vehicles_.size(); i++) {
       output.writeMessage(1, vehicles_.get(i));
     }
-    if (!getNextPageTokenBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nextPageToken_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nextPageToken_);
     }
     if (totalSize_ != 0L) {
@@ -279,7 +279,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, vehicles_.get(i));
     }
-    if (!getNextPageTokenBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nextPageToken_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, nextPageToken_);
     }
     if (totalSize_ != 0L) {
@@ -424,7 +424,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * ListVehicles response message.
+   * `ListVehicles` response message.
    * </pre>
    *
    * Protobuf type {@code maps.fleetengine.v1.ListVehiclesResponse}
@@ -638,8 +638,8 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -654,8 +654,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -670,8 +670,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -686,8 +686,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -709,8 +709,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -729,8 +729,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -751,8 +751,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -774,8 +774,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -794,8 +794,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -814,8 +814,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -835,8 +835,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -854,8 +854,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -873,8 +873,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -886,8 +886,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -902,8 +902,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -919,8 +919,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -932,8 +932,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -946,8 +946,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Depends on vehicles matching request criteria.
-     * There will be a maximum number of vehicles returned based on the page_size
+     * Vehicles matching the criteria in the request.
+     * The maximum number of vehicles returned is determined by the `page_size`
      * field in the request.
      * </pre>
      *
@@ -976,7 +976,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Token to retrieve the next page of vehicles, or empty if there are no
-     * more vehicles in the list.
+     * more vehicles that meet the request criteria.
      * </pre>
      *
      * <code>string next_page_token = 2;</code>
@@ -997,7 +997,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Token to retrieve the next page of vehicles, or empty if there are no
-     * more vehicles in the list.
+     * more vehicles that meet the request criteria.
      * </pre>
      *
      * <code>string next_page_token = 2;</code>
@@ -1019,7 +1019,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Token to retrieve the next page of vehicles, or empty if there are no
-     * more vehicles in the list.
+     * more vehicles that meet the request criteria.
      * </pre>
      *
      * <code>string next_page_token = 2;</code>
@@ -1039,7 +1039,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Token to retrieve the next page of vehicles, or empty if there are no
-     * more vehicles in the list.
+     * more vehicles that meet the request criteria.
      * </pre>
      *
      * <code>string next_page_token = 2;</code>
@@ -1054,7 +1054,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Token to retrieve the next page of vehicles, or empty if there are no
-     * more vehicles in the list.
+     * more vehicles that meet the request criteria.
      * </pre>
      *
      * <code>string next_page_token = 2;</code>
@@ -1076,7 +1076,7 @@ private static final long serialVersionUID = 0L;
     private long totalSize_ ;
     /**
      * <pre>
-     * Required. Total number of vehicles matching request criteria across all pages.
+     * Required. Total number of vehicles matching the request criteria across all pages.
      * </pre>
      *
      * <code>int64 total_size = 3 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1088,7 +1088,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Total number of vehicles matching request criteria across all pages.
+     * Required. Total number of vehicles matching the request criteria across all pages.
      * </pre>
      *
      * <code>int64 total_size = 3 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1103,7 +1103,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Total number of vehicles matching request criteria across all pages.
+     * Required. Total number of vehicles matching the request criteria across all pages.
      * </pre>
      *
      * <code>int64 total_size = 3 [(.google.api.field_behavior) = REQUIRED];</code>

@@ -343,10 +343,10 @@ public class VehicleServiceStubSettings extends StubSettings<VehicleServiceStubS
               .setInitialRetryDelay(Duration.ofMillis(1000L))
               .setRetryDelayMultiplier(1.3)
               .setMaxRetryDelay(Duration.ofMillis(10000L))
-              .setInitialRpcTimeout(Duration.ofMillis(60000L))
+              .setInitialRpcTimeout(Duration.ofMillis(15000L))
               .setRpcTimeoutMultiplier(1.0)
-              .setMaxRpcTimeout(Duration.ofMillis(60000L))
-              .setTotalTimeout(Duration.ofMillis(60000L))
+              .setMaxRpcTimeout(Duration.ofMillis(15000L))
+              .setTotalTimeout(Duration.ofMillis(15000L))
               .build();
       definitions.put("retry_policy_0_params", settings);
       settings = RetrySettings.newBuilder().setRpcTimeoutMultiplier(1.0).build();

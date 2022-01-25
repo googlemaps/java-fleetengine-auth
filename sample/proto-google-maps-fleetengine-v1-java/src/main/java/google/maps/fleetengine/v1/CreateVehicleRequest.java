@@ -5,7 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * CreateVehicle request message.
+ * `CreateVehicle` request message.
  * </pre>
  *
  * Protobuf type {@code maps.fleetengine.v1.CreateVehicleRequest}
@@ -166,8 +166,8 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object parent_;
   /**
    * <pre>
-   * Required. Must be in the format "providers/{provider}".
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -190,8 +190,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. Must be in the format "providers/{provider}".
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -218,9 +218,14 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object vehicleId_;
   /**
    * <pre>
-   * Required. Unique Vehicle ID; must be unique per provider.  The actual
-   * format and value is opaque to the Fleet Engine and is determined
-   * by the provider.
+   * Required. Unique Vehicle ID; must be unique per provider.
+   * Subject to the following restrictions:
+   * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+   * '?', or '#'.
+   * 2. IDs are limited to a maximum length of 64 characters.
+   * 3. IDs must be valid Unicode strings.
+   * 4. IDs must be normalized according to Unicode Normalization Form C
+   * (http://www.unicode.org/reports/tr15/).
    * </pre>
    *
    * <code>string vehicle_id = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -241,9 +246,14 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. Unique Vehicle ID; must be unique per provider.  The actual
-   * format and value is opaque to the Fleet Engine and is determined
-   * by the provider.
+   * Required. Unique Vehicle ID; must be unique per provider.
+   * Subject to the following restrictions:
+   * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+   * '?', or '#'.
+   * 2. IDs are limited to a maximum length of 64 characters.
+   * 3. IDs must be valid Unicode strings.
+   * 4. IDs must be normalized according to Unicode Normalization Form C
+   * (http://www.unicode.org/reports/tr15/).
    * </pre>
    *
    * <code>string vehicle_id = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -270,22 +280,26 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. The Vehicle entity to create. When creating a Vehicle, the following
    * fields are required:
-   * * vehicle_state
-   * * supported_trip_types
-   * * maximum_capacity
-   * * vehicle_type
+   * * `vehicleState`
+   * * `supportedTripTypes`
+   * * `maximumCapacity`
+   * * `vehicleType`
    * When creating a Vehicle, the following fields are ignored:
-   * * name
-   * * current_trips
-   * * available_capacity
-   * * current_route_segment
-   * * current_route_segment_version
-   * * waypoints
-   * * waypoints_version
-   * * remaining_distance_meters
-   * * eta_to_next_waypoint
-   * * navigation_status
-   * All other fields will be used if provided.
+   * * `name`
+   * * `currentTrips`
+   * * `availableCapacity`
+   * * `current_route_segment`
+   * * `current_route_segment_end_point`
+   * * `current_route_segment_version`
+   * * `current_route_segment_traffic`
+   * * `route`
+   * * `waypoints`
+   * * `waypoints_version`
+   * * `remaining_distance_meters`
+   * * `remaining_time_seconds`
+   * * `eta_to_next_waypoint`
+   * * `navigation_status`
+   * All other fields are optional and used if provided.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.Vehicle vehicle = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -299,22 +313,26 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. The Vehicle entity to create. When creating a Vehicle, the following
    * fields are required:
-   * * vehicle_state
-   * * supported_trip_types
-   * * maximum_capacity
-   * * vehicle_type
+   * * `vehicleState`
+   * * `supportedTripTypes`
+   * * `maximumCapacity`
+   * * `vehicleType`
    * When creating a Vehicle, the following fields are ignored:
-   * * name
-   * * current_trips
-   * * available_capacity
-   * * current_route_segment
-   * * current_route_segment_version
-   * * waypoints
-   * * waypoints_version
-   * * remaining_distance_meters
-   * * eta_to_next_waypoint
-   * * navigation_status
-   * All other fields will be used if provided.
+   * * `name`
+   * * `currentTrips`
+   * * `availableCapacity`
+   * * `current_route_segment`
+   * * `current_route_segment_end_point`
+   * * `current_route_segment_version`
+   * * `current_route_segment_traffic`
+   * * `route`
+   * * `waypoints`
+   * * `waypoints_version`
+   * * `remaining_distance_meters`
+   * * `remaining_time_seconds`
+   * * `eta_to_next_waypoint`
+   * * `navigation_status`
+   * All other fields are optional and used if provided.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.Vehicle vehicle = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -328,22 +346,26 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. The Vehicle entity to create. When creating a Vehicle, the following
    * fields are required:
-   * * vehicle_state
-   * * supported_trip_types
-   * * maximum_capacity
-   * * vehicle_type
+   * * `vehicleState`
+   * * `supportedTripTypes`
+   * * `maximumCapacity`
+   * * `vehicleType`
    * When creating a Vehicle, the following fields are ignored:
-   * * name
-   * * current_trips
-   * * available_capacity
-   * * current_route_segment
-   * * current_route_segment_version
-   * * waypoints
-   * * waypoints_version
-   * * remaining_distance_meters
-   * * eta_to_next_waypoint
-   * * navigation_status
-   * All other fields will be used if provided.
+   * * `name`
+   * * `currentTrips`
+   * * `availableCapacity`
+   * * `current_route_segment`
+   * * `current_route_segment_end_point`
+   * * `current_route_segment_version`
+   * * `current_route_segment_traffic`
+   * * `route`
+   * * `waypoints`
+   * * `waypoints_version`
+   * * `remaining_distance_meters`
+   * * `remaining_time_seconds`
+   * * `eta_to_next_waypoint`
+   * * `navigation_status`
+   * All other fields are optional and used if provided.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.Vehicle vehicle = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -370,10 +392,10 @@ private static final long serialVersionUID = 0L;
     if (header_ != null) {
       output.writeMessage(1, getHeader());
     }
-    if (!getParentBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(parent_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, parent_);
     }
-    if (!getVehicleIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(vehicleId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, vehicleId_);
     }
     if (vehicle_ != null) {
@@ -392,10 +414,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getHeader());
     }
-    if (!getParentBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(parent_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, parent_);
     }
-    if (!getVehicleIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(vehicleId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, vehicleId_);
     }
     if (vehicle_ != null) {
@@ -551,7 +573,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * CreateVehicle request message.
+   * `CreateVehicle` request message.
    * </pre>
    *
    * Protobuf type {@code maps.fleetengine.v1.CreateVehicleRequest}
@@ -894,8 +916,8 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object parent_ = "";
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -917,8 +939,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -941,8 +963,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -963,8 +985,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -980,8 +1002,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -1005,9 +1027,14 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object vehicleId_ = "";
     /**
      * <pre>
-     * Required. Unique Vehicle ID; must be unique per provider.  The actual
-     * format and value is opaque to the Fleet Engine and is determined
-     * by the provider.
+     * Required. Unique Vehicle ID; must be unique per provider.
+     * Subject to the following restrictions:
+     * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+     * '?', or '#'.
+     * 2. IDs are limited to a maximum length of 64 characters.
+     * 3. IDs must be valid Unicode strings.
+     * 4. IDs must be normalized according to Unicode Normalization Form C
+     * (http://www.unicode.org/reports/tr15/).
      * </pre>
      *
      * <code>string vehicle_id = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1027,9 +1054,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Unique Vehicle ID; must be unique per provider.  The actual
-     * format and value is opaque to the Fleet Engine and is determined
-     * by the provider.
+     * Required. Unique Vehicle ID; must be unique per provider.
+     * Subject to the following restrictions:
+     * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+     * '?', or '#'.
+     * 2. IDs are limited to a maximum length of 64 characters.
+     * 3. IDs must be valid Unicode strings.
+     * 4. IDs must be normalized according to Unicode Normalization Form C
+     * (http://www.unicode.org/reports/tr15/).
      * </pre>
      *
      * <code>string vehicle_id = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1050,9 +1082,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Unique Vehicle ID; must be unique per provider.  The actual
-     * format and value is opaque to the Fleet Engine and is determined
-     * by the provider.
+     * Required. Unique Vehicle ID; must be unique per provider.
+     * Subject to the following restrictions:
+     * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+     * '?', or '#'.
+     * 2. IDs are limited to a maximum length of 64 characters.
+     * 3. IDs must be valid Unicode strings.
+     * 4. IDs must be normalized according to Unicode Normalization Form C
+     * (http://www.unicode.org/reports/tr15/).
      * </pre>
      *
      * <code>string vehicle_id = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1071,9 +1108,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Unique Vehicle ID; must be unique per provider.  The actual
-     * format and value is opaque to the Fleet Engine and is determined
-     * by the provider.
+     * Required. Unique Vehicle ID; must be unique per provider.
+     * Subject to the following restrictions:
+     * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+     * '?', or '#'.
+     * 2. IDs are limited to a maximum length of 64 characters.
+     * 3. IDs must be valid Unicode strings.
+     * 4. IDs must be normalized according to Unicode Normalization Form C
+     * (http://www.unicode.org/reports/tr15/).
      * </pre>
      *
      * <code>string vehicle_id = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1087,9 +1129,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Unique Vehicle ID; must be unique per provider.  The actual
-     * format and value is opaque to the Fleet Engine and is determined
-     * by the provider.
+     * Required. Unique Vehicle ID; must be unique per provider.
+     * Subject to the following restrictions:
+     * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+     * '?', or '#'.
+     * 2. IDs are limited to a maximum length of 64 characters.
+     * 3. IDs must be valid Unicode strings.
+     * 4. IDs must be normalized according to Unicode Normalization Form C
+     * (http://www.unicode.org/reports/tr15/).
      * </pre>
      *
      * <code>string vehicle_id = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1115,22 +1162,26 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. The Vehicle entity to create. When creating a Vehicle, the following
      * fields are required:
-     * * vehicle_state
-     * * supported_trip_types
-     * * maximum_capacity
-     * * vehicle_type
+     * * `vehicleState`
+     * * `supportedTripTypes`
+     * * `maximumCapacity`
+     * * `vehicleType`
      * When creating a Vehicle, the following fields are ignored:
-     * * name
-     * * current_trips
-     * * available_capacity
-     * * current_route_segment
-     * * current_route_segment_version
-     * * waypoints
-     * * waypoints_version
-     * * remaining_distance_meters
-     * * eta_to_next_waypoint
-     * * navigation_status
-     * All other fields will be used if provided.
+     * * `name`
+     * * `currentTrips`
+     * * `availableCapacity`
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_version`
+     * * `current_route_segment_traffic`
+     * * `route`
+     * * `waypoints`
+     * * `waypoints_version`
+     * * `remaining_distance_meters`
+     * * `remaining_time_seconds`
+     * * `eta_to_next_waypoint`
+     * * `navigation_status`
+     * All other fields are optional and used if provided.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle vehicle = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1143,22 +1194,26 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. The Vehicle entity to create. When creating a Vehicle, the following
      * fields are required:
-     * * vehicle_state
-     * * supported_trip_types
-     * * maximum_capacity
-     * * vehicle_type
+     * * `vehicleState`
+     * * `supportedTripTypes`
+     * * `maximumCapacity`
+     * * `vehicleType`
      * When creating a Vehicle, the following fields are ignored:
-     * * name
-     * * current_trips
-     * * available_capacity
-     * * current_route_segment
-     * * current_route_segment_version
-     * * waypoints
-     * * waypoints_version
-     * * remaining_distance_meters
-     * * eta_to_next_waypoint
-     * * navigation_status
-     * All other fields will be used if provided.
+     * * `name`
+     * * `currentTrips`
+     * * `availableCapacity`
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_version`
+     * * `current_route_segment_traffic`
+     * * `route`
+     * * `waypoints`
+     * * `waypoints_version`
+     * * `remaining_distance_meters`
+     * * `remaining_time_seconds`
+     * * `eta_to_next_waypoint`
+     * * `navigation_status`
+     * All other fields are optional and used if provided.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle vehicle = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1175,22 +1230,26 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. The Vehicle entity to create. When creating a Vehicle, the following
      * fields are required:
-     * * vehicle_state
-     * * supported_trip_types
-     * * maximum_capacity
-     * * vehicle_type
+     * * `vehicleState`
+     * * `supportedTripTypes`
+     * * `maximumCapacity`
+     * * `vehicleType`
      * When creating a Vehicle, the following fields are ignored:
-     * * name
-     * * current_trips
-     * * available_capacity
-     * * current_route_segment
-     * * current_route_segment_version
-     * * waypoints
-     * * waypoints_version
-     * * remaining_distance_meters
-     * * eta_to_next_waypoint
-     * * navigation_status
-     * All other fields will be used if provided.
+     * * `name`
+     * * `currentTrips`
+     * * `availableCapacity`
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_version`
+     * * `current_route_segment_traffic`
+     * * `route`
+     * * `waypoints`
+     * * `waypoints_version`
+     * * `remaining_distance_meters`
+     * * `remaining_time_seconds`
+     * * `eta_to_next_waypoint`
+     * * `navigation_status`
+     * All other fields are optional and used if provided.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle vehicle = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1212,22 +1271,26 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. The Vehicle entity to create. When creating a Vehicle, the following
      * fields are required:
-     * * vehicle_state
-     * * supported_trip_types
-     * * maximum_capacity
-     * * vehicle_type
+     * * `vehicleState`
+     * * `supportedTripTypes`
+     * * `maximumCapacity`
+     * * `vehicleType`
      * When creating a Vehicle, the following fields are ignored:
-     * * name
-     * * current_trips
-     * * available_capacity
-     * * current_route_segment
-     * * current_route_segment_version
-     * * waypoints
-     * * waypoints_version
-     * * remaining_distance_meters
-     * * eta_to_next_waypoint
-     * * navigation_status
-     * All other fields will be used if provided.
+     * * `name`
+     * * `currentTrips`
+     * * `availableCapacity`
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_version`
+     * * `current_route_segment_traffic`
+     * * `route`
+     * * `waypoints`
+     * * `waypoints_version`
+     * * `remaining_distance_meters`
+     * * `remaining_time_seconds`
+     * * `eta_to_next_waypoint`
+     * * `navigation_status`
+     * All other fields are optional and used if provided.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle vehicle = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1247,22 +1310,26 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. The Vehicle entity to create. When creating a Vehicle, the following
      * fields are required:
-     * * vehicle_state
-     * * supported_trip_types
-     * * maximum_capacity
-     * * vehicle_type
+     * * `vehicleState`
+     * * `supportedTripTypes`
+     * * `maximumCapacity`
+     * * `vehicleType`
      * When creating a Vehicle, the following fields are ignored:
-     * * name
-     * * current_trips
-     * * available_capacity
-     * * current_route_segment
-     * * current_route_segment_version
-     * * waypoints
-     * * waypoints_version
-     * * remaining_distance_meters
-     * * eta_to_next_waypoint
-     * * navigation_status
-     * All other fields will be used if provided.
+     * * `name`
+     * * `currentTrips`
+     * * `availableCapacity`
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_version`
+     * * `current_route_segment_traffic`
+     * * `route`
+     * * `waypoints`
+     * * `waypoints_version`
+     * * `remaining_distance_meters`
+     * * `remaining_time_seconds`
+     * * `eta_to_next_waypoint`
+     * * `navigation_status`
+     * All other fields are optional and used if provided.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle vehicle = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1286,22 +1353,26 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. The Vehicle entity to create. When creating a Vehicle, the following
      * fields are required:
-     * * vehicle_state
-     * * supported_trip_types
-     * * maximum_capacity
-     * * vehicle_type
+     * * `vehicleState`
+     * * `supportedTripTypes`
+     * * `maximumCapacity`
+     * * `vehicleType`
      * When creating a Vehicle, the following fields are ignored:
-     * * name
-     * * current_trips
-     * * available_capacity
-     * * current_route_segment
-     * * current_route_segment_version
-     * * waypoints
-     * * waypoints_version
-     * * remaining_distance_meters
-     * * eta_to_next_waypoint
-     * * navigation_status
-     * All other fields will be used if provided.
+     * * `name`
+     * * `currentTrips`
+     * * `availableCapacity`
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_version`
+     * * `current_route_segment_traffic`
+     * * `route`
+     * * `waypoints`
+     * * `waypoints_version`
+     * * `remaining_distance_meters`
+     * * `remaining_time_seconds`
+     * * `eta_to_next_waypoint`
+     * * `navigation_status`
+     * All other fields are optional and used if provided.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle vehicle = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1321,22 +1392,26 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. The Vehicle entity to create. When creating a Vehicle, the following
      * fields are required:
-     * * vehicle_state
-     * * supported_trip_types
-     * * maximum_capacity
-     * * vehicle_type
+     * * `vehicleState`
+     * * `supportedTripTypes`
+     * * `maximumCapacity`
+     * * `vehicleType`
      * When creating a Vehicle, the following fields are ignored:
-     * * name
-     * * current_trips
-     * * available_capacity
-     * * current_route_segment
-     * * current_route_segment_version
-     * * waypoints
-     * * waypoints_version
-     * * remaining_distance_meters
-     * * eta_to_next_waypoint
-     * * navigation_status
-     * All other fields will be used if provided.
+     * * `name`
+     * * `currentTrips`
+     * * `availableCapacity`
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_version`
+     * * `current_route_segment_traffic`
+     * * `route`
+     * * `waypoints`
+     * * `waypoints_version`
+     * * `remaining_distance_meters`
+     * * `remaining_time_seconds`
+     * * `eta_to_next_waypoint`
+     * * `navigation_status`
+     * All other fields are optional and used if provided.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle vehicle = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1350,22 +1425,26 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. The Vehicle entity to create. When creating a Vehicle, the following
      * fields are required:
-     * * vehicle_state
-     * * supported_trip_types
-     * * maximum_capacity
-     * * vehicle_type
+     * * `vehicleState`
+     * * `supportedTripTypes`
+     * * `maximumCapacity`
+     * * `vehicleType`
      * When creating a Vehicle, the following fields are ignored:
-     * * name
-     * * current_trips
-     * * available_capacity
-     * * current_route_segment
-     * * current_route_segment_version
-     * * waypoints
-     * * waypoints_version
-     * * remaining_distance_meters
-     * * eta_to_next_waypoint
-     * * navigation_status
-     * All other fields will be used if provided.
+     * * `name`
+     * * `currentTrips`
+     * * `availableCapacity`
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_version`
+     * * `current_route_segment_traffic`
+     * * `route`
+     * * `waypoints`
+     * * `waypoints_version`
+     * * `remaining_distance_meters`
+     * * `remaining_time_seconds`
+     * * `eta_to_next_waypoint`
+     * * `navigation_status`
+     * All other fields are optional and used if provided.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle vehicle = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1382,22 +1461,26 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. The Vehicle entity to create. When creating a Vehicle, the following
      * fields are required:
-     * * vehicle_state
-     * * supported_trip_types
-     * * maximum_capacity
-     * * vehicle_type
+     * * `vehicleState`
+     * * `supportedTripTypes`
+     * * `maximumCapacity`
+     * * `vehicleType`
      * When creating a Vehicle, the following fields are ignored:
-     * * name
-     * * current_trips
-     * * available_capacity
-     * * current_route_segment
-     * * current_route_segment_version
-     * * waypoints
-     * * waypoints_version
-     * * remaining_distance_meters
-     * * eta_to_next_waypoint
-     * * navigation_status
-     * All other fields will be used if provided.
+     * * `name`
+     * * `currentTrips`
+     * * `availableCapacity`
+     * * `current_route_segment`
+     * * `current_route_segment_end_point`
+     * * `current_route_segment_version`
+     * * `current_route_segment_traffic`
+     * * `route`
+     * * `waypoints`
+     * * `waypoints_version`
+     * * `remaining_distance_meters`
+     * * `remaining_time_seconds`
+     * * `eta_to_next_waypoint`
+     * * `navigation_status`
+     * All other fields are optional and used if provided.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle vehicle = 5 [(.google.api.field_behavior) = REQUIRED];</code>

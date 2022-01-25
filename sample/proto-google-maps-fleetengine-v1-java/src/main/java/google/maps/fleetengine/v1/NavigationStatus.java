@@ -5,7 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * A set of values that specify the vehicle's navigation status.
+ * The vehicle's navigation status.
  * </pre>
  *
  * Protobuf enum {@code maps.fleetengine.v1.NavigationStatus}
@@ -22,7 +22,7 @@ public enum NavigationStatus
   UNKNOWN_NAVIGATION_STATUS(0),
   /**
    * <pre>
-   * The Driver app's navigation is in FREE_NAV mode.
+   * The Driver app's navigation is in `FREE_NAV` mode.
    * </pre>
    *
    * <code>NO_GUIDANCE = 1;</code>
@@ -30,8 +30,8 @@ public enum NavigationStatus
   NO_GUIDANCE(1),
   /**
    * <pre>
-   * Turn-by-turn navigation starts and the Driver app navigation enters
-   * GUIDED_NAV mode showing the green header, route, and destination marker.
+   * Turn-by-turn navigation is available and the Driver app navigation has
+   * entered `GUIDED_NAV` mode.
    * </pre>
    *
    * <code>ENROUTE_TO_DESTINATION = 2;</code>
@@ -39,7 +39,7 @@ public enum NavigationStatus
   ENROUTE_TO_DESTINATION(2),
   /**
    * <pre>
-   * Vehicle has gone off the suggested route.
+   * The vehicle has gone off the suggested route.
    * </pre>
    *
    * <code>OFF_ROUTE = 3;</code>
@@ -47,8 +47,7 @@ public enum NavigationStatus
   OFF_ROUTE(3),
   /**
    * <pre>
-   * The vehicle is within 50m of the destination and onArrival was
-   * automatically triggered.
+   * The vehicle is within approximately 50m of the destination.
    * </pre>
    *
    * <code>ARRIVED_AT_DESTINATION = 4;</code>
@@ -67,7 +66,7 @@ public enum NavigationStatus
   public static final int UNKNOWN_NAVIGATION_STATUS_VALUE = 0;
   /**
    * <pre>
-   * The Driver app's navigation is in FREE_NAV mode.
+   * The Driver app's navigation is in `FREE_NAV` mode.
    * </pre>
    *
    * <code>NO_GUIDANCE = 1;</code>
@@ -75,8 +74,8 @@ public enum NavigationStatus
   public static final int NO_GUIDANCE_VALUE = 1;
   /**
    * <pre>
-   * Turn-by-turn navigation starts and the Driver app navigation enters
-   * GUIDED_NAV mode showing the green header, route, and destination marker.
+   * Turn-by-turn navigation is available and the Driver app navigation has
+   * entered `GUIDED_NAV` mode.
    * </pre>
    *
    * <code>ENROUTE_TO_DESTINATION = 2;</code>
@@ -84,7 +83,7 @@ public enum NavigationStatus
   public static final int ENROUTE_TO_DESTINATION_VALUE = 2;
   /**
    * <pre>
-   * Vehicle has gone off the suggested route.
+   * The vehicle has gone off the suggested route.
    * </pre>
    *
    * <code>OFF_ROUTE = 3;</code>
@@ -92,8 +91,7 @@ public enum NavigationStatus
   public static final int OFF_ROUTE_VALUE = 3;
   /**
    * <pre>
-   * The vehicle is within 50m of the destination and onArrival was
-   * automatically triggered.
+   * The vehicle is within approximately 50m of the destination.
    * </pre>
    *
    * <code>ARRIVED_AT_DESTINATION = 4;</code>

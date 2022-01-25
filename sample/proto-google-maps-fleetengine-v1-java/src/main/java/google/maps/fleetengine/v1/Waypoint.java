@@ -5,7 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * Waypoint describes intermediate points along a route.
+ * Describes intermediate points along a route.
  * </pre>
  *
  * Protobuf type {@code maps.fleetengine.v1.Waypoint}
@@ -364,7 +364,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Waypoint describes intermediate points along a route.
+   * Describes intermediate points along a route.
    * </pre>
    *
    * Protobuf type {@code maps.fleetengine.v1.Waypoint}

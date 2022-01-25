@@ -183,8 +183,8 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object parent_;
   /**
    * <pre>
-   * Required. Must be in the format "providers/&#42;"
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -207,8 +207,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. Must be in the format "providers/&#42;"
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -237,10 +237,10 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * The vehicle associated with the trips in the request. If unspecified, the
    * returned trips do not contain:
-   * * current_route_segment
-   * * remaining_waypoints
-   * * remaining_distance_meters
-   * * eta_to_first_waypoint
+   * * `current_route_segment`
+   * * `remaining_waypoints`
+   * * `remaining_distance_meters`
+   * * `eta_to_first_waypoint`
    * </pre>
    *
    * <code>string vehicle_id = 4;</code>
@@ -263,10 +263,10 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * The vehicle associated with the trips in the request. If unspecified, the
    * returned trips do not contain:
-   * * current_route_segment
-   * * remaining_waypoints
-   * * remaining_distance_meters
-   * * eta_to_first_waypoint
+   * * `current_route_segment`
+   * * `remaining_waypoints`
+   * * `remaining_distance_meters`
+   * * `eta_to_first_waypoint`
    * </pre>
    *
    * <code>string vehicle_id = 4;</code>
@@ -372,7 +372,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * If specified, returns the trips that have not been updated after
-   * the time (current - minimum_staleness).
+   * the time `(current - minimum_staleness)`.
    * </pre>
    *
    * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -385,7 +385,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * If specified, returns the trips that have not been updated after
-   * the time (current - minimum_staleness).
+   * the time `(current - minimum_staleness)`.
    * </pre>
    *
    * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -398,7 +398,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * If specified, returns the trips that have not been updated after
-   * the time (current - minimum_staleness).
+   * the time `(current - minimum_staleness)`.
    * </pre>
    *
    * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -425,10 +425,10 @@ private static final long serialVersionUID = 0L;
     if (header_ != null) {
       output.writeMessage(1, getHeader());
     }
-    if (!getParentBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(parent_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, parent_);
     }
-    if (!getVehicleIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(vehicleId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, vehicleId_);
     }
     if (activeTripsOnly_ != false) {
@@ -437,7 +437,7 @@ private static final long serialVersionUID = 0L;
     if (pageSize_ != 0) {
       output.writeInt32(6, pageSize_);
     }
-    if (!getPageTokenBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(pageToken_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, pageToken_);
     }
     if (minimumStaleness_ != null) {
@@ -456,10 +456,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getHeader());
     }
-    if (!getParentBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(parent_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, parent_);
     }
-    if (!getVehicleIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(vehicleId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, vehicleId_);
     }
     if (activeTripsOnly_ != false) {
@@ -470,7 +470,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(6, pageSize_);
     }
-    if (!getPageTokenBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(pageToken_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, pageToken_);
     }
     if (minimumStaleness_ != null) {
@@ -1001,8 +1001,8 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object parent_ = "";
     /**
      * <pre>
-     * Required. Must be in the format "providers/&#42;"
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -1024,8 +1024,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/&#42;"
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -1048,8 +1048,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/&#42;"
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -1070,8 +1070,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/&#42;"
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -1087,8 +1087,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/&#42;"
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -1114,10 +1114,10 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle associated with the trips in the request. If unspecified, the
      * returned trips do not contain:
-     * * current_route_segment
-     * * remaining_waypoints
-     * * remaining_distance_meters
-     * * eta_to_first_waypoint
+     * * `current_route_segment`
+     * * `remaining_waypoints`
+     * * `remaining_distance_meters`
+     * * `eta_to_first_waypoint`
      * </pre>
      *
      * <code>string vehicle_id = 4;</code>
@@ -1139,10 +1139,10 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle associated with the trips in the request. If unspecified, the
      * returned trips do not contain:
-     * * current_route_segment
-     * * remaining_waypoints
-     * * remaining_distance_meters
-     * * eta_to_first_waypoint
+     * * `current_route_segment`
+     * * `remaining_waypoints`
+     * * `remaining_distance_meters`
+     * * `eta_to_first_waypoint`
      * </pre>
      *
      * <code>string vehicle_id = 4;</code>
@@ -1165,10 +1165,10 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle associated with the trips in the request. If unspecified, the
      * returned trips do not contain:
-     * * current_route_segment
-     * * remaining_waypoints
-     * * remaining_distance_meters
-     * * eta_to_first_waypoint
+     * * `current_route_segment`
+     * * `remaining_waypoints`
+     * * `remaining_distance_meters`
+     * * `eta_to_first_waypoint`
      * </pre>
      *
      * <code>string vehicle_id = 4;</code>
@@ -1189,10 +1189,10 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle associated with the trips in the request. If unspecified, the
      * returned trips do not contain:
-     * * current_route_segment
-     * * remaining_waypoints
-     * * remaining_distance_meters
-     * * eta_to_first_waypoint
+     * * `current_route_segment`
+     * * `remaining_waypoints`
+     * * `remaining_distance_meters`
+     * * `eta_to_first_waypoint`
      * </pre>
      *
      * <code>string vehicle_id = 4;</code>
@@ -1208,10 +1208,10 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The vehicle associated with the trips in the request. If unspecified, the
      * returned trips do not contain:
-     * * current_route_segment
-     * * remaining_waypoints
-     * * remaining_distance_meters
-     * * eta_to_first_waypoint
+     * * `current_route_segment`
+     * * `remaining_waypoints`
+     * * `remaining_distance_meters`
+     * * `eta_to_first_waypoint`
      * </pre>
      *
      * <code>string vehicle_id = 4;</code>
@@ -1429,7 +1429,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * If specified, returns the trips that have not been updated after
-     * the time (current - minimum_staleness).
+     * the time `(current - minimum_staleness)`.
      * </pre>
      *
      * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -1441,7 +1441,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * If specified, returns the trips that have not been updated after
-     * the time (current - minimum_staleness).
+     * the time `(current - minimum_staleness)`.
      * </pre>
      *
      * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -1457,7 +1457,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * If specified, returns the trips that have not been updated after
-     * the time (current - minimum_staleness).
+     * the time `(current - minimum_staleness)`.
      * </pre>
      *
      * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -1478,7 +1478,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * If specified, returns the trips that have not been updated after
-     * the time (current - minimum_staleness).
+     * the time `(current - minimum_staleness)`.
      * </pre>
      *
      * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -1497,7 +1497,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * If specified, returns the trips that have not been updated after
-     * the time (current - minimum_staleness).
+     * the time `(current - minimum_staleness)`.
      * </pre>
      *
      * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -1520,7 +1520,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * If specified, returns the trips that have not been updated after
-     * the time (current - minimum_staleness).
+     * the time `(current - minimum_staleness)`.
      * </pre>
      *
      * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -1539,7 +1539,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * If specified, returns the trips that have not been updated after
-     * the time (current - minimum_staleness).
+     * the time `(current - minimum_staleness)`.
      * </pre>
      *
      * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -1552,7 +1552,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * If specified, returns the trips that have not been updated after
-     * the time (current - minimum_staleness).
+     * the time `(current - minimum_staleness)`.
      * </pre>
      *
      * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -1568,7 +1568,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * If specified, returns the trips that have not been updated after
-     * the time (current - minimum_staleness).
+     * the time `(current - minimum_staleness)`.
      * </pre>
      *
      * <code>.google.protobuf.Duration minimum_staleness = 8;</code>

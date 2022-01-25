@@ -37,8 +37,8 @@ package google.maps.fleetengine.v1;
   /**
    * <pre>
    * Required. Must be in the format
-   * "providers/{provider}/vehicles/{vehicle}.
-   * The {provider} must be the Project ID (for example, sample-cloud-project)
+   * `providers/{provider}/vehicles/{vehicle}`.
+   * The {provider} must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -50,8 +50,8 @@ package google.maps.fleetengine.v1;
   /**
    * <pre>
    * Required. Must be in the format
-   * "providers/{provider}/vehicles/{vehicle}.
-   * The {provider} must be the Project ID (for example, sample-cloud-project)
+   * `providers/{provider}/vehicles/{vehicle}`.
+   * The {provider} must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -64,7 +64,7 @@ package google.maps.fleetengine.v1;
 
   /**
    * <pre>
-   * Required. The location to update to.  The last_location and update_time
+   * Required. The vehicle's most recent location.  The `location` and `update_time`
    * subfields are required.
    * </pre>
    *
@@ -74,7 +74,7 @@ package google.maps.fleetengine.v1;
   boolean hasCurrentLocation();
   /**
    * <pre>
-   * Required. The location to update to.  The last_location and update_time
+   * Required. The vehicle's most recent location.  The `location` and `update_time`
    * subfields are required.
    * </pre>
    *
@@ -84,7 +84,7 @@ package google.maps.fleetengine.v1;
   google.maps.fleetengine.v1.VehicleLocation getCurrentLocation();
   /**
    * <pre>
-   * Required. The location to update to.  The last_location and update_time
+   * Required. The vehicle's most recent location.  The `location` and `update_time`
    * subfields are required.
    * </pre>
    *
@@ -94,8 +94,8 @@ package google.maps.fleetengine.v1;
 
   /**
    * <pre>
-   * Set current vehicle state to either ONLINE or OFFLINE;
-   * if set to UNKNOWN_VEHICLE_STATE, vehicle state will not be altered.
+   * Set the vehicle's state to either `ONLINE` or `OFFLINE`.
+   * If set to `UNKNOWN_VEHICLE_STATE`, the vehicle's state will not be altered.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.VehicleState current_state = 5;</code>
@@ -104,8 +104,8 @@ package google.maps.fleetengine.v1;
   int getCurrentStateValue();
   /**
    * <pre>
-   * Set current vehicle state to either ONLINE or OFFLINE;
-   * if set to UNKNOWN_VEHICLE_STATE, vehicle state will not be altered.
+   * Set the vehicle's state to either `ONLINE` or `OFFLINE`.
+   * If set to `UNKNOWN_VEHICLE_STATE`, the vehicle's state will not be altered.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.VehicleState current_state = 5;</code>

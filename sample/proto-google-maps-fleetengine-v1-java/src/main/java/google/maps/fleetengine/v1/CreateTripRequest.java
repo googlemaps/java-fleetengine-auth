@@ -166,8 +166,8 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object parent_;
   /**
    * <pre>
-   * Required. Must be in the format "providers/{provider}".
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -190,8 +190,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. Must be in the format "providers/{provider}".
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -218,9 +218,14 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object tripId_;
   /**
    * <pre>
-   * Required. Unique Trip ID; must be unique per provider.  The actual
-   * format and value is opaque to the Fleet Engine and is determined
-   * by the provider.
+   * Required. Unique Trip ID; must be unique per provider.
+   * Subject to the following restrictions:
+   * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+   * '?', or '#'.
+   * 2. IDs are limited to a maximum length of 64 characters.
+   * 3. IDs must be valid Unicode strings.
+   * 4. IDs must be normalized according to Unicode Normalization Form C
+   * (http://www.unicode.org/reports/tr15/).
    * </pre>
    *
    * <code>string trip_id = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -241,9 +246,14 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. Unique Trip ID; must be unique per provider.  The actual
-   * format and value is opaque to the Fleet Engine and is determined
-   * by the provider.
+   * Required. Unique Trip ID; must be unique per provider.
+   * Subject to the following restrictions:
+   * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+   * '?', or '#'.
+   * 2. IDs are limited to a maximum length of 64 characters.
+   * 3. IDs must be valid Unicode strings.
+   * 4. IDs must be normalized according to Unicode Normalization Form C
+   * (http://www.unicode.org/reports/tr15/).
    * </pre>
    *
    * <code>string trip_id = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -270,15 +280,15 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. Trip entity to create.
    * When creating a Trip, the following fields are required:
-   * * trip_type
-   * * pickup_point
+   * * `trip_type`
+   * * `pickup_point`
    * The following fields are used if you provide them:
-   * * number_of_passengers
-   * * vehicle_id
-   * * dropoff_point
-   * * intermediate_destinations
-   * Only EXCLUSIVE trips support multiple destinations.
-   * When vehicle_id is set for a shared trip, you must supply
+   * * `number_of_passengers`
+   * * `vehicle_id`
+   * * `dropoff_point`
+   * * `intermediate_destinations`
+   * Only `EXCLUSIVE` trips support multiple destinations.
+   * When `vehicle_id` is set for a shared trip, you must supply
    * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
    * waypoints for the vehicle, otherwise the waypoint order will be
    * undetermined.
@@ -289,7 +299,7 @@ private static final long serialVersionUID = 0L;
    * destinations come before the drop-off point. An `EXCLUSIVE` trip's
    * waypoints must not interleave with any other trips.
    * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-   * other TripWaypoint fields in vehicle_waypoints are ignored.
+   * other TripWaypoint fields in `vehicle_waypoints` are ignored.
    * All other Trip fields are ignored.
    * </pre>
    *
@@ -304,15 +314,15 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. Trip entity to create.
    * When creating a Trip, the following fields are required:
-   * * trip_type
-   * * pickup_point
+   * * `trip_type`
+   * * `pickup_point`
    * The following fields are used if you provide them:
-   * * number_of_passengers
-   * * vehicle_id
-   * * dropoff_point
-   * * intermediate_destinations
-   * Only EXCLUSIVE trips support multiple destinations.
-   * When vehicle_id is set for a shared trip, you must supply
+   * * `number_of_passengers`
+   * * `vehicle_id`
+   * * `dropoff_point`
+   * * `intermediate_destinations`
+   * Only `EXCLUSIVE` trips support multiple destinations.
+   * When `vehicle_id` is set for a shared trip, you must supply
    * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
    * waypoints for the vehicle, otherwise the waypoint order will be
    * undetermined.
@@ -323,7 +333,7 @@ private static final long serialVersionUID = 0L;
    * destinations come before the drop-off point. An `EXCLUSIVE` trip's
    * waypoints must not interleave with any other trips.
    * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-   * other TripWaypoint fields in vehicle_waypoints are ignored.
+   * other TripWaypoint fields in `vehicle_waypoints` are ignored.
    * All other Trip fields are ignored.
    * </pre>
    *
@@ -338,15 +348,15 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. Trip entity to create.
    * When creating a Trip, the following fields are required:
-   * * trip_type
-   * * pickup_point
+   * * `trip_type`
+   * * `pickup_point`
    * The following fields are used if you provide them:
-   * * number_of_passengers
-   * * vehicle_id
-   * * dropoff_point
-   * * intermediate_destinations
-   * Only EXCLUSIVE trips support multiple destinations.
-   * When vehicle_id is set for a shared trip, you must supply
+   * * `number_of_passengers`
+   * * `vehicle_id`
+   * * `dropoff_point`
+   * * `intermediate_destinations`
+   * Only `EXCLUSIVE` trips support multiple destinations.
+   * When `vehicle_id` is set for a shared trip, you must supply
    * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
    * waypoints for the vehicle, otherwise the waypoint order will be
    * undetermined.
@@ -357,7 +367,7 @@ private static final long serialVersionUID = 0L;
    * destinations come before the drop-off point. An `EXCLUSIVE` trip's
    * waypoints must not interleave with any other trips.
    * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-   * other TripWaypoint fields in vehicle_waypoints are ignored.
+   * other TripWaypoint fields in `vehicle_waypoints` are ignored.
    * All other Trip fields are ignored.
    * </pre>
    *
@@ -385,13 +395,13 @@ private static final long serialVersionUID = 0L;
     if (header_ != null) {
       output.writeMessage(1, getHeader());
     }
-    if (!getParentBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(parent_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, parent_);
     }
     if (trip_ != null) {
       output.writeMessage(4, getTrip());
     }
-    if (!getTripIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tripId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, tripId_);
     }
     unknownFields.writeTo(output);
@@ -407,14 +417,14 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getHeader());
     }
-    if (!getParentBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(parent_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, parent_);
     }
     if (trip_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, getTrip());
     }
-    if (!getTripIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tripId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, tripId_);
     }
     size += unknownFields.getSerializedSize();
@@ -909,8 +919,8 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object parent_ = "";
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -932,8 +942,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -956,8 +966,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -978,8 +988,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -995,8 +1005,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -1020,9 +1030,14 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object tripId_ = "";
     /**
      * <pre>
-     * Required. Unique Trip ID; must be unique per provider.  The actual
-     * format and value is opaque to the Fleet Engine and is determined
-     * by the provider.
+     * Required. Unique Trip ID; must be unique per provider.
+     * Subject to the following restrictions:
+     * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+     * '?', or '#'.
+     * 2. IDs are limited to a maximum length of 64 characters.
+     * 3. IDs must be valid Unicode strings.
+     * 4. IDs must be normalized according to Unicode Normalization Form C
+     * (http://www.unicode.org/reports/tr15/).
      * </pre>
      *
      * <code>string trip_id = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1042,9 +1057,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Unique Trip ID; must be unique per provider.  The actual
-     * format and value is opaque to the Fleet Engine and is determined
-     * by the provider.
+     * Required. Unique Trip ID; must be unique per provider.
+     * Subject to the following restrictions:
+     * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+     * '?', or '#'.
+     * 2. IDs are limited to a maximum length of 64 characters.
+     * 3. IDs must be valid Unicode strings.
+     * 4. IDs must be normalized according to Unicode Normalization Form C
+     * (http://www.unicode.org/reports/tr15/).
      * </pre>
      *
      * <code>string trip_id = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1065,9 +1085,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Unique Trip ID; must be unique per provider.  The actual
-     * format and value is opaque to the Fleet Engine and is determined
-     * by the provider.
+     * Required. Unique Trip ID; must be unique per provider.
+     * Subject to the following restrictions:
+     * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+     * '?', or '#'.
+     * 2. IDs are limited to a maximum length of 64 characters.
+     * 3. IDs must be valid Unicode strings.
+     * 4. IDs must be normalized according to Unicode Normalization Form C
+     * (http://www.unicode.org/reports/tr15/).
      * </pre>
      *
      * <code>string trip_id = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1086,9 +1111,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Unique Trip ID; must be unique per provider.  The actual
-     * format and value is opaque to the Fleet Engine and is determined
-     * by the provider.
+     * Required. Unique Trip ID; must be unique per provider.
+     * Subject to the following restrictions:
+     * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+     * '?', or '#'.
+     * 2. IDs are limited to a maximum length of 64 characters.
+     * 3. IDs must be valid Unicode strings.
+     * 4. IDs must be normalized according to Unicode Normalization Form C
+     * (http://www.unicode.org/reports/tr15/).
      * </pre>
      *
      * <code>string trip_id = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1102,9 +1132,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Unique Trip ID; must be unique per provider.  The actual
-     * format and value is opaque to the Fleet Engine and is determined
-     * by the provider.
+     * Required. Unique Trip ID; must be unique per provider.
+     * Subject to the following restrictions:
+     * 1. IDs must not contain any of the following ASCII characters: '/', ':',
+     * '?', or '#'.
+     * 2. IDs are limited to a maximum length of 64 characters.
+     * 3. IDs must be valid Unicode strings.
+     * 4. IDs must be normalized according to Unicode Normalization Form C
+     * (http://www.unicode.org/reports/tr15/).
      * </pre>
      *
      * <code>string trip_id = 5 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1130,15 +1165,15 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Trip entity to create.
      * When creating a Trip, the following fields are required:
-     * * trip_type
-     * * pickup_point
+     * * `trip_type`
+     * * `pickup_point`
      * The following fields are used if you provide them:
-     * * number_of_passengers
-     * * vehicle_id
-     * * dropoff_point
-     * * intermediate_destinations
-     * Only EXCLUSIVE trips support multiple destinations.
-     * When vehicle_id is set for a shared trip, you must supply
+     * * `number_of_passengers`
+     * * `vehicle_id`
+     * * `dropoff_point`
+     * * `intermediate_destinations`
+     * Only `EXCLUSIVE` trips support multiple destinations.
+     * When `vehicle_id` is set for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints for the vehicle, otherwise the waypoint order will be
      * undetermined.
@@ -1149,7 +1184,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * All other Trip fields are ignored.
      * </pre>
      *
@@ -1163,15 +1198,15 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Trip entity to create.
      * When creating a Trip, the following fields are required:
-     * * trip_type
-     * * pickup_point
+     * * `trip_type`
+     * * `pickup_point`
      * The following fields are used if you provide them:
-     * * number_of_passengers
-     * * vehicle_id
-     * * dropoff_point
-     * * intermediate_destinations
-     * Only EXCLUSIVE trips support multiple destinations.
-     * When vehicle_id is set for a shared trip, you must supply
+     * * `number_of_passengers`
+     * * `vehicle_id`
+     * * `dropoff_point`
+     * * `intermediate_destinations`
+     * Only `EXCLUSIVE` trips support multiple destinations.
+     * When `vehicle_id` is set for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints for the vehicle, otherwise the waypoint order will be
      * undetermined.
@@ -1182,7 +1217,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * All other Trip fields are ignored.
      * </pre>
      *
@@ -1200,15 +1235,15 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Trip entity to create.
      * When creating a Trip, the following fields are required:
-     * * trip_type
-     * * pickup_point
+     * * `trip_type`
+     * * `pickup_point`
      * The following fields are used if you provide them:
-     * * number_of_passengers
-     * * vehicle_id
-     * * dropoff_point
-     * * intermediate_destinations
-     * Only EXCLUSIVE trips support multiple destinations.
-     * When vehicle_id is set for a shared trip, you must supply
+     * * `number_of_passengers`
+     * * `vehicle_id`
+     * * `dropoff_point`
+     * * `intermediate_destinations`
+     * Only `EXCLUSIVE` trips support multiple destinations.
+     * When `vehicle_id` is set for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints for the vehicle, otherwise the waypoint order will be
      * undetermined.
@@ -1219,7 +1254,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * All other Trip fields are ignored.
      * </pre>
      *
@@ -1242,15 +1277,15 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Trip entity to create.
      * When creating a Trip, the following fields are required:
-     * * trip_type
-     * * pickup_point
+     * * `trip_type`
+     * * `pickup_point`
      * The following fields are used if you provide them:
-     * * number_of_passengers
-     * * vehicle_id
-     * * dropoff_point
-     * * intermediate_destinations
-     * Only EXCLUSIVE trips support multiple destinations.
-     * When vehicle_id is set for a shared trip, you must supply
+     * * `number_of_passengers`
+     * * `vehicle_id`
+     * * `dropoff_point`
+     * * `intermediate_destinations`
+     * Only `EXCLUSIVE` trips support multiple destinations.
+     * When `vehicle_id` is set for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints for the vehicle, otherwise the waypoint order will be
      * undetermined.
@@ -1261,7 +1296,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * All other Trip fields are ignored.
      * </pre>
      *
@@ -1282,15 +1317,15 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Trip entity to create.
      * When creating a Trip, the following fields are required:
-     * * trip_type
-     * * pickup_point
+     * * `trip_type`
+     * * `pickup_point`
      * The following fields are used if you provide them:
-     * * number_of_passengers
-     * * vehicle_id
-     * * dropoff_point
-     * * intermediate_destinations
-     * Only EXCLUSIVE trips support multiple destinations.
-     * When vehicle_id is set for a shared trip, you must supply
+     * * `number_of_passengers`
+     * * `vehicle_id`
+     * * `dropoff_point`
+     * * `intermediate_destinations`
+     * Only `EXCLUSIVE` trips support multiple destinations.
+     * When `vehicle_id` is set for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints for the vehicle, otherwise the waypoint order will be
      * undetermined.
@@ -1301,7 +1336,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * All other Trip fields are ignored.
      * </pre>
      *
@@ -1326,15 +1361,15 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Trip entity to create.
      * When creating a Trip, the following fields are required:
-     * * trip_type
-     * * pickup_point
+     * * `trip_type`
+     * * `pickup_point`
      * The following fields are used if you provide them:
-     * * number_of_passengers
-     * * vehicle_id
-     * * dropoff_point
-     * * intermediate_destinations
-     * Only EXCLUSIVE trips support multiple destinations.
-     * When vehicle_id is set for a shared trip, you must supply
+     * * `number_of_passengers`
+     * * `vehicle_id`
+     * * `dropoff_point`
+     * * `intermediate_destinations`
+     * Only `EXCLUSIVE` trips support multiple destinations.
+     * When `vehicle_id` is set for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints for the vehicle, otherwise the waypoint order will be
      * undetermined.
@@ -1345,7 +1380,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * All other Trip fields are ignored.
      * </pre>
      *
@@ -1366,15 +1401,15 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Trip entity to create.
      * When creating a Trip, the following fields are required:
-     * * trip_type
-     * * pickup_point
+     * * `trip_type`
+     * * `pickup_point`
      * The following fields are used if you provide them:
-     * * number_of_passengers
-     * * vehicle_id
-     * * dropoff_point
-     * * intermediate_destinations
-     * Only EXCLUSIVE trips support multiple destinations.
-     * When vehicle_id is set for a shared trip, you must supply
+     * * `number_of_passengers`
+     * * `vehicle_id`
+     * * `dropoff_point`
+     * * `intermediate_destinations`
+     * Only `EXCLUSIVE` trips support multiple destinations.
+     * When `vehicle_id` is set for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints for the vehicle, otherwise the waypoint order will be
      * undetermined.
@@ -1385,7 +1420,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * All other Trip fields are ignored.
      * </pre>
      *
@@ -1400,15 +1435,15 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Trip entity to create.
      * When creating a Trip, the following fields are required:
-     * * trip_type
-     * * pickup_point
+     * * `trip_type`
+     * * `pickup_point`
      * The following fields are used if you provide them:
-     * * number_of_passengers
-     * * vehicle_id
-     * * dropoff_point
-     * * intermediate_destinations
-     * Only EXCLUSIVE trips support multiple destinations.
-     * When vehicle_id is set for a shared trip, you must supply
+     * * `number_of_passengers`
+     * * `vehicle_id`
+     * * `dropoff_point`
+     * * `intermediate_destinations`
+     * Only `EXCLUSIVE` trips support multiple destinations.
+     * When `vehicle_id` is set for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints for the vehicle, otherwise the waypoint order will be
      * undetermined.
@@ -1419,7 +1454,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * All other Trip fields are ignored.
      * </pre>
      *
@@ -1437,15 +1472,15 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Trip entity to create.
      * When creating a Trip, the following fields are required:
-     * * trip_type
-     * * pickup_point
+     * * `trip_type`
+     * * `pickup_point`
      * The following fields are used if you provide them:
-     * * number_of_passengers
-     * * vehicle_id
-     * * dropoff_point
-     * * intermediate_destinations
-     * Only EXCLUSIVE trips support multiple destinations.
-     * When vehicle_id is set for a shared trip, you must supply
+     * * `number_of_passengers`
+     * * `vehicle_id`
+     * * `dropoff_point`
+     * * `intermediate_destinations`
+     * Only `EXCLUSIVE` trips support multiple destinations.
+     * When `vehicle_id` is set for a shared trip, you must supply
      * the list of `Trip.vehicle_waypoints` to specify the order of the remaining
      * waypoints for the vehicle, otherwise the waypoint order will be
      * undetermined.
@@ -1456,7 +1491,7 @@ private static final long serialVersionUID = 0L;
      * destinations come before the drop-off point. An `EXCLUSIVE` trip's
      * waypoints must not interleave with any other trips.
      * The `trip_id`, `waypoint_type` and `location` fields are used, and all
-     * other TripWaypoint fields in vehicle_waypoints are ignored.
+     * other TripWaypoint fields in `vehicle_waypoints` are ignored.
      * All other Trip fields are ignored.
      * </pre>
      *
