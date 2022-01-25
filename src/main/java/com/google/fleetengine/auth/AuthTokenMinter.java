@@ -284,6 +284,33 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
   }
 
   /**
+   * Returns a non expired Fleet Engine Token that was signed with the trusted delivery driver
+   * signer.
+   *
+   * <p>Tokens will have an expiration of at least {@link
+   * FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION}.
+   *
+   * @param vehicleClaims delivery vehicle claims
+   * @param taskClaims task claims
+   * @throws SigningTokenException if the trusted delivery driver signer was not set, or if there
+   *     is an issue while signing the token.
+   * @return Fleet Engine token with the "Trusted Delivery Driver" role, guaranteed to be valid
+   *     for {@link FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION} minutes.
+   */
+  public FleetEngineToken getTrustedDeliveryVehicleToken(DeliveryVehicleClaims vehicleClaims,
+      TaskClaims taskClaims)
+      throws SigningTokenException {
+    if (trustedDeliveryDriverSigner() == null) {
+      throw new SigningTokenException(
+          "Unable to sign trusted delivery driver tokens due to the trusted delivery driver "
+              + "signer not being set.");
+    }
+    FleetEngineToken unsignedToken =
+        tokenFactory().createTrustedDeliveryDriverToken(vehicleClaims, taskClaims);
+    return tokenStateManager().signToken(trustedDeliveryDriverSigner(), unsignedToken);
+  }
+
+  /**
    * Returns a non expired Fleet Engine Token that was signed with the delivery consumer signer.
    *
    * <p>Tokens will have an expiration of at least {@link

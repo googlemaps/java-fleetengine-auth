@@ -15,6 +15,7 @@
 package com.google.fleetengine.auth.token.factory;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableMap;
 import com.google.fleetengine.auth.token.DeliveryFleetReaderClaims;
 import com.google.fleetengine.auth.token.DeliveryServerTokenClaims;
 import com.google.fleetengine.auth.token.DeliveryVehicleClaims;
@@ -118,6 +119,15 @@ public final class FleetEngineTokenFactory implements TokenFactory {
 
   /** {@inheritDoc} */
   @Override
+  public FleetEngineToken createTrustedDeliveryDriverToken(
+      DeliveryVehicleClaims vehicleClaims, TaskClaims taskClaims) {
+    Objects.requireNonNull(vehicleClaims);
+    Objects.requireNonNull(taskClaims);
+    return createToken(FleetEngineTokenType.TRUSTED_DELIVERY_DRIVER, vehicleClaims, taskClaims);
+  }
+
+  /** {@inheritDoc} */
+  @Override
   public FleetEngineToken createDeliveryFleetReaderToken() {
     return createToken(
         FleetEngineTokenType.DELIVERY_FLEET_READER, DeliveryFleetReaderClaims.create());
@@ -131,7 +141,7 @@ public final class FleetEngineTokenFactory implements TokenFactory {
   }
 
   private FleetEngineToken createToken(
-      FleetEngineTokenType tokenType, FleetEngineTokenClaims claims) {
+      FleetEngineTokenType tokenType, FleetEngineTokenClaims... claims) {
     Instant creationInstant = Instant.now(clock);
     Instant expirationInstant = creationInstant.plus(TOKEN_EXPIRATION);
 
@@ -140,7 +150,45 @@ public final class FleetEngineTokenFactory implements TokenFactory {
         .setCreationTimestamp(Date.from(creationInstant))
         .setExpirationTimestamp(Date.from(expirationInstant))
         .setAudience(settings.audience())
-        .setAuthorizationClaims(claims)
+        .setAuthorizationClaims(mergeClaims(claims))
         .build();
   }
+
+  private FleetEngineTokenClaims mergeClaims(FleetEngineTokenClaims[] claims) {
+    if (claims.length == 1) {
+      return claims[0];
+    }
+
+    boolean isWildcard = true;
+    ImmutableMap.Builder<String, String> builder = ImmutableMap.builder();
+
+    for (FleetEngineTokenClaims c : claims) {
+      builder.putAll(c.toMap());
+
+      // Flag as wildcard if all claims are wildcards
+      isWildcard = isWildcard && c.isWildcard();
+    }
+    ImmutableMap<String, String> map = builder.build();
+    return new MergedClaims(map, isWildcard);
+  }
+
+  private static class MergedClaims implements FleetEngineTokenClaims {
+    private final ImmutableMap<String, String> map;
+    private final boolean isWildcard;
+
+    public MergedClaims(ImmutableMap<String, String> map, boolean isWildcard) {
+      this.map = map;
+      this.isWildcard = isWildcard;
+    }
+
+    @Override
+    public ImmutableMap<String, String> toMap() {
+      return map;
+    }
+
+    @Override
+    public boolean isWildcard() {
+      return isWildcard;
+    }
+  };
 }

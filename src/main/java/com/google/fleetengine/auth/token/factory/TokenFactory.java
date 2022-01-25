@@ -78,6 +78,13 @@ public interface TokenFactory {
 
   /**
    * Creates tokens for the {@link
+   * com.google.fleetengine.auth.token.FleetEngineTokenType#TRUSTED_DELIVERY_DRIVER} role.
+   */
+  FleetEngineToken createTrustedDeliveryDriverToken(
+      DeliveryVehicleClaims vehicleClaims, TaskClaims taskClaims);
+
+  /**
+   * Creates tokens for the {@link
    * com.google.fleetengine.auth.token.FleetEngineTokenType#DELIVERY_FLEET_READER} role.
    */
   FleetEngineToken createDeliveryFleetReaderToken();

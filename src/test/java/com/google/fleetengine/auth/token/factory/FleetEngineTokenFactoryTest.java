@@ -24,8 +24,10 @@ import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.google.fleetengine.auth.token.DeliveryVehicleClaims;
 import com.google.fleetengine.auth.token.FleetEngineToken;
 import com.google.fleetengine.auth.token.ServerTokenClaims;
+import com.google.fleetengine.auth.token.TaskClaims;
 import com.google.fleetengine.auth.token.TripClaims;
 import com.google.fleetengine.auth.token.VehicleClaims;
 import java.time.Clock;
@@ -41,7 +43,11 @@ public class FleetEngineTokenFactoryTest {
   private static final Instant ISSUED_INSTANT = Instant.EPOCH;
   private static final String TEST_VEHICLE_ID = "Vehicle Id to test with";
   private static final String TEST_TRIP_ID = "Trip Id to test with";
+  private static final String TEST_TASK_ID = "Task Id to test with";
   private static final String FAKE_AUDIENCE = "https://fake.crowd";
+  private static final String CLAIM_DELIVERY_VEHICLE_ID = "deliveryvehicleid";
+  private static final String CLAIM_TASK_ID = "taskid";
+
 
   private Clock clock;
 
@@ -134,5 +140,62 @@ public class FleetEngineTokenFactoryTest {
 
     assertThrows(NullPointerException.class,
         () -> factory.createCustomToken(null));
+  }
+
+  @Test
+  public void createTrustedDeliveryDriverToken_whenVehicleClaimsOrTaskClaimsNull_throwsException() {
+    FleetEngineTokenFactorySettings settings =
+        FleetEngineTokenFactorySettings.builder().setAudience(FAKE_AUDIENCE).build();
+    FleetEngineTokenFactory factory = new FleetEngineTokenFactory(clock, settings);
+
+    assertThrows(NullPointerException.class,
+        () -> factory.createTrustedDeliveryDriverToken(DeliveryVehicleClaims.create(), null));
+    assertThrows(NullPointerException.class,
+        () -> factory.createTrustedDeliveryDriverToken(null, TaskClaims.create()));
+  }
+
+  @Test
+  public void createTrustedDriverToken_whenVehicleClaimsAndTaskClaimsAreWild_claimIsWild() {
+    FleetEngineTokenFactorySettings settings =
+        FleetEngineTokenFactorySettings.builder().setAudience(FAKE_AUDIENCE).build();
+    FleetEngineTokenFactory factory = new FleetEngineTokenFactory(clock, settings);
+
+    FleetEngineToken token = factory.createTrustedDeliveryDriverToken(
+        DeliveryVehicleClaims.create(), TaskClaims.create());
+    assertThat(token.authorizationClaims().isWildcard()).isTrue();
+  }
+
+  @Test
+  public void createTrustedDriverToken_whenVehicleClaimsNOTWildAndTaskClaimsWild_claimIsNOTWild() {
+    FleetEngineTokenFactorySettings settings =
+        FleetEngineTokenFactorySettings.builder().setAudience(FAKE_AUDIENCE).build();
+    FleetEngineTokenFactory factory = new FleetEngineTokenFactory(clock, settings);
+
+    FleetEngineToken token = factory.createTrustedDeliveryDriverToken(
+        DeliveryVehicleClaims.create(TEST_VEHICLE_ID), TaskClaims.create());
+    assertThat(token.authorizationClaims().isWildcard()).isFalse();
+  }
+
+  @Test
+  public void createTrustedDriverToken_whenVehicleClaimsWildAndTaskClaimsNOTWild_claimIsNOTWild() {
+    FleetEngineTokenFactorySettings settings =
+        FleetEngineTokenFactorySettings.builder().setAudience(FAKE_AUDIENCE).build();
+    FleetEngineTokenFactory factory = new FleetEngineTokenFactory(clock, settings);
+
+    FleetEngineToken token = factory.createTrustedDeliveryDriverToken(
+        DeliveryVehicleClaims.create(), TaskClaims.create(TEST_TASK_ID));
+    assertThat(token.authorizationClaims().isWildcard()).isFalse();
+  }
+
+  @Test
+  public void createTrustedDriverToken_whenVehicleClaimsAndTaskClaimsSet_claimValuesCorrect() {
+    FleetEngineTokenFactorySettings settings =
+        FleetEngineTokenFactorySettings.builder().setAudience(FAKE_AUDIENCE).build();
+    FleetEngineTokenFactory factory = new FleetEngineTokenFactory(clock, settings);
+
+    FleetEngineToken token = factory.createTrustedDeliveryDriverToken(
+        DeliveryVehicleClaims.create(TEST_VEHICLE_ID), TaskClaims.create(TEST_TASK_ID));
+    assertThat(token.authorizationClaims().toMap()).containsEntry(CLAIM_DELIVERY_VEHICLE_ID, TEST_VEHICLE_ID);
+    assertThat(token.authorizationClaims().toMap()).containsEntry(CLAIM_TASK_ID, TEST_TASK_ID);
   }
 }
