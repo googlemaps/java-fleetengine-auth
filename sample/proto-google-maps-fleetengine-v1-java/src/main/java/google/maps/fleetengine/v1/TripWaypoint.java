@@ -24,6 +24,7 @@ private static final long serialVersionUID = 0L;
     tripId_ = "";
     waypointType_ = 0;
     pathToWaypoint_ = java.util.Collections.emptyList();
+    encodedPathToWaypoint_ = "";
   }
 
   @java.lang.Override
@@ -91,6 +92,12 @@ private static final long serialVersionUID = 0L;
                 input.readMessage(com.google.type.LatLng.parser(), extensionRegistry));
             break;
           }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            encodedPathToWaypoint_ = s;
+            break;
+          }
           case 50: {
             com.google.protobuf.Int32Value.Builder subBuilder = null;
             if (distanceMeters_ != null) {
@@ -126,6 +133,19 @@ private static final long serialVersionUID = 0L;
             if (subBuilder != null) {
               subBuilder.mergeFrom(duration_);
               duration_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
+          case 82: {
+            google.maps.fleetengine.v1.ConsumableTrafficPolyline.Builder subBuilder = null;
+            if (trafficToWaypoint_ != null) {
+              subBuilder = trafficToWaypoint_.toBuilder();
+            }
+            trafficToWaypoint_ = input.readMessage(google.maps.fleetengine.v1.ConsumableTrafficPolyline.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(trafficToWaypoint_);
+              trafficToWaypoint_ = subBuilder.buildPartial();
             }
 
             break;
@@ -343,15 +363,106 @@ private static final long serialVersionUID = 0L;
     return pathToWaypoint_.get(index);
   }
 
+  public static final int ENCODED_PATH_TO_WAYPOINT_FIELD_NUMBER = 5;
+  private volatile java.lang.Object encodedPathToWaypoint_;
+  /**
+   * <pre>
+   * The path calculated by the server from the previous waypoint to the current
+   * waypoint. Decoding is not yet supported.
+   * </pre>
+   *
+   * <code>string encoded_path_to_waypoint = 5;</code>
+   * @return The encodedPathToWaypoint.
+   */
+  @java.lang.Override
+  public java.lang.String getEncodedPathToWaypoint() {
+    java.lang.Object ref = encodedPathToWaypoint_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      encodedPathToWaypoint_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * The path calculated by the server from the previous waypoint to the current
+   * waypoint. Decoding is not yet supported.
+   * </pre>
+   *
+   * <code>string encoded_path_to_waypoint = 5;</code>
+   * @return The bytes for encodedPathToWaypoint.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getEncodedPathToWaypointBytes() {
+    java.lang.Object ref = encodedPathToWaypoint_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      encodedPathToWaypoint_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int TRAFFIC_TO_WAYPOINT_FIELD_NUMBER = 10;
+  private google.maps.fleetengine.v1.ConsumableTrafficPolyline trafficToWaypoint_;
+  /**
+   * <pre>
+   * The traffic conditions along the path to this waypoint.
+   * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+   * Solution customers.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+   * @return Whether the trafficToWaypoint field is set.
+   */
+  @java.lang.Override
+  public boolean hasTrafficToWaypoint() {
+    return trafficToWaypoint_ != null;
+  }
+  /**
+   * <pre>
+   * The traffic conditions along the path to this waypoint.
+   * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+   * Solution customers.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+   * @return The trafficToWaypoint.
+   */
+  @java.lang.Override
+  public google.maps.fleetengine.v1.ConsumableTrafficPolyline getTrafficToWaypoint() {
+    return trafficToWaypoint_ == null ? google.maps.fleetengine.v1.ConsumableTrafficPolyline.getDefaultInstance() : trafficToWaypoint_;
+  }
+  /**
+   * <pre>
+   * The traffic conditions along the path to this waypoint.
+   * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+   * Solution customers.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+   */
+  @java.lang.Override
+  public google.maps.fleetengine.v1.ConsumableTrafficPolylineOrBuilder getTrafficToWaypointOrBuilder() {
+    return getTrafficToWaypoint();
+  }
+
   public static final int DISTANCE_METERS_FIELD_NUMBER = 6;
   private com.google.protobuf.Int32Value distanceMeters_;
   /**
    * <pre>
    * The path distance calculated by Fleet Engine from the previous waypoint to
-   * the current waypoint.
-   * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-   * or Trip.remaining_waypoints), then the starting point is the vehicle's
-   * location recorded at the time this TripWaypoint was added to the list.
+   * the current waypoint. If the waypoint is the first waypoint in the list
+   * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+   * value of this field is undefined.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -364,10 +475,9 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The path distance calculated by Fleet Engine from the previous waypoint to
-   * the current waypoint.
-   * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-   * or Trip.remaining_waypoints), then the starting point is the vehicle's
-   * location recorded at the time this TripWaypoint was added to the list.
+   * the current waypoint. If the waypoint is the first waypoint in the list
+   * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+   * value of this field is undefined.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -380,10 +490,9 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The path distance calculated by Fleet Engine from the previous waypoint to
-   * the current waypoint.
-   * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-   * or Trip.remaining_waypoints), then the starting point is the vehicle's
-   * location recorded at the time this TripWaypoint was added to the list.
+   * the current waypoint. If the waypoint is the first waypoint in the list
+   * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+   * value of this field is undefined.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -435,11 +544,10 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Duration duration_;
   /**
    * <pre>
-   * The travel time from previous waypoint to this point.
-   * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-   * or Trip.remaining_waypoints), then the starting point is the vehicle's
-   * location recorded at the time that this waypoint was added to the list.
-   * This field is filled only when returning Trip/Vehicle data.
+   * The travel time from previous waypoint to this point. If the waypoint is
+   * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+   * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+   * time to the waypoint.
    * </pre>
    *
    * <code>.google.protobuf.Duration duration = 8;</code>
@@ -451,11 +559,10 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The travel time from previous waypoint to this point.
-   * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-   * or Trip.remaining_waypoints), then the starting point is the vehicle's
-   * location recorded at the time that this waypoint was added to the list.
-   * This field is filled only when returning Trip/Vehicle data.
+   * The travel time from previous waypoint to this point. If the waypoint is
+   * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+   * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+   * time to the waypoint.
    * </pre>
    *
    * <code>.google.protobuf.Duration duration = 8;</code>
@@ -467,11 +574,10 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The travel time from previous waypoint to this point.
-   * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-   * or Trip.remaining_waypoints), then the starting point is the vehicle's
-   * location recorded at the time that this waypoint was added to the list.
-   * This field is filled only when returning Trip/Vehicle data.
+   * The travel time from previous waypoint to this point. If the waypoint is
+   * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+   * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+   * time to the waypoint.
    * </pre>
    *
    * <code>.google.protobuf.Duration duration = 8;</code>
@@ -498,7 +604,7 @@ private static final long serialVersionUID = 0L;
     if (location_ != null) {
       output.writeMessage(1, getLocation());
     }
-    if (!getTripIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tripId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, tripId_);
     }
     if (waypointType_ != google.maps.fleetengine.v1.WaypointType.UNKNOWN_WAYPOINT_TYPE.getNumber()) {
@@ -506,6 +612,9 @@ private static final long serialVersionUID = 0L;
     }
     for (int i = 0; i < pathToWaypoint_.size(); i++) {
       output.writeMessage(4, pathToWaypoint_.get(i));
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(encodedPathToWaypoint_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, encodedPathToWaypoint_);
     }
     if (distanceMeters_ != null) {
       output.writeMessage(6, getDistanceMeters());
@@ -515,6 +624,9 @@ private static final long serialVersionUID = 0L;
     }
     if (duration_ != null) {
       output.writeMessage(8, getDuration());
+    }
+    if (trafficToWaypoint_ != null) {
+      output.writeMessage(10, getTrafficToWaypoint());
     }
     unknownFields.writeTo(output);
   }
@@ -529,7 +641,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getLocation());
     }
-    if (!getTripIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tripId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, tripId_);
     }
     if (waypointType_ != google.maps.fleetengine.v1.WaypointType.UNKNOWN_WAYPOINT_TYPE.getNumber()) {
@@ -539,6 +651,9 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < pathToWaypoint_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, pathToWaypoint_.get(i));
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(encodedPathToWaypoint_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, encodedPathToWaypoint_);
     }
     if (distanceMeters_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -551,6 +666,10 @@ private static final long serialVersionUID = 0L;
     if (duration_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(8, getDuration());
+    }
+    if (trafficToWaypoint_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(10, getTrafficToWaypoint());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -577,6 +696,13 @@ private static final long serialVersionUID = 0L;
     if (waypointType_ != other.waypointType_) return false;
     if (!getPathToWaypointList()
         .equals(other.getPathToWaypointList())) return false;
+    if (!getEncodedPathToWaypoint()
+        .equals(other.getEncodedPathToWaypoint())) return false;
+    if (hasTrafficToWaypoint() != other.hasTrafficToWaypoint()) return false;
+    if (hasTrafficToWaypoint()) {
+      if (!getTrafficToWaypoint()
+          .equals(other.getTrafficToWaypoint())) return false;
+    }
     if (hasDistanceMeters() != other.hasDistanceMeters()) return false;
     if (hasDistanceMeters()) {
       if (!getDistanceMeters()
@@ -614,6 +740,12 @@ private static final long serialVersionUID = 0L;
     if (getPathToWaypointCount() > 0) {
       hash = (37 * hash) + PATH_TO_WAYPOINT_FIELD_NUMBER;
       hash = (53 * hash) + getPathToWaypointList().hashCode();
+    }
+    hash = (37 * hash) + ENCODED_PATH_TO_WAYPOINT_FIELD_NUMBER;
+    hash = (53 * hash) + getEncodedPathToWaypoint().hashCode();
+    if (hasTrafficToWaypoint()) {
+      hash = (37 * hash) + TRAFFIC_TO_WAYPOINT_FIELD_NUMBER;
+      hash = (53 * hash) + getTrafficToWaypoint().hashCode();
     }
     if (hasDistanceMeters()) {
       hash = (37 * hash) + DISTANCE_METERS_FIELD_NUMBER;
@@ -782,6 +914,14 @@ private static final long serialVersionUID = 0L;
       } else {
         pathToWaypointBuilder_.clear();
       }
+      encodedPathToWaypoint_ = "";
+
+      if (trafficToWaypointBuilder_ == null) {
+        trafficToWaypoint_ = null;
+      } else {
+        trafficToWaypoint_ = null;
+        trafficToWaypointBuilder_ = null;
+      }
       if (distanceMetersBuilder_ == null) {
         distanceMeters_ = null;
       } else {
@@ -842,6 +982,12 @@ private static final long serialVersionUID = 0L;
         result.pathToWaypoint_ = pathToWaypoint_;
       } else {
         result.pathToWaypoint_ = pathToWaypointBuilder_.build();
+      }
+      result.encodedPathToWaypoint_ = encodedPathToWaypoint_;
+      if (trafficToWaypointBuilder_ == null) {
+        result.trafficToWaypoint_ = trafficToWaypoint_;
+      } else {
+        result.trafficToWaypoint_ = trafficToWaypointBuilder_.build();
       }
       if (distanceMetersBuilder_ == null) {
         result.distanceMeters_ = distanceMeters_;
@@ -941,6 +1087,13 @@ private static final long serialVersionUID = 0L;
             pathToWaypointBuilder_.addAllMessages(other.pathToWaypoint_);
           }
         }
+      }
+      if (!other.getEncodedPathToWaypoint().isEmpty()) {
+        encodedPathToWaypoint_ = other.encodedPathToWaypoint_;
+        onChanged();
+      }
+      if (other.hasTrafficToWaypoint()) {
+        mergeTrafficToWaypoint(other.getTrafficToWaypoint());
       }
       if (other.hasDistanceMeters()) {
         mergeDistanceMeters(other.getDistanceMeters());
@@ -1641,16 +1794,289 @@ private static final long serialVersionUID = 0L;
       return pathToWaypointBuilder_;
     }
 
+    private java.lang.Object encodedPathToWaypoint_ = "";
+    /**
+     * <pre>
+     * The path calculated by the server from the previous waypoint to the current
+     * waypoint. Decoding is not yet supported.
+     * </pre>
+     *
+     * <code>string encoded_path_to_waypoint = 5;</code>
+     * @return The encodedPathToWaypoint.
+     */
+    public java.lang.String getEncodedPathToWaypoint() {
+      java.lang.Object ref = encodedPathToWaypoint_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        encodedPathToWaypoint_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * The path calculated by the server from the previous waypoint to the current
+     * waypoint. Decoding is not yet supported.
+     * </pre>
+     *
+     * <code>string encoded_path_to_waypoint = 5;</code>
+     * @return The bytes for encodedPathToWaypoint.
+     */
+    public com.google.protobuf.ByteString
+        getEncodedPathToWaypointBytes() {
+      java.lang.Object ref = encodedPathToWaypoint_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        encodedPathToWaypoint_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * The path calculated by the server from the previous waypoint to the current
+     * waypoint. Decoding is not yet supported.
+     * </pre>
+     *
+     * <code>string encoded_path_to_waypoint = 5;</code>
+     * @param value The encodedPathToWaypoint to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEncodedPathToWaypoint(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      encodedPathToWaypoint_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * The path calculated by the server from the previous waypoint to the current
+     * waypoint. Decoding is not yet supported.
+     * </pre>
+     *
+     * <code>string encoded_path_to_waypoint = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEncodedPathToWaypoint() {
+      
+      encodedPathToWaypoint_ = getDefaultInstance().getEncodedPathToWaypoint();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * The path calculated by the server from the previous waypoint to the current
+     * waypoint. Decoding is not yet supported.
+     * </pre>
+     *
+     * <code>string encoded_path_to_waypoint = 5;</code>
+     * @param value The bytes for encodedPathToWaypoint to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEncodedPathToWaypointBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      encodedPathToWaypoint_ = value;
+      onChanged();
+      return this;
+    }
+
+    private google.maps.fleetengine.v1.ConsumableTrafficPolyline trafficToWaypoint_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        google.maps.fleetengine.v1.ConsumableTrafficPolyline, google.maps.fleetengine.v1.ConsumableTrafficPolyline.Builder, google.maps.fleetengine.v1.ConsumableTrafficPolylineOrBuilder> trafficToWaypointBuilder_;
+    /**
+     * <pre>
+     * The traffic conditions along the path to this waypoint.
+     * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+     * Solution customers.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+     * @return Whether the trafficToWaypoint field is set.
+     */
+    public boolean hasTrafficToWaypoint() {
+      return trafficToWaypointBuilder_ != null || trafficToWaypoint_ != null;
+    }
+    /**
+     * <pre>
+     * The traffic conditions along the path to this waypoint.
+     * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+     * Solution customers.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+     * @return The trafficToWaypoint.
+     */
+    public google.maps.fleetengine.v1.ConsumableTrafficPolyline getTrafficToWaypoint() {
+      if (trafficToWaypointBuilder_ == null) {
+        return trafficToWaypoint_ == null ? google.maps.fleetengine.v1.ConsumableTrafficPolyline.getDefaultInstance() : trafficToWaypoint_;
+      } else {
+        return trafficToWaypointBuilder_.getMessage();
+      }
+    }
+    /**
+     * <pre>
+     * The traffic conditions along the path to this waypoint.
+     * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+     * Solution customers.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+     */
+    public Builder setTrafficToWaypoint(google.maps.fleetengine.v1.ConsumableTrafficPolyline value) {
+      if (trafficToWaypointBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        trafficToWaypoint_ = value;
+        onChanged();
+      } else {
+        trafficToWaypointBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * The traffic conditions along the path to this waypoint.
+     * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+     * Solution customers.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+     */
+    public Builder setTrafficToWaypoint(
+        google.maps.fleetengine.v1.ConsumableTrafficPolyline.Builder builderForValue) {
+      if (trafficToWaypointBuilder_ == null) {
+        trafficToWaypoint_ = builderForValue.build();
+        onChanged();
+      } else {
+        trafficToWaypointBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * The traffic conditions along the path to this waypoint.
+     * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+     * Solution customers.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+     */
+    public Builder mergeTrafficToWaypoint(google.maps.fleetengine.v1.ConsumableTrafficPolyline value) {
+      if (trafficToWaypointBuilder_ == null) {
+        if (trafficToWaypoint_ != null) {
+          trafficToWaypoint_ =
+            google.maps.fleetengine.v1.ConsumableTrafficPolyline.newBuilder(trafficToWaypoint_).mergeFrom(value).buildPartial();
+        } else {
+          trafficToWaypoint_ = value;
+        }
+        onChanged();
+      } else {
+        trafficToWaypointBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * The traffic conditions along the path to this waypoint.
+     * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+     * Solution customers.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+     */
+    public Builder clearTrafficToWaypoint() {
+      if (trafficToWaypointBuilder_ == null) {
+        trafficToWaypoint_ = null;
+        onChanged();
+      } else {
+        trafficToWaypoint_ = null;
+        trafficToWaypointBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * The traffic conditions along the path to this waypoint.
+     * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+     * Solution customers.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+     */
+    public google.maps.fleetengine.v1.ConsumableTrafficPolyline.Builder getTrafficToWaypointBuilder() {
+      
+      onChanged();
+      return getTrafficToWaypointFieldBuilder().getBuilder();
+    }
+    /**
+     * <pre>
+     * The traffic conditions along the path to this waypoint.
+     * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+     * Solution customers.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+     */
+    public google.maps.fleetengine.v1.ConsumableTrafficPolylineOrBuilder getTrafficToWaypointOrBuilder() {
+      if (trafficToWaypointBuilder_ != null) {
+        return trafficToWaypointBuilder_.getMessageOrBuilder();
+      } else {
+        return trafficToWaypoint_ == null ?
+            google.maps.fleetengine.v1.ConsumableTrafficPolyline.getDefaultInstance() : trafficToWaypoint_;
+      }
+    }
+    /**
+     * <pre>
+     * The traffic conditions along the path to this waypoint.
+     * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+     * Solution customers.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        google.maps.fleetengine.v1.ConsumableTrafficPolyline, google.maps.fleetengine.v1.ConsumableTrafficPolyline.Builder, google.maps.fleetengine.v1.ConsumableTrafficPolylineOrBuilder> 
+        getTrafficToWaypointFieldBuilder() {
+      if (trafficToWaypointBuilder_ == null) {
+        trafficToWaypointBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            google.maps.fleetengine.v1.ConsumableTrafficPolyline, google.maps.fleetengine.v1.ConsumableTrafficPolyline.Builder, google.maps.fleetengine.v1.ConsumableTrafficPolylineOrBuilder>(
+                getTrafficToWaypoint(),
+                getParentForChildren(),
+                isClean());
+        trafficToWaypoint_ = null;
+      }
+      return trafficToWaypointBuilder_;
+    }
+
     private com.google.protobuf.Int32Value distanceMeters_;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Int32Value, com.google.protobuf.Int32Value.Builder, com.google.protobuf.Int32ValueOrBuilder> distanceMetersBuilder_;
     /**
      * <pre>
      * The path distance calculated by Fleet Engine from the previous waypoint to
-     * the current waypoint.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time this TripWaypoint was added to the list.
+     * the current waypoint. If the waypoint is the first waypoint in the list
+     * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+     * value of this field is undefined.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -1662,10 +2088,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The path distance calculated by Fleet Engine from the previous waypoint to
-     * the current waypoint.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time this TripWaypoint was added to the list.
+     * the current waypoint. If the waypoint is the first waypoint in the list
+     * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+     * value of this field is undefined.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -1681,10 +2106,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The path distance calculated by Fleet Engine from the previous waypoint to
-     * the current waypoint.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time this TripWaypoint was added to the list.
+     * the current waypoint. If the waypoint is the first waypoint in the list
+     * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+     * value of this field is undefined.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -1705,10 +2129,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The path distance calculated by Fleet Engine from the previous waypoint to
-     * the current waypoint.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time this TripWaypoint was added to the list.
+     * the current waypoint. If the waypoint is the first waypoint in the list
+     * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+     * value of this field is undefined.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -1727,10 +2150,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The path distance calculated by Fleet Engine from the previous waypoint to
-     * the current waypoint.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time this TripWaypoint was added to the list.
+     * the current waypoint. If the waypoint is the first waypoint in the list
+     * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+     * value of this field is undefined.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -1753,10 +2175,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The path distance calculated by Fleet Engine from the previous waypoint to
-     * the current waypoint.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time this TripWaypoint was added to the list.
+     * the current waypoint. If the waypoint is the first waypoint in the list
+     * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+     * value of this field is undefined.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -1775,10 +2196,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The path distance calculated by Fleet Engine from the previous waypoint to
-     * the current waypoint.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time this TripWaypoint was added to the list.
+     * the current waypoint. If the waypoint is the first waypoint in the list
+     * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+     * value of this field is undefined.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -1791,10 +2211,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The path distance calculated by Fleet Engine from the previous waypoint to
-     * the current waypoint.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time this TripWaypoint was added to the list.
+     * the current waypoint. If the waypoint is the first waypoint in the list
+     * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+     * value of this field is undefined.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -1810,10 +2229,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The path distance calculated by Fleet Engine from the previous waypoint to
-     * the current waypoint.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time this TripWaypoint was added to the list.
+     * the current waypoint. If the waypoint is the first waypoint in the list
+     * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+     * value of this field is undefined.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -1992,11 +2410,10 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> durationBuilder_;
     /**
      * <pre>
-     * The travel time from previous waypoint to this point.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time that this waypoint was added to the list.
-     * This field is filled only when returning Trip/Vehicle data.
+     * The travel time from previous waypoint to this point. If the waypoint is
+     * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+     * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+     * time to the waypoint.
      * </pre>
      *
      * <code>.google.protobuf.Duration duration = 8;</code>
@@ -2007,11 +2424,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The travel time from previous waypoint to this point.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time that this waypoint was added to the list.
-     * This field is filled only when returning Trip/Vehicle data.
+     * The travel time from previous waypoint to this point. If the waypoint is
+     * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+     * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+     * time to the waypoint.
      * </pre>
      *
      * <code>.google.protobuf.Duration duration = 8;</code>
@@ -2026,11 +2442,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The travel time from previous waypoint to this point.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time that this waypoint was added to the list.
-     * This field is filled only when returning Trip/Vehicle data.
+     * The travel time from previous waypoint to this point. If the waypoint is
+     * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+     * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+     * time to the waypoint.
      * </pre>
      *
      * <code>.google.protobuf.Duration duration = 8;</code>
@@ -2050,11 +2465,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The travel time from previous waypoint to this point.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time that this waypoint was added to the list.
-     * This field is filled only when returning Trip/Vehicle data.
+     * The travel time from previous waypoint to this point. If the waypoint is
+     * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+     * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+     * time to the waypoint.
      * </pre>
      *
      * <code>.google.protobuf.Duration duration = 8;</code>
@@ -2072,11 +2486,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The travel time from previous waypoint to this point.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time that this waypoint was added to the list.
-     * This field is filled only when returning Trip/Vehicle data.
+     * The travel time from previous waypoint to this point. If the waypoint is
+     * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+     * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+     * time to the waypoint.
      * </pre>
      *
      * <code>.google.protobuf.Duration duration = 8;</code>
@@ -2098,11 +2511,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The travel time from previous waypoint to this point.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time that this waypoint was added to the list.
-     * This field is filled only when returning Trip/Vehicle data.
+     * The travel time from previous waypoint to this point. If the waypoint is
+     * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+     * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+     * time to the waypoint.
      * </pre>
      *
      * <code>.google.protobuf.Duration duration = 8;</code>
@@ -2120,11 +2532,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The travel time from previous waypoint to this point.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time that this waypoint was added to the list.
-     * This field is filled only when returning Trip/Vehicle data.
+     * The travel time from previous waypoint to this point. If the waypoint is
+     * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+     * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+     * time to the waypoint.
      * </pre>
      *
      * <code>.google.protobuf.Duration duration = 8;</code>
@@ -2136,11 +2547,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The travel time from previous waypoint to this point.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time that this waypoint was added to the list.
-     * This field is filled only when returning Trip/Vehicle data.
+     * The travel time from previous waypoint to this point. If the waypoint is
+     * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+     * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+     * time to the waypoint.
      * </pre>
      *
      * <code>.google.protobuf.Duration duration = 8;</code>
@@ -2155,11 +2565,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The travel time from previous waypoint to this point.
-     * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-     * or Trip.remaining_waypoints), then the starting point is the vehicle's
-     * location recorded at the time that this waypoint was added to the list.
-     * This field is filled only when returning Trip/Vehicle data.
+     * The travel time from previous waypoint to this point. If the waypoint is
+     * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+     * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+     * time to the waypoint.
      * </pre>
      *
      * <code>.google.protobuf.Duration duration = 8;</code>

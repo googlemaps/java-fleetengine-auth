@@ -9,8 +9,8 @@ public interface ListVehiclesResponseOrBuilder extends
 
   /**
    * <pre>
-   * Depends on vehicles matching request criteria.
-   * There will be a maximum number of vehicles returned based on the page_size
+   * Vehicles matching the criteria in the request.
+   * The maximum number of vehicles returned is determined by the `page_size`
    * field in the request.
    * </pre>
    *
@@ -20,8 +20,8 @@ public interface ListVehiclesResponseOrBuilder extends
       getVehiclesList();
   /**
    * <pre>
-   * Depends on vehicles matching request criteria.
-   * There will be a maximum number of vehicles returned based on the page_size
+   * Vehicles matching the criteria in the request.
+   * The maximum number of vehicles returned is determined by the `page_size`
    * field in the request.
    * </pre>
    *
@@ -30,8 +30,8 @@ public interface ListVehiclesResponseOrBuilder extends
   google.maps.fleetengine.v1.Vehicle getVehicles(int index);
   /**
    * <pre>
-   * Depends on vehicles matching request criteria.
-   * There will be a maximum number of vehicles returned based on the page_size
+   * Vehicles matching the criteria in the request.
+   * The maximum number of vehicles returned is determined by the `page_size`
    * field in the request.
    * </pre>
    *
@@ -40,8 +40,8 @@ public interface ListVehiclesResponseOrBuilder extends
   int getVehiclesCount();
   /**
    * <pre>
-   * Depends on vehicles matching request criteria.
-   * There will be a maximum number of vehicles returned based on the page_size
+   * Vehicles matching the criteria in the request.
+   * The maximum number of vehicles returned is determined by the `page_size`
    * field in the request.
    * </pre>
    *
@@ -51,8 +51,8 @@ public interface ListVehiclesResponseOrBuilder extends
       getVehiclesOrBuilderList();
   /**
    * <pre>
-   * Depends on vehicles matching request criteria.
-   * There will be a maximum number of vehicles returned based on the page_size
+   * Vehicles matching the criteria in the request.
+   * The maximum number of vehicles returned is determined by the `page_size`
    * field in the request.
    * </pre>
    *
@@ -64,7 +64,7 @@ public interface ListVehiclesResponseOrBuilder extends
   /**
    * <pre>
    * Token to retrieve the next page of vehicles, or empty if there are no
-   * more vehicles in the list.
+   * more vehicles that meet the request criteria.
    * </pre>
    *
    * <code>string next_page_token = 2;</code>
@@ -74,7 +74,7 @@ public interface ListVehiclesResponseOrBuilder extends
   /**
    * <pre>
    * Token to retrieve the next page of vehicles, or empty if there are no
-   * more vehicles in the list.
+   * more vehicles that meet the request criteria.
    * </pre>
    *
    * <code>string next_page_token = 2;</code>
@@ -85,7 +85,7 @@ public interface ListVehiclesResponseOrBuilder extends
 
   /**
    * <pre>
-   * Required. Total number of vehicles matching request criteria across all pages.
+   * Required. Total number of vehicles matching the request criteria across all pages.
    * </pre>
    *
    * <code>int64 total_size = 3 [(.google.api.field_behavior) = REQUIRED];</code>

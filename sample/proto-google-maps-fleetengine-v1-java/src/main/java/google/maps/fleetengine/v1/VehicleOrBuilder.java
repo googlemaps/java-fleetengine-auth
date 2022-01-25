@@ -9,21 +9,21 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * The unique name for this vehicle.
-   * The format is providers/{provider}/vehicles/{vehicle}
+   * Output only. The unique name for this vehicle.
+   * The format is `providers/{provider}/vehicles/{vehicle}`.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The name.
    */
   java.lang.String getName();
   /**
    * <pre>
-   * The unique name for this vehicle.
-   * The format is providers/{provider}/vehicles/{vehicle}
+   * Output only. The unique name for this vehicle.
+   * The format is `providers/{provider}/vehicles/{vehicle}`.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The bytes for name.
    */
   com.google.protobuf.ByteString
@@ -99,39 +99,39 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * List of IDs for trips in progress.
+   * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
    * </pre>
    *
-   * <code>repeated string current_trips = 4;</code>
+   * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return A list containing the currentTrips.
    */
   java.util.List<java.lang.String>
       getCurrentTripsList();
   /**
    * <pre>
-   * List of IDs for trips in progress.
+   * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
    * </pre>
    *
-   * <code>repeated string current_trips = 4;</code>
+   * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The count of currentTrips.
    */
   int getCurrentTripsCount();
   /**
    * <pre>
-   * List of IDs for trips in progress.
+   * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
    * </pre>
    *
-   * <code>repeated string current_trips = 4;</code>
+   * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @param index The index of the element to return.
    * @return The currentTrips at the given index.
    */
   java.lang.String getCurrentTrips(int index);
   /**
    * <pre>
-   * List of IDs for trips in progress.
+   * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
    * </pre>
    *
-   * <code>repeated string current_trips = 4;</code>
+   * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @param index The index of the value to return.
    * @return The bytes of the currentTrips at the given index.
    */
@@ -167,9 +167,8 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * Maximum capacity of the vehicle.  This is the total numbers of riders
-   * on trips this vehicle can contain.  The driver is not considered in
-   * this value.  This value must be greater than or equal to one.
+   * The total numbers of riders this vehicle can carry.  The driver is not
+   * considered in this value. This value must be greater than or equal to one.
    * </pre>
    *
    * <code>int32 maximum_capacity = 6;</code>
@@ -179,18 +178,8 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * The current available capacity of the vehicle.  This is the
-   * maximum_capacity minus the current number of riders.
-   * </pre>
-   *
-   * <code>int32 available_capacity = 7;</code>
-   * @return The availableCapacity.
-   */
-  int getAvailableCapacity();
-
-  /**
-   * <pre>
-   * List of vehicle service attributes.
+   * List of vehicle attributes. A vehicle can have at most 50
+   * attributes, and each attribute has a unique key.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -199,7 +188,8 @@ public interface VehicleOrBuilder extends
       getAttributesList();
   /**
    * <pre>
-   * List of vehicle service attributes.
+   * List of vehicle attributes. A vehicle can have at most 50
+   * attributes, and each attribute has a unique key.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -207,7 +197,8 @@ public interface VehicleOrBuilder extends
   google.maps.fleetengine.v1.VehicleAttribute getAttributes(int index);
   /**
    * <pre>
-   * List of vehicle service attributes.
+   * List of vehicle attributes. A vehicle can have at most 50
+   * attributes, and each attribute has a unique key.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -215,7 +206,8 @@ public interface VehicleOrBuilder extends
   int getAttributesCount();
   /**
    * <pre>
-   * List of vehicle service attributes.
+   * List of vehicle attributes. A vehicle can have at most 50
+   * attributes, and each attribute has a unique key.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -224,7 +216,8 @@ public interface VehicleOrBuilder extends
       getAttributesOrBuilderList();
   /**
    * <pre>
-   * List of vehicle service attributes.
+   * List of vehicle attributes. A vehicle can have at most 50
+   * attributes, and each attribute has a unique key.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -234,8 +227,8 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-   * influences ETA and route calculations.
+   * The type of this vehicle.  Can be used to filter vehicles in
+   * `SearchVehicles` results.  Also influences ETA and route calculations.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -244,8 +237,8 @@ public interface VehicleOrBuilder extends
   boolean hasVehicleType();
   /**
    * <pre>
-   * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-   * influences ETA and route calculations.
+   * The type of this vehicle.  Can be used to filter vehicles in
+   * `SearchVehicles` results.  Also influences ETA and route calculations.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -254,8 +247,8 @@ public interface VehicleOrBuilder extends
   google.maps.fleetengine.v1.Vehicle.VehicleType getVehicleType();
   /**
    * <pre>
-   * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-   * influences ETA and route calculations.
+   * The type of this vehicle.  Can be used to filter vehicles in
+   * `SearchVehicles` results.  Also influences ETA and route calculations.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -291,7 +284,7 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated: Use `Vehicle.waypoints` instead.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -300,7 +293,7 @@ public interface VehicleOrBuilder extends
       getRouteList();
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated: Use `Vehicle.waypoints` instead.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -308,7 +301,7 @@ public interface VehicleOrBuilder extends
   @java.lang.Deprecated google.maps.fleetengine.v1.TerminalLocation getRoute(int index);
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated: Use `Vehicle.waypoints` instead.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -316,7 +309,7 @@ public interface VehicleOrBuilder extends
   @java.lang.Deprecated int getRouteCount();
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated: Use `Vehicle.waypoints` instead.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -325,7 +318,7 @@ public interface VehicleOrBuilder extends
       getRouteOrBuilderList();
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated: Use `Vehicle.waypoints` instead.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -338,7 +331,7 @@ public interface VehicleOrBuilder extends
    * The polyline specifying the route the driver app intends to take to
    * the next waypoint. Your driver app updates this every time a waypoint is
    * passed or the driver reroutes. This list is also returned in
-   * Trip.current_route_segment for all active trips assigned to the vehicle.
+   * `Trip.current_route_segment` for all active trips assigned to the vehicle.
    * Note: This field is intended only for use by the Driver SDK.
    * </pre>
    *
@@ -351,7 +344,7 @@ public interface VehicleOrBuilder extends
    * The polyline specifying the route the driver app intends to take to
    * the next waypoint. Your driver app updates this every time a waypoint is
    * passed or the driver reroutes. This list is also returned in
-   * Trip.current_route_segment for all active trips assigned to the vehicle.
+   * `Trip.current_route_segment` for all active trips assigned to the vehicle.
    * Note: This field is intended only for use by the Driver SDK.
    * </pre>
    *
@@ -363,48 +356,78 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * Time when current_route_segment was set. This field is ignored in
-   * UpdateVehicleRequests as it is calculated by the server. It should be
-   * stored by client and passed in to future requests to prevent returning
-   * routes to first way point that haven't changed.
+   * Input only. Fleet Engine uses this information to improve its
+   * understanding of a Trip, but does not populate the field in its responses.
+   * Note: This field is intended only for use by the Driver SDK.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+   * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+   * @return Whether the currentRouteSegmentTraffic field is set.
+   */
+  boolean hasCurrentRouteSegmentTraffic();
+  /**
+   * <pre>
+   * Input only. Fleet Engine uses this information to improve its
+   * understanding of a Trip, but does not populate the field in its responses.
+   * Note: This field is intended only for use by the Driver SDK.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+   * @return The currentRouteSegmentTraffic.
+   */
+  google.maps.fleetengine.v1.TrafficPolylineData getCurrentRouteSegmentTraffic();
+  /**
+   * <pre>
+   * Input only. Fleet Engine uses this information to improve its
+   * understanding of a Trip, but does not populate the field in its responses.
+   * Note: This field is intended only for use by the Driver SDK.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+   */
+  google.maps.fleetengine.v1.TrafficPolylineDataOrBuilder getCurrentRouteSegmentTrafficOrBuilder();
+
+  /**
+   * <pre>
+   * Output only. Time when `current_route_segment` was set. It should be
+   * stored by the client and passed in future `GetVehicle` requests to
+   * prevent returning routes that haven't changed.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return Whether the currentRouteSegmentVersion field is set.
    */
   boolean hasCurrentRouteSegmentVersion();
   /**
    * <pre>
-   * Time when current_route_segment was set. This field is ignored in
-   * UpdateVehicleRequests as it is calculated by the server. It should be
-   * stored by client and passed in to future requests to prevent returning
-   * routes to first way point that haven't changed.
+   * Output only. Time when `current_route_segment` was set. It should be
+   * stored by the client and passed in future `GetVehicle` requests to
+   * prevent returning routes that haven't changed.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+   * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The currentRouteSegmentVersion.
    */
   com.google.protobuf.Timestamp getCurrentRouteSegmentVersion();
   /**
    * <pre>
-   * Time when current_route_segment was set. This field is ignored in
-   * UpdateVehicleRequests as it is calculated by the server. It should be
-   * stored by client and passed in to future requests to prevent returning
-   * routes to first way point that haven't changed.
+   * Output only. Time when `current_route_segment` was set. It should be
+   * stored by the client and passed in future `GetVehicle` requests to
+   * prevent returning routes that haven't changed.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+   * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.TimestampOrBuilder getCurrentRouteSegmentVersionOrBuilder();
 
   /**
    * <pre>
-   * The waypoint where current_route_segment ends. This can be supplied by
-   * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-   * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-   * will then do its best to interpolate to an actual waypoint if it is not
-   * fully specified. This field is ignored in UpdateVehicle calls unless
-   * current_route_segment is also specified.
+   * The waypoint where `current_route_segment` ends. This can be supplied by
+   * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+   * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+   * Engine will then do its best to interpolate to an actual waypoint if it is
+   * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+   * `current_route_segment` is also specified.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -413,12 +436,12 @@ public interface VehicleOrBuilder extends
   boolean hasCurrentRouteSegmentEndPoint();
   /**
    * <pre>
-   * The waypoint where current_route_segment ends. This can be supplied by
-   * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-   * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-   * will then do its best to interpolate to an actual waypoint if it is not
-   * fully specified. This field is ignored in UpdateVehicle calls unless
-   * current_route_segment is also specified.
+   * The waypoint where `current_route_segment` ends. This can be supplied by
+   * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+   * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+   * Engine will then do its best to interpolate to an actual waypoint if it is
+   * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+   * `current_route_segment` is also specified.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -427,12 +450,12 @@ public interface VehicleOrBuilder extends
   google.maps.fleetengine.v1.TripWaypoint getCurrentRouteSegmentEndPoint();
   /**
    * <pre>
-   * The waypoint where current_route_segment ends. This can be supplied by
-   * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-   * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-   * will then do its best to interpolate to an actual waypoint if it is not
-   * fully specified. This field is ignored in UpdateVehicle calls unless
-   * current_route_segment is also specified.
+   * The waypoint where `current_route_segment` ends. This can be supplied by
+   * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+   * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+   * Engine will then do its best to interpolate to an actual waypoint if it is
+   * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+   * `current_route_segment` is also specified.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -441,13 +464,12 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * The remaining driving distance for the 'current_route_segment'. This field
+   * The remaining driving distance for the `current_route_segment`. This field
    * facilitates journey sharing between the Driver app and the Consumer app.
-   * This value is updated by the Driver SDK. Fleet Engine does not update it.
-   * This field is also returned in Trip.remaining_distance_meters for all
-   * active trips assigned to the vehicle. The value is unspecified if the
-   * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-   * not updated its value.
+   * This value is provided by the Driver SDK. This field is also returned in
+   * `Trip.remaining_distance_meters` for all active trips assigned to the
+   * vehicle. The value is unspecified if the `current_route_segment` field is
+   * empty, or if the Driver app has not updated its value.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -456,13 +478,12 @@ public interface VehicleOrBuilder extends
   boolean hasRemainingDistanceMeters();
   /**
    * <pre>
-   * The remaining driving distance for the 'current_route_segment'. This field
+   * The remaining driving distance for the `current_route_segment`. This field
    * facilitates journey sharing between the Driver app and the Consumer app.
-   * This value is updated by the Driver SDK. Fleet Engine does not update it.
-   * This field is also returned in Trip.remaining_distance_meters for all
-   * active trips assigned to the vehicle. The value is unspecified if the
-   * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-   * not updated its value.
+   * This value is provided by the Driver SDK. This field is also returned in
+   * `Trip.remaining_distance_meters` for all active trips assigned to the
+   * vehicle. The value is unspecified if the `current_route_segment` field is
+   * empty, or if the Driver app has not updated its value.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -471,13 +492,12 @@ public interface VehicleOrBuilder extends
   com.google.protobuf.Int32Value getRemainingDistanceMeters();
   /**
    * <pre>
-   * The remaining driving distance for the 'current_route_segment'. This field
+   * The remaining driving distance for the `current_route_segment`. This field
    * facilitates journey sharing between the Driver app and the Consumer app.
-   * This value is updated by the Driver SDK. Fleet Engine does not update it.
-   * This field is also returned in Trip.remaining_distance_meters for all
-   * active trips assigned to the vehicle. The value is unspecified if the
-   * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-   * not updated its value.
+   * This value is provided by the Driver SDK. This field is also returned in
+   * `Trip.remaining_distance_meters` for all active trips assigned to the
+   * vehicle. The value is unspecified if the `current_route_segment` field is
+   * empty, or if the Driver app has not updated its value.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -486,13 +506,12 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+   * The ETA to the first entry in the `waypoints`
    * field. This field facilitates journey sharing between a Driver app and a
-   * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-   * update it. This field is also returned in Trip.eta_to_first_waypoint for
-   * all active trips assigned to the vehicle. The value is unspecified if the
-   * Vehicle.waypoint field is empty, or the Driver app has not updated its
-   * value.
+   * Consumer app. Is is provided by the Driver SDK. This field is also returned
+   * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+   * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+   * Driver app has not updated its value.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -501,13 +520,12 @@ public interface VehicleOrBuilder extends
   boolean hasEtaToFirstWaypoint();
   /**
    * <pre>
-   * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+   * The ETA to the first entry in the `waypoints`
    * field. This field facilitates journey sharing between a Driver app and a
-   * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-   * update it. This field is also returned in Trip.eta_to_first_waypoint for
-   * all active trips assigned to the vehicle. The value is unspecified if the
-   * Vehicle.waypoint field is empty, or the Driver app has not updated its
-   * value.
+   * Consumer app. Is is provided by the Driver SDK. This field is also returned
+   * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+   * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+   * Driver app has not updated its value.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -516,13 +534,12 @@ public interface VehicleOrBuilder extends
   com.google.protobuf.Timestamp getEtaToFirstWaypoint();
   /**
    * <pre>
-   * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+   * The ETA to the first entry in the `waypoints`
    * field. This field facilitates journey sharing between a Driver app and a
-   * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-   * update it. This field is also returned in Trip.eta_to_first_waypoint for
-   * all active trips assigned to the vehicle. The value is unspecified if the
-   * Vehicle.waypoint field is empty, or the Driver app has not updated its
-   * value.
+   * Consumer app. Is is provided by the Driver SDK. This field is also returned
+   * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+   * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+   * Driver app has not updated its value.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -531,64 +548,61 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * The remaining driving time for the 'current_route_segment'. This field
+   * Input only. The remaining driving time for the `current_route_segment`. This field
    * facilitates journey sharing between the Driver app and the Consumer app.
    * This value is updated by the Driver SDK. Fleet Engine does not update it.
    * The value is unspecified if the `Vehicle.current_route_segment` field is
    * empty, or if the Driver app has not updated its value. This value should
-   * match eta_to_first_waypoint - current_time if all parties are using the
-   * same clock. This field is currently write-only and will not yet be
-   * populated in Vehicle's get/update/search operations. When updating a
-   * vehicle, if you update both eta_to_first_waypoint and
-   * remaining_time_seconds in the same request, then only
-   * remaining_time_seconds is considered.
+   * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+   * same clock. When updating a
+   * vehicle, if you update both `eta_to_first_waypoint` and
+   * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+   * takes precedence.
    * </pre>
    *
-   * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+   * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
    * @return Whether the remainingTimeSeconds field is set.
    */
   boolean hasRemainingTimeSeconds();
   /**
    * <pre>
-   * The remaining driving time for the 'current_route_segment'. This field
+   * Input only. The remaining driving time for the `current_route_segment`. This field
    * facilitates journey sharing between the Driver app and the Consumer app.
    * This value is updated by the Driver SDK. Fleet Engine does not update it.
    * The value is unspecified if the `Vehicle.current_route_segment` field is
    * empty, or if the Driver app has not updated its value. This value should
-   * match eta_to_first_waypoint - current_time if all parties are using the
-   * same clock. This field is currently write-only and will not yet be
-   * populated in Vehicle's get/update/search operations. When updating a
-   * vehicle, if you update both eta_to_first_waypoint and
-   * remaining_time_seconds in the same request, then only
-   * remaining_time_seconds is considered.
+   * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+   * same clock. When updating a
+   * vehicle, if you update both `eta_to_first_waypoint` and
+   * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+   * takes precedence.
    * </pre>
    *
-   * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+   * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
    * @return The remainingTimeSeconds.
    */
   com.google.protobuf.Int32Value getRemainingTimeSeconds();
   /**
    * <pre>
-   * The remaining driving time for the 'current_route_segment'. This field
+   * Input only. The remaining driving time for the `current_route_segment`. This field
    * facilitates journey sharing between the Driver app and the Consumer app.
    * This value is updated by the Driver SDK. Fleet Engine does not update it.
    * The value is unspecified if the `Vehicle.current_route_segment` field is
    * empty, or if the Driver app has not updated its value. This value should
-   * match eta_to_first_waypoint - current_time if all parties are using the
-   * same clock. This field is currently write-only and will not yet be
-   * populated in Vehicle's get/update/search operations. When updating a
-   * vehicle, if you update both eta_to_first_waypoint and
-   * remaining_time_seconds in the same request, then only
-   * remaining_time_seconds is considered.
+   * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+   * same clock. When updating a
+   * vehicle, if you update both `eta_to_first_waypoint` and
+   * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+   * takes precedence.
    * </pre>
    *
-   * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+   * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
    */
   com.google.protobuf.Int32ValueOrBuilder getRemainingTimeSecondsOrBuilder();
 
   /**
    * <pre>
-   * The remaining set of waypoints assigned to this Vehicle.
+   * The remaining waypoints assigned to this Vehicle.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -597,7 +611,7 @@ public interface VehicleOrBuilder extends
       getWaypointsList();
   /**
    * <pre>
-   * The remaining set of waypoints assigned to this Vehicle.
+   * The remaining waypoints assigned to this Vehicle.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -605,7 +619,7 @@ public interface VehicleOrBuilder extends
   google.maps.fleetengine.v1.TripWaypoint getWaypoints(int index);
   /**
    * <pre>
-   * The remaining set of waypoints assigned to this Vehicle.
+   * The remaining waypoints assigned to this Vehicle.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -613,7 +627,7 @@ public interface VehicleOrBuilder extends
   int getWaypointsCount();
   /**
    * <pre>
-   * The remaining set of waypoints assigned to this Vehicle.
+   * The remaining waypoints assigned to this Vehicle.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -622,7 +636,7 @@ public interface VehicleOrBuilder extends
       getWaypointsOrBuilderList();
   /**
    * <pre>
-   * The remaining set of waypoints assigned to this Vehicle.
+   * The remaining waypoints assigned to this Vehicle.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -632,43 +646,42 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * Last time the waypoints was updated. Client should cache
-   * this value and pass it in GetVehicleRequest to ensure the
-   * waypoints.path_to_waypoint is only returned if it is updated
+   * Output only. Last time the `waypoints` field was updated. Clients should cache
+   * this value and pass it in `GetVehicleRequest` to ensure the
+   * `waypoints` field is only returned if it is updated.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+   * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return Whether the waypointsVersion field is set.
    */
   boolean hasWaypointsVersion();
   /**
    * <pre>
-   * Last time the waypoints was updated. Client should cache
-   * this value and pass it in GetVehicleRequest to ensure the
-   * waypoints.path_to_waypoint is only returned if it is updated
+   * Output only. Last time the `waypoints` field was updated. Clients should cache
+   * this value and pass it in `GetVehicleRequest` to ensure the
+   * `waypoints` field is only returned if it is updated.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+   * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The waypointsVersion.
    */
   com.google.protobuf.Timestamp getWaypointsVersion();
   /**
    * <pre>
-   * Last time the waypoints was updated. Client should cache
-   * this value and pass it in GetVehicleRequest to ensure the
-   * waypoints.path_to_waypoint is only returned if it is updated
+   * Output only. Last time the `waypoints` field was updated. Clients should cache
+   * this value and pass it in `GetVehicleRequest` to ensure the
+   * `waypoints` field is only returned if it is updated.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+   * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.TimestampOrBuilder getWaypointsVersionOrBuilder();
 
   /**
    * <pre>
-   * Indicates if the driver accepts back-to-back rides. If
-   * `true`, services include the vehicle for back-to-back matches.
-   * If `false`, services exclude the vehicle from back-to-back matches.
-   * Default value is `false`.
+   * Indicates if the driver accepts back-to-back trips. If `true`,
+   * `SearchVehicles` may include the vehicle even if it is currently assigned
+   * to a trip. The default value is `false`.
    * </pre>
    *
    * <code>bool back_to_back_enabled = 23;</code>
@@ -678,7 +691,7 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * Vehicle's navigation status.
+   * The vehicle's navigation status.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.NavigationStatus navigation_status = 26;</code>
@@ -687,7 +700,7 @@ public interface VehicleOrBuilder extends
   int getNavigationStatusValue();
   /**
    * <pre>
-   * Vehicle's navigation status.
+   * The vehicle's navigation status.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.NavigationStatus navigation_status = 26;</code>
@@ -697,31 +710,28 @@ public interface VehicleOrBuilder extends
 
   /**
    * <pre>
-   * Information about various device settings. This is internal debug only
-   * field, not included in the response.
+   * Input only. Information about settings in the mobile device being used by the driver.
    * </pre>
    *
-   * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+   * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
    * @return Whether the deviceSettings field is set.
    */
   boolean hasDeviceSettings();
   /**
    * <pre>
-   * Information about various device settings. This is internal debug only
-   * field, not included in the response.
+   * Input only. Information about settings in the mobile device being used by the driver.
    * </pre>
    *
-   * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+   * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
    * @return The deviceSettings.
    */
   google.maps.fleetengine.v1.DeviceSettings getDeviceSettings();
   /**
    * <pre>
-   * Information about various device settings. This is internal debug only
-   * field, not included in the response.
+   * Input only. Information about settings in the mobile device being used by the driver.
    * </pre>
    *
-   * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+   * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
    */
   google.maps.fleetengine.v1.DeviceSettingsOrBuilder getDeviceSettingsOrBuilder();
 }

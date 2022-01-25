@@ -5,7 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * Information about various settings on the device.
+ * Information about various settings on the mobile device.
  * </pre>
  *
  * Protobuf type {@code maps.fleetengine.v1.DeviceSettings}
@@ -407,7 +407,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Information about various settings on the device.
+   * Information about various settings on the mobile device.
    * </pre>
    *
    * Protobuf type {@code maps.fleetengine.v1.DeviceSettings}

@@ -36,8 +36,8 @@ public interface SearchTripsRequestOrBuilder extends
 
   /**
    * <pre>
-   * Required. Must be in the format "providers/&#42;"
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -48,8 +48,8 @@ public interface SearchTripsRequestOrBuilder extends
   java.lang.String getParent();
   /**
    * <pre>
-   * Required. Must be in the format "providers/&#42;"
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -64,10 +64,10 @@ public interface SearchTripsRequestOrBuilder extends
    * <pre>
    * The vehicle associated with the trips in the request. If unspecified, the
    * returned trips do not contain:
-   * * current_route_segment
-   * * remaining_waypoints
-   * * remaining_distance_meters
-   * * eta_to_first_waypoint
+   * * `current_route_segment`
+   * * `remaining_waypoints`
+   * * `remaining_distance_meters`
+   * * `eta_to_first_waypoint`
    * </pre>
    *
    * <code>string vehicle_id = 4;</code>
@@ -78,10 +78,10 @@ public interface SearchTripsRequestOrBuilder extends
    * <pre>
    * The vehicle associated with the trips in the request. If unspecified, the
    * returned trips do not contain:
-   * * current_route_segment
-   * * remaining_waypoints
-   * * remaining_distance_meters
-   * * eta_to_first_waypoint
+   * * `current_route_segment`
+   * * `remaining_waypoints`
+   * * `remaining_distance_meters`
+   * * `eta_to_first_waypoint`
    * </pre>
    *
    * <code>string vehicle_id = 4;</code>
@@ -137,7 +137,7 @@ public interface SearchTripsRequestOrBuilder extends
   /**
    * <pre>
    * If specified, returns the trips that have not been updated after
-   * the time (current - minimum_staleness).
+   * the time `(current - minimum_staleness)`.
    * </pre>
    *
    * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -147,7 +147,7 @@ public interface SearchTripsRequestOrBuilder extends
   /**
    * <pre>
    * If specified, returns the trips that have not been updated after
-   * the time (current - minimum_staleness).
+   * the time `(current - minimum_staleness)`.
    * </pre>
    *
    * <code>.google.protobuf.Duration minimum_staleness = 8;</code>
@@ -157,7 +157,7 @@ public interface SearchTripsRequestOrBuilder extends
   /**
    * <pre>
    * If specified, returns the trips that have not been updated after
-   * the time (current - minimum_staleness).
+   * the time `(current - minimum_staleness)`.
    * </pre>
    *
    * <code>.google.protobuf.Duration minimum_staleness = 8;</code>

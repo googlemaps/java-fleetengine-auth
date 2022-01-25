@@ -126,11 +126,65 @@ public interface TripWaypointOrBuilder extends
 
   /**
    * <pre>
+   * The path calculated by the server from the previous waypoint to the current
+   * waypoint. Decoding is not yet supported.
+   * </pre>
+   *
+   * <code>string encoded_path_to_waypoint = 5;</code>
+   * @return The encodedPathToWaypoint.
+   */
+  java.lang.String getEncodedPathToWaypoint();
+  /**
+   * <pre>
+   * The path calculated by the server from the previous waypoint to the current
+   * waypoint. Decoding is not yet supported.
+   * </pre>
+   *
+   * <code>string encoded_path_to_waypoint = 5;</code>
+   * @return The bytes for encodedPathToWaypoint.
+   */
+  com.google.protobuf.ByteString
+      getEncodedPathToWaypointBytes();
+
+  /**
+   * <pre>
+   * The traffic conditions along the path to this waypoint.
+   * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+   * Solution customers.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+   * @return Whether the trafficToWaypoint field is set.
+   */
+  boolean hasTrafficToWaypoint();
+  /**
+   * <pre>
+   * The traffic conditions along the path to this waypoint.
+   * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+   * Solution customers.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+   * @return The trafficToWaypoint.
+   */
+  google.maps.fleetengine.v1.ConsumableTrafficPolyline getTrafficToWaypoint();
+  /**
+   * <pre>
+   * The traffic conditions along the path to this waypoint.
+   * Note that traffic is only available for Geo Enterprise Rides and Deliveries
+   * Solution customers.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.ConsumableTrafficPolyline traffic_to_waypoint = 10;</code>
+   */
+  google.maps.fleetengine.v1.ConsumableTrafficPolylineOrBuilder getTrafficToWaypointOrBuilder();
+
+  /**
+   * <pre>
    * The path distance calculated by Fleet Engine from the previous waypoint to
-   * the current waypoint.
-   * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-   * or Trip.remaining_waypoints), then the starting point is the vehicle's
-   * location recorded at the time this TripWaypoint was added to the list.
+   * the current waypoint. If the waypoint is the first waypoint in the list
+   * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+   * value of this field is undefined.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -140,10 +194,9 @@ public interface TripWaypointOrBuilder extends
   /**
    * <pre>
    * The path distance calculated by Fleet Engine from the previous waypoint to
-   * the current waypoint.
-   * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-   * or Trip.remaining_waypoints), then the starting point is the vehicle's
-   * location recorded at the time this TripWaypoint was added to the list.
+   * the current waypoint. If the waypoint is the first waypoint in the list
+   * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+   * value of this field is undefined.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -153,10 +206,9 @@ public interface TripWaypointOrBuilder extends
   /**
    * <pre>
    * The path distance calculated by Fleet Engine from the previous waypoint to
-   * the current waypoint.
-   * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-   * or Trip.remaining_waypoints), then the starting point is the vehicle's
-   * location recorded at the time this TripWaypoint was added to the list.
+   * the current waypoint. If the waypoint is the first waypoint in the list
+   * (e.g., `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the
+   * value of this field is undefined.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value distance_meters = 6;</code>
@@ -192,11 +244,10 @@ public interface TripWaypointOrBuilder extends
 
   /**
    * <pre>
-   * The travel time from previous waypoint to this point.
-   * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-   * or Trip.remaining_waypoints), then the starting point is the vehicle's
-   * location recorded at the time that this waypoint was added to the list.
-   * This field is filled only when returning Trip/Vehicle data.
+   * The travel time from previous waypoint to this point. If the waypoint is
+   * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+   * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+   * time to the waypoint.
    * </pre>
    *
    * <code>.google.protobuf.Duration duration = 8;</code>
@@ -205,11 +256,10 @@ public interface TripWaypointOrBuilder extends
   boolean hasDuration();
   /**
    * <pre>
-   * The travel time from previous waypoint to this point.
-   * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-   * or Trip.remaining_waypoints), then the starting point is the vehicle's
-   * location recorded at the time that this waypoint was added to the list.
-   * This field is filled only when returning Trip/Vehicle data.
+   * The travel time from previous waypoint to this point. If the waypoint is
+   * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+   * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+   * time to the waypoint.
    * </pre>
    *
    * <code>.google.protobuf.Duration duration = 8;</code>
@@ -218,11 +268,10 @@ public interface TripWaypointOrBuilder extends
   com.google.protobuf.Duration getDuration();
   /**
    * <pre>
-   * The travel time from previous waypoint to this point.
-   * If the current waypoint is the first waypoint in the list (Vehicle.waypoint
-   * or Trip.remaining_waypoints), then the starting point is the vehicle's
-   * location recorded at the time that this waypoint was added to the list.
-   * This field is filled only when returning Trip/Vehicle data.
+   * The travel time from previous waypoint to this point. If the waypoint is
+   * the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
+   * `Trip.remaining_waypoints[0]`), then this value indicates the remaining
+   * time to the waypoint.
    * </pre>
    *
    * <code>.google.protobuf.Duration duration = 8;</code>

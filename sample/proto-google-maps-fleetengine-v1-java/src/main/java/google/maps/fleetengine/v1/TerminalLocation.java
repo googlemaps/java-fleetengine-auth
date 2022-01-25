@@ -257,7 +257,7 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object tripId_;
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated.
    * </pre>
    *
    * <code>string trip_id = 4 [deprecated = true];</code>
@@ -278,7 +278,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated.
    * </pre>
    *
    * <code>string trip_id = 4 [deprecated = true];</code>
@@ -303,7 +303,7 @@ private static final long serialVersionUID = 0L;
   private int terminalLocationType_;
   /**
    * <pre>
-   * Deprecated. Vehicle.waypoint will have this data.
+   * Deprecated: `Vehicle.waypoint` will have this data.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.WaypointType terminal_location_type = 5 [deprecated = true];</code>
@@ -314,7 +314,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Deprecated. Vehicle.waypoint will have this data.
+   * Deprecated: `Vehicle.waypoint` will have this data.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.WaypointType terminal_location_type = 5 [deprecated = true];</code>
@@ -346,10 +346,10 @@ private static final long serialVersionUID = 0L;
     if (terminalPointId_ != null) {
       output.writeMessage(2, getTerminalPointId());
     }
-    if (!getAccessPointIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(accessPointId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, accessPointId_);
     }
-    if (!getTripIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tripId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, tripId_);
     }
     if (terminalLocationType_ != google.maps.fleetengine.v1.WaypointType.UNKNOWN_WAYPOINT_TYPE.getNumber()) {
@@ -372,10 +372,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getTerminalPointId());
     }
-    if (!getAccessPointIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(accessPointId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, accessPointId_);
     }
-    if (!getTripIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tripId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, tripId_);
     }
     if (terminalLocationType_ != google.maps.fleetengine.v1.WaypointType.UNKNOWN_WAYPOINT_TYPE.getNumber()) {
@@ -1134,7 +1134,7 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object tripId_ = "";
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated.
      * </pre>
      *
      * <code>string trip_id = 4 [deprecated = true];</code>
@@ -1154,7 +1154,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated.
      * </pre>
      *
      * <code>string trip_id = 4 [deprecated = true];</code>
@@ -1175,7 +1175,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated.
      * </pre>
      *
      * <code>string trip_id = 4 [deprecated = true];</code>
@@ -1194,7 +1194,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated.
      * </pre>
      *
      * <code>string trip_id = 4 [deprecated = true];</code>
@@ -1208,7 +1208,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated.
      * </pre>
      *
      * <code>string trip_id = 4 [deprecated = true];</code>
@@ -1230,7 +1230,7 @@ private static final long serialVersionUID = 0L;
     private int terminalLocationType_ = 0;
     /**
      * <pre>
-     * Deprecated. Vehicle.waypoint will have this data.
+     * Deprecated: `Vehicle.waypoint` will have this data.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.WaypointType terminal_location_type = 5 [deprecated = true];</code>
@@ -1241,7 +1241,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Vehicle.waypoint will have this data.
+     * Deprecated: `Vehicle.waypoint` will have this data.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.WaypointType terminal_location_type = 5 [deprecated = true];</code>
@@ -1256,7 +1256,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Vehicle.waypoint will have this data.
+     * Deprecated: `Vehicle.waypoint` will have this data.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.WaypointType terminal_location_type = 5 [deprecated = true];</code>
@@ -1270,7 +1270,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Vehicle.waypoint will have this data.
+     * Deprecated: `Vehicle.waypoint` will have this data.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.WaypointType terminal_location_type = 5 [deprecated = true];</code>
@@ -1288,7 +1288,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Vehicle.waypoint will have this data.
+     * Deprecated: `Vehicle.waypoint` will have this data.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.WaypointType terminal_location_type = 5 [deprecated = true];</code>

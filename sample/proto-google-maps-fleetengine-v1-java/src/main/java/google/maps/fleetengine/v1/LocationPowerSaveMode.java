@@ -5,8 +5,8 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * How location features are set to behave on the device when battery saver is
- * on.
+ * How location features are configured to behave on the mobile device when the
+ * devices "battery saver" feature is on.
  * (https://developer.android.com/reference/android/os/PowerManager#getLocationPowerSaveMode())
  * </pre>
  *

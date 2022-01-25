@@ -1,34 +1,26 @@
-buildscript {
-  repositories {
-    mavenCentral()
-  }
-}
-
-apply plugin: 'java'
-
 description = 'GAPIC library for gapic-google-maps-fleetengine-v1-java'
 group = 'com.google.cloud'
-version = (findProperty('version') == 'unspecified') ? '0.0.0-SNAPSHOT' : version
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-repositories {
-  mavenCentral()
-  mavenLocal()
-}
+version = (version == 'unspecified') ? '0.0.0-SNAPSHOT' : version
 
 compileJava.options.encoding = 'UTF-8'
 javadoc.options.encoding = 'UTF-8'
 
 dependencies {
-  compile 'com.google.api:gax:2.3.0'
-  testCompile 'com.google.api:gax:2.3.0:testlib'
-  compile 'com.google.api:gax-grpc:2.3.0'
-  testCompile 'com.google.api:gax-grpc:2.3.0:testlib'
-  testCompile 'io.grpc:grpc-netty-shaded:1.37.0'
-  testCompile 'junit:junit:4.13.2'
-  compile project(':proto-google-maps-fleetengine-v1-java')
-  testCompile project(':grpc-google-maps-fleetengine-v1-java')
+  implementation 'com.google.api:gax:2.7.1'
+  testImplementation 'com.google.api:gax:2.7.1:testlib'
+  implementation 'com.google.api:gax-grpc:2.7.1'
+  testImplementation 'com.google.api:gax-grpc:2.7.1:testlib'
+  implementation 'io.grpc:grpc-protobuf:1.42.1'
+  testImplementation 'io.grpc:grpc-stub:1.42.1'
+  testImplementation 'io.grpc:grpc-netty-shaded:1.42.1'
+  testImplementation 'junit:junit:4.13.2'
+
+  // TODO: remove when dropping Java 8 support.
+  // https://github.com/googleapis/gapic-generator-java/issues/888
+  implementation 'javax.annotation:javax.annotation-api:1.3.2'
+
+  api project(':proto-google-maps-fleetengine-v1-java')
+  testImplementation project(':grpc-google-maps-fleetengine-v1-java')
 }
 
 task smokeTest(type: Test) {
@@ -42,14 +34,6 @@ test {
   exclude "**/*SmokeTest*"
 }
 
-sourceSets {
-  main {
-    java {
-      srcDir 'src/main/java'
-    }
-  }
-}
-
 clean {
   delete 'all-jars'
 }
@@ -57,6 +41,6 @@ clean {
 task allJars(type: Copy) {
   dependsOn test, jar
   into 'all-jars'
-  // Replace with `from configurations.testRuntime, jar` to include test dependencies
-  from configurations.runtime, jar
+  // Replace with `from configurations.testRuntimeClasspath, jar` to include test dependencies
+  from configurations.runtimeClasspath, jar
 }

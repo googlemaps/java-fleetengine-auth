@@ -9,8 +9,8 @@ public interface LicensePlateOrBuilder extends
 
   /**
    * <pre>
-   * Required. CLDR Country/Region Code.  For example, "US" for United States,
-   * or "IN" for India.
+   * Required. CLDR Country/Region Code.  For example, `US` for United States,
+   * or `IN` for India.
    * </pre>
    *
    * <code>string country_code = 1 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -19,8 +19,8 @@ public interface LicensePlateOrBuilder extends
   java.lang.String getCountryCode();
   /**
    * <pre>
-   * Required. CLDR Country/Region Code.  For example, "US" for United States,
-   * or "IN" for India.
+   * Required. CLDR Country/Region Code.  For example, `US` for United States,
+   * or `IN` for India.
    * </pre>
    *
    * <code>string country_code = 1 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -32,7 +32,7 @@ public interface LicensePlateOrBuilder extends
   /**
    * <pre>
    * The last digit of the license plate or "-1" to denote no numeric value
-   * present in the license plate.
+   * is present in the license plate.
    * * "ABC 1234" -&gt; "4"
    * * "AB 123 CD" -&gt; "3"
    * * "ABCDEF" -&gt; "-1"
@@ -45,7 +45,7 @@ public interface LicensePlateOrBuilder extends
   /**
    * <pre>
    * The last digit of the license plate or "-1" to denote no numeric value
-   * present in the license plate.
+   * is present in the license plate.
    * * "ABC 1234" -&gt; "4"
    * * "AB 123 CD" -&gt; "3"
    * * "ABCDEF" -&gt; "-1"

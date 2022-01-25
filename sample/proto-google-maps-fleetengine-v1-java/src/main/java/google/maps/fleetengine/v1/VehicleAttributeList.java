@@ -5,7 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * This messages allows a list-of-list datatype for VehicleAttribute.
+ * A list-of-lists datatype for vehicle attributes.
  * </pre>
  *
  * Protobuf type {@code maps.fleetengine.v1.VehicleAttributeList}
@@ -317,7 +317,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * This messages allows a list-of-list datatype for VehicleAttribute.
+   * A list-of-lists datatype for vehicle attributes.
    * </pre>
    *
    * Protobuf type {@code maps.fleetengine.v1.VehicleAttributeList}

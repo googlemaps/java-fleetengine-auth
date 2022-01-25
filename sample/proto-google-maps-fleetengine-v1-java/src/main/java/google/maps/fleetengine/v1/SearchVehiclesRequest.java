@@ -5,7 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * SearchVehicles request message.
+ * `SearchVehicles` request message.
  * </pre>
  *
  * Protobuf type {@code maps.fleetengine.v1.SearchVehiclesRequest}
@@ -259,7 +259,7 @@ private static final long serialVersionUID = 0L;
 
   /**
    * <pre>
-   * Specifies the sort order of the vehicle matches in the response.
+   * Specifies the order of the vehicle matches in the response.
    * </pre>
    *
    * Protobuf enum {@code maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder}
@@ -284,7 +284,7 @@ private static final long serialVersionUID = 0L;
     PICKUP_POINT_ETA(1),
     /**
      * <pre>
-     * Ascending order by the vehicle driving distance to the pickup point.
+     * Ascending order by vehicle driving distance to the pickup point.
      * </pre>
      *
      * <code>PICKUP_POINT_DISTANCE = 2;</code>
@@ -293,7 +293,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Ascending order by vehicle driving time to the dropoff point. This order
-     * can only be used if the dropoff_point is specified in the request.
+     * can only be used if the dropoff point is specified in the request.
      * </pre>
      *
      * <code>DROPOFF_POINT_ETA = 3;</code>
@@ -301,9 +301,8 @@ private static final long serialVersionUID = 0L;
     DROPOFF_POINT_ETA(3),
     /**
      * <pre>
-     * Ascending order by straightline distance from vehicle location to pickup
-     * location. This is used primarily as a backup if the maps backend is not
-     * reachable.
+     * Ascending order by straight-line distance from the vehicle's last
+     * reported location to the pickup point.
      * </pre>
      *
      * <code>PICKUP_POINT_STRAIGHT_DISTANCE = 4;</code>
@@ -311,7 +310,7 @@ private static final long serialVersionUID = 0L;
     PICKUP_POINT_STRAIGHT_DISTANCE(4),
     /**
      * <pre>
-     * Ascending order by the match cost.
+     * Ascending order by the configured match cost.
      * </pre>
      *
      * <code>COST = 5;</code>
@@ -338,7 +337,7 @@ private static final long serialVersionUID = 0L;
     public static final int PICKUP_POINT_ETA_VALUE = 1;
     /**
      * <pre>
-     * Ascending order by the vehicle driving distance to the pickup point.
+     * Ascending order by vehicle driving distance to the pickup point.
      * </pre>
      *
      * <code>PICKUP_POINT_DISTANCE = 2;</code>
@@ -347,7 +346,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Ascending order by vehicle driving time to the dropoff point. This order
-     * can only be used if the dropoff_point is specified in the request.
+     * can only be used if the dropoff point is specified in the request.
      * </pre>
      *
      * <code>DROPOFF_POINT_ETA = 3;</code>
@@ -355,9 +354,8 @@ private static final long serialVersionUID = 0L;
     public static final int DROPOFF_POINT_ETA_VALUE = 3;
     /**
      * <pre>
-     * Ascending order by straightline distance from vehicle location to pickup
-     * location. This is used primarily as a backup if the maps backend is not
-     * reachable.
+     * Ascending order by straight-line distance from the vehicle's last
+     * reported location to the pickup point.
      * </pre>
      *
      * <code>PICKUP_POINT_STRAIGHT_DISTANCE = 4;</code>
@@ -365,7 +363,7 @@ private static final long serialVersionUID = 0L;
     public static final int PICKUP_POINT_STRAIGHT_DISTANCE_VALUE = 4;
     /**
      * <pre>
-     * Ascending order by the match cost.
+     * Ascending order by the configured match cost.
      * </pre>
      *
      * <code>COST = 5;</code>
@@ -501,8 +499,8 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object parent_;
   /**
    * <pre>
-   * Required. Must be in the format "providers/{provider}".
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -525,8 +523,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. Must be in the format "providers/{provider}".
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -592,7 +590,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The customer's intended dropoff location. The field is required if
-   * trip_types contains TripType.SHARED.
+   * `trip_types` contains `TripType.SHARED`.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.TerminalLocation dropoff_point = 5;</code>
@@ -605,7 +603,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The customer's intended dropoff location. The field is required if
-   * trip_types contains TripType.SHARED.
+   * `trip_types` contains `TripType.SHARED`.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.TerminalLocation dropoff_point = 5;</code>
@@ -618,7 +616,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The customer's intended dropoff location. The field is required if
-   * trip_types contains TripType.SHARED.
+   * `trip_types` contains `TripType.SHARED`.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.TerminalLocation dropoff_point = 5;</code>
@@ -634,7 +632,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. Defines the vehicle search radius around the pickup point. Only
    * vehicles within the search radius will be returned. Value must be between
-   * 400 and 10000 meters.
+   * 400 and 10000 meters (inclusive).
    * </pre>
    *
    * <code>int32 pickup_radius_meters = 6 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -649,8 +647,8 @@ private static final long serialVersionUID = 0L;
   private int count_;
   /**
    * <pre>
-   * Required. Specifies the maximum number of available vehicles to return. By
-   * default, the Fleet Engine limits the number to  50.
+   * Required. Specifies the maximum number of vehicles to return. The value
+   * must be between 1 and 50 (inclusive).
    * </pre>
    *
    * <code>int32 count = 7 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -665,10 +663,9 @@ private static final long serialVersionUID = 0L;
   private int minimumCapacity_;
   /**
    * <pre>
-   * Required. Specifies the minimum number of passengers allowed in the
-   * vehicle. Must number must be greater than or equal to one. The driver is
-   * not considered in the capacity search. This number indicates the number of
-   * passengers being considered for a trip.
+   * Required. Specifies the number of passengers being considered for a trip. The
+   * value must be greater than or equal to one. The driver is not considered in
+   * the capacity value.
    * </pre>
    *
    * <code>int32 minimum_capacity = 8 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -695,6 +692,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. Restricts the search to only those vehicles that support at least
    * one of the specified trip types.
+   * At the present time, only `EXCLUSIVE` is supported.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -709,6 +707,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. Restricts the search to only those vehicles that support at least
    * one of the specified trip types.
+   * At the present time, only `EXCLUSIVE` is supported.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -722,6 +721,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. Restricts the search to only those vehicles that support at least
    * one of the specified trip types.
+   * At the present time, only `EXCLUSIVE` is supported.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -736,6 +736,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. Restricts the search to only those vehicles that support at least
    * one of the specified trip types.
+   * At the present time, only `EXCLUSIVE` is supported.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -750,6 +751,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * Required. Restricts the search to only those vehicles that support at least
    * one of the specified trip types.
+   * At the present time, only `EXCLUSIVE` is supported.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -767,7 +769,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Restricts the search to only those vehicles that have updated their
-   * locations within the specified duration back from now. If this field is not
+   * locations within the specified duration. If this field is not
    * set, the server uses five minutes as the default value.
    * </pre>
    *
@@ -781,7 +783,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Restricts the search to only those vehicles that have updated their
-   * locations within the specified duration back from now. If this field is not
+   * locations within the specified duration. If this field is not
    * set, the server uses five minutes as the default value.
    * </pre>
    *
@@ -795,7 +797,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Restricts the search to only those vehicles that have updated their
-   * locations within the specified duration back from now. If this field is not
+   * locations within the specified duration. If this field is not
    * set, the server uses five minutes as the default value.
    * </pre>
    *
@@ -810,7 +812,7 @@ private static final long serialVersionUID = 0L;
   private java.util.List<google.maps.fleetengine.v1.Vehicle.VehicleType> vehicleTypes_;
   /**
    * <pre>
-   * Required. Restricts the search to those vehicles with the specified types.
+   * Required. Restricts the search to vehicles with one of the specified types.
    * At least one vehicle type must be specified.
    * </pre>
    *
@@ -822,7 +824,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. Restricts the search to those vehicles with the specified types.
+   * Required. Restricts the search to vehicles with one of the specified types.
    * At least one vehicle type must be specified.
    * </pre>
    *
@@ -835,7 +837,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. Restricts the search to those vehicles with the specified types.
+   * Required. Restricts the search to vehicles with one of the specified types.
    * At least one vehicle type must be specified.
    * </pre>
    *
@@ -847,7 +849,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. Restricts the search to those vehicles with the specified types.
+   * Required. Restricts the search to vehicles with one of the specified types.
    * At least one vehicle type must be specified.
    * </pre>
    *
@@ -859,7 +861,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. Restricts the search to those vehicles with the specified types.
+   * Required. Restricts the search to vehicles with one of the specified types.
    * At least one vehicle type must be specified.
    * </pre>
    *
@@ -875,17 +877,20 @@ private static final long serialVersionUID = 0L;
   private java.util.List<google.maps.fleetengine.v1.VehicleAttribute> requiredAttributes_;
   /**
    * <pre>
-   * Callers can form complex logical operations using the
-   * requiredAttributes and requiredOneOfAttributes fields.
-   * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-   * allows a list of lists. In combination, the two fields allow the
-   * composition of this expression:
+   * Callers can form complex logical operations using any combination of the
+   * `required_attributes`, `required_one_of_attributes`, and
+   * `required_one_of_attribute_sets` fields.
+   * `required_attributes` is a list; `required_one_of_attributes` uses a
+   * message which allows a list of lists. In combination, the two fields allow
+   * the composition of this expression:
    * ```
-   * (required_attribute[0] AND required_attribute[1] AND ...)
+   * (required_attributes[0] AND required_attributes[1] AND ...)
    * AND
-   * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+   * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+   * ...)
    * AND
-   * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+   * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+   * ...)
    * ```
    * Restricts the search to only those vehicles with the specified attributes.
    * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -901,17 +906,20 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Callers can form complex logical operations using the
-   * requiredAttributes and requiredOneOfAttributes fields.
-   * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-   * allows a list of lists. In combination, the two fields allow the
-   * composition of this expression:
+   * Callers can form complex logical operations using any combination of the
+   * `required_attributes`, `required_one_of_attributes`, and
+   * `required_one_of_attribute_sets` fields.
+   * `required_attributes` is a list; `required_one_of_attributes` uses a
+   * message which allows a list of lists. In combination, the two fields allow
+   * the composition of this expression:
    * ```
-   * (required_attribute[0] AND required_attribute[1] AND ...)
+   * (required_attributes[0] AND required_attributes[1] AND ...)
    * AND
-   * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+   * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+   * ...)
    * AND
-   * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+   * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+   * ...)
    * ```
    * Restricts the search to only those vehicles with the specified attributes.
    * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -928,17 +936,20 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Callers can form complex logical operations using the
-   * requiredAttributes and requiredOneOfAttributes fields.
-   * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-   * allows a list of lists. In combination, the two fields allow the
-   * composition of this expression:
+   * Callers can form complex logical operations using any combination of the
+   * `required_attributes`, `required_one_of_attributes`, and
+   * `required_one_of_attribute_sets` fields.
+   * `required_attributes` is a list; `required_one_of_attributes` uses a
+   * message which allows a list of lists. In combination, the two fields allow
+   * the composition of this expression:
    * ```
-   * (required_attribute[0] AND required_attribute[1] AND ...)
+   * (required_attributes[0] AND required_attributes[1] AND ...)
    * AND
-   * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+   * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+   * ...)
    * AND
-   * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+   * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+   * ...)
    * ```
    * Restricts the search to only those vehicles with the specified attributes.
    * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -954,17 +965,20 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Callers can form complex logical operations using the
-   * requiredAttributes and requiredOneOfAttributes fields.
-   * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-   * allows a list of lists. In combination, the two fields allow the
-   * composition of this expression:
+   * Callers can form complex logical operations using any combination of the
+   * `required_attributes`, `required_one_of_attributes`, and
+   * `required_one_of_attribute_sets` fields.
+   * `required_attributes` is a list; `required_one_of_attributes` uses a
+   * message which allows a list of lists. In combination, the two fields allow
+   * the composition of this expression:
    * ```
-   * (required_attribute[0] AND required_attribute[1] AND ...)
+   * (required_attributes[0] AND required_attributes[1] AND ...)
    * AND
-   * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+   * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+   * ...)
    * AND
-   * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+   * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+   * ...)
    * ```
    * Restricts the search to only those vehicles with the specified attributes.
    * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -980,17 +994,20 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Callers can form complex logical operations using the
-   * requiredAttributes and requiredOneOfAttributes fields.
-   * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-   * allows a list of lists. In combination, the two fields allow the
-   * composition of this expression:
+   * Callers can form complex logical operations using any combination of the
+   * `required_attributes`, `required_one_of_attributes`, and
+   * `required_one_of_attribute_sets` fields.
+   * `required_attributes` is a list; `required_one_of_attributes` uses a
+   * message which allows a list of lists. In combination, the two fields allow
+   * the composition of this expression:
    * ```
-   * (required_attribute[0] AND required_attribute[1] AND ...)
+   * (required_attributes[0] AND required_attributes[1] AND ...)
    * AND
-   * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+   * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+   * ...)
    * AND
-   * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+   * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+   * ...)
    * ```
    * Restricts the search to only those vehicles with the specified attributes.
    * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -1011,10 +1028,10 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Restricts the search to only those vehicles with at least one of
-   * the specified attributes applied to each VehicleAttributeList. Within each
+   * the specified attributes in each `VehicleAttributeList`. Within each
    * list, a vehicle must match at least one of the attributes. This field is an
-   * inclusive disjunction/OR operation in each VehicleAttributeList and a
-   * conjunction/AND operation across the collection of VehicleAttributeList.
+   * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+   * conjunction/AND operation across the collection of `VehicleAttributeList`.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -1026,10 +1043,10 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Restricts the search to only those vehicles with at least one of
-   * the specified attributes applied to each VehicleAttributeList. Within each
+   * the specified attributes in each `VehicleAttributeList`. Within each
    * list, a vehicle must match at least one of the attributes. This field is an
-   * inclusive disjunction/OR operation in each VehicleAttributeList and a
-   * conjunction/AND operation across the collection of VehicleAttributeList.
+   * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+   * conjunction/AND operation across the collection of `VehicleAttributeList`.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -1042,10 +1059,10 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Restricts the search to only those vehicles with at least one of
-   * the specified attributes applied to each VehicleAttributeList. Within each
+   * the specified attributes in each `VehicleAttributeList`. Within each
    * list, a vehicle must match at least one of the attributes. This field is an
-   * inclusive disjunction/OR operation in each VehicleAttributeList and a
-   * conjunction/AND operation across the collection of VehicleAttributeList.
+   * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+   * conjunction/AND operation across the collection of `VehicleAttributeList`.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -1057,10 +1074,10 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Restricts the search to only those vehicles with at least one of
-   * the specified attributes applied to each VehicleAttributeList. Within each
+   * the specified attributes in each `VehicleAttributeList`. Within each
    * list, a vehicle must match at least one of the attributes. This field is an
-   * inclusive disjunction/OR operation in each VehicleAttributeList and a
-   * conjunction/AND operation across the collection of VehicleAttributeList.
+   * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+   * conjunction/AND operation across the collection of `VehicleAttributeList`.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -1072,10 +1089,10 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Restricts the search to only those vehicles with at least one of
-   * the specified attributes applied to each VehicleAttributeList. Within each
+   * the specified attributes in each `VehicleAttributeList`. Within each
    * list, a vehicle must match at least one of the attributes. This field is an
-   * inclusive disjunction/OR operation in each VehicleAttributeList and a
-   * conjunction/AND operation across the collection of VehicleAttributeList.
+   * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+   * conjunction/AND operation across the collection of `VehicleAttributeList`.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -1090,11 +1107,24 @@ private static final long serialVersionUID = 0L;
   private java.util.List<google.maps.fleetengine.v1.VehicleAttributeList> requiredOneOfAttributeSets_;
   /**
    * <pre>
-   * Restricts the search to only those vehicles with at least one set of the
-   * specified attributes in the VehicleAttributeList. Within each list, a
+   * `required_one_of_attribute_sets` provides additional functionality.
+   * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+   * uses a message which allows a list of lists, allowing expressions such as
+   * this one:
+   * ```
+   * (required_attributes[0] AND required_attributes[1] AND ...)
+   * AND
+   * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+   * ...)
+   * OR
+   * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+   * ...)
+   * ```
+   * Restricts the search to only those vehicles with all the attributes in a
+   * `VehicleAttributeList`. Within each list, a
    * vehicle must match all of the attributes. This field is a conjunction/AND
-   * operation in each VehicleAttributeList and inclusive disjunction/OR
-   * operation across the collection of VehicleAttributeList.
+   * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+   * operation across the collection of `VehicleAttributeList`.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -1105,11 +1135,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Restricts the search to only those vehicles with at least one set of the
-   * specified attributes in the VehicleAttributeList. Within each list, a
+   * `required_one_of_attribute_sets` provides additional functionality.
+   * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+   * uses a message which allows a list of lists, allowing expressions such as
+   * this one:
+   * ```
+   * (required_attributes[0] AND required_attributes[1] AND ...)
+   * AND
+   * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+   * ...)
+   * OR
+   * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+   * ...)
+   * ```
+   * Restricts the search to only those vehicles with all the attributes in a
+   * `VehicleAttributeList`. Within each list, a
    * vehicle must match all of the attributes. This field is a conjunction/AND
-   * operation in each VehicleAttributeList and inclusive disjunction/OR
-   * operation across the collection of VehicleAttributeList.
+   * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+   * operation across the collection of `VehicleAttributeList`.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -1121,11 +1164,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Restricts the search to only those vehicles with at least one set of the
-   * specified attributes in the VehicleAttributeList. Within each list, a
+   * `required_one_of_attribute_sets` provides additional functionality.
+   * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+   * uses a message which allows a list of lists, allowing expressions such as
+   * this one:
+   * ```
+   * (required_attributes[0] AND required_attributes[1] AND ...)
+   * AND
+   * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+   * ...)
+   * OR
+   * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+   * ...)
+   * ```
+   * Restricts the search to only those vehicles with all the attributes in a
+   * `VehicleAttributeList`. Within each list, a
    * vehicle must match all of the attributes. This field is a conjunction/AND
-   * operation in each VehicleAttributeList and inclusive disjunction/OR
-   * operation across the collection of VehicleAttributeList.
+   * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+   * operation across the collection of `VehicleAttributeList`.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -1136,11 +1192,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Restricts the search to only those vehicles with at least one set of the
-   * specified attributes in the VehicleAttributeList. Within each list, a
+   * `required_one_of_attribute_sets` provides additional functionality.
+   * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+   * uses a message which allows a list of lists, allowing expressions such as
+   * this one:
+   * ```
+   * (required_attributes[0] AND required_attributes[1] AND ...)
+   * AND
+   * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+   * ...)
+   * OR
+   * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+   * ...)
+   * ```
+   * Restricts the search to only those vehicles with all the attributes in a
+   * `VehicleAttributeList`. Within each list, a
    * vehicle must match all of the attributes. This field is a conjunction/AND
-   * operation in each VehicleAttributeList and inclusive disjunction/OR
-   * operation across the collection of VehicleAttributeList.
+   * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+   * operation across the collection of `VehicleAttributeList`.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -1151,11 +1220,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Restricts the search to only those vehicles with at least one set of the
-   * specified attributes in the VehicleAttributeList. Within each list, a
+   * `required_one_of_attribute_sets` provides additional functionality.
+   * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+   * uses a message which allows a list of lists, allowing expressions such as
+   * this one:
+   * ```
+   * (required_attributes[0] AND required_attributes[1] AND ...)
+   * AND
+   * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+   * ...)
+   * OR
+   * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+   * ...)
+   * ```
+   * Restricts the search to only those vehicles with all the attributes in a
+   * `VehicleAttributeList`. Within each list, a
    * vehicle must match all of the attributes. This field is a conjunction/AND
-   * operation in each VehicleAttributeList and inclusive disjunction/OR
-   * operation across the collection of VehicleAttributeList.
+   * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+   * operation across the collection of `VehicleAttributeList`.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -1170,7 +1252,7 @@ private static final long serialVersionUID = 0L;
   private int orderBy_;
   /**
    * <pre>
-   * Required. Specifies ordering criterion for results.
+   * Required. Specifies the desired ordering criterion for results.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder order_by = 13 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1181,7 +1263,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. Specifies ordering criterion for results.
+   * Required. Specifies the desired ordering criterion for results.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder order_by = 13 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1197,12 +1279,13 @@ private static final long serialVersionUID = 0L;
   private boolean includeBackToBack_;
   /**
    * <pre>
-   * Indicates if a vehicle with an active trip is eligible for
-   * another match. If `false`, a vehicle is excluded from search results.
-   * If `true`, search results include vehicles with `TripStatus` of
-   * `ENROUTE_TO_DROPOFF`. The services only use this field if
-   * the `SearchVehicles` request has `TripType` set to EXCLUSIVE.
-   * Default value is `false`.
+   * Indicates if a vehicle with a single active trip is eligible for another
+   * match. If `false`, vehicles with assigned trips are excluded from the
+   * search results. If `true`, search results include vehicles with
+   * `TripStatus` of `ENROUTE_TO_DROPOFF`.
+   * This field is only considered if a single `trip_type` of `EXCLUSIVE` is
+   * specified.
+   * The default value is `false`.
    * </pre>
    *
    * <code>bool include_back_to_back = 18;</code>
@@ -1217,8 +1300,7 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object tripId_;
   /**
    * <pre>
-   * Indicates the ID of the trip the searchVehicleRequest is
-   * associated with.
+   * Indicates the trip associated with this `SearchVehicleRequest`.
    * </pre>
    *
    * <code>string trip_id = 19;</code>
@@ -1239,8 +1321,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Indicates the ID of the trip the searchVehicleRequest is
-   * associated with.
+   * Indicates the trip associated with this `SearchVehicleRequest`.
    * </pre>
    *
    * <code>string trip_id = 19;</code>
@@ -1279,7 +1360,7 @@ private static final long serialVersionUID = 0L;
     if (header_ != null) {
       output.writeMessage(1, getHeader());
     }
-    if (!getParentBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(parent_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, parent_);
     }
     if (pickupPoint_ != null) {
@@ -1322,7 +1403,7 @@ private static final long serialVersionUID = 0L;
     if (includeBackToBack_ != false) {
       output.writeBool(18, includeBackToBack_);
     }
-    if (!getTripIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tripId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 19, tripId_);
     }
     for (int i = 0; i < requiredOneOfAttributeSets_.size(); i++) {
@@ -1341,7 +1422,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getHeader());
     }
-    if (!getParentBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(parent_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, parent_);
     }
     if (pickupPoint_ != null) {
@@ -1400,7 +1481,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(18, includeBackToBack_);
     }
-    if (!getTripIdBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tripId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(19, tripId_);
     }
     for (int i = 0; i < requiredOneOfAttributeSets_.size(); i++) {
@@ -1623,7 +1704,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * SearchVehicles request message.
+   * `SearchVehicles` request message.
    * </pre>
    *
    * Protobuf type {@code maps.fleetengine.v1.SearchVehiclesRequest}
@@ -2211,8 +2292,8 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object parent_ = "";
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -2234,8 +2315,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -2258,8 +2339,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -2280,8 +2361,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -2297,8 +2378,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format "providers/{provider}".
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -2480,7 +2561,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The customer's intended dropoff location. The field is required if
-     * trip_types contains TripType.SHARED.
+     * `trip_types` contains `TripType.SHARED`.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TerminalLocation dropoff_point = 5;</code>
@@ -2492,7 +2573,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The customer's intended dropoff location. The field is required if
-     * trip_types contains TripType.SHARED.
+     * `trip_types` contains `TripType.SHARED`.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TerminalLocation dropoff_point = 5;</code>
@@ -2508,7 +2589,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The customer's intended dropoff location. The field is required if
-     * trip_types contains TripType.SHARED.
+     * `trip_types` contains `TripType.SHARED`.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TerminalLocation dropoff_point = 5;</code>
@@ -2529,7 +2610,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The customer's intended dropoff location. The field is required if
-     * trip_types contains TripType.SHARED.
+     * `trip_types` contains `TripType.SHARED`.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TerminalLocation dropoff_point = 5;</code>
@@ -2548,7 +2629,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The customer's intended dropoff location. The field is required if
-     * trip_types contains TripType.SHARED.
+     * `trip_types` contains `TripType.SHARED`.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TerminalLocation dropoff_point = 5;</code>
@@ -2571,7 +2652,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The customer's intended dropoff location. The field is required if
-     * trip_types contains TripType.SHARED.
+     * `trip_types` contains `TripType.SHARED`.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TerminalLocation dropoff_point = 5;</code>
@@ -2590,7 +2671,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The customer's intended dropoff location. The field is required if
-     * trip_types contains TripType.SHARED.
+     * `trip_types` contains `TripType.SHARED`.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TerminalLocation dropoff_point = 5;</code>
@@ -2603,7 +2684,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The customer's intended dropoff location. The field is required if
-     * trip_types contains TripType.SHARED.
+     * `trip_types` contains `TripType.SHARED`.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TerminalLocation dropoff_point = 5;</code>
@@ -2619,7 +2700,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The customer's intended dropoff location. The field is required if
-     * trip_types contains TripType.SHARED.
+     * `trip_types` contains `TripType.SHARED`.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TerminalLocation dropoff_point = 5;</code>
@@ -2643,7 +2724,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Defines the vehicle search radius around the pickup point. Only
      * vehicles within the search radius will be returned. Value must be between
-     * 400 and 10000 meters.
+     * 400 and 10000 meters (inclusive).
      * </pre>
      *
      * <code>int32 pickup_radius_meters = 6 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2657,7 +2738,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Defines the vehicle search radius around the pickup point. Only
      * vehicles within the search radius will be returned. Value must be between
-     * 400 and 10000 meters.
+     * 400 and 10000 meters (inclusive).
      * </pre>
      *
      * <code>int32 pickup_radius_meters = 6 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2674,7 +2755,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Defines the vehicle search radius around the pickup point. Only
      * vehicles within the search radius will be returned. Value must be between
-     * 400 and 10000 meters.
+     * 400 and 10000 meters (inclusive).
      * </pre>
      *
      * <code>int32 pickup_radius_meters = 6 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2690,8 +2771,8 @@ private static final long serialVersionUID = 0L;
     private int count_ ;
     /**
      * <pre>
-     * Required. Specifies the maximum number of available vehicles to return. By
-     * default, the Fleet Engine limits the number to  50.
+     * Required. Specifies the maximum number of vehicles to return. The value
+     * must be between 1 and 50 (inclusive).
      * </pre>
      *
      * <code>int32 count = 7 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2703,8 +2784,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Specifies the maximum number of available vehicles to return. By
-     * default, the Fleet Engine limits the number to  50.
+     * Required. Specifies the maximum number of vehicles to return. The value
+     * must be between 1 and 50 (inclusive).
      * </pre>
      *
      * <code>int32 count = 7 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2719,8 +2800,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Specifies the maximum number of available vehicles to return. By
-     * default, the Fleet Engine limits the number to  50.
+     * Required. Specifies the maximum number of vehicles to return. The value
+     * must be between 1 and 50 (inclusive).
      * </pre>
      *
      * <code>int32 count = 7 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2736,10 +2817,9 @@ private static final long serialVersionUID = 0L;
     private int minimumCapacity_ ;
     /**
      * <pre>
-     * Required. Specifies the minimum number of passengers allowed in the
-     * vehicle. Must number must be greater than or equal to one. The driver is
-     * not considered in the capacity search. This number indicates the number of
-     * passengers being considered for a trip.
+     * Required. Specifies the number of passengers being considered for a trip. The
+     * value must be greater than or equal to one. The driver is not considered in
+     * the capacity value.
      * </pre>
      *
      * <code>int32 minimum_capacity = 8 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2751,10 +2831,9 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Specifies the minimum number of passengers allowed in the
-     * vehicle. Must number must be greater than or equal to one. The driver is
-     * not considered in the capacity search. This number indicates the number of
-     * passengers being considered for a trip.
+     * Required. Specifies the number of passengers being considered for a trip. The
+     * value must be greater than or equal to one. The driver is not considered in
+     * the capacity value.
      * </pre>
      *
      * <code>int32 minimum_capacity = 8 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2769,10 +2848,9 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Specifies the minimum number of passengers allowed in the
-     * vehicle. Must number must be greater than or equal to one. The driver is
-     * not considered in the capacity search. This number indicates the number of
-     * passengers being considered for a trip.
+     * Required. Specifies the number of passengers being considered for a trip. The
+     * value must be greater than or equal to one. The driver is not considered in
+     * the capacity value.
      * </pre>
      *
      * <code>int32 minimum_capacity = 8 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2797,6 +2875,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Restricts the search to only those vehicles that support at least
      * one of the specified trip types.
+     * At the present time, only `EXCLUSIVE` is supported.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2810,6 +2889,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Restricts the search to only those vehicles that support at least
      * one of the specified trip types.
+     * At the present time, only `EXCLUSIVE` is supported.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2822,6 +2902,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Restricts the search to only those vehicles that support at least
      * one of the specified trip types.
+     * At the present time, only `EXCLUSIVE` is supported.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2835,6 +2916,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Restricts the search to only those vehicles that support at least
      * one of the specified trip types.
+     * At the present time, only `EXCLUSIVE` is supported.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2856,6 +2938,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Restricts the search to only those vehicles that support at least
      * one of the specified trip types.
+     * At the present time, only `EXCLUSIVE` is supported.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2875,6 +2958,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Restricts the search to only those vehicles that support at least
      * one of the specified trip types.
+     * At the present time, only `EXCLUSIVE` is supported.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2894,6 +2978,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Restricts the search to only those vehicles that support at least
      * one of the specified trip types.
+     * At the present time, only `EXCLUSIVE` is supported.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2909,6 +2994,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Restricts the search to only those vehicles that support at least
      * one of the specified trip types.
+     * At the present time, only `EXCLUSIVE` is supported.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2922,6 +3008,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Restricts the search to only those vehicles that support at least
      * one of the specified trip types.
+     * At the present time, only `EXCLUSIVE` is supported.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2935,6 +3022,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Restricts the search to only those vehicles that support at least
      * one of the specified trip types.
+     * At the present time, only `EXCLUSIVE` is supported.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2953,6 +3041,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Restricts the search to only those vehicles that support at least
      * one of the specified trip types.
+     * At the present time, only `EXCLUSIVE` is supported.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2969,6 +3058,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * Required. Restricts the search to only those vehicles that support at least
      * one of the specified trip types.
+     * At the present time, only `EXCLUSIVE` is supported.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripType trip_types = 9 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -2991,7 +3081,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles that have updated their
-     * locations within the specified duration back from now. If this field is not
+     * locations within the specified duration. If this field is not
      * set, the server uses five minutes as the default value.
      * </pre>
      *
@@ -3004,7 +3094,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles that have updated their
-     * locations within the specified duration back from now. If this field is not
+     * locations within the specified duration. If this field is not
      * set, the server uses five minutes as the default value.
      * </pre>
      *
@@ -3021,7 +3111,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles that have updated their
-     * locations within the specified duration back from now. If this field is not
+     * locations within the specified duration. If this field is not
      * set, the server uses five minutes as the default value.
      * </pre>
      *
@@ -3043,7 +3133,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles that have updated their
-     * locations within the specified duration back from now. If this field is not
+     * locations within the specified duration. If this field is not
      * set, the server uses five minutes as the default value.
      * </pre>
      *
@@ -3063,7 +3153,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles that have updated their
-     * locations within the specified duration back from now. If this field is not
+     * locations within the specified duration. If this field is not
      * set, the server uses five minutes as the default value.
      * </pre>
      *
@@ -3087,7 +3177,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles that have updated their
-     * locations within the specified duration back from now. If this field is not
+     * locations within the specified duration. If this field is not
      * set, the server uses five minutes as the default value.
      * </pre>
      *
@@ -3107,7 +3197,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles that have updated their
-     * locations within the specified duration back from now. If this field is not
+     * locations within the specified duration. If this field is not
      * set, the server uses five minutes as the default value.
      * </pre>
      *
@@ -3121,7 +3211,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles that have updated their
-     * locations within the specified duration back from now. If this field is not
+     * locations within the specified duration. If this field is not
      * set, the server uses five minutes as the default value.
      * </pre>
      *
@@ -3138,7 +3228,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles that have updated their
-     * locations within the specified duration back from now. If this field is not
+     * locations within the specified duration. If this field is not
      * set, the server uses five minutes as the default value.
      * </pre>
      *
@@ -3172,7 +3262,7 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3187,7 +3277,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3202,7 +3292,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3217,7 +3307,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3239,7 +3329,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3258,7 +3348,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3279,7 +3369,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3301,7 +3391,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3320,7 +3410,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3339,7 +3429,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3359,7 +3449,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3377,7 +3467,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3395,7 +3485,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3407,7 +3497,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3422,7 +3512,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3438,7 +3528,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3450,7 +3540,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3463,7 +3553,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Restricts the search to those vehicles with the specified types.
+     * Required. Restricts the search to vehicles with one of the specified types.
      * At least one vehicle type must be specified.
      * </pre>
      *
@@ -3502,17 +3592,20 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3531,17 +3624,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3560,17 +3656,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3589,17 +3688,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3625,17 +3727,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3658,17 +3763,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3693,17 +3801,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3729,17 +3840,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3762,17 +3876,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3795,17 +3912,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3829,17 +3949,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3861,17 +3984,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3893,17 +4019,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3919,17 +4048,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3948,17 +4080,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -3978,17 +4113,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -4004,17 +4142,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -4031,17 +4172,20 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Callers can form complex logical operations using the
-     * requiredAttributes and requiredOneOfAttributes fields.
-     * requiredAttributes is a list; requiredOneOfAttributes uses a message which
-     * allows a list of lists. In combination, the two fields allow the
-     * composition of this expression:
+     * Callers can form complex logical operations using any combination of the
+     * `required_attributes`, `required_one_of_attributes`, and
+     * `required_one_of_attribute_sets` fields.
+     * `required_attributes` is a list; `required_one_of_attributes` uses a
+     * message which allows a list of lists. In combination, the two fields allow
+     * the composition of this expression:
      * ```
-     * (required_attribute[0] AND required_attribute[1] AND ...)
+     * (required_attributes[0] AND required_attributes[1] AND ...)
      * AND
-     * (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+     * (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+     * ...)
      * AND
-     * (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+     * (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+     * ...)
      * ```
      * Restricts the search to only those vehicles with the specified attributes.
      * This field is a conjunction/AND operation. Your app can specify up to 100
@@ -4085,10 +4229,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4103,10 +4247,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4121,10 +4265,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4139,10 +4283,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4164,10 +4308,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4186,10 +4330,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4210,10 +4354,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4235,10 +4379,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4257,10 +4401,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4279,10 +4423,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4302,10 +4446,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4323,10 +4467,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4344,10 +4488,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4359,10 +4503,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4377,10 +4521,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4396,10 +4540,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4411,10 +4555,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4427,10 +4571,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Restricts the search to only those vehicles with at least one of
-     * the specified attributes applied to each VehicleAttributeList. Within each
+     * the specified attributes in each `VehicleAttributeList`. Within each
      * list, a vehicle must match at least one of the attributes. This field is an
-     * inclusive disjunction/OR operation in each VehicleAttributeList and a
-     * conjunction/AND operation across the collection of VehicleAttributeList.
+     * inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+     * conjunction/AND operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attributes = 15;</code>
@@ -4468,11 +4612,24 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4486,11 +4643,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4504,11 +4674,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4522,11 +4705,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4547,11 +4743,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4569,11 +4778,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4593,11 +4815,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4618,11 +4853,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4640,11 +4888,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4662,11 +4923,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4685,11 +4959,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4706,11 +4993,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4727,11 +5027,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4742,11 +5055,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4760,11 +5086,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4779,11 +5118,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4794,11 +5146,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4810,11 +5175,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Restricts the search to only those vehicles with at least one set of the
-     * specified attributes in the VehicleAttributeList. Within each list, a
+     * `required_one_of_attribute_sets` provides additional functionality.
+     * Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+     * uses a message which allows a list of lists, allowing expressions such as
+     * this one:
+     * ```
+     * (required_attributes[0] AND required_attributes[1] AND ...)
+     * AND
+     * (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+     * ...)
+     * OR
+     * (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+     * ...)
+     * ```
+     * Restricts the search to only those vehicles with all the attributes in a
+     * `VehicleAttributeList`. Within each list, a
      * vehicle must match all of the attributes. This field is a conjunction/AND
-     * operation in each VehicleAttributeList and inclusive disjunction/OR
-     * operation across the collection of VehicleAttributeList.
+     * operation in each `VehicleAttributeList` and inclusive disjunction/OR
+     * operation across the collection of `VehicleAttributeList`.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttributeList required_one_of_attribute_sets = 20;</code>
@@ -4841,7 +5219,7 @@ private static final long serialVersionUID = 0L;
     private int orderBy_ = 0;
     /**
      * <pre>
-     * Required. Specifies ordering criterion for results.
+     * Required. Specifies the desired ordering criterion for results.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder order_by = 13 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -4852,7 +5230,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Specifies ordering criterion for results.
+     * Required. Specifies the desired ordering criterion for results.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder order_by = 13 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -4867,7 +5245,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Specifies ordering criterion for results.
+     * Required. Specifies the desired ordering criterion for results.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder order_by = 13 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -4881,7 +5259,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Specifies ordering criterion for results.
+     * Required. Specifies the desired ordering criterion for results.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder order_by = 13 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -4899,7 +5277,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Specifies ordering criterion for results.
+     * Required. Specifies the desired ordering criterion for results.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.SearchVehiclesRequest.VehicleMatchOrder order_by = 13 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -4915,12 +5293,13 @@ private static final long serialVersionUID = 0L;
     private boolean includeBackToBack_ ;
     /**
      * <pre>
-     * Indicates if a vehicle with an active trip is eligible for
-     * another match. If `false`, a vehicle is excluded from search results.
-     * If `true`, search results include vehicles with `TripStatus` of
-     * `ENROUTE_TO_DROPOFF`. The services only use this field if
-     * the `SearchVehicles` request has `TripType` set to EXCLUSIVE.
-     * Default value is `false`.
+     * Indicates if a vehicle with a single active trip is eligible for another
+     * match. If `false`, vehicles with assigned trips are excluded from the
+     * search results. If `true`, search results include vehicles with
+     * `TripStatus` of `ENROUTE_TO_DROPOFF`.
+     * This field is only considered if a single `trip_type` of `EXCLUSIVE` is
+     * specified.
+     * The default value is `false`.
      * </pre>
      *
      * <code>bool include_back_to_back = 18;</code>
@@ -4932,12 +5311,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates if a vehicle with an active trip is eligible for
-     * another match. If `false`, a vehicle is excluded from search results.
-     * If `true`, search results include vehicles with `TripStatus` of
-     * `ENROUTE_TO_DROPOFF`. The services only use this field if
-     * the `SearchVehicles` request has `TripType` set to EXCLUSIVE.
-     * Default value is `false`.
+     * Indicates if a vehicle with a single active trip is eligible for another
+     * match. If `false`, vehicles with assigned trips are excluded from the
+     * search results. If `true`, search results include vehicles with
+     * `TripStatus` of `ENROUTE_TO_DROPOFF`.
+     * This field is only considered if a single `trip_type` of `EXCLUSIVE` is
+     * specified.
+     * The default value is `false`.
      * </pre>
      *
      * <code>bool include_back_to_back = 18;</code>
@@ -4952,12 +5332,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates if a vehicle with an active trip is eligible for
-     * another match. If `false`, a vehicle is excluded from search results.
-     * If `true`, search results include vehicles with `TripStatus` of
-     * `ENROUTE_TO_DROPOFF`. The services only use this field if
-     * the `SearchVehicles` request has `TripType` set to EXCLUSIVE.
-     * Default value is `false`.
+     * Indicates if a vehicle with a single active trip is eligible for another
+     * match. If `false`, vehicles with assigned trips are excluded from the
+     * search results. If `true`, search results include vehicles with
+     * `TripStatus` of `ENROUTE_TO_DROPOFF`.
+     * This field is only considered if a single `trip_type` of `EXCLUSIVE` is
+     * specified.
+     * The default value is `false`.
      * </pre>
      *
      * <code>bool include_back_to_back = 18;</code>
@@ -4973,8 +5354,7 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object tripId_ = "";
     /**
      * <pre>
-     * Indicates the ID of the trip the searchVehicleRequest is
-     * associated with.
+     * Indicates the trip associated with this `SearchVehicleRequest`.
      * </pre>
      *
      * <code>string trip_id = 19;</code>
@@ -4994,8 +5374,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates the ID of the trip the searchVehicleRequest is
-     * associated with.
+     * Indicates the trip associated with this `SearchVehicleRequest`.
      * </pre>
      *
      * <code>string trip_id = 19;</code>
@@ -5016,8 +5395,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates the ID of the trip the searchVehicleRequest is
-     * associated with.
+     * Indicates the trip associated with this `SearchVehicleRequest`.
      * </pre>
      *
      * <code>string trip_id = 19;</code>
@@ -5036,8 +5414,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates the ID of the trip the searchVehicleRequest is
-     * associated with.
+     * Indicates the trip associated with this `SearchVehicleRequest`.
      * </pre>
      *
      * <code>string trip_id = 19;</code>
@@ -5051,8 +5428,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates the ID of the trip the searchVehicleRequest is
-     * associated with.
+     * Indicates the trip associated with this `SearchVehicleRequest`.
      * </pre>
      *
      * <code>string trip_id = 19;</code>

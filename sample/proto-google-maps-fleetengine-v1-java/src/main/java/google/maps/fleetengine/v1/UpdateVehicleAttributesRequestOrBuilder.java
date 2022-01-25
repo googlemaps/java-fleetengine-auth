@@ -36,9 +36,8 @@ public interface UpdateVehicleAttributesRequestOrBuilder extends
 
   /**
    * <pre>
-   * Required. Must be in the format
-   * "providers/{provider}/vehicles/{vehicle}.
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}/vehicles/{vehicle}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -49,9 +48,8 @@ public interface UpdateVehicleAttributesRequestOrBuilder extends
   java.lang.String getName();
   /**
    * <pre>
-   * Required. Must be in the format
-   * "providers/{provider}/vehicles/{vehicle}.
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}/vehicles/{vehicle}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -64,10 +62,8 @@ public interface UpdateVehicleAttributesRequestOrBuilder extends
 
   /**
    * <pre>
-   * Required. The attributes to update;
-   * unmentioned attributes will not be altered or removed.
-   * At most 20 attributes; the combined "key:value" string length cannot
-   * exceed 256.
+   * Required. The vehicle attributes to update. Unmentioned attributes will not be
+   * altered or removed.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -76,10 +72,8 @@ public interface UpdateVehicleAttributesRequestOrBuilder extends
       getAttributesList();
   /**
    * <pre>
-   * Required. The attributes to update;
-   * unmentioned attributes will not be altered or removed.
-   * At most 20 attributes; the combined "key:value" string length cannot
-   * exceed 256.
+   * Required. The vehicle attributes to update. Unmentioned attributes will not be
+   * altered or removed.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -87,10 +81,8 @@ public interface UpdateVehicleAttributesRequestOrBuilder extends
   google.maps.fleetengine.v1.VehicleAttribute getAttributes(int index);
   /**
    * <pre>
-   * Required. The attributes to update;
-   * unmentioned attributes will not be altered or removed.
-   * At most 20 attributes; the combined "key:value" string length cannot
-   * exceed 256.
+   * Required. The vehicle attributes to update. Unmentioned attributes will not be
+   * altered or removed.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -98,10 +90,8 @@ public interface UpdateVehicleAttributesRequestOrBuilder extends
   int getAttributesCount();
   /**
    * <pre>
-   * Required. The attributes to update;
-   * unmentioned attributes will not be altered or removed.
-   * At most 20 attributes; the combined "key:value" string length cannot
-   * exceed 256.
+   * Required. The vehicle attributes to update. Unmentioned attributes will not be
+   * altered or removed.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -110,10 +100,8 @@ public interface UpdateVehicleAttributesRequestOrBuilder extends
       getAttributesOrBuilderList();
   /**
    * <pre>
-   * Required. The attributes to update;
-   * unmentioned attributes will not be altered or removed.
-   * At most 20 attributes; the combined "key:value" string length cannot
-   * exceed 256.
+   * Required. The vehicle attributes to update. Unmentioned attributes will not be
+   * altered or removed.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>

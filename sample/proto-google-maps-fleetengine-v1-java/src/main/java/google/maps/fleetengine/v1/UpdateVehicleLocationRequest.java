@@ -5,7 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * UpdateVehicleLocation request message.
+ * `UpdateVehicleLocation` request message.
  * </pre>
  *
  * Protobuf type {@code maps.fleetengine.v1.UpdateVehicleLocationRequest}
@@ -167,8 +167,8 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Required. Must be in the format
-   * "providers/{provider}/vehicles/{vehicle}.
-   * The {provider} must be the Project ID (for example, sample-cloud-project)
+   * `providers/{provider}/vehicles/{vehicle}`.
+   * The {provider} must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -192,8 +192,8 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Required. Must be in the format
-   * "providers/{provider}/vehicles/{vehicle}.
-   * The {provider} must be the Project ID (for example, sample-cloud-project)
+   * `providers/{provider}/vehicles/{vehicle}`.
+   * The {provider} must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -220,7 +220,7 @@ private static final long serialVersionUID = 0L;
   private google.maps.fleetengine.v1.VehicleLocation currentLocation_;
   /**
    * <pre>
-   * Required. The location to update to.  The last_location and update_time
+   * Required. The vehicle's most recent location.  The `location` and `update_time`
    * subfields are required.
    * </pre>
    *
@@ -233,7 +233,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. The location to update to.  The last_location and update_time
+   * Required. The vehicle's most recent location.  The `location` and `update_time`
    * subfields are required.
    * </pre>
    *
@@ -246,7 +246,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. The location to update to.  The last_location and update_time
+   * Required. The vehicle's most recent location.  The `location` and `update_time`
    * subfields are required.
    * </pre>
    *
@@ -261,8 +261,8 @@ private static final long serialVersionUID = 0L;
   private int currentState_;
   /**
    * <pre>
-   * Set current vehicle state to either ONLINE or OFFLINE;
-   * if set to UNKNOWN_VEHICLE_STATE, vehicle state will not be altered.
+   * Set the vehicle's state to either `ONLINE` or `OFFLINE`.
+   * If set to `UNKNOWN_VEHICLE_STATE`, the vehicle's state will not be altered.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.VehicleState current_state = 5;</code>
@@ -273,8 +273,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Set current vehicle state to either ONLINE or OFFLINE;
-   * if set to UNKNOWN_VEHICLE_STATE, vehicle state will not be altered.
+   * Set the vehicle's state to either `ONLINE` or `OFFLINE`.
+   * If set to `UNKNOWN_VEHICLE_STATE`, the vehicle's state will not be altered.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.VehicleState current_state = 5;</code>
@@ -303,7 +303,7 @@ private static final long serialVersionUID = 0L;
     if (header_ != null) {
       output.writeMessage(1, getHeader());
     }
-    if (!getNameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
     }
     if (currentLocation_ != null) {
@@ -325,7 +325,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getHeader());
     }
-    if (!getNameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
     }
     if (currentLocation_ != null) {
@@ -484,7 +484,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * UpdateVehicleLocation request message.
+   * `UpdateVehicleLocation` request message.
    * </pre>
    *
    * Protobuf type {@code maps.fleetengine.v1.UpdateVehicleLocationRequest}
@@ -827,8 +827,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}.
-     * The {provider} must be the Project ID (for example, sample-cloud-project)
+     * `providers/{provider}/vehicles/{vehicle}`.
+     * The {provider} must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -851,8 +851,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}.
-     * The {provider} must be the Project ID (for example, sample-cloud-project)
+     * `providers/{provider}/vehicles/{vehicle}`.
+     * The {provider} must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -876,8 +876,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}.
-     * The {provider} must be the Project ID (for example, sample-cloud-project)
+     * `providers/{provider}/vehicles/{vehicle}`.
+     * The {provider} must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -899,8 +899,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}.
-     * The {provider} must be the Project ID (for example, sample-cloud-project)
+     * `providers/{provider}/vehicles/{vehicle}`.
+     * The {provider} must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -917,8 +917,8 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}.
-     * The {provider} must be the Project ID (for example, sample-cloud-project)
+     * `providers/{provider}/vehicles/{vehicle}`.
+     * The {provider} must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -944,7 +944,7 @@ private static final long serialVersionUID = 0L;
         google.maps.fleetengine.v1.VehicleLocation, google.maps.fleetengine.v1.VehicleLocation.Builder, google.maps.fleetengine.v1.VehicleLocationOrBuilder> currentLocationBuilder_;
     /**
      * <pre>
-     * Required. The location to update to.  The last_location and update_time
+     * Required. The vehicle's most recent location.  The `location` and `update_time`
      * subfields are required.
      * </pre>
      *
@@ -956,7 +956,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The location to update to.  The last_location and update_time
+     * Required. The vehicle's most recent location.  The `location` and `update_time`
      * subfields are required.
      * </pre>
      *
@@ -972,7 +972,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The location to update to.  The last_location and update_time
+     * Required. The vehicle's most recent location.  The `location` and `update_time`
      * subfields are required.
      * </pre>
      *
@@ -993,7 +993,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The location to update to.  The last_location and update_time
+     * Required. The vehicle's most recent location.  The `location` and `update_time`
      * subfields are required.
      * </pre>
      *
@@ -1012,7 +1012,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The location to update to.  The last_location and update_time
+     * Required. The vehicle's most recent location.  The `location` and `update_time`
      * subfields are required.
      * </pre>
      *
@@ -1035,7 +1035,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The location to update to.  The last_location and update_time
+     * Required. The vehicle's most recent location.  The `location` and `update_time`
      * subfields are required.
      * </pre>
      *
@@ -1054,7 +1054,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The location to update to.  The last_location and update_time
+     * Required. The vehicle's most recent location.  The `location` and `update_time`
      * subfields are required.
      * </pre>
      *
@@ -1067,7 +1067,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The location to update to.  The last_location and update_time
+     * Required. The vehicle's most recent location.  The `location` and `update_time`
      * subfields are required.
      * </pre>
      *
@@ -1083,7 +1083,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The location to update to.  The last_location and update_time
+     * Required. The vehicle's most recent location.  The `location` and `update_time`
      * subfields are required.
      * </pre>
      *
@@ -1106,8 +1106,8 @@ private static final long serialVersionUID = 0L;
     private int currentState_ = 0;
     /**
      * <pre>
-     * Set current vehicle state to either ONLINE or OFFLINE;
-     * if set to UNKNOWN_VEHICLE_STATE, vehicle state will not be altered.
+     * Set the vehicle's state to either `ONLINE` or `OFFLINE`.
+     * If set to `UNKNOWN_VEHICLE_STATE`, the vehicle's state will not be altered.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.VehicleState current_state = 5;</code>
@@ -1118,8 +1118,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Set current vehicle state to either ONLINE or OFFLINE;
-     * if set to UNKNOWN_VEHICLE_STATE, vehicle state will not be altered.
+     * Set the vehicle's state to either `ONLINE` or `OFFLINE`.
+     * If set to `UNKNOWN_VEHICLE_STATE`, the vehicle's state will not be altered.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.VehicleState current_state = 5;</code>
@@ -1134,8 +1134,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Set current vehicle state to either ONLINE or OFFLINE;
-     * if set to UNKNOWN_VEHICLE_STATE, vehicle state will not be altered.
+     * Set the vehicle's state to either `ONLINE` or `OFFLINE`.
+     * If set to `UNKNOWN_VEHICLE_STATE`, the vehicle's state will not be altered.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.VehicleState current_state = 5;</code>
@@ -1149,8 +1149,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Set current vehicle state to either ONLINE or OFFLINE;
-     * if set to UNKNOWN_VEHICLE_STATE, vehicle state will not be altered.
+     * Set the vehicle's state to either `ONLINE` or `OFFLINE`.
+     * If set to `UNKNOWN_VEHICLE_STATE`, the vehicle's state will not be altered.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.VehicleState current_state = 5;</code>
@@ -1168,8 +1168,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Set current vehicle state to either ONLINE or OFFLINE;
-     * if set to UNKNOWN_VEHICLE_STATE, vehicle state will not be altered.
+     * Set the vehicle's state to either `ONLINE` or `OFFLINE`.
+     * If set to `UNKNOWN_VEHICLE_STATE`, the vehicle's state will not be altered.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.VehicleState current_state = 5;</code>

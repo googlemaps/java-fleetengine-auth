@@ -9,10 +9,10 @@ public interface RequestHeaderOrBuilder extends
 
   /**
    * <pre>
-   * The language requested. The external form of Google International
-   * Identifiers Initiative (III) LanguageCode objects. If none is specified,
-   * return a name in any language, with a preference for English if such a
-   * name exists.
+   * The BCP-47 language code, such as en-US or sr-Latn. For more information,
+   * see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If none
+   * is specified, the response may be in any language, with a preference for
+   * English if such a name exists. Field value example: `en-US`.
    * </pre>
    *
    * <code>string language_code = 1;</code>
@@ -21,10 +21,10 @@ public interface RequestHeaderOrBuilder extends
   java.lang.String getLanguageCode();
   /**
    * <pre>
-   * The language requested. The external form of Google International
-   * Identifiers Initiative (III) LanguageCode objects. If none is specified,
-   * return a name in any language, with a preference for English if such a
-   * name exists.
+   * The BCP-47 language code, such as en-US or sr-Latn. For more information,
+   * see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If none
+   * is specified, the response may be in any language, with a preference for
+   * English if such a name exists. Field value example: `en-US`.
    * </pre>
    *
    * <code>string language_code = 1;</code>
@@ -36,6 +36,7 @@ public interface RequestHeaderOrBuilder extends
   /**
    * <pre>
    * Required. CLDR region code of the region where the request originates.
+   * Field value example: `US`.
    * </pre>
    *
    * <code>string region_code = 2 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -45,6 +46,7 @@ public interface RequestHeaderOrBuilder extends
   /**
    * <pre>
    * Required. CLDR region code of the region where the request originates.
+   * Field value example: `US`.
    * </pre>
    *
    * <code>string region_code = 2 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -56,6 +58,7 @@ public interface RequestHeaderOrBuilder extends
   /**
    * <pre>
    * Version of the calling SDK, if applicable.
+   * The version format is "major.minor.patch", example: `1.1.2`.
    * </pre>
    *
    * <code>string sdk_version = 3;</code>
@@ -65,6 +68,7 @@ public interface RequestHeaderOrBuilder extends
   /**
    * <pre>
    * Version of the calling SDK, if applicable.
+   * The version format is "major.minor.patch", example: `1.1.2`.
    * </pre>
    *
    * <code>string sdk_version = 3;</code>
@@ -76,6 +80,7 @@ public interface RequestHeaderOrBuilder extends
   /**
    * <pre>
    * Version of the operating system on which the calling SDK is running.
+   * Field value examples: `4.4.1`, `12.1`.
    * </pre>
    *
    * <code>string os_version = 4;</code>
@@ -85,6 +90,7 @@ public interface RequestHeaderOrBuilder extends
   /**
    * <pre>
    * Version of the operating system on which the calling SDK is running.
+   * Field value examples: `4.4.1`, `12.1`.
    * </pre>
    *
    * <code>string os_version = 4;</code>
@@ -96,6 +102,7 @@ public interface RequestHeaderOrBuilder extends
   /**
    * <pre>
    * Model of the device on which the calling SDK is running.
+   * Field value examples: `iPhone12,1`, `SM-G920F`.
    * </pre>
    *
    * <code>string device_model = 5;</code>
@@ -105,6 +112,7 @@ public interface RequestHeaderOrBuilder extends
   /**
    * <pre>
    * Model of the device on which the calling SDK is running.
+   * Field value examples: `iPhone12,1`, `SM-G920F`.
    * </pre>
    *
    * <code>string device_model = 5;</code>
@@ -112,4 +120,121 @@ public interface RequestHeaderOrBuilder extends
    */
   com.google.protobuf.ByteString
       getDeviceModelBytes();
+
+  /**
+   * <pre>
+   * The type of SDK sending the request.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.RequestHeader.SdkType sdk_type = 6;</code>
+   * @return The enum numeric value on the wire for sdkType.
+   */
+  int getSdkTypeValue();
+  /**
+   * <pre>
+   * The type of SDK sending the request.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.RequestHeader.SdkType sdk_type = 6;</code>
+   * @return The sdkType.
+   */
+  google.maps.fleetengine.v1.RequestHeader.SdkType getSdkType();
+
+  /**
+   * <pre>
+   * Version of the MapSDK which the calling SDK depends on, if applicable.
+   * The version format is "major.minor.patch", example: `5.2.1`.
+   * </pre>
+   *
+   * <code>string maps_sdk_version = 7;</code>
+   * @return The mapsSdkVersion.
+   */
+  java.lang.String getMapsSdkVersion();
+  /**
+   * <pre>
+   * Version of the MapSDK which the calling SDK depends on, if applicable.
+   * The version format is "major.minor.patch", example: `5.2.1`.
+   * </pre>
+   *
+   * <code>string maps_sdk_version = 7;</code>
+   * @return The bytes for mapsSdkVersion.
+   */
+  com.google.protobuf.ByteString
+      getMapsSdkVersionBytes();
+
+  /**
+   * <pre>
+   * Version of the NavSDK which the calling SDK depends on, if applicable.
+   * The version format is "major.minor.patch", example: `2.1.0`.
+   * </pre>
+   *
+   * <code>string nav_sdk_version = 8;</code>
+   * @return The navSdkVersion.
+   */
+  java.lang.String getNavSdkVersion();
+  /**
+   * <pre>
+   * Version of the NavSDK which the calling SDK depends on, if applicable.
+   * The version format is "major.minor.patch", example: `2.1.0`.
+   * </pre>
+   *
+   * <code>string nav_sdk_version = 8;</code>
+   * @return The bytes for navSdkVersion.
+   */
+  com.google.protobuf.ByteString
+      getNavSdkVersionBytes();
+
+  /**
+   * <pre>
+   * Platform of the calling SDK.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.RequestHeader.Platform platform = 9;</code>
+   * @return The enum numeric value on the wire for platform.
+   */
+  int getPlatformValue();
+  /**
+   * <pre>
+   * Platform of the calling SDK.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.RequestHeader.Platform platform = 9;</code>
+   * @return The platform.
+   */
+  google.maps.fleetengine.v1.RequestHeader.Platform getPlatform();
+
+  /**
+   * <pre>
+   * Manufacturer of the Android device from the calling SDK, only applicable
+   * for the Android SDKs.
+   * Field value example: `Samsung`.
+   * </pre>
+   *
+   * <code>string manufacturer = 10;</code>
+   * @return The manufacturer.
+   */
+  java.lang.String getManufacturer();
+  /**
+   * <pre>
+   * Manufacturer of the Android device from the calling SDK, only applicable
+   * for the Android SDKs.
+   * Field value example: `Samsung`.
+   * </pre>
+   *
+   * <code>string manufacturer = 10;</code>
+   * @return The bytes for manufacturer.
+   */
+  com.google.protobuf.ByteString
+      getManufacturerBytes();
+
+  /**
+   * <pre>
+   * Android API level of the calling SDK, only applicable for the Android SDKs.
+   * Field value example: `23`.
+   * </pre>
+   *
+   * <code>int32 android_api_level = 11;</code>
+   * @return The androidApiLevel.
+   */
+  int getAndroidApiLevel();
 }

@@ -5,7 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * The state of a Vehicle.
+ * The state of a `Vehicle`.
  * </pre>
  *
  * Protobuf enum {@code maps.fleetengine.v1.VehicleState}
@@ -22,7 +22,8 @@ public enum VehicleState
   UNKNOWN_VEHICLE_STATE(0),
   /**
    * <pre>
-   * The vehicle is not accepting new trips.
+   * The vehicle is not accepting new trips. Note: the vehicle may continue to
+   * operate in this state while completing a trip assigned to it.
    * </pre>
    *
    * <code>OFFLINE = 1;</code>
@@ -49,7 +50,8 @@ public enum VehicleState
   public static final int UNKNOWN_VEHICLE_STATE_VALUE = 0;
   /**
    * <pre>
-   * The vehicle is not accepting new trips.
+   * The vehicle is not accepting new trips. Note: the vehicle may continue to
+   * operate in this state while completing a trip assigned to it.
    * </pre>
    *
    * <code>OFFLINE = 1;</code>

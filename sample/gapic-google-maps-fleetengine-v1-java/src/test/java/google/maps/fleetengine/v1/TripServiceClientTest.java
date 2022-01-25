@@ -108,6 +108,10 @@ public class TripServiceClientTest {
             .addAllRemainingWaypoints(new ArrayList<TripWaypoint>())
             .addAllVehicleWaypoints(new ArrayList<TripWaypoint>())
             .addAllRoute(new ArrayList<LatLng>())
+            .setCurrentRouteSegment("currentRouteSegment29209795")
+            .setCurrentRouteSegmentVersion(Timestamp.newBuilder().build())
+            .setCurrentRouteSegmentTraffic(ConsumableTrafficPolyline.newBuilder().build())
+            .setCurrentRouteSegmentTrafficVersion(Timestamp.newBuilder().build())
             .setCurrentRouteSegmentEndPoint(TripWaypoint.newBuilder().build())
             .setRemainingDistanceMeters(Int32Value.newBuilder().build())
             .setEtaToFirstWaypoint(Timestamp.newBuilder().build())
@@ -189,6 +193,10 @@ public class TripServiceClientTest {
             .addAllRemainingWaypoints(new ArrayList<TripWaypoint>())
             .addAllVehicleWaypoints(new ArrayList<TripWaypoint>())
             .addAllRoute(new ArrayList<LatLng>())
+            .setCurrentRouteSegment("currentRouteSegment29209795")
+            .setCurrentRouteSegmentVersion(Timestamp.newBuilder().build())
+            .setCurrentRouteSegmentTraffic(ConsumableTrafficPolyline.newBuilder().build())
+            .setCurrentRouteSegmentTrafficVersion(Timestamp.newBuilder().build())
             .setCurrentRouteSegmentEndPoint(TripWaypoint.newBuilder().build())
             .setRemainingDistanceMeters(Int32Value.newBuilder().build())
             .setEtaToFirstWaypoint(Timestamp.newBuilder().build())
@@ -210,6 +218,8 @@ public class TripServiceClientTest {
             .setCurrentRouteSegmentVersion(Timestamp.newBuilder().build())
             .setRemainingWaypointsVersion(Timestamp.newBuilder().build())
             .setRouteFormatType(PolylineFormatType.forNumber(0))
+            .setCurrentRouteSegmentTrafficVersion(Timestamp.newBuilder().build())
+            .setRemainingWaypointsRouteVersion(Timestamp.newBuilder().build())
             .build();
 
     Trip actualResponse = client.getTrip(request);
@@ -227,6 +237,12 @@ public class TripServiceClientTest {
     Assert.assertEquals(
         request.getRemainingWaypointsVersion(), actualRequest.getRemainingWaypointsVersion());
     Assert.assertEquals(request.getRouteFormatType(), actualRequest.getRouteFormatType());
+    Assert.assertEquals(
+        request.getCurrentRouteSegmentTrafficVersion(),
+        actualRequest.getCurrentRouteSegmentTrafficVersion());
+    Assert.assertEquals(
+        request.getRemainingWaypointsRouteVersion(),
+        actualRequest.getRemainingWaypointsRouteVersion());
     Assert.assertTrue(
         channelProvider.isHeaderSent(
             ApiClientHeaderProvider.getDefaultApiClientHeaderKey(),
@@ -247,6 +263,8 @@ public class TripServiceClientTest {
               .setCurrentRouteSegmentVersion(Timestamp.newBuilder().build())
               .setRemainingWaypointsVersion(Timestamp.newBuilder().build())
               .setRouteFormatType(PolylineFormatType.forNumber(0))
+              .setCurrentRouteSegmentTrafficVersion(Timestamp.newBuilder().build())
+              .setRemainingWaypointsRouteVersion(Timestamp.newBuilder().build())
               .build();
       client.getTrip(request);
       Assert.fail("No exception raised");
@@ -396,6 +414,10 @@ public class TripServiceClientTest {
             .addAllRemainingWaypoints(new ArrayList<TripWaypoint>())
             .addAllVehicleWaypoints(new ArrayList<TripWaypoint>())
             .addAllRoute(new ArrayList<LatLng>())
+            .setCurrentRouteSegment("currentRouteSegment29209795")
+            .setCurrentRouteSegmentVersion(Timestamp.newBuilder().build())
+            .setCurrentRouteSegmentTraffic(ConsumableTrafficPolyline.newBuilder().build())
+            .setCurrentRouteSegmentTrafficVersion(Timestamp.newBuilder().build())
             .setCurrentRouteSegmentEndPoint(TripWaypoint.newBuilder().build())
             .setRemainingDistanceMeters(Int32Value.newBuilder().build())
             .setEtaToFirstWaypoint(Timestamp.newBuilder().build())

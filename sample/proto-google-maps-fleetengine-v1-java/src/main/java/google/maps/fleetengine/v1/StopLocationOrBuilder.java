@@ -36,7 +36,7 @@ public interface StopLocationOrBuilder extends
 
   /**
    * <pre>
-   * The timestamp when the location was measured.
+   * Indicates when the stop happened.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -45,7 +45,7 @@ public interface StopLocationOrBuilder extends
   boolean hasTimestamp();
   /**
    * <pre>
-   * The timestamp when the location was measured.
+   * Indicates when the stop happened.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -54,7 +54,7 @@ public interface StopLocationOrBuilder extends
   com.google.protobuf.Timestamp getTimestamp();
   /**
    * <pre>
-   * The timestamp when the location was measured.
+   * Indicates when the stop happened.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -63,28 +63,28 @@ public interface StopLocationOrBuilder extends
 
   /**
    * <pre>
-   * Indicates when the stop actually happened.
+   * Input only. Deprecated.  Use the timestamp field.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+   * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
    * @return Whether the stopTime field is set.
    */
-  boolean hasStopTime();
+  @java.lang.Deprecated boolean hasStopTime();
   /**
    * <pre>
-   * Indicates when the stop actually happened.
+   * Input only. Deprecated.  Use the timestamp field.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+   * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
    * @return The stopTime.
    */
-  com.google.protobuf.Timestamp getStopTime();
+  @java.lang.Deprecated com.google.protobuf.Timestamp getStopTime();
   /**
    * <pre>
-   * Indicates when the stop actually happened.
+   * Input only. Deprecated.  Use the timestamp field.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+   * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
    */
-  com.google.protobuf.TimestampOrBuilder getStopTimeOrBuilder();
+  @java.lang.Deprecated com.google.protobuf.TimestampOrBuilder getStopTimeOrBuilder();
 }

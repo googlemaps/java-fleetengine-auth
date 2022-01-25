@@ -5,7 +5,7 @@ package google.maps.fleetengine.v1;
 
 /**
  * <pre>
- * UpdateVehicleAttributes request message.
+ * `UpdateVehicleAttributes` request message.
  * </pre>
  *
  * Protobuf type {@code maps.fleetengine.v1.UpdateVehicleAttributesRequest}
@@ -160,9 +160,8 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object name_;
   /**
    * <pre>
-   * Required. Must be in the format
-   * "providers/{provider}/vehicles/{vehicle}.
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}/vehicles/{vehicle}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -185,9 +184,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. Must be in the format
-   * "providers/{provider}/vehicles/{vehicle}.
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}/vehicles/{vehicle}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -214,10 +212,8 @@ private static final long serialVersionUID = 0L;
   private java.util.List<google.maps.fleetengine.v1.VehicleAttribute> attributes_;
   /**
    * <pre>
-   * Required. The attributes to update;
-   * unmentioned attributes will not be altered or removed.
-   * At most 20 attributes; the combined "key:value" string length cannot
-   * exceed 256.
+   * Required. The vehicle attributes to update. Unmentioned attributes will not be
+   * altered or removed.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -228,10 +224,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. The attributes to update;
-   * unmentioned attributes will not be altered or removed.
-   * At most 20 attributes; the combined "key:value" string length cannot
-   * exceed 256.
+   * Required. The vehicle attributes to update. Unmentioned attributes will not be
+   * altered or removed.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -243,10 +237,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. The attributes to update;
-   * unmentioned attributes will not be altered or removed.
-   * At most 20 attributes; the combined "key:value" string length cannot
-   * exceed 256.
+   * Required. The vehicle attributes to update. Unmentioned attributes will not be
+   * altered or removed.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -257,10 +249,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. The attributes to update;
-   * unmentioned attributes will not be altered or removed.
-   * At most 20 attributes; the combined "key:value" string length cannot
-   * exceed 256.
+   * Required. The vehicle attributes to update. Unmentioned attributes will not be
+   * altered or removed.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -271,10 +261,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Required. The attributes to update;
-   * unmentioned attributes will not be altered or removed.
-   * At most 20 attributes; the combined "key:value" string length cannot
-   * exceed 256.
+   * Required. The vehicle attributes to update. Unmentioned attributes will not be
+   * altered or removed.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -302,7 +290,7 @@ private static final long serialVersionUID = 0L;
     if (header_ != null) {
       output.writeMessage(1, getHeader());
     }
-    if (!getNameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
     }
     for (int i = 0; i < attributes_.size(); i++) {
@@ -321,7 +309,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getHeader());
     }
-    if (!getNameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
     }
     for (int i = 0; i < attributes_.size(); i++) {
@@ -470,7 +458,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * UpdateVehicleAttributes request message.
+   * `UpdateVehicleAttributes` request message.
    * </pre>
    *
    * Protobuf type {@code maps.fleetengine.v1.UpdateVehicleAttributesRequest}
@@ -836,9 +824,8 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object name_ = "";
     /**
      * <pre>
-     * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}.
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}/vehicles/{vehicle}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -860,9 +847,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}.
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}/vehicles/{vehicle}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -885,9 +871,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}.
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}/vehicles/{vehicle}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -908,9 +893,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}.
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}/vehicles/{vehicle}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -926,9 +910,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. Must be in the format
-     * "providers/{provider}/vehicles/{vehicle}.
-     * The provider must be the Project ID (for example, sample-cloud-project)
+     * Required. Must be in the format `providers/{provider}/vehicles/{vehicle}`.
+     * The provider must be the Project ID (for example, `sample-cloud-project`)
      * of the Google Cloud Project of which the service account making
      * this call is a member.
      * </pre>
@@ -963,10 +946,8 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -980,10 +961,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -997,10 +976,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1014,10 +991,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1038,10 +1013,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1059,10 +1032,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1082,10 +1053,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1106,10 +1075,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1127,10 +1094,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1148,10 +1113,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1170,10 +1133,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1190,10 +1151,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1210,10 +1169,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1224,10 +1181,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1241,10 +1196,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1259,10 +1212,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1273,10 +1224,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -1288,10 +1237,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Required. The attributes to update;
-     * unmentioned attributes will not be altered or removed.
-     * At most 20 attributes; the combined "key:value" string length cannot
-     * exceed 256.
+     * Required. The vehicle attributes to update. Unmentioned attributes will not be
+     * altered or removed.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 4 [(.google.api.field_behavior) = REQUIRED];</code>

@@ -138,7 +138,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The default value. For backwards-compatibility, the API will use
-     * ON_DEMAND_RIDESHARING_AND_DELIVERIES by default which is the first
+     * `ON_DEMAND_RIDESHARING_AND_DELIVERIES` by default which is the first
      * supported solution type.
      * </pre>
      *
@@ -159,7 +159,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The default value. For backwards-compatibility, the API will use
-     * ON_DEMAND_RIDESHARING_AND_DELIVERIES by default which is the first
+     * `ON_DEMAND_RIDESHARING_AND_DELIVERIES` by default which is the first
      * supported solution type.
      * </pre>
      *
@@ -263,9 +263,9 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Required. Must be in the format
-   * "providers/{provider}/billableTrips/{billable_trip}". The
-   * provider must be the Project ID (for example, sample-cloud-project) of the
-   * Google Cloud Project of which the service account making this call is a
+   * `providers/{provider}/billableTrips/{billable_trip}`. The
+   * provider must be the Project ID (for example, `sample-cloud-project`) of
+   * the Google Cloud Project of which the service account making this call is a
    * member.
    * </pre>
    *
@@ -288,9 +288,9 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Required. Must be in the format
-   * "providers/{provider}/billableTrips/{billable_trip}". The
-   * provider must be the Project ID (for example, sample-cloud-project) of the
-   * Google Cloud Project of which the service account making this call is a
+   * `providers/{provider}/billableTrips/{billable_trip}`. The
+   * provider must be the Project ID (for example, `sample-cloud-project`) of
+   * the Google Cloud Project of which the service account making this call is a
    * member.
    * </pre>
    *
@@ -393,7 +393,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * The identifiers that are directly related to the trip being reported. These
    * are usually IDs (for example, session IDs) of pre-booking operations done
-   * before the trip ID is available. The number of related_ids is
+   * before the trip ID is available. The number of `related_ids` is
    * limited to 50.
    * </pre>
    *
@@ -408,7 +408,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * The identifiers that are directly related to the trip being reported. These
    * are usually IDs (for example, session IDs) of pre-booking operations done
-   * before the trip ID is available. The number of related_ids is
+   * before the trip ID is available. The number of `related_ids` is
    * limited to 50.
    * </pre>
    *
@@ -422,7 +422,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * The identifiers that are directly related to the trip being reported. These
    * are usually IDs (for example, session IDs) of pre-booking operations done
-   * before the trip ID is available. The number of related_ids is
+   * before the trip ID is available. The number of `related_ids` is
    * limited to 50.
    * </pre>
    *
@@ -437,7 +437,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * The identifiers that are directly related to the trip being reported. These
    * are usually IDs (for example, session IDs) of pre-booking operations done
-   * before the trip ID is available. The number of related_ids is
+   * before the trip ID is available. The number of `related_ids` is
    * limited to 50.
    * </pre>
    *
@@ -455,7 +455,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The type of GMP product solution (for example,
-   * ON_DEMAND_RIDESHARING_AND_DELIVERIES) used for the reported trip.
+   * `ON_DEMAND_RIDESHARING_AND_DELIVERIES`) used for the reported trip.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.ReportBillableTripRequest.SolutionType solution_type = 7;</code>
@@ -467,7 +467,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The type of GMP product solution (for example,
-   * ON_DEMAND_RIDESHARING_AND_DELIVERIES) used for the reported trip.
+   * `ON_DEMAND_RIDESHARING_AND_DELIVERIES`) used for the reported trip.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.ReportBillableTripRequest.SolutionType solution_type = 7;</code>
@@ -493,10 +493,10 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getNameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
     }
-    if (!getCountryCodeBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(countryCode_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, countryCode_);
     }
     if (platform_ != google.maps.fleetengine.v1.BillingPlatformIdentifier.BILLING_PLATFORM_IDENTIFIER_UNSPECIFIED.getNumber()) {
@@ -517,10 +517,10 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getNameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
     }
-    if (!getCountryCodeBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(countryCode_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, countryCode_);
     }
     if (platform_ != google.maps.fleetengine.v1.BillingPlatformIdentifier.BILLING_PLATFORM_IDENTIFIER_UNSPECIFIED.getNumber()) {
@@ -874,9 +874,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/billableTrips/{billable_trip}". The
-     * provider must be the Project ID (for example, sample-cloud-project) of the
-     * Google Cloud Project of which the service account making this call is a
+     * `providers/{provider}/billableTrips/{billable_trip}`. The
+     * provider must be the Project ID (for example, `sample-cloud-project`) of
+     * the Google Cloud Project of which the service account making this call is a
      * member.
      * </pre>
      *
@@ -898,9 +898,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/billableTrips/{billable_trip}". The
-     * provider must be the Project ID (for example, sample-cloud-project) of the
-     * Google Cloud Project of which the service account making this call is a
+     * `providers/{provider}/billableTrips/{billable_trip}`. The
+     * provider must be the Project ID (for example, `sample-cloud-project`) of
+     * the Google Cloud Project of which the service account making this call is a
      * member.
      * </pre>
      *
@@ -923,9 +923,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/billableTrips/{billable_trip}". The
-     * provider must be the Project ID (for example, sample-cloud-project) of the
-     * Google Cloud Project of which the service account making this call is a
+     * `providers/{provider}/billableTrips/{billable_trip}`. The
+     * provider must be the Project ID (for example, `sample-cloud-project`) of
+     * the Google Cloud Project of which the service account making this call is a
      * member.
      * </pre>
      *
@@ -946,9 +946,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/billableTrips/{billable_trip}". The
-     * provider must be the Project ID (for example, sample-cloud-project) of the
-     * Google Cloud Project of which the service account making this call is a
+     * `providers/{provider}/billableTrips/{billable_trip}`. The
+     * provider must be the Project ID (for example, `sample-cloud-project`) of
+     * the Google Cloud Project of which the service account making this call is a
      * member.
      * </pre>
      *
@@ -964,9 +964,9 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. Must be in the format
-     * "providers/{provider}/billableTrips/{billable_trip}". The
-     * provider must be the Project ID (for example, sample-cloud-project) of the
-     * Google Cloud Project of which the service account making this call is a
+     * `providers/{provider}/billableTrips/{billable_trip}`. The
+     * provider must be the Project ID (for example, `sample-cloud-project`) of
+     * the Google Cloud Project of which the service account making this call is a
      * member.
      * </pre>
      *
@@ -1172,7 +1172,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The identifiers that are directly related to the trip being reported. These
      * are usually IDs (for example, session IDs) of pre-booking operations done
-     * before the trip ID is available. The number of related_ids is
+     * before the trip ID is available. The number of `related_ids` is
      * limited to 50.
      * </pre>
      *
@@ -1187,7 +1187,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The identifiers that are directly related to the trip being reported. These
      * are usually IDs (for example, session IDs) of pre-booking operations done
-     * before the trip ID is available. The number of related_ids is
+     * before the trip ID is available. The number of `related_ids` is
      * limited to 50.
      * </pre>
      *
@@ -1201,7 +1201,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The identifiers that are directly related to the trip being reported. These
      * are usually IDs (for example, session IDs) of pre-booking operations done
-     * before the trip ID is available. The number of related_ids is
+     * before the trip ID is available. The number of `related_ids` is
      * limited to 50.
      * </pre>
      *
@@ -1216,7 +1216,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The identifiers that are directly related to the trip being reported. These
      * are usually IDs (for example, session IDs) of pre-booking operations done
-     * before the trip ID is available. The number of related_ids is
+     * before the trip ID is available. The number of `related_ids` is
      * limited to 50.
      * </pre>
      *
@@ -1232,7 +1232,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The identifiers that are directly related to the trip being reported. These
      * are usually IDs (for example, session IDs) of pre-booking operations done
-     * before the trip ID is available. The number of related_ids is
+     * before the trip ID is available. The number of `related_ids` is
      * limited to 50.
      * </pre>
      *
@@ -1255,7 +1255,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The identifiers that are directly related to the trip being reported. These
      * are usually IDs (for example, session IDs) of pre-booking operations done
-     * before the trip ID is available. The number of related_ids is
+     * before the trip ID is available. The number of `related_ids` is
      * limited to 50.
      * </pre>
      *
@@ -1277,7 +1277,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The identifiers that are directly related to the trip being reported. These
      * are usually IDs (for example, session IDs) of pre-booking operations done
-     * before the trip ID is available. The number of related_ids is
+     * before the trip ID is available. The number of `related_ids` is
      * limited to 50.
      * </pre>
      *
@@ -1297,7 +1297,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The identifiers that are directly related to the trip being reported. These
      * are usually IDs (for example, session IDs) of pre-booking operations done
-     * before the trip ID is available. The number of related_ids is
+     * before the trip ID is available. The number of `related_ids` is
      * limited to 50.
      * </pre>
      *
@@ -1314,7 +1314,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * The identifiers that are directly related to the trip being reported. These
      * are usually IDs (for example, session IDs) of pre-booking operations done
-     * before the trip ID is available. The number of related_ids is
+     * before the trip ID is available. The number of `related_ids` is
      * limited to 50.
      * </pre>
      *
@@ -1338,7 +1338,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The type of GMP product solution (for example,
-     * ON_DEMAND_RIDESHARING_AND_DELIVERIES) used for the reported trip.
+     * `ON_DEMAND_RIDESHARING_AND_DELIVERIES`) used for the reported trip.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.ReportBillableTripRequest.SolutionType solution_type = 7;</code>
@@ -1350,7 +1350,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The type of GMP product solution (for example,
-     * ON_DEMAND_RIDESHARING_AND_DELIVERIES) used for the reported trip.
+     * `ON_DEMAND_RIDESHARING_AND_DELIVERIES`) used for the reported trip.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.ReportBillableTripRequest.SolutionType solution_type = 7;</code>
@@ -1366,7 +1366,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The type of GMP product solution (for example,
-     * ON_DEMAND_RIDESHARING_AND_DELIVERIES) used for the reported trip.
+     * `ON_DEMAND_RIDESHARING_AND_DELIVERIES`) used for the reported trip.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.ReportBillableTripRequest.SolutionType solution_type = 7;</code>
@@ -1381,7 +1381,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The type of GMP product solution (for example,
-     * ON_DEMAND_RIDESHARING_AND_DELIVERIES) used for the reported trip.
+     * `ON_DEMAND_RIDESHARING_AND_DELIVERIES`) used for the reported trip.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.ReportBillableTripRequest.SolutionType solution_type = 7;</code>
@@ -1400,7 +1400,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The type of GMP product solution (for example,
-     * ON_DEMAND_RIDESHARING_AND_DELIVERIES) used for the reported trip.
+     * `ON_DEMAND_RIDESHARING_AND_DELIVERIES`) used for the reported trip.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.ReportBillableTripRequest.SolutionType solution_type = 7;</code>

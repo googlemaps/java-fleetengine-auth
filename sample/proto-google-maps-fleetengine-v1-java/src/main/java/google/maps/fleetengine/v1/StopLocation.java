@@ -165,7 +165,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Timestamp timestamp_;
   /**
    * <pre>
-   * The timestamp when the location was measured.
+   * Indicates when the stop happened.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -177,7 +177,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The timestamp when the location was measured.
+   * Indicates when the stop happened.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -189,7 +189,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The timestamp when the location was measured.
+   * Indicates when the stop happened.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -203,37 +203,37 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Timestamp stopTime_;
   /**
    * <pre>
-   * Indicates when the stop actually happened.
+   * Input only. Deprecated.  Use the timestamp field.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+   * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
    * @return Whether the stopTime field is set.
    */
   @java.lang.Override
-  public boolean hasStopTime() {
+  @java.lang.Deprecated public boolean hasStopTime() {
     return stopTime_ != null;
   }
   /**
    * <pre>
-   * Indicates when the stop actually happened.
+   * Input only. Deprecated.  Use the timestamp field.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+   * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
    * @return The stopTime.
    */
   @java.lang.Override
-  public com.google.protobuf.Timestamp getStopTime() {
+  @java.lang.Deprecated public com.google.protobuf.Timestamp getStopTime() {
     return stopTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : stopTime_;
   }
   /**
    * <pre>
-   * Indicates when the stop actually happened.
+   * Input only. Deprecated.  Use the timestamp field.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+   * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
    */
   @java.lang.Override
-  public com.google.protobuf.TimestampOrBuilder getStopTimeOrBuilder() {
+  @java.lang.Deprecated public com.google.protobuf.TimestampOrBuilder getStopTimeOrBuilder() {
     return getStopTime();
   }
 
@@ -776,7 +776,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> timestampBuilder_;
     /**
      * <pre>
-     * The timestamp when the location was measured.
+     * Indicates when the stop happened.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -787,7 +787,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The timestamp when the location was measured.
+     * Indicates when the stop happened.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -802,7 +802,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The timestamp when the location was measured.
+     * Indicates when the stop happened.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -822,7 +822,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The timestamp when the location was measured.
+     * Indicates when the stop happened.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -840,7 +840,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The timestamp when the location was measured.
+     * Indicates when the stop happened.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -862,7 +862,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The timestamp when the location was measured.
+     * Indicates when the stop happened.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -880,7 +880,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The timestamp when the location was measured.
+     * Indicates when the stop happened.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -892,7 +892,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The timestamp when the location was measured.
+     * Indicates when the stop happened.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -907,7 +907,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The timestamp when the location was measured.
+     * Indicates when the stop happened.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp timestamp = 2;</code>
@@ -931,24 +931,24 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> stopTimeBuilder_;
     /**
      * <pre>
-     * Indicates when the stop actually happened.
+     * Input only. Deprecated.  Use the timestamp field.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+     * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
      * @return Whether the stopTime field is set.
      */
-    public boolean hasStopTime() {
+    @java.lang.Deprecated public boolean hasStopTime() {
       return stopTimeBuilder_ != null || stopTime_ != null;
     }
     /**
      * <pre>
-     * Indicates when the stop actually happened.
+     * Input only. Deprecated.  Use the timestamp field.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+     * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
      * @return The stopTime.
      */
-    public com.google.protobuf.Timestamp getStopTime() {
+    @java.lang.Deprecated public com.google.protobuf.Timestamp getStopTime() {
       if (stopTimeBuilder_ == null) {
         return stopTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : stopTime_;
       } else {
@@ -957,12 +957,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates when the stop actually happened.
+     * Input only. Deprecated.  Use the timestamp field.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+     * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
      */
-    public Builder setStopTime(com.google.protobuf.Timestamp value) {
+    @java.lang.Deprecated public Builder setStopTime(com.google.protobuf.Timestamp value) {
       if (stopTimeBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -977,12 +977,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates when the stop actually happened.
+     * Input only. Deprecated.  Use the timestamp field.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+     * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
      */
-    public Builder setStopTime(
+    @java.lang.Deprecated public Builder setStopTime(
         com.google.protobuf.Timestamp.Builder builderForValue) {
       if (stopTimeBuilder_ == null) {
         stopTime_ = builderForValue.build();
@@ -995,12 +995,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates when the stop actually happened.
+     * Input only. Deprecated.  Use the timestamp field.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+     * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
      */
-    public Builder mergeStopTime(com.google.protobuf.Timestamp value) {
+    @java.lang.Deprecated public Builder mergeStopTime(com.google.protobuf.Timestamp value) {
       if (stopTimeBuilder_ == null) {
         if (stopTime_ != null) {
           stopTime_ =
@@ -1017,12 +1017,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates when the stop actually happened.
+     * Input only. Deprecated.  Use the timestamp field.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+     * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
      */
-    public Builder clearStopTime() {
+    @java.lang.Deprecated public Builder clearStopTime() {
       if (stopTimeBuilder_ == null) {
         stopTime_ = null;
         onChanged();
@@ -1035,24 +1035,24 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates when the stop actually happened.
+     * Input only. Deprecated.  Use the timestamp field.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+     * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
      */
-    public com.google.protobuf.Timestamp.Builder getStopTimeBuilder() {
+    @java.lang.Deprecated public com.google.protobuf.Timestamp.Builder getStopTimeBuilder() {
       
       onChanged();
       return getStopTimeFieldBuilder().getBuilder();
     }
     /**
      * <pre>
-     * Indicates when the stop actually happened.
+     * Input only. Deprecated.  Use the timestamp field.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+     * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
      */
-    public com.google.protobuf.TimestampOrBuilder getStopTimeOrBuilder() {
+    @java.lang.Deprecated public com.google.protobuf.TimestampOrBuilder getStopTimeOrBuilder() {
       if (stopTimeBuilder_ != null) {
         return stopTimeBuilder_.getMessageOrBuilder();
       } else {
@@ -1062,10 +1062,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates when the stop actually happened.
+     * Input only. Deprecated.  Use the timestamp field.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp stop_time = 3;</code>
+     * <code>.google.protobuf.Timestamp stop_time = 3 [deprecated = true, (.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 

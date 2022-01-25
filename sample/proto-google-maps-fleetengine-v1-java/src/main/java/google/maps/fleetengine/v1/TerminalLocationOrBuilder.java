@@ -83,7 +83,7 @@ public interface TerminalLocationOrBuilder extends
 
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated.
    * </pre>
    *
    * <code>string trip_id = 4 [deprecated = true];</code>
@@ -92,7 +92,7 @@ public interface TerminalLocationOrBuilder extends
   @java.lang.Deprecated java.lang.String getTripId();
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated.
    * </pre>
    *
    * <code>string trip_id = 4 [deprecated = true];</code>
@@ -103,7 +103,7 @@ public interface TerminalLocationOrBuilder extends
 
   /**
    * <pre>
-   * Deprecated. Vehicle.waypoint will have this data.
+   * Deprecated: `Vehicle.waypoint` will have this data.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.WaypointType terminal_location_type = 5 [deprecated = true];</code>
@@ -112,7 +112,7 @@ public interface TerminalLocationOrBuilder extends
   @java.lang.Deprecated int getTerminalLocationTypeValue();
   /**
    * <pre>
-   * Deprecated. Vehicle.waypoint will have this data.
+   * Deprecated: `Vehicle.waypoint` will have this data.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.WaypointType terminal_location_type = 5 [deprecated = true];</code>

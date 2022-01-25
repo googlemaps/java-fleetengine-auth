@@ -36,8 +36,8 @@ public interface GetTripRequestOrBuilder extends
 
   /**
    * <pre>
-   * Required. Must be in the format "providers/{provider}/trips/{trip}".
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}/trips/{trip}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -48,8 +48,8 @@ public interface GetTripRequestOrBuilder extends
   java.lang.String getName();
   /**
    * <pre>
-   * Required. Must be in the format "providers/{provider}/trips/{trip}".
-   * The provider must be the Project ID (for example, sample-cloud-project)
+   * Required. Must be in the format `providers/{provider}/trips/{trip}`.
+   * The provider must be the Project ID (for example, `sample-cloud-project`)
    * of the Google Cloud Project of which the service account making
    * this call is a member.
    * </pre>
@@ -81,10 +81,10 @@ public interface GetTripRequestOrBuilder extends
 
   /**
    * <pre>
-   * Indicates the minimum timestamp (exclusive) for which Trip.route or
-   * Trip.current_route_segment data is retrieved. If route data is unchanged
-   * since this timestamp, the route field is not set in the response. If a
-   * minimum is unspecified, the route data is always retrieved.
+   * Indicates the minimum timestamp (exclusive) for which `Trip.route` or
+   * `Trip.current_route_segment` data are retrieved. If route data are
+   * unchanged since this timestamp, the route field is not set in the response.
+   * If a minimum is unspecified, the route data are always retrieved.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp current_route_segment_version = 6;</code>
@@ -93,10 +93,10 @@ public interface GetTripRequestOrBuilder extends
   boolean hasCurrentRouteSegmentVersion();
   /**
    * <pre>
-   * Indicates the minimum timestamp (exclusive) for which Trip.route or
-   * Trip.current_route_segment data is retrieved. If route data is unchanged
-   * since this timestamp, the route field is not set in the response. If a
-   * minimum is unspecified, the route data is always retrieved.
+   * Indicates the minimum timestamp (exclusive) for which `Trip.route` or
+   * `Trip.current_route_segment` data are retrieved. If route data are
+   * unchanged since this timestamp, the route field is not set in the response.
+   * If a minimum is unspecified, the route data are always retrieved.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp current_route_segment_version = 6;</code>
@@ -105,10 +105,10 @@ public interface GetTripRequestOrBuilder extends
   com.google.protobuf.Timestamp getCurrentRouteSegmentVersion();
   /**
    * <pre>
-   * Indicates the minimum timestamp (exclusive) for which Trip.route or
-   * Trip.current_route_segment data is retrieved. If route data is unchanged
-   * since this timestamp, the route field is not set in the response. If a
-   * minimum is unspecified, the route data is always retrieved.
+   * Indicates the minimum timestamp (exclusive) for which `Trip.route` or
+   * `Trip.current_route_segment` data are retrieved. If route data are
+   * unchanged since this timestamp, the route field is not set in the response.
+   * If a minimum is unspecified, the route data are always retrieved.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp current_route_segment_version = 6;</code>
@@ -118,9 +118,9 @@ public interface GetTripRequestOrBuilder extends
   /**
    * <pre>
    * Indicates the minimum timestamp (exclusive) for which
-   * Trip.remaining_waypoints are retrieved. If they are unchanged since this
-   * timestamp, the remaining_waypoints are not set in the response. If this
-   * field is unspecified, remaining_waypoints is always retrieved.
+   * `Trip.remaining_waypoints` are retrieved. If they are unchanged since this
+   * timestamp, the `remaining_waypoints` are not set in the response. If this
+   * field is unspecified, `remaining_waypoints` is always retrieved.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp remaining_waypoints_version = 7;</code>
@@ -130,9 +130,9 @@ public interface GetTripRequestOrBuilder extends
   /**
    * <pre>
    * Indicates the minimum timestamp (exclusive) for which
-   * Trip.remaining_waypoints are retrieved. If they are unchanged since this
-   * timestamp, the remaining_waypoints are not set in the response. If this
-   * field is unspecified, remaining_waypoints is always retrieved.
+   * `Trip.remaining_waypoints` are retrieved. If they are unchanged since this
+   * timestamp, the `remaining_waypoints` are not set in the response. If this
+   * field is unspecified, `remaining_waypoints` is always retrieved.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp remaining_waypoints_version = 7;</code>
@@ -142,9 +142,9 @@ public interface GetTripRequestOrBuilder extends
   /**
    * <pre>
    * Indicates the minimum timestamp (exclusive) for which
-   * Trip.remaining_waypoints are retrieved. If they are unchanged since this
-   * timestamp, the remaining_waypoints are not set in the response. If this
-   * field is unspecified, remaining_waypoints is always retrieved.
+   * `Trip.remaining_waypoints` are retrieved. If they are unchanged since this
+   * timestamp, the `remaining_waypoints` are not set in the response. If this
+   * field is unspecified, `remaining_waypoints` is always retrieved.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp remaining_waypoints_version = 7;</code>
@@ -153,9 +153,9 @@ public interface GetTripRequestOrBuilder extends
 
   /**
    * <pre>
-   * The returned current route format, LAT_LNG_LIST_TYPE (in Trip.route), or
-   * ENCODED_POLYLINE_TYPE (in Trip.current_route_segment).
-   * The default is LAT_LNG_LIST_TYPE.
+   * The returned current route format, `LAT_LNG_LIST_TYPE` (in `Trip.route`),
+   * or `ENCODED_POLYLINE_TYPE` (in `Trip.current_route_segment`). The default
+   * is `LAT_LNG_LIST_TYPE`.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.PolylineFormatType route_format_type = 8;</code>
@@ -164,13 +164,97 @@ public interface GetTripRequestOrBuilder extends
   int getRouteFormatTypeValue();
   /**
    * <pre>
-   * The returned current route format, LAT_LNG_LIST_TYPE (in Trip.route), or
-   * ENCODED_POLYLINE_TYPE (in Trip.current_route_segment).
-   * The default is LAT_LNG_LIST_TYPE.
+   * The returned current route format, `LAT_LNG_LIST_TYPE` (in `Trip.route`),
+   * or `ENCODED_POLYLINE_TYPE` (in `Trip.current_route_segment`). The default
+   * is `LAT_LNG_LIST_TYPE`.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.PolylineFormatType route_format_type = 8;</code>
    * @return The routeFormatType.
    */
   google.maps.fleetengine.v1.PolylineFormatType getRouteFormatType();
+
+  /**
+   * <pre>
+   * Indicates the minimum timestamp (exclusive) for which
+   * `Trip.current_route_segment_traffic` is retrieved. If traffic data are
+   * unchanged since this timestamp, the `current_route_segment_traffic` field
+   * is not set in the response. If a minimum is unspecified, the traffic data
+   * are always retrieved. Note that traffic is only available for On-Demand
+   * Rides and Deliveries Solution customers.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp current_route_segment_traffic_version = 9;</code>
+   * @return Whether the currentRouteSegmentTrafficVersion field is set.
+   */
+  boolean hasCurrentRouteSegmentTrafficVersion();
+  /**
+   * <pre>
+   * Indicates the minimum timestamp (exclusive) for which
+   * `Trip.current_route_segment_traffic` is retrieved. If traffic data are
+   * unchanged since this timestamp, the `current_route_segment_traffic` field
+   * is not set in the response. If a minimum is unspecified, the traffic data
+   * are always retrieved. Note that traffic is only available for On-Demand
+   * Rides and Deliveries Solution customers.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp current_route_segment_traffic_version = 9;</code>
+   * @return The currentRouteSegmentTrafficVersion.
+   */
+  com.google.protobuf.Timestamp getCurrentRouteSegmentTrafficVersion();
+  /**
+   * <pre>
+   * Indicates the minimum timestamp (exclusive) for which
+   * `Trip.current_route_segment_traffic` is retrieved. If traffic data are
+   * unchanged since this timestamp, the `current_route_segment_traffic` field
+   * is not set in the response. If a minimum is unspecified, the traffic data
+   * are always retrieved. Note that traffic is only available for On-Demand
+   * Rides and Deliveries Solution customers.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp current_route_segment_traffic_version = 9;</code>
+   */
+  com.google.protobuf.TimestampOrBuilder getCurrentRouteSegmentTrafficVersionOrBuilder();
+
+  /**
+   * <pre>
+   * Indicates the minimum timestamp (exclusive) for which
+   * `Trip.remaining_waypoints.traffic_to_waypoint` and
+   * `Trip.remaining_waypoints.path_to_waypoint` data are retrieved. If data are
+   * unchanged since this timestamp, the fields above are
+   * not set in the response. If `remaining_waypoints_route_version` is
+   * unspecified, traffic and path are always retrieved.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp remaining_waypoints_route_version = 10;</code>
+   * @return Whether the remainingWaypointsRouteVersion field is set.
+   */
+  boolean hasRemainingWaypointsRouteVersion();
+  /**
+   * <pre>
+   * Indicates the minimum timestamp (exclusive) for which
+   * `Trip.remaining_waypoints.traffic_to_waypoint` and
+   * `Trip.remaining_waypoints.path_to_waypoint` data are retrieved. If data are
+   * unchanged since this timestamp, the fields above are
+   * not set in the response. If `remaining_waypoints_route_version` is
+   * unspecified, traffic and path are always retrieved.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp remaining_waypoints_route_version = 10;</code>
+   * @return The remainingWaypointsRouteVersion.
+   */
+  com.google.protobuf.Timestamp getRemainingWaypointsRouteVersion();
+  /**
+   * <pre>
+   * Indicates the minimum timestamp (exclusive) for which
+   * `Trip.remaining_waypoints.traffic_to_waypoint` and
+   * `Trip.remaining_waypoints.path_to_waypoint` data are retrieved. If data are
+   * unchanged since this timestamp, the fields above are
+   * not set in the response. If `remaining_waypoints_route_version` is
+   * unspecified, traffic and path are always retrieved.
+   * </pre>
+   *
+   * <code>.google.protobuf.Timestamp remaining_waypoints_route_version = 10;</code>
+   */
+  com.google.protobuf.TimestampOrBuilder getRemainingWaypointsRouteVersionOrBuilder();
 }

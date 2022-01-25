@@ -124,11 +124,6 @@ private static final long serialVersionUID = 0L;
             maximumCapacity_ = input.readInt32();
             break;
           }
-          case 56: {
-
-            availableCapacity_ = input.readInt32();
-            break;
-          }
           case 66: {
             if (!((mutable_bitField0_ & 0x00000004) != 0)) {
               attributes_ = new java.util.ArrayList<google.maps.fleetengine.v1.VehicleAttribute>();
@@ -290,6 +285,19 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
+          case 226: {
+            google.maps.fleetengine.v1.TrafficPolylineData.Builder subBuilder = null;
+            if (currentRouteSegmentTraffic_ != null) {
+              subBuilder = currentRouteSegmentTraffic_.toBuilder();
+            }
+            currentRouteSegmentTraffic_ = input.readMessage(google.maps.fleetengine.v1.TrafficPolylineData.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(currentRouteSegmentTraffic_);
+              currentRouteSegmentTraffic_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -362,7 +370,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Types of vehicles that may be filtered for in SearchVehicles.
+   * The type of vehicle.
    * </pre>
    *
    * Protobuf type {@code maps.fleetengine.v1.Vehicle.VehicleType}
@@ -459,7 +467,7 @@ private static final long serialVersionUID = 0L;
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
        * <pre>
-       * Default, used for unspecified or unrecognized vehicle types.
+       * Default, used for unspecified or unrecognized vehicle categories.
        * </pre>
        *
        * <code>UNKNOWN = 0;</code>
@@ -475,7 +483,7 @@ private static final long serialVersionUID = 0L;
       AUTO(1),
       /**
        * <pre>
-       * Any vehicle that acts as a taxi.
+       * Any vehicle that acts as a taxi (typically licensed or regulated).
        * </pre>
        *
        * <code>TAXI = 2;</code>
@@ -502,7 +510,7 @@ private static final long serialVersionUID = 0L;
 
       /**
        * <pre>
-       * Default, used for unspecified or unrecognized vehicle types.
+       * Default, used for unspecified or unrecognized vehicle categories.
        * </pre>
        *
        * <code>UNKNOWN = 0;</code>
@@ -518,7 +526,7 @@ private static final long serialVersionUID = 0L;
       public static final int AUTO_VALUE = 1;
       /**
        * <pre>
-       * Any vehicle that acts as a taxi.
+       * Any vehicle that acts as a taxi (typically licensed or regulated).
        * </pre>
        *
        * <code>TAXI = 2;</code>
@@ -810,7 +818,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Types of vehicles that may be filtered for in SearchVehicles.
+     * The type of vehicle.
      * </pre>
      *
      * Protobuf type {@code maps.fleetengine.v1.Vehicle.VehicleType}
@@ -1089,11 +1097,11 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object name_;
   /**
    * <pre>
-   * The unique name for this vehicle.
-   * The format is providers/{provider}/vehicles/{vehicle}
+   * Output only. The unique name for this vehicle.
+   * The format is `providers/{provider}/vehicles/{vehicle}`.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The name.
    */
   @java.lang.Override
@@ -1111,11 +1119,11 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The unique name for this vehicle.
-   * The format is providers/{provider}/vehicles/{vehicle}
+   * Output only. The unique name for this vehicle.
+   * The format is `providers/{provider}/vehicles/{vehicle}`.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The bytes for name.
    */
   @java.lang.Override
@@ -1242,10 +1250,10 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.LazyStringList currentTrips_;
   /**
    * <pre>
-   * List of IDs for trips in progress.
+   * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
    * </pre>
    *
-   * <code>repeated string current_trips = 4;</code>
+   * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return A list containing the currentTrips.
    */
   public com.google.protobuf.ProtocolStringList
@@ -1254,10 +1262,10 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * List of IDs for trips in progress.
+   * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
    * </pre>
    *
-   * <code>repeated string current_trips = 4;</code>
+   * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The count of currentTrips.
    */
   public int getCurrentTripsCount() {
@@ -1265,10 +1273,10 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * List of IDs for trips in progress.
+   * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
    * </pre>
    *
-   * <code>repeated string current_trips = 4;</code>
+   * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @param index The index of the element to return.
    * @return The currentTrips at the given index.
    */
@@ -1277,10 +1285,10 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * List of IDs for trips in progress.
+   * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
    * </pre>
    *
-   * <code>repeated string current_trips = 4;</code>
+   * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @param index The index of the value to return.
    * @return The bytes of the currentTrips at the given index.
    */
@@ -1331,9 +1339,8 @@ private static final long serialVersionUID = 0L;
   private int maximumCapacity_;
   /**
    * <pre>
-   * Maximum capacity of the vehicle.  This is the total numbers of riders
-   * on trips this vehicle can contain.  The driver is not considered in
-   * this value.  This value must be greater than or equal to one.
+   * The total numbers of riders this vehicle can carry.  The driver is not
+   * considered in this value. This value must be greater than or equal to one.
    * </pre>
    *
    * <code>int32 maximum_capacity = 6;</code>
@@ -1344,27 +1351,12 @@ private static final long serialVersionUID = 0L;
     return maximumCapacity_;
   }
 
-  public static final int AVAILABLE_CAPACITY_FIELD_NUMBER = 7;
-  private int availableCapacity_;
-  /**
-   * <pre>
-   * The current available capacity of the vehicle.  This is the
-   * maximum_capacity minus the current number of riders.
-   * </pre>
-   *
-   * <code>int32 available_capacity = 7;</code>
-   * @return The availableCapacity.
-   */
-  @java.lang.Override
-  public int getAvailableCapacity() {
-    return availableCapacity_;
-  }
-
   public static final int ATTRIBUTES_FIELD_NUMBER = 8;
   private java.util.List<google.maps.fleetengine.v1.VehicleAttribute> attributes_;
   /**
    * <pre>
-   * List of vehicle service attributes.
+   * List of vehicle attributes. A vehicle can have at most 50
+   * attributes, and each attribute has a unique key.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -1375,7 +1367,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * List of vehicle service attributes.
+   * List of vehicle attributes. A vehicle can have at most 50
+   * attributes, and each attribute has a unique key.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -1387,7 +1380,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * List of vehicle service attributes.
+   * List of vehicle attributes. A vehicle can have at most 50
+   * attributes, and each attribute has a unique key.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -1398,7 +1392,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * List of vehicle service attributes.
+   * List of vehicle attributes. A vehicle can have at most 50
+   * attributes, and each attribute has a unique key.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -1409,7 +1404,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * List of vehicle service attributes.
+   * List of vehicle attributes. A vehicle can have at most 50
+   * attributes, and each attribute has a unique key.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -1424,8 +1420,8 @@ private static final long serialVersionUID = 0L;
   private google.maps.fleetengine.v1.Vehicle.VehicleType vehicleType_;
   /**
    * <pre>
-   * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-   * influences ETA and route calculations.
+   * The type of this vehicle.  Can be used to filter vehicles in
+   * `SearchVehicles` results.  Also influences ETA and route calculations.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -1437,8 +1433,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-   * influences ETA and route calculations.
+   * The type of this vehicle.  Can be used to filter vehicles in
+   * `SearchVehicles` results.  Also influences ETA and route calculations.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -1450,8 +1446,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-   * influences ETA and route calculations.
+   * The type of this vehicle.  Can be used to filter vehicles in
+   * `SearchVehicles` results.  Also influences ETA and route calculations.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -1503,7 +1499,7 @@ private static final long serialVersionUID = 0L;
   private java.util.List<google.maps.fleetengine.v1.TerminalLocation> route_;
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated: Use `Vehicle.waypoints` instead.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -1514,7 +1510,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated: Use `Vehicle.waypoints` instead.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -1526,7 +1522,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated: Use `Vehicle.waypoints` instead.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -1537,7 +1533,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated: Use `Vehicle.waypoints` instead.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -1548,7 +1544,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Deprecated. Use vehicle.waypoint instead.
+   * Deprecated: Use `Vehicle.waypoints` instead.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -1566,7 +1562,7 @@ private static final long serialVersionUID = 0L;
    * The polyline specifying the route the driver app intends to take to
    * the next waypoint. Your driver app updates this every time a waypoint is
    * passed or the driver reroutes. This list is also returned in
-   * Trip.current_route_segment for all active trips assigned to the vehicle.
+   * `Trip.current_route_segment` for all active trips assigned to the vehicle.
    * Note: This field is intended only for use by the Driver SDK.
    * </pre>
    *
@@ -1591,7 +1587,7 @@ private static final long serialVersionUID = 0L;
    * The polyline specifying the route the driver app intends to take to
    * the next waypoint. Your driver app updates this every time a waypoint is
    * passed or the driver reroutes. This list is also returned in
-   * Trip.current_route_segment for all active trips assigned to the vehicle.
+   * `Trip.current_route_segment` for all active trips assigned to the vehicle.
    * Note: This field is intended only for use by the Driver SDK.
    * </pre>
    *
@@ -1613,17 +1609,60 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int CURRENT_ROUTE_SEGMENT_TRAFFIC_FIELD_NUMBER = 28;
+  private google.maps.fleetengine.v1.TrafficPolylineData currentRouteSegmentTraffic_;
+  /**
+   * <pre>
+   * Input only. Fleet Engine uses this information to improve its
+   * understanding of a Trip, but does not populate the field in its responses.
+   * Note: This field is intended only for use by the Driver SDK.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+   * @return Whether the currentRouteSegmentTraffic field is set.
+   */
+  @java.lang.Override
+  public boolean hasCurrentRouteSegmentTraffic() {
+    return currentRouteSegmentTraffic_ != null;
+  }
+  /**
+   * <pre>
+   * Input only. Fleet Engine uses this information to improve its
+   * understanding of a Trip, but does not populate the field in its responses.
+   * Note: This field is intended only for use by the Driver SDK.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+   * @return The currentRouteSegmentTraffic.
+   */
+  @java.lang.Override
+  public google.maps.fleetengine.v1.TrafficPolylineData getCurrentRouteSegmentTraffic() {
+    return currentRouteSegmentTraffic_ == null ? google.maps.fleetengine.v1.TrafficPolylineData.getDefaultInstance() : currentRouteSegmentTraffic_;
+  }
+  /**
+   * <pre>
+   * Input only. Fleet Engine uses this information to improve its
+   * understanding of a Trip, but does not populate the field in its responses.
+   * Note: This field is intended only for use by the Driver SDK.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+   */
+  @java.lang.Override
+  public google.maps.fleetengine.v1.TrafficPolylineDataOrBuilder getCurrentRouteSegmentTrafficOrBuilder() {
+    return getCurrentRouteSegmentTraffic();
+  }
+
   public static final int CURRENT_ROUTE_SEGMENT_VERSION_FIELD_NUMBER = 15;
   private com.google.protobuf.Timestamp currentRouteSegmentVersion_;
   /**
    * <pre>
-   * Time when current_route_segment was set. This field is ignored in
-   * UpdateVehicleRequests as it is calculated by the server. It should be
-   * stored by client and passed in to future requests to prevent returning
-   * routes to first way point that haven't changed.
+   * Output only. Time when `current_route_segment` was set. It should be
+   * stored by the client and passed in future `GetVehicle` requests to
+   * prevent returning routes that haven't changed.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+   * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return Whether the currentRouteSegmentVersion field is set.
    */
   @java.lang.Override
@@ -1632,13 +1671,12 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Time when current_route_segment was set. This field is ignored in
-   * UpdateVehicleRequests as it is calculated by the server. It should be
-   * stored by client and passed in to future requests to prevent returning
-   * routes to first way point that haven't changed.
+   * Output only. Time when `current_route_segment` was set. It should be
+   * stored by the client and passed in future `GetVehicle` requests to
+   * prevent returning routes that haven't changed.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+   * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The currentRouteSegmentVersion.
    */
   @java.lang.Override
@@ -1647,13 +1685,12 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Time when current_route_segment was set. This field is ignored in
-   * UpdateVehicleRequests as it is calculated by the server. It should be
-   * stored by client and passed in to future requests to prevent returning
-   * routes to first way point that haven't changed.
+   * Output only. Time when `current_route_segment` was set. It should be
+   * stored by the client and passed in future `GetVehicle` requests to
+   * prevent returning routes that haven't changed.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+   * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   @java.lang.Override
   public com.google.protobuf.TimestampOrBuilder getCurrentRouteSegmentVersionOrBuilder() {
@@ -1664,12 +1701,12 @@ private static final long serialVersionUID = 0L;
   private google.maps.fleetengine.v1.TripWaypoint currentRouteSegmentEndPoint_;
   /**
    * <pre>
-   * The waypoint where current_route_segment ends. This can be supplied by
-   * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-   * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-   * will then do its best to interpolate to an actual waypoint if it is not
-   * fully specified. This field is ignored in UpdateVehicle calls unless
-   * current_route_segment is also specified.
+   * The waypoint where `current_route_segment` ends. This can be supplied by
+   * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+   * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+   * Engine will then do its best to interpolate to an actual waypoint if it is
+   * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+   * `current_route_segment` is also specified.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -1681,12 +1718,12 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The waypoint where current_route_segment ends. This can be supplied by
-   * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-   * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-   * will then do its best to interpolate to an actual waypoint if it is not
-   * fully specified. This field is ignored in UpdateVehicle calls unless
-   * current_route_segment is also specified.
+   * The waypoint where `current_route_segment` ends. This can be supplied by
+   * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+   * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+   * Engine will then do its best to interpolate to an actual waypoint if it is
+   * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+   * `current_route_segment` is also specified.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -1698,12 +1735,12 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The waypoint where current_route_segment ends. This can be supplied by
-   * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-   * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-   * will then do its best to interpolate to an actual waypoint if it is not
-   * fully specified. This field is ignored in UpdateVehicle calls unless
-   * current_route_segment is also specified.
+   * The waypoint where `current_route_segment` ends. This can be supplied by
+   * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+   * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+   * Engine will then do its best to interpolate to an actual waypoint if it is
+   * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+   * `current_route_segment` is also specified.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -1717,13 +1754,12 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Int32Value remainingDistanceMeters_;
   /**
    * <pre>
-   * The remaining driving distance for the 'current_route_segment'. This field
+   * The remaining driving distance for the `current_route_segment`. This field
    * facilitates journey sharing between the Driver app and the Consumer app.
-   * This value is updated by the Driver SDK. Fleet Engine does not update it.
-   * This field is also returned in Trip.remaining_distance_meters for all
-   * active trips assigned to the vehicle. The value is unspecified if the
-   * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-   * not updated its value.
+   * This value is provided by the Driver SDK. This field is also returned in
+   * `Trip.remaining_distance_meters` for all active trips assigned to the
+   * vehicle. The value is unspecified if the `current_route_segment` field is
+   * empty, or if the Driver app has not updated its value.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -1735,13 +1771,12 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The remaining driving distance for the 'current_route_segment'. This field
+   * The remaining driving distance for the `current_route_segment`. This field
    * facilitates journey sharing between the Driver app and the Consumer app.
-   * This value is updated by the Driver SDK. Fleet Engine does not update it.
-   * This field is also returned in Trip.remaining_distance_meters for all
-   * active trips assigned to the vehicle. The value is unspecified if the
-   * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-   * not updated its value.
+   * This value is provided by the Driver SDK. This field is also returned in
+   * `Trip.remaining_distance_meters` for all active trips assigned to the
+   * vehicle. The value is unspecified if the `current_route_segment` field is
+   * empty, or if the Driver app has not updated its value.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -1753,13 +1788,12 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The remaining driving distance for the 'current_route_segment'. This field
+   * The remaining driving distance for the `current_route_segment`. This field
    * facilitates journey sharing between the Driver app and the Consumer app.
-   * This value is updated by the Driver SDK. Fleet Engine does not update it.
-   * This field is also returned in Trip.remaining_distance_meters for all
-   * active trips assigned to the vehicle. The value is unspecified if the
-   * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-   * not updated its value.
+   * This value is provided by the Driver SDK. This field is also returned in
+   * `Trip.remaining_distance_meters` for all active trips assigned to the
+   * vehicle. The value is unspecified if the `current_route_segment` field is
+   * empty, or if the Driver app has not updated its value.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -1773,13 +1807,12 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Timestamp etaToFirstWaypoint_;
   /**
    * <pre>
-   * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+   * The ETA to the first entry in the `waypoints`
    * field. This field facilitates journey sharing between a Driver app and a
-   * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-   * update it. This field is also returned in Trip.eta_to_first_waypoint for
-   * all active trips assigned to the vehicle. The value is unspecified if the
-   * Vehicle.waypoint field is empty, or the Driver app has not updated its
-   * value.
+   * Consumer app. Is is provided by the Driver SDK. This field is also returned
+   * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+   * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+   * Driver app has not updated its value.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -1791,13 +1824,12 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+   * The ETA to the first entry in the `waypoints`
    * field. This field facilitates journey sharing between a Driver app and a
-   * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-   * update it. This field is also returned in Trip.eta_to_first_waypoint for
-   * all active trips assigned to the vehicle. The value is unspecified if the
-   * Vehicle.waypoint field is empty, or the Driver app has not updated its
-   * value.
+   * Consumer app. Is is provided by the Driver SDK. This field is also returned
+   * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+   * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+   * Driver app has not updated its value.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -1809,13 +1841,12 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+   * The ETA to the first entry in the `waypoints`
    * field. This field facilitates journey sharing between a Driver app and a
-   * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-   * update it. This field is also returned in Trip.eta_to_first_waypoint for
-   * all active trips assigned to the vehicle. The value is unspecified if the
-   * Vehicle.waypoint field is empty, or the Driver app has not updated its
-   * value.
+   * Consumer app. Is is provided by the Driver SDK. This field is also returned
+   * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+   * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+   * Driver app has not updated its value.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -1829,20 +1860,19 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Int32Value remainingTimeSeconds_;
   /**
    * <pre>
-   * The remaining driving time for the 'current_route_segment'. This field
+   * Input only. The remaining driving time for the `current_route_segment`. This field
    * facilitates journey sharing between the Driver app and the Consumer app.
    * This value is updated by the Driver SDK. Fleet Engine does not update it.
    * The value is unspecified if the `Vehicle.current_route_segment` field is
    * empty, or if the Driver app has not updated its value. This value should
-   * match eta_to_first_waypoint - current_time if all parties are using the
-   * same clock. This field is currently write-only and will not yet be
-   * populated in Vehicle's get/update/search operations. When updating a
-   * vehicle, if you update both eta_to_first_waypoint and
-   * remaining_time_seconds in the same request, then only
-   * remaining_time_seconds is considered.
+   * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+   * same clock. When updating a
+   * vehicle, if you update both `eta_to_first_waypoint` and
+   * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+   * takes precedence.
    * </pre>
    *
-   * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+   * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
    * @return Whether the remainingTimeSeconds field is set.
    */
   @java.lang.Override
@@ -1851,20 +1881,19 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The remaining driving time for the 'current_route_segment'. This field
+   * Input only. The remaining driving time for the `current_route_segment`. This field
    * facilitates journey sharing between the Driver app and the Consumer app.
    * This value is updated by the Driver SDK. Fleet Engine does not update it.
    * The value is unspecified if the `Vehicle.current_route_segment` field is
    * empty, or if the Driver app has not updated its value. This value should
-   * match eta_to_first_waypoint - current_time if all parties are using the
-   * same clock. This field is currently write-only and will not yet be
-   * populated in Vehicle's get/update/search operations. When updating a
-   * vehicle, if you update both eta_to_first_waypoint and
-   * remaining_time_seconds in the same request, then only
-   * remaining_time_seconds is considered.
+   * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+   * same clock. When updating a
+   * vehicle, if you update both `eta_to_first_waypoint` and
+   * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+   * takes precedence.
    * </pre>
    *
-   * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+   * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
    * @return The remainingTimeSeconds.
    */
   @java.lang.Override
@@ -1873,20 +1902,19 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The remaining driving time for the 'current_route_segment'. This field
+   * Input only. The remaining driving time for the `current_route_segment`. This field
    * facilitates journey sharing between the Driver app and the Consumer app.
    * This value is updated by the Driver SDK. Fleet Engine does not update it.
    * The value is unspecified if the `Vehicle.current_route_segment` field is
    * empty, or if the Driver app has not updated its value. This value should
-   * match eta_to_first_waypoint - current_time if all parties are using the
-   * same clock. This field is currently write-only and will not yet be
-   * populated in Vehicle's get/update/search operations. When updating a
-   * vehicle, if you update both eta_to_first_waypoint and
-   * remaining_time_seconds in the same request, then only
-   * remaining_time_seconds is considered.
+   * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+   * same clock. When updating a
+   * vehicle, if you update both `eta_to_first_waypoint` and
+   * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+   * takes precedence.
    * </pre>
    *
-   * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+   * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
    */
   @java.lang.Override
   public com.google.protobuf.Int32ValueOrBuilder getRemainingTimeSecondsOrBuilder() {
@@ -1897,7 +1925,7 @@ private static final long serialVersionUID = 0L;
   private java.util.List<google.maps.fleetengine.v1.TripWaypoint> waypoints_;
   /**
    * <pre>
-   * The remaining set of waypoints assigned to this Vehicle.
+   * The remaining waypoints assigned to this Vehicle.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -1908,7 +1936,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The remaining set of waypoints assigned to this Vehicle.
+   * The remaining waypoints assigned to this Vehicle.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -1920,7 +1948,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The remaining set of waypoints assigned to this Vehicle.
+   * The remaining waypoints assigned to this Vehicle.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -1931,7 +1959,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The remaining set of waypoints assigned to this Vehicle.
+   * The remaining waypoints assigned to this Vehicle.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -1942,7 +1970,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The remaining set of waypoints assigned to this Vehicle.
+   * The remaining waypoints assigned to this Vehicle.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -1957,12 +1985,12 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Timestamp waypointsVersion_;
   /**
    * <pre>
-   * Last time the waypoints was updated. Client should cache
-   * this value and pass it in GetVehicleRequest to ensure the
-   * waypoints.path_to_waypoint is only returned if it is updated
+   * Output only. Last time the `waypoints` field was updated. Clients should cache
+   * this value and pass it in `GetVehicleRequest` to ensure the
+   * `waypoints` field is only returned if it is updated.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+   * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return Whether the waypointsVersion field is set.
    */
   @java.lang.Override
@@ -1971,12 +1999,12 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Last time the waypoints was updated. Client should cache
-   * this value and pass it in GetVehicleRequest to ensure the
-   * waypoints.path_to_waypoint is only returned if it is updated
+   * Output only. Last time the `waypoints` field was updated. Clients should cache
+   * this value and pass it in `GetVehicleRequest` to ensure the
+   * `waypoints` field is only returned if it is updated.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+   * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    * @return The waypointsVersion.
    */
   @java.lang.Override
@@ -1985,12 +2013,12 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Last time the waypoints was updated. Client should cache
-   * this value and pass it in GetVehicleRequest to ensure the
-   * waypoints.path_to_waypoint is only returned if it is updated
+   * Output only. Last time the `waypoints` field was updated. Clients should cache
+   * this value and pass it in `GetVehicleRequest` to ensure the
+   * `waypoints` field is only returned if it is updated.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+   * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   @java.lang.Override
   public com.google.protobuf.TimestampOrBuilder getWaypointsVersionOrBuilder() {
@@ -2001,10 +2029,9 @@ private static final long serialVersionUID = 0L;
   private boolean backToBackEnabled_;
   /**
    * <pre>
-   * Indicates if the driver accepts back-to-back rides. If
-   * `true`, services include the vehicle for back-to-back matches.
-   * If `false`, services exclude the vehicle from back-to-back matches.
-   * Default value is `false`.
+   * Indicates if the driver accepts back-to-back trips. If `true`,
+   * `SearchVehicles` may include the vehicle even if it is currently assigned
+   * to a trip. The default value is `false`.
    * </pre>
    *
    * <code>bool back_to_back_enabled = 23;</code>
@@ -2019,7 +2046,7 @@ private static final long serialVersionUID = 0L;
   private int navigationStatus_;
   /**
    * <pre>
-   * Vehicle's navigation status.
+   * The vehicle's navigation status.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.NavigationStatus navigation_status = 26;</code>
@@ -2030,7 +2057,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Vehicle's navigation status.
+   * The vehicle's navigation status.
    * </pre>
    *
    * <code>.maps.fleetengine.v1.NavigationStatus navigation_status = 26;</code>
@@ -2046,11 +2073,10 @@ private static final long serialVersionUID = 0L;
   private google.maps.fleetengine.v1.DeviceSettings deviceSettings_;
   /**
    * <pre>
-   * Information about various device settings. This is internal debug only
-   * field, not included in the response.
+   * Input only. Information about settings in the mobile device being used by the driver.
    * </pre>
    *
-   * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+   * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
    * @return Whether the deviceSettings field is set.
    */
   @java.lang.Override
@@ -2059,11 +2085,10 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Information about various device settings. This is internal debug only
-   * field, not included in the response.
+   * Input only. Information about settings in the mobile device being used by the driver.
    * </pre>
    *
-   * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+   * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
    * @return The deviceSettings.
    */
   @java.lang.Override
@@ -2072,11 +2097,10 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Information about various device settings. This is internal debug only
-   * field, not included in the response.
+   * Input only. Information about settings in the mobile device being used by the driver.
    * </pre>
    *
-   * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+   * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
    */
   @java.lang.Override
   public google.maps.fleetengine.v1.DeviceSettingsOrBuilder getDeviceSettingsOrBuilder() {
@@ -2098,7 +2122,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     getSerializedSize();
-    if (!getNameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
     }
     if (vehicleState_ != google.maps.fleetengine.v1.VehicleState.UNKNOWN_VEHICLE_STATE.getNumber()) {
@@ -2119,9 +2143,6 @@ private static final long serialVersionUID = 0L;
     }
     if (maximumCapacity_ != 0) {
       output.writeInt32(6, maximumCapacity_);
-    }
-    if (availableCapacity_ != 0) {
-      output.writeInt32(7, availableCapacity_);
     }
     for (int i = 0; i < attributes_.size(); i++) {
       output.writeMessage(8, attributes_.get(i));
@@ -2147,7 +2168,7 @@ private static final long serialVersionUID = 0L;
     if (etaToFirstWaypoint_ != null) {
       output.writeMessage(19, getEtaToFirstWaypoint());
     }
-    if (!getCurrentRouteSegmentBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(currentRouteSegment_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 20, currentRouteSegment_);
     }
     for (int i = 0; i < waypoints_.size(); i++) {
@@ -2168,6 +2189,9 @@ private static final long serialVersionUID = 0L;
     if (deviceSettings_ != null) {
       output.writeMessage(27, getDeviceSettings());
     }
+    if (currentRouteSegmentTraffic_ != null) {
+      output.writeMessage(28, getCurrentRouteSegmentTraffic());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -2177,7 +2201,7 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getNameBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
     }
     if (vehicleState_ != google.maps.fleetengine.v1.VehicleState.UNKNOWN_VEHICLE_STATE.getNumber()) {
@@ -2212,10 +2236,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(6, maximumCapacity_);
     }
-    if (availableCapacity_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(7, availableCapacity_);
-    }
     for (int i = 0; i < attributes_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(8, attributes_.get(i));
@@ -2248,7 +2268,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(19, getEtaToFirstWaypoint());
     }
-    if (!getCurrentRouteSegmentBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(currentRouteSegment_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, currentRouteSegment_);
     }
     for (int i = 0; i < waypoints_.size(); i++) {
@@ -2274,6 +2294,10 @@ private static final long serialVersionUID = 0L;
     if (deviceSettings_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(27, getDeviceSettings());
+    }
+    if (currentRouteSegmentTraffic_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(28, getCurrentRouteSegmentTraffic());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -2303,8 +2327,6 @@ private static final long serialVersionUID = 0L;
     }
     if (getMaximumCapacity()
         != other.getMaximumCapacity()) return false;
-    if (getAvailableCapacity()
-        != other.getAvailableCapacity()) return false;
     if (!getAttributesList()
         .equals(other.getAttributesList())) return false;
     if (hasVehicleType() != other.hasVehicleType()) return false;
@@ -2321,6 +2343,11 @@ private static final long serialVersionUID = 0L;
         .equals(other.getRouteList())) return false;
     if (!getCurrentRouteSegment()
         .equals(other.getCurrentRouteSegment())) return false;
+    if (hasCurrentRouteSegmentTraffic() != other.hasCurrentRouteSegmentTraffic()) return false;
+    if (hasCurrentRouteSegmentTraffic()) {
+      if (!getCurrentRouteSegmentTraffic()
+          .equals(other.getCurrentRouteSegmentTraffic())) return false;
+    }
     if (hasCurrentRouteSegmentVersion() != other.hasCurrentRouteSegmentVersion()) return false;
     if (hasCurrentRouteSegmentVersion()) {
       if (!getCurrentRouteSegmentVersion()
@@ -2390,8 +2417,6 @@ private static final long serialVersionUID = 0L;
     }
     hash = (37 * hash) + MAXIMUM_CAPACITY_FIELD_NUMBER;
     hash = (53 * hash) + getMaximumCapacity();
-    hash = (37 * hash) + AVAILABLE_CAPACITY_FIELD_NUMBER;
-    hash = (53 * hash) + getAvailableCapacity();
     if (getAttributesCount() > 0) {
       hash = (37 * hash) + ATTRIBUTES_FIELD_NUMBER;
       hash = (53 * hash) + getAttributesList().hashCode();
@@ -2410,6 +2435,10 @@ private static final long serialVersionUID = 0L;
     }
     hash = (37 * hash) + CURRENT_ROUTE_SEGMENT_FIELD_NUMBER;
     hash = (53 * hash) + getCurrentRouteSegment().hashCode();
+    if (hasCurrentRouteSegmentTraffic()) {
+      hash = (37 * hash) + CURRENT_ROUTE_SEGMENT_TRAFFIC_FIELD_NUMBER;
+      hash = (53 * hash) + getCurrentRouteSegmentTraffic().hashCode();
+    }
     if (hasCurrentRouteSegmentVersion()) {
       hash = (37 * hash) + CURRENT_ROUTE_SEGMENT_VERSION_FIELD_NUMBER;
       hash = (53 * hash) + getCurrentRouteSegmentVersion().hashCode();
@@ -2603,8 +2632,6 @@ private static final long serialVersionUID = 0L;
       }
       maximumCapacity_ = 0;
 
-      availableCapacity_ = 0;
-
       if (attributesBuilder_ == null) {
         attributes_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -2631,6 +2658,12 @@ private static final long serialVersionUID = 0L;
       }
       currentRouteSegment_ = "";
 
+      if (currentRouteSegmentTrafficBuilder_ == null) {
+        currentRouteSegmentTraffic_ = null;
+      } else {
+        currentRouteSegmentTraffic_ = null;
+        currentRouteSegmentTrafficBuilder_ = null;
+      }
       if (currentRouteSegmentVersionBuilder_ == null) {
         currentRouteSegmentVersion_ = null;
       } else {
@@ -2728,7 +2761,6 @@ private static final long serialVersionUID = 0L;
         result.lastLocation_ = lastLocationBuilder_.build();
       }
       result.maximumCapacity_ = maximumCapacity_;
-      result.availableCapacity_ = availableCapacity_;
       if (attributesBuilder_ == null) {
         if (((bitField0_ & 0x00000004) != 0)) {
           attributes_ = java.util.Collections.unmodifiableList(attributes_);
@@ -2758,6 +2790,11 @@ private static final long serialVersionUID = 0L;
         result.route_ = routeBuilder_.build();
       }
       result.currentRouteSegment_ = currentRouteSegment_;
+      if (currentRouteSegmentTrafficBuilder_ == null) {
+        result.currentRouteSegmentTraffic_ = currentRouteSegmentTraffic_;
+      } else {
+        result.currentRouteSegmentTraffic_ = currentRouteSegmentTrafficBuilder_.build();
+      }
       if (currentRouteSegmentVersionBuilder_ == null) {
         result.currentRouteSegmentVersion_ = currentRouteSegmentVersion_;
       } else {
@@ -2885,9 +2922,6 @@ private static final long serialVersionUID = 0L;
       if (other.getMaximumCapacity() != 0) {
         setMaximumCapacity(other.getMaximumCapacity());
       }
-      if (other.getAvailableCapacity() != 0) {
-        setAvailableCapacity(other.getAvailableCapacity());
-      }
       if (attributesBuilder_ == null) {
         if (!other.attributes_.isEmpty()) {
           if (attributes_.isEmpty()) {
@@ -2949,6 +2983,9 @@ private static final long serialVersionUID = 0L;
       if (!other.getCurrentRouteSegment().isEmpty()) {
         currentRouteSegment_ = other.currentRouteSegment_;
         onChanged();
+      }
+      if (other.hasCurrentRouteSegmentTraffic()) {
+        mergeCurrentRouteSegmentTraffic(other.getCurrentRouteSegmentTraffic());
       }
       if (other.hasCurrentRouteSegmentVersion()) {
         mergeCurrentRouteSegmentVersion(other.getCurrentRouteSegmentVersion());
@@ -3036,11 +3073,11 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object name_ = "";
     /**
      * <pre>
-     * The unique name for this vehicle.
-     * The format is providers/{provider}/vehicles/{vehicle}
+     * Output only. The unique name for this vehicle.
+     * The format is `providers/{provider}/vehicles/{vehicle}`.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return The name.
      */
     public java.lang.String getName() {
@@ -3057,11 +3094,11 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The unique name for this vehicle.
-     * The format is providers/{provider}/vehicles/{vehicle}
+     * Output only. The unique name for this vehicle.
+     * The format is `providers/{provider}/vehicles/{vehicle}`.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return The bytes for name.
      */
     public com.google.protobuf.ByteString
@@ -3079,11 +3116,11 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The unique name for this vehicle.
-     * The format is providers/{provider}/vehicles/{vehicle}
+     * Output only. The unique name for this vehicle.
+     * The format is `providers/{provider}/vehicles/{vehicle}`.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @param value The name to set.
      * @return This builder for chaining.
      */
@@ -3099,11 +3136,11 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The unique name for this vehicle.
-     * The format is providers/{provider}/vehicles/{vehicle}
+     * Output only. The unique name for this vehicle.
+     * The format is `providers/{provider}/vehicles/{vehicle}`.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return This builder for chaining.
      */
     public Builder clearName() {
@@ -3114,11 +3151,11 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The unique name for this vehicle.
-     * The format is providers/{provider}/vehicles/{vehicle}
+     * Output only. The unique name for this vehicle.
+     * The format is `providers/{provider}/vehicles/{vehicle}`.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
@@ -3405,10 +3442,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of IDs for trips in progress.
+     * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
      * </pre>
      *
-     * <code>repeated string current_trips = 4;</code>
+     * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return A list containing the currentTrips.
      */
     public com.google.protobuf.ProtocolStringList
@@ -3417,10 +3454,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of IDs for trips in progress.
+     * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
      * </pre>
      *
-     * <code>repeated string current_trips = 4;</code>
+     * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return The count of currentTrips.
      */
     public int getCurrentTripsCount() {
@@ -3428,10 +3465,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of IDs for trips in progress.
+     * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
      * </pre>
      *
-     * <code>repeated string current_trips = 4;</code>
+     * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @param index The index of the element to return.
      * @return The currentTrips at the given index.
      */
@@ -3440,10 +3477,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of IDs for trips in progress.
+     * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
      * </pre>
      *
-     * <code>repeated string current_trips = 4;</code>
+     * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @param index The index of the value to return.
      * @return The bytes of the currentTrips at the given index.
      */
@@ -3453,10 +3490,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of IDs for trips in progress.
+     * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
      * </pre>
      *
-     * <code>repeated string current_trips = 4;</code>
+     * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @param index The index to set the value at.
      * @param value The currentTrips to set.
      * @return This builder for chaining.
@@ -3473,10 +3510,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of IDs for trips in progress.
+     * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
      * </pre>
      *
-     * <code>repeated string current_trips = 4;</code>
+     * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @param value The currentTrips to add.
      * @return This builder for chaining.
      */
@@ -3492,10 +3529,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of IDs for trips in progress.
+     * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
      * </pre>
      *
-     * <code>repeated string current_trips = 4;</code>
+     * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @param values The currentTrips to add.
      * @return This builder for chaining.
      */
@@ -3509,10 +3546,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of IDs for trips in progress.
+     * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
      * </pre>
      *
-     * <code>repeated string current_trips = 4;</code>
+     * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return This builder for chaining.
      */
     public Builder clearCurrentTrips() {
@@ -3523,10 +3560,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of IDs for trips in progress.
+     * Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
      * </pre>
      *
-     * <code>repeated string current_trips = 4;</code>
+     * <code>repeated string current_trips = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @param value The bytes of the currentTrips to add.
      * @return This builder for chaining.
      */
@@ -3700,9 +3737,8 @@ private static final long serialVersionUID = 0L;
     private int maximumCapacity_ ;
     /**
      * <pre>
-     * Maximum capacity of the vehicle.  This is the total numbers of riders
-     * on trips this vehicle can contain.  The driver is not considered in
-     * this value.  This value must be greater than or equal to one.
+     * The total numbers of riders this vehicle can carry.  The driver is not
+     * considered in this value. This value must be greater than or equal to one.
      * </pre>
      *
      * <code>int32 maximum_capacity = 6;</code>
@@ -3714,9 +3750,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Maximum capacity of the vehicle.  This is the total numbers of riders
-     * on trips this vehicle can contain.  The driver is not considered in
-     * this value.  This value must be greater than or equal to one.
+     * The total numbers of riders this vehicle can carry.  The driver is not
+     * considered in this value. This value must be greater than or equal to one.
      * </pre>
      *
      * <code>int32 maximum_capacity = 6;</code>
@@ -3731,9 +3766,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Maximum capacity of the vehicle.  This is the total numbers of riders
-     * on trips this vehicle can contain.  The driver is not considered in
-     * this value.  This value must be greater than or equal to one.
+     * The total numbers of riders this vehicle can carry.  The driver is not
+     * considered in this value. This value must be greater than or equal to one.
      * </pre>
      *
      * <code>int32 maximum_capacity = 6;</code>
@@ -3742,52 +3776,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearMaximumCapacity() {
       
       maximumCapacity_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int availableCapacity_ ;
-    /**
-     * <pre>
-     * The current available capacity of the vehicle.  This is the
-     * maximum_capacity minus the current number of riders.
-     * </pre>
-     *
-     * <code>int32 available_capacity = 7;</code>
-     * @return The availableCapacity.
-     */
-    @java.lang.Override
-    public int getAvailableCapacity() {
-      return availableCapacity_;
-    }
-    /**
-     * <pre>
-     * The current available capacity of the vehicle.  This is the
-     * maximum_capacity minus the current number of riders.
-     * </pre>
-     *
-     * <code>int32 available_capacity = 7;</code>
-     * @param value The availableCapacity to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAvailableCapacity(int value) {
-      
-      availableCapacity_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * The current available capacity of the vehicle.  This is the
-     * maximum_capacity minus the current number of riders.
-     * </pre>
-     *
-     * <code>int32 available_capacity = 7;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearAvailableCapacity() {
-      
-      availableCapacity_ = 0;
       onChanged();
       return this;
     }
@@ -3806,7 +3794,8 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -3820,7 +3809,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -3834,7 +3824,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -3848,7 +3839,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -3869,7 +3861,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -3887,7 +3880,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -3907,7 +3901,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -3928,7 +3923,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -3946,7 +3942,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -3964,7 +3961,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -3983,7 +3981,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -4000,7 +3999,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -4017,7 +4017,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -4028,7 +4029,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -4042,7 +4044,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -4057,7 +4060,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -4068,7 +4072,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -4080,7 +4085,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * List of vehicle service attributes.
+     * List of vehicle attributes. A vehicle can have at most 50
+     * attributes, and each attribute has a unique key.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.VehicleAttribute attributes = 8;</code>
@@ -4109,8 +4115,8 @@ private static final long serialVersionUID = 0L;
         google.maps.fleetengine.v1.Vehicle.VehicleType, google.maps.fleetengine.v1.Vehicle.VehicleType.Builder, google.maps.fleetengine.v1.Vehicle.VehicleTypeOrBuilder> vehicleTypeBuilder_;
     /**
      * <pre>
-     * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-     * influences ETA and route calculations.
+     * The type of this vehicle.  Can be used to filter vehicles in
+     * `SearchVehicles` results.  Also influences ETA and route calculations.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -4121,8 +4127,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-     * influences ETA and route calculations.
+     * The type of this vehicle.  Can be used to filter vehicles in
+     * `SearchVehicles` results.  Also influences ETA and route calculations.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -4137,8 +4143,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-     * influences ETA and route calculations.
+     * The type of this vehicle.  Can be used to filter vehicles in
+     * `SearchVehicles` results.  Also influences ETA and route calculations.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -4158,8 +4164,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-     * influences ETA and route calculations.
+     * The type of this vehicle.  Can be used to filter vehicles in
+     * `SearchVehicles` results.  Also influences ETA and route calculations.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -4177,8 +4183,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-     * influences ETA and route calculations.
+     * The type of this vehicle.  Can be used to filter vehicles in
+     * `SearchVehicles` results.  Also influences ETA and route calculations.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -4200,8 +4206,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-     * influences ETA and route calculations.
+     * The type of this vehicle.  Can be used to filter vehicles in
+     * `SearchVehicles` results.  Also influences ETA and route calculations.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -4219,8 +4225,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-     * influences ETA and route calculations.
+     * The type of this vehicle.  Can be used to filter vehicles in
+     * `SearchVehicles` results.  Also influences ETA and route calculations.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -4232,8 +4238,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-     * influences ETA and route calculations.
+     * The type of this vehicle.  Can be used to filter vehicles in
+     * `SearchVehicles` results.  Also influences ETA and route calculations.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -4248,8 +4254,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The type of this Vehicle.  Can be filtered during SearchVehicles.  Also
-     * influences ETA and route calculations.
+     * The type of this vehicle.  Can be used to filter vehicles in
+     * `SearchVehicles` results.  Also influences ETA and route calculations.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.Vehicle.VehicleType vehicle_type = 9;</code>
@@ -4437,7 +4443,7 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4451,7 +4457,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4465,7 +4471,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4479,7 +4485,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4500,7 +4506,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4518,7 +4524,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4538,7 +4544,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4559,7 +4565,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4577,7 +4583,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4595,7 +4601,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4614,7 +4620,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4631,7 +4637,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4648,7 +4654,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4659,7 +4665,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4673,7 +4679,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4688,7 +4694,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4699,7 +4705,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4711,7 +4717,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use vehicle.waypoint instead.
+     * Deprecated: Use `Vehicle.waypoints` instead.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TerminalLocation route = 12 [deprecated = true];</code>
@@ -4741,7 +4747,7 @@ private static final long serialVersionUID = 0L;
      * The polyline specifying the route the driver app intends to take to
      * the next waypoint. Your driver app updates this every time a waypoint is
      * passed or the driver reroutes. This list is also returned in
-     * Trip.current_route_segment for all active trips assigned to the vehicle.
+     * `Trip.current_route_segment` for all active trips assigned to the vehicle.
      * Note: This field is intended only for use by the Driver SDK.
      * </pre>
      *
@@ -4765,7 +4771,7 @@ private static final long serialVersionUID = 0L;
      * The polyline specifying the route the driver app intends to take to
      * the next waypoint. Your driver app updates this every time a waypoint is
      * passed or the driver reroutes. This list is also returned in
-     * Trip.current_route_segment for all active trips assigned to the vehicle.
+     * `Trip.current_route_segment` for all active trips assigned to the vehicle.
      * Note: This field is intended only for use by the Driver SDK.
      * </pre>
      *
@@ -4790,7 +4796,7 @@ private static final long serialVersionUID = 0L;
      * The polyline specifying the route the driver app intends to take to
      * the next waypoint. Your driver app updates this every time a waypoint is
      * passed or the driver reroutes. This list is also returned in
-     * Trip.current_route_segment for all active trips assigned to the vehicle.
+     * `Trip.current_route_segment` for all active trips assigned to the vehicle.
      * Note: This field is intended only for use by the Driver SDK.
      * </pre>
      *
@@ -4813,7 +4819,7 @@ private static final long serialVersionUID = 0L;
      * The polyline specifying the route the driver app intends to take to
      * the next waypoint. Your driver app updates this every time a waypoint is
      * passed or the driver reroutes. This list is also returned in
-     * Trip.current_route_segment for all active trips assigned to the vehicle.
+     * `Trip.current_route_segment` for all active trips assigned to the vehicle.
      * Note: This field is intended only for use by the Driver SDK.
      * </pre>
      *
@@ -4831,7 +4837,7 @@ private static final long serialVersionUID = 0L;
      * The polyline specifying the route the driver app intends to take to
      * the next waypoint. Your driver app updates this every time a waypoint is
      * passed or the driver reroutes. This list is also returned in
-     * Trip.current_route_segment for all active trips assigned to the vehicle.
+     * `Trip.current_route_segment` for all active trips assigned to the vehicle.
      * Note: This field is intended only for use by the Driver SDK.
      * </pre>
      *
@@ -4851,18 +4857,190 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private google.maps.fleetengine.v1.TrafficPolylineData currentRouteSegmentTraffic_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        google.maps.fleetengine.v1.TrafficPolylineData, google.maps.fleetengine.v1.TrafficPolylineData.Builder, google.maps.fleetengine.v1.TrafficPolylineDataOrBuilder> currentRouteSegmentTrafficBuilder_;
+    /**
+     * <pre>
+     * Input only. Fleet Engine uses this information to improve its
+     * understanding of a Trip, but does not populate the field in its responses.
+     * Note: This field is intended only for use by the Driver SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+     * @return Whether the currentRouteSegmentTraffic field is set.
+     */
+    public boolean hasCurrentRouteSegmentTraffic() {
+      return currentRouteSegmentTrafficBuilder_ != null || currentRouteSegmentTraffic_ != null;
+    }
+    /**
+     * <pre>
+     * Input only. Fleet Engine uses this information to improve its
+     * understanding of a Trip, but does not populate the field in its responses.
+     * Note: This field is intended only for use by the Driver SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+     * @return The currentRouteSegmentTraffic.
+     */
+    public google.maps.fleetengine.v1.TrafficPolylineData getCurrentRouteSegmentTraffic() {
+      if (currentRouteSegmentTrafficBuilder_ == null) {
+        return currentRouteSegmentTraffic_ == null ? google.maps.fleetengine.v1.TrafficPolylineData.getDefaultInstance() : currentRouteSegmentTraffic_;
+      } else {
+        return currentRouteSegmentTrafficBuilder_.getMessage();
+      }
+    }
+    /**
+     * <pre>
+     * Input only. Fleet Engine uses this information to improve its
+     * understanding of a Trip, but does not populate the field in its responses.
+     * Note: This field is intended only for use by the Driver SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+     */
+    public Builder setCurrentRouteSegmentTraffic(google.maps.fleetengine.v1.TrafficPolylineData value) {
+      if (currentRouteSegmentTrafficBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        currentRouteSegmentTraffic_ = value;
+        onChanged();
+      } else {
+        currentRouteSegmentTrafficBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * Input only. Fleet Engine uses this information to improve its
+     * understanding of a Trip, but does not populate the field in its responses.
+     * Note: This field is intended only for use by the Driver SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+     */
+    public Builder setCurrentRouteSegmentTraffic(
+        google.maps.fleetengine.v1.TrafficPolylineData.Builder builderForValue) {
+      if (currentRouteSegmentTrafficBuilder_ == null) {
+        currentRouteSegmentTraffic_ = builderForValue.build();
+        onChanged();
+      } else {
+        currentRouteSegmentTrafficBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * Input only. Fleet Engine uses this information to improve its
+     * understanding of a Trip, but does not populate the field in its responses.
+     * Note: This field is intended only for use by the Driver SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+     */
+    public Builder mergeCurrentRouteSegmentTraffic(google.maps.fleetengine.v1.TrafficPolylineData value) {
+      if (currentRouteSegmentTrafficBuilder_ == null) {
+        if (currentRouteSegmentTraffic_ != null) {
+          currentRouteSegmentTraffic_ =
+            google.maps.fleetengine.v1.TrafficPolylineData.newBuilder(currentRouteSegmentTraffic_).mergeFrom(value).buildPartial();
+        } else {
+          currentRouteSegmentTraffic_ = value;
+        }
+        onChanged();
+      } else {
+        currentRouteSegmentTrafficBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * Input only. Fleet Engine uses this information to improve its
+     * understanding of a Trip, but does not populate the field in its responses.
+     * Note: This field is intended only for use by the Driver SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+     */
+    public Builder clearCurrentRouteSegmentTraffic() {
+      if (currentRouteSegmentTrafficBuilder_ == null) {
+        currentRouteSegmentTraffic_ = null;
+        onChanged();
+      } else {
+        currentRouteSegmentTraffic_ = null;
+        currentRouteSegmentTrafficBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * Input only. Fleet Engine uses this information to improve its
+     * understanding of a Trip, but does not populate the field in its responses.
+     * Note: This field is intended only for use by the Driver SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+     */
+    public google.maps.fleetengine.v1.TrafficPolylineData.Builder getCurrentRouteSegmentTrafficBuilder() {
+      
+      onChanged();
+      return getCurrentRouteSegmentTrafficFieldBuilder().getBuilder();
+    }
+    /**
+     * <pre>
+     * Input only. Fleet Engine uses this information to improve its
+     * understanding of a Trip, but does not populate the field in its responses.
+     * Note: This field is intended only for use by the Driver SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+     */
+    public google.maps.fleetengine.v1.TrafficPolylineDataOrBuilder getCurrentRouteSegmentTrafficOrBuilder() {
+      if (currentRouteSegmentTrafficBuilder_ != null) {
+        return currentRouteSegmentTrafficBuilder_.getMessageOrBuilder();
+      } else {
+        return currentRouteSegmentTraffic_ == null ?
+            google.maps.fleetengine.v1.TrafficPolylineData.getDefaultInstance() : currentRouteSegmentTraffic_;
+      }
+    }
+    /**
+     * <pre>
+     * Input only. Fleet Engine uses this information to improve its
+     * understanding of a Trip, but does not populate the field in its responses.
+     * Note: This field is intended only for use by the Driver SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.TrafficPolylineData current_route_segment_traffic = 28 [(.google.api.field_behavior) = INPUT_ONLY];</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        google.maps.fleetengine.v1.TrafficPolylineData, google.maps.fleetengine.v1.TrafficPolylineData.Builder, google.maps.fleetengine.v1.TrafficPolylineDataOrBuilder> 
+        getCurrentRouteSegmentTrafficFieldBuilder() {
+      if (currentRouteSegmentTrafficBuilder_ == null) {
+        currentRouteSegmentTrafficBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            google.maps.fleetengine.v1.TrafficPolylineData, google.maps.fleetengine.v1.TrafficPolylineData.Builder, google.maps.fleetengine.v1.TrafficPolylineDataOrBuilder>(
+                getCurrentRouteSegmentTraffic(),
+                getParentForChildren(),
+                isClean());
+        currentRouteSegmentTraffic_ = null;
+      }
+      return currentRouteSegmentTrafficBuilder_;
+    }
+
     private com.google.protobuf.Timestamp currentRouteSegmentVersion_;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> currentRouteSegmentVersionBuilder_;
     /**
      * <pre>
-     * Time when current_route_segment was set. This field is ignored in
-     * UpdateVehicleRequests as it is calculated by the server. It should be
-     * stored by client and passed in to future requests to prevent returning
-     * routes to first way point that haven't changed.
+     * Output only. Time when `current_route_segment` was set. It should be
+     * stored by the client and passed in future `GetVehicle` requests to
+     * prevent returning routes that haven't changed.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+     * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return Whether the currentRouteSegmentVersion field is set.
      */
     public boolean hasCurrentRouteSegmentVersion() {
@@ -4870,13 +5048,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Time when current_route_segment was set. This field is ignored in
-     * UpdateVehicleRequests as it is calculated by the server. It should be
-     * stored by client and passed in to future requests to prevent returning
-     * routes to first way point that haven't changed.
+     * Output only. Time when `current_route_segment` was set. It should be
+     * stored by the client and passed in future `GetVehicle` requests to
+     * prevent returning routes that haven't changed.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+     * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return The currentRouteSegmentVersion.
      */
     public com.google.protobuf.Timestamp getCurrentRouteSegmentVersion() {
@@ -4888,13 +5065,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Time when current_route_segment was set. This field is ignored in
-     * UpdateVehicleRequests as it is calculated by the server. It should be
-     * stored by client and passed in to future requests to prevent returning
-     * routes to first way point that haven't changed.
+     * Output only. Time when `current_route_segment` was set. It should be
+     * stored by the client and passed in future `GetVehicle` requests to
+     * prevent returning routes that haven't changed.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+     * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setCurrentRouteSegmentVersion(com.google.protobuf.Timestamp value) {
       if (currentRouteSegmentVersionBuilder_ == null) {
@@ -4911,13 +5087,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Time when current_route_segment was set. This field is ignored in
-     * UpdateVehicleRequests as it is calculated by the server. It should be
-     * stored by client and passed in to future requests to prevent returning
-     * routes to first way point that haven't changed.
+     * Output only. Time when `current_route_segment` was set. It should be
+     * stored by the client and passed in future `GetVehicle` requests to
+     * prevent returning routes that haven't changed.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+     * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setCurrentRouteSegmentVersion(
         com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -4932,13 +5107,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Time when current_route_segment was set. This field is ignored in
-     * UpdateVehicleRequests as it is calculated by the server. It should be
-     * stored by client and passed in to future requests to prevent returning
-     * routes to first way point that haven't changed.
+     * Output only. Time when `current_route_segment` was set. It should be
+     * stored by the client and passed in future `GetVehicle` requests to
+     * prevent returning routes that haven't changed.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+     * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder mergeCurrentRouteSegmentVersion(com.google.protobuf.Timestamp value) {
       if (currentRouteSegmentVersionBuilder_ == null) {
@@ -4957,13 +5131,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Time when current_route_segment was set. This field is ignored in
-     * UpdateVehicleRequests as it is calculated by the server. It should be
-     * stored by client and passed in to future requests to prevent returning
-     * routes to first way point that haven't changed.
+     * Output only. Time when `current_route_segment` was set. It should be
+     * stored by the client and passed in future `GetVehicle` requests to
+     * prevent returning routes that haven't changed.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+     * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder clearCurrentRouteSegmentVersion() {
       if (currentRouteSegmentVersionBuilder_ == null) {
@@ -4978,13 +5151,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Time when current_route_segment was set. This field is ignored in
-     * UpdateVehicleRequests as it is calculated by the server. It should be
-     * stored by client and passed in to future requests to prevent returning
-     * routes to first way point that haven't changed.
+     * Output only. Time when `current_route_segment` was set. It should be
+     * stored by the client and passed in future `GetVehicle` requests to
+     * prevent returning routes that haven't changed.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+     * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.Timestamp.Builder getCurrentRouteSegmentVersionBuilder() {
       
@@ -4993,13 +5165,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Time when current_route_segment was set. This field is ignored in
-     * UpdateVehicleRequests as it is calculated by the server. It should be
-     * stored by client and passed in to future requests to prevent returning
-     * routes to first way point that haven't changed.
+     * Output only. Time when `current_route_segment` was set. It should be
+     * stored by the client and passed in future `GetVehicle` requests to
+     * prevent returning routes that haven't changed.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+     * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.TimestampOrBuilder getCurrentRouteSegmentVersionOrBuilder() {
       if (currentRouteSegmentVersionBuilder_ != null) {
@@ -5011,13 +5182,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Time when current_route_segment was set. This field is ignored in
-     * UpdateVehicleRequests as it is calculated by the server. It should be
-     * stored by client and passed in to future requests to prevent returning
-     * routes to first way point that haven't changed.
+     * Output only. Time when `current_route_segment` was set. It should be
+     * stored by the client and passed in future `GetVehicle` requests to
+     * prevent returning routes that haven't changed.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp current_route_segment_version = 15;</code>
+     * <code>.google.protobuf.Timestamp current_route_segment_version = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -5038,12 +5208,12 @@ private static final long serialVersionUID = 0L;
         google.maps.fleetengine.v1.TripWaypoint, google.maps.fleetengine.v1.TripWaypoint.Builder, google.maps.fleetengine.v1.TripWaypointOrBuilder> currentRouteSegmentEndPointBuilder_;
     /**
      * <pre>
-     * The waypoint where current_route_segment ends. This can be supplied by
-     * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-     * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-     * will then do its best to interpolate to an actual waypoint if it is not
-     * fully specified. This field is ignored in UpdateVehicle calls unless
-     * current_route_segment is also specified.
+     * The waypoint where `current_route_segment` ends. This can be supplied by
+     * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+     * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+     * Engine will then do its best to interpolate to an actual waypoint if it is
+     * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+     * `current_route_segment` is also specified.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -5054,12 +5224,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The waypoint where current_route_segment ends. This can be supplied by
-     * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-     * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-     * will then do its best to interpolate to an actual waypoint if it is not
-     * fully specified. This field is ignored in UpdateVehicle calls unless
-     * current_route_segment is also specified.
+     * The waypoint where `current_route_segment` ends. This can be supplied by
+     * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+     * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+     * Engine will then do its best to interpolate to an actual waypoint if it is
+     * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+     * `current_route_segment` is also specified.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -5074,12 +5244,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The waypoint where current_route_segment ends. This can be supplied by
-     * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-     * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-     * will then do its best to interpolate to an actual waypoint if it is not
-     * fully specified. This field is ignored in UpdateVehicle calls unless
-     * current_route_segment is also specified.
+     * The waypoint where `current_route_segment` ends. This can be supplied by
+     * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+     * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+     * Engine will then do its best to interpolate to an actual waypoint if it is
+     * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+     * `current_route_segment` is also specified.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -5099,12 +5269,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The waypoint where current_route_segment ends. This can be supplied by
-     * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-     * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-     * will then do its best to interpolate to an actual waypoint if it is not
-     * fully specified. This field is ignored in UpdateVehicle calls unless
-     * current_route_segment is also specified.
+     * The waypoint where `current_route_segment` ends. This can be supplied by
+     * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+     * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+     * Engine will then do its best to interpolate to an actual waypoint if it is
+     * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+     * `current_route_segment` is also specified.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -5122,12 +5292,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The waypoint where current_route_segment ends. This can be supplied by
-     * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-     * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-     * will then do its best to interpolate to an actual waypoint if it is not
-     * fully specified. This field is ignored in UpdateVehicle calls unless
-     * current_route_segment is also specified.
+     * The waypoint where `current_route_segment` ends. This can be supplied by
+     * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+     * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+     * Engine will then do its best to interpolate to an actual waypoint if it is
+     * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+     * `current_route_segment` is also specified.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -5149,12 +5319,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The waypoint where current_route_segment ends. This can be supplied by
-     * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-     * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-     * will then do its best to interpolate to an actual waypoint if it is not
-     * fully specified. This field is ignored in UpdateVehicle calls unless
-     * current_route_segment is also specified.
+     * The waypoint where `current_route_segment` ends. This can be supplied by
+     * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+     * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+     * Engine will then do its best to interpolate to an actual waypoint if it is
+     * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+     * `current_route_segment` is also specified.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -5172,12 +5342,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The waypoint where current_route_segment ends. This can be supplied by
-     * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-     * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-     * will then do its best to interpolate to an actual waypoint if it is not
-     * fully specified. This field is ignored in UpdateVehicle calls unless
-     * current_route_segment is also specified.
+     * The waypoint where `current_route_segment` ends. This can be supplied by
+     * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+     * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+     * Engine will then do its best to interpolate to an actual waypoint if it is
+     * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+     * `current_route_segment` is also specified.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -5189,12 +5359,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The waypoint where current_route_segment ends. This can be supplied by
-     * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-     * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-     * will then do its best to interpolate to an actual waypoint if it is not
-     * fully specified. This field is ignored in UpdateVehicle calls unless
-     * current_route_segment is also specified.
+     * The waypoint where `current_route_segment` ends. This can be supplied by
+     * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+     * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+     * Engine will then do its best to interpolate to an actual waypoint if it is
+     * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+     * `current_route_segment` is also specified.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -5209,12 +5379,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The waypoint where current_route_segment ends. This can be supplied by
-     * drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-     * latlnt, or as a the last latlng of the current_route_segment. FleetEngine
-     * will then do its best to interpolate to an actual waypoint if it is not
-     * fully specified. This field is ignored in UpdateVehicle calls unless
-     * current_route_segment is also specified.
+     * The waypoint where `current_route_segment` ends. This can be supplied by
+     * drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
+     * `LatLng`, or as the last `LatLng` of the `current_route_segment`. Fleet
+     * Engine will then do its best to interpolate to an actual waypoint if it is
+     * not fully specified. This field is ignored in `UpdateVehicle` calls unless
+     * `current_route_segment` is also specified.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.TripWaypoint current_route_segment_end_point = 24;</code>
@@ -5238,13 +5408,12 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Int32Value, com.google.protobuf.Int32Value.Builder, com.google.protobuf.Int32ValueOrBuilder> remainingDistanceMetersBuilder_;
     /**
      * <pre>
-     * The remaining driving distance for the 'current_route_segment'. This field
+     * The remaining driving distance for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
-     * This value is updated by the Driver SDK. Fleet Engine does not update it.
-     * This field is also returned in Trip.remaining_distance_meters for all
-     * active trips assigned to the vehicle. The value is unspecified if the
-     * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-     * not updated its value.
+     * This value is provided by the Driver SDK. This field is also returned in
+     * `Trip.remaining_distance_meters` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `current_route_segment` field is
+     * empty, or if the Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -5255,13 +5424,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving distance for the 'current_route_segment'. This field
+     * The remaining driving distance for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
-     * This value is updated by the Driver SDK. Fleet Engine does not update it.
-     * This field is also returned in Trip.remaining_distance_meters for all
-     * active trips assigned to the vehicle. The value is unspecified if the
-     * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-     * not updated its value.
+     * This value is provided by the Driver SDK. This field is also returned in
+     * `Trip.remaining_distance_meters` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `current_route_segment` field is
+     * empty, or if the Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -5276,13 +5444,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving distance for the 'current_route_segment'. This field
+     * The remaining driving distance for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
-     * This value is updated by the Driver SDK. Fleet Engine does not update it.
-     * This field is also returned in Trip.remaining_distance_meters for all
-     * active trips assigned to the vehicle. The value is unspecified if the
-     * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-     * not updated its value.
+     * This value is provided by the Driver SDK. This field is also returned in
+     * `Trip.remaining_distance_meters` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `current_route_segment` field is
+     * empty, or if the Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -5302,13 +5469,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving distance for the 'current_route_segment'. This field
+     * The remaining driving distance for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
-     * This value is updated by the Driver SDK. Fleet Engine does not update it.
-     * This field is also returned in Trip.remaining_distance_meters for all
-     * active trips assigned to the vehicle. The value is unspecified if the
-     * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-     * not updated its value.
+     * This value is provided by the Driver SDK. This field is also returned in
+     * `Trip.remaining_distance_meters` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `current_route_segment` field is
+     * empty, or if the Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -5326,13 +5492,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving distance for the 'current_route_segment'. This field
+     * The remaining driving distance for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
-     * This value is updated by the Driver SDK. Fleet Engine does not update it.
-     * This field is also returned in Trip.remaining_distance_meters for all
-     * active trips assigned to the vehicle. The value is unspecified if the
-     * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-     * not updated its value.
+     * This value is provided by the Driver SDK. This field is also returned in
+     * `Trip.remaining_distance_meters` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `current_route_segment` field is
+     * empty, or if the Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -5354,13 +5519,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving distance for the 'current_route_segment'. This field
+     * The remaining driving distance for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
-     * This value is updated by the Driver SDK. Fleet Engine does not update it.
-     * This field is also returned in Trip.remaining_distance_meters for all
-     * active trips assigned to the vehicle. The value is unspecified if the
-     * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-     * not updated its value.
+     * This value is provided by the Driver SDK. This field is also returned in
+     * `Trip.remaining_distance_meters` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `current_route_segment` field is
+     * empty, or if the Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -5378,13 +5542,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving distance for the 'current_route_segment'. This field
+     * The remaining driving distance for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
-     * This value is updated by the Driver SDK. Fleet Engine does not update it.
-     * This field is also returned in Trip.remaining_distance_meters for all
-     * active trips assigned to the vehicle. The value is unspecified if the
-     * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-     * not updated its value.
+     * This value is provided by the Driver SDK. This field is also returned in
+     * `Trip.remaining_distance_meters` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `current_route_segment` field is
+     * empty, or if the Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -5396,13 +5559,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving distance for the 'current_route_segment'. This field
+     * The remaining driving distance for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
-     * This value is updated by the Driver SDK. Fleet Engine does not update it.
-     * This field is also returned in Trip.remaining_distance_meters for all
-     * active trips assigned to the vehicle. The value is unspecified if the
-     * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-     * not updated its value.
+     * This value is provided by the Driver SDK. This field is also returned in
+     * `Trip.remaining_distance_meters` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `current_route_segment` field is
+     * empty, or if the Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -5417,13 +5579,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving distance for the 'current_route_segment'. This field
+     * The remaining driving distance for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
-     * This value is updated by the Driver SDK. Fleet Engine does not update it.
-     * This field is also returned in Trip.remaining_distance_meters for all
-     * active trips assigned to the vehicle. The value is unspecified if the
-     * `Vehicle.current_route_segment` field is empty, or if the Driver app has
-     * not updated its value.
+     * This value is provided by the Driver SDK. This field is also returned in
+     * `Trip.remaining_distance_meters` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `current_route_segment` field is
+     * empty, or if the Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value remaining_distance_meters = 18;</code>
@@ -5447,13 +5608,12 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> etaToFirstWaypointBuilder_;
     /**
      * <pre>
-     * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+     * The ETA to the first entry in the `waypoints`
      * field. This field facilitates journey sharing between a Driver app and a
-     * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-     * update it. This field is also returned in Trip.eta_to_first_waypoint for
-     * all active trips assigned to the vehicle. The value is unspecified if the
-     * Vehicle.waypoint field is empty, or the Driver app has not updated its
-     * value.
+     * Consumer app. Is is provided by the Driver SDK. This field is also returned
+     * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+     * Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -5464,13 +5624,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+     * The ETA to the first entry in the `waypoints`
      * field. This field facilitates journey sharing between a Driver app and a
-     * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-     * update it. This field is also returned in Trip.eta_to_first_waypoint for
-     * all active trips assigned to the vehicle. The value is unspecified if the
-     * Vehicle.waypoint field is empty, or the Driver app has not updated its
-     * value.
+     * Consumer app. Is is provided by the Driver SDK. This field is also returned
+     * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+     * Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -5485,13 +5644,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+     * The ETA to the first entry in the `waypoints`
      * field. This field facilitates journey sharing between a Driver app and a
-     * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-     * update it. This field is also returned in Trip.eta_to_first_waypoint for
-     * all active trips assigned to the vehicle. The value is unspecified if the
-     * Vehicle.waypoint field is empty, or the Driver app has not updated its
-     * value.
+     * Consumer app. Is is provided by the Driver SDK. This field is also returned
+     * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+     * Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -5511,13 +5669,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+     * The ETA to the first entry in the `waypoints`
      * field. This field facilitates journey sharing between a Driver app and a
-     * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-     * update it. This field is also returned in Trip.eta_to_first_waypoint for
-     * all active trips assigned to the vehicle. The value is unspecified if the
-     * Vehicle.waypoint field is empty, or the Driver app has not updated its
-     * value.
+     * Consumer app. Is is provided by the Driver SDK. This field is also returned
+     * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+     * Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -5535,13 +5692,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+     * The ETA to the first entry in the `waypoints`
      * field. This field facilitates journey sharing between a Driver app and a
-     * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-     * update it. This field is also returned in Trip.eta_to_first_waypoint for
-     * all active trips assigned to the vehicle. The value is unspecified if the
-     * Vehicle.waypoint field is empty, or the Driver app has not updated its
-     * value.
+     * Consumer app. Is is provided by the Driver SDK. This field is also returned
+     * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+     * Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -5563,13 +5719,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+     * The ETA to the first entry in the `waypoints`
      * field. This field facilitates journey sharing between a Driver app and a
-     * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-     * update it. This field is also returned in Trip.eta_to_first_waypoint for
-     * all active trips assigned to the vehicle. The value is unspecified if the
-     * Vehicle.waypoint field is empty, or the Driver app has not updated its
-     * value.
+     * Consumer app. Is is provided by the Driver SDK. This field is also returned
+     * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+     * Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -5587,13 +5742,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+     * The ETA to the first entry in the `waypoints`
      * field. This field facilitates journey sharing between a Driver app and a
-     * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-     * update it. This field is also returned in Trip.eta_to_first_waypoint for
-     * all active trips assigned to the vehicle. The value is unspecified if the
-     * Vehicle.waypoint field is empty, or the Driver app has not updated its
-     * value.
+     * Consumer app. Is is provided by the Driver SDK. This field is also returned
+     * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+     * Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -5605,13 +5759,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+     * The ETA to the first entry in the `waypoints`
      * field. This field facilitates journey sharing between a Driver app and a
-     * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-     * update it. This field is also returned in Trip.eta_to_first_waypoint for
-     * all active trips assigned to the vehicle. The value is unspecified if the
-     * Vehicle.waypoint field is empty, or the Driver app has not updated its
-     * value.
+     * Consumer app. Is is provided by the Driver SDK. This field is also returned
+     * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+     * Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -5626,13 +5779,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The ETA to the next waypoint that is the first entry in Vehicle.waypoint
+     * The ETA to the first entry in the `waypoints`
      * field. This field facilitates journey sharing between a Driver app and a
-     * Consumer app and is updated by the Driver SDK, and Fleet Engine does not
-     * update it. This field is also returned in Trip.eta_to_first_waypoint for
-     * all active trips assigned to the vehicle. The value is unspecified if the
-     * Vehicle.waypoint field is empty, or the Driver app has not updated its
-     * value.
+     * Consumer app. Is is provided by the Driver SDK. This field is also returned
+     * in `Trip.eta_to_first_waypoint` for all active trips assigned to the
+     * vehicle. The value is unspecified if the `waypoints` field is empty, or the
+     * Driver app has not updated its value.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp eta_to_first_waypoint = 19;</code>
@@ -5656,20 +5808,19 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Int32Value, com.google.protobuf.Int32Value.Builder, com.google.protobuf.Int32ValueOrBuilder> remainingTimeSecondsBuilder_;
     /**
      * <pre>
-     * The remaining driving time for the 'current_route_segment'. This field
+     * Input only. The remaining driving time for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
      * This value is updated by the Driver SDK. Fleet Engine does not update it.
      * The value is unspecified if the `Vehicle.current_route_segment` field is
      * empty, or if the Driver app has not updated its value. This value should
-     * match eta_to_first_waypoint - current_time if all parties are using the
-     * same clock. This field is currently write-only and will not yet be
-     * populated in Vehicle's get/update/search operations. When updating a
-     * vehicle, if you update both eta_to_first_waypoint and
-     * remaining_time_seconds in the same request, then only
-     * remaining_time_seconds is considered.
+     * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+     * same clock. When updating a
+     * vehicle, if you update both `eta_to_first_waypoint` and
+     * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+     * takes precedence.
      * </pre>
      *
-     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      * @return Whether the remainingTimeSeconds field is set.
      */
     public boolean hasRemainingTimeSeconds() {
@@ -5677,20 +5828,19 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving time for the 'current_route_segment'. This field
+     * Input only. The remaining driving time for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
      * This value is updated by the Driver SDK. Fleet Engine does not update it.
      * The value is unspecified if the `Vehicle.current_route_segment` field is
      * empty, or if the Driver app has not updated its value. This value should
-     * match eta_to_first_waypoint - current_time if all parties are using the
-     * same clock. This field is currently write-only and will not yet be
-     * populated in Vehicle's get/update/search operations. When updating a
-     * vehicle, if you update both eta_to_first_waypoint and
-     * remaining_time_seconds in the same request, then only
-     * remaining_time_seconds is considered.
+     * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+     * same clock. When updating a
+     * vehicle, if you update both `eta_to_first_waypoint` and
+     * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+     * takes precedence.
      * </pre>
      *
-     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      * @return The remainingTimeSeconds.
      */
     public com.google.protobuf.Int32Value getRemainingTimeSeconds() {
@@ -5702,20 +5852,19 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving time for the 'current_route_segment'. This field
+     * Input only. The remaining driving time for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
      * This value is updated by the Driver SDK. Fleet Engine does not update it.
      * The value is unspecified if the `Vehicle.current_route_segment` field is
      * empty, or if the Driver app has not updated its value. This value should
-     * match eta_to_first_waypoint - current_time if all parties are using the
-     * same clock. This field is currently write-only and will not yet be
-     * populated in Vehicle's get/update/search operations. When updating a
-     * vehicle, if you update both eta_to_first_waypoint and
-     * remaining_time_seconds in the same request, then only
-     * remaining_time_seconds is considered.
+     * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+     * same clock. When updating a
+     * vehicle, if you update both `eta_to_first_waypoint` and
+     * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+     * takes precedence.
      * </pre>
      *
-     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     public Builder setRemainingTimeSeconds(com.google.protobuf.Int32Value value) {
       if (remainingTimeSecondsBuilder_ == null) {
@@ -5732,20 +5881,19 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving time for the 'current_route_segment'. This field
+     * Input only. The remaining driving time for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
      * This value is updated by the Driver SDK. Fleet Engine does not update it.
      * The value is unspecified if the `Vehicle.current_route_segment` field is
      * empty, or if the Driver app has not updated its value. This value should
-     * match eta_to_first_waypoint - current_time if all parties are using the
-     * same clock. This field is currently write-only and will not yet be
-     * populated in Vehicle's get/update/search operations. When updating a
-     * vehicle, if you update both eta_to_first_waypoint and
-     * remaining_time_seconds in the same request, then only
-     * remaining_time_seconds is considered.
+     * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+     * same clock. When updating a
+     * vehicle, if you update both `eta_to_first_waypoint` and
+     * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+     * takes precedence.
      * </pre>
      *
-     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     public Builder setRemainingTimeSeconds(
         com.google.protobuf.Int32Value.Builder builderForValue) {
@@ -5760,20 +5908,19 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving time for the 'current_route_segment'. This field
+     * Input only. The remaining driving time for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
      * This value is updated by the Driver SDK. Fleet Engine does not update it.
      * The value is unspecified if the `Vehicle.current_route_segment` field is
      * empty, or if the Driver app has not updated its value. This value should
-     * match eta_to_first_waypoint - current_time if all parties are using the
-     * same clock. This field is currently write-only and will not yet be
-     * populated in Vehicle's get/update/search operations. When updating a
-     * vehicle, if you update both eta_to_first_waypoint and
-     * remaining_time_seconds in the same request, then only
-     * remaining_time_seconds is considered.
+     * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+     * same clock. When updating a
+     * vehicle, if you update both `eta_to_first_waypoint` and
+     * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+     * takes precedence.
      * </pre>
      *
-     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     public Builder mergeRemainingTimeSeconds(com.google.protobuf.Int32Value value) {
       if (remainingTimeSecondsBuilder_ == null) {
@@ -5792,20 +5939,19 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving time for the 'current_route_segment'. This field
+     * Input only. The remaining driving time for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
      * This value is updated by the Driver SDK. Fleet Engine does not update it.
      * The value is unspecified if the `Vehicle.current_route_segment` field is
      * empty, or if the Driver app has not updated its value. This value should
-     * match eta_to_first_waypoint - current_time if all parties are using the
-     * same clock. This field is currently write-only and will not yet be
-     * populated in Vehicle's get/update/search operations. When updating a
-     * vehicle, if you update both eta_to_first_waypoint and
-     * remaining_time_seconds in the same request, then only
-     * remaining_time_seconds is considered.
+     * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+     * same clock. When updating a
+     * vehicle, if you update both `eta_to_first_waypoint` and
+     * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+     * takes precedence.
      * </pre>
      *
-     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     public Builder clearRemainingTimeSeconds() {
       if (remainingTimeSecondsBuilder_ == null) {
@@ -5820,20 +5966,19 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving time for the 'current_route_segment'. This field
+     * Input only. The remaining driving time for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
      * This value is updated by the Driver SDK. Fleet Engine does not update it.
      * The value is unspecified if the `Vehicle.current_route_segment` field is
      * empty, or if the Driver app has not updated its value. This value should
-     * match eta_to_first_waypoint - current_time if all parties are using the
-     * same clock. This field is currently write-only and will not yet be
-     * populated in Vehicle's get/update/search operations. When updating a
-     * vehicle, if you update both eta_to_first_waypoint and
-     * remaining_time_seconds in the same request, then only
-     * remaining_time_seconds is considered.
+     * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+     * same clock. When updating a
+     * vehicle, if you update both `eta_to_first_waypoint` and
+     * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+     * takes precedence.
      * </pre>
      *
-     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     public com.google.protobuf.Int32Value.Builder getRemainingTimeSecondsBuilder() {
       
@@ -5842,20 +5987,19 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving time for the 'current_route_segment'. This field
+     * Input only. The remaining driving time for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
      * This value is updated by the Driver SDK. Fleet Engine does not update it.
      * The value is unspecified if the `Vehicle.current_route_segment` field is
      * empty, or if the Driver app has not updated its value. This value should
-     * match eta_to_first_waypoint - current_time if all parties are using the
-     * same clock. This field is currently write-only and will not yet be
-     * populated in Vehicle's get/update/search operations. When updating a
-     * vehicle, if you update both eta_to_first_waypoint and
-     * remaining_time_seconds in the same request, then only
-     * remaining_time_seconds is considered.
+     * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+     * same clock. When updating a
+     * vehicle, if you update both `eta_to_first_waypoint` and
+     * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+     * takes precedence.
      * </pre>
      *
-     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     public com.google.protobuf.Int32ValueOrBuilder getRemainingTimeSecondsOrBuilder() {
       if (remainingTimeSecondsBuilder_ != null) {
@@ -5867,20 +6011,19 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining driving time for the 'current_route_segment'. This field
+     * Input only. The remaining driving time for the `current_route_segment`. This field
      * facilitates journey sharing between the Driver app and the Consumer app.
      * This value is updated by the Driver SDK. Fleet Engine does not update it.
      * The value is unspecified if the `Vehicle.current_route_segment` field is
      * empty, or if the Driver app has not updated its value. This value should
-     * match eta_to_first_waypoint - current_time if all parties are using the
-     * same clock. This field is currently write-only and will not yet be
-     * populated in Vehicle's get/update/search operations. When updating a
-     * vehicle, if you update both eta_to_first_waypoint and
-     * remaining_time_seconds in the same request, then only
-     * remaining_time_seconds is considered.
+     * match `eta_to_first_waypoint` - `current_time` if all parties are using the
+     * same clock. When updating a
+     * vehicle, if you update both `eta_to_first_waypoint` and
+     * `remaining_time_seconds` in the same request, `remaining_time_seconds`
+     * takes precedence.
      * </pre>
      *
-     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25;</code>
+     * <code>.google.protobuf.Int32Value remaining_time_seconds = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Int32Value, com.google.protobuf.Int32Value.Builder, com.google.protobuf.Int32ValueOrBuilder> 
@@ -5910,7 +6053,7 @@ private static final long serialVersionUID = 0L;
 
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -5924,7 +6067,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -5938,7 +6081,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -5952,7 +6095,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -5973,7 +6116,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -5991,7 +6134,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6011,7 +6154,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6032,7 +6175,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6050,7 +6193,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6068,7 +6211,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6087,7 +6230,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6104,7 +6247,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6121,7 +6264,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6132,7 +6275,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6146,7 +6289,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6161,7 +6304,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6172,7 +6315,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6184,7 +6327,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The remaining set of waypoints assigned to this Vehicle.
+     * The remaining waypoints assigned to this Vehicle.
      * </pre>
      *
      * <code>repeated .maps.fleetengine.v1.TripWaypoint waypoints = 22;</code>
@@ -6213,12 +6356,12 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> waypointsVersionBuilder_;
     /**
      * <pre>
-     * Last time the waypoints was updated. Client should cache
-     * this value and pass it in GetVehicleRequest to ensure the
-     * waypoints.path_to_waypoint is only returned if it is updated
+     * Output only. Last time the `waypoints` field was updated. Clients should cache
+     * this value and pass it in `GetVehicleRequest` to ensure the
+     * `waypoints` field is only returned if it is updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+     * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return Whether the waypointsVersion field is set.
      */
     public boolean hasWaypointsVersion() {
@@ -6226,12 +6369,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Last time the waypoints was updated. Client should cache
-     * this value and pass it in GetVehicleRequest to ensure the
-     * waypoints.path_to_waypoint is only returned if it is updated
+     * Output only. Last time the `waypoints` field was updated. Clients should cache
+     * this value and pass it in `GetVehicleRequest` to ensure the
+     * `waypoints` field is only returned if it is updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+     * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return The waypointsVersion.
      */
     public com.google.protobuf.Timestamp getWaypointsVersion() {
@@ -6243,12 +6386,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Last time the waypoints was updated. Client should cache
-     * this value and pass it in GetVehicleRequest to ensure the
-     * waypoints.path_to_waypoint is only returned if it is updated
+     * Output only. Last time the `waypoints` field was updated. Clients should cache
+     * this value and pass it in `GetVehicleRequest` to ensure the
+     * `waypoints` field is only returned if it is updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+     * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setWaypointsVersion(com.google.protobuf.Timestamp value) {
       if (waypointsVersionBuilder_ == null) {
@@ -6265,12 +6408,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Last time the waypoints was updated. Client should cache
-     * this value and pass it in GetVehicleRequest to ensure the
-     * waypoints.path_to_waypoint is only returned if it is updated
+     * Output only. Last time the `waypoints` field was updated. Clients should cache
+     * this value and pass it in `GetVehicleRequest` to ensure the
+     * `waypoints` field is only returned if it is updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+     * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setWaypointsVersion(
         com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -6285,12 +6428,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Last time the waypoints was updated. Client should cache
-     * this value and pass it in GetVehicleRequest to ensure the
-     * waypoints.path_to_waypoint is only returned if it is updated
+     * Output only. Last time the `waypoints` field was updated. Clients should cache
+     * this value and pass it in `GetVehicleRequest` to ensure the
+     * `waypoints` field is only returned if it is updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+     * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder mergeWaypointsVersion(com.google.protobuf.Timestamp value) {
       if (waypointsVersionBuilder_ == null) {
@@ -6309,12 +6452,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Last time the waypoints was updated. Client should cache
-     * this value and pass it in GetVehicleRequest to ensure the
-     * waypoints.path_to_waypoint is only returned if it is updated
+     * Output only. Last time the `waypoints` field was updated. Clients should cache
+     * this value and pass it in `GetVehicleRequest` to ensure the
+     * `waypoints` field is only returned if it is updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+     * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder clearWaypointsVersion() {
       if (waypointsVersionBuilder_ == null) {
@@ -6329,12 +6472,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Last time the waypoints was updated. Client should cache
-     * this value and pass it in GetVehicleRequest to ensure the
-     * waypoints.path_to_waypoint is only returned if it is updated
+     * Output only. Last time the `waypoints` field was updated. Clients should cache
+     * this value and pass it in `GetVehicleRequest` to ensure the
+     * `waypoints` field is only returned if it is updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+     * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.Timestamp.Builder getWaypointsVersionBuilder() {
       
@@ -6343,12 +6486,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Last time the waypoints was updated. Client should cache
-     * this value and pass it in GetVehicleRequest to ensure the
-     * waypoints.path_to_waypoint is only returned if it is updated
+     * Output only. Last time the `waypoints` field was updated. Clients should cache
+     * this value and pass it in `GetVehicleRequest` to ensure the
+     * `waypoints` field is only returned if it is updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+     * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.TimestampOrBuilder getWaypointsVersionOrBuilder() {
       if (waypointsVersionBuilder_ != null) {
@@ -6360,12 +6503,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Last time the waypoints was updated. Client should cache
-     * this value and pass it in GetVehicleRequest to ensure the
-     * waypoints.path_to_waypoint is only returned if it is updated
+     * Output only. Last time the `waypoints` field was updated. Clients should cache
+     * this value and pass it in `GetVehicleRequest` to ensure the
+     * `waypoints` field is only returned if it is updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp waypoints_version = 16;</code>
+     * <code>.google.protobuf.Timestamp waypoints_version = 16 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -6384,10 +6527,9 @@ private static final long serialVersionUID = 0L;
     private boolean backToBackEnabled_ ;
     /**
      * <pre>
-     * Indicates if the driver accepts back-to-back rides. If
-     * `true`, services include the vehicle for back-to-back matches.
-     * If `false`, services exclude the vehicle from back-to-back matches.
-     * Default value is `false`.
+     * Indicates if the driver accepts back-to-back trips. If `true`,
+     * `SearchVehicles` may include the vehicle even if it is currently assigned
+     * to a trip. The default value is `false`.
      * </pre>
      *
      * <code>bool back_to_back_enabled = 23;</code>
@@ -6399,10 +6541,9 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates if the driver accepts back-to-back rides. If
-     * `true`, services include the vehicle for back-to-back matches.
-     * If `false`, services exclude the vehicle from back-to-back matches.
-     * Default value is `false`.
+     * Indicates if the driver accepts back-to-back trips. If `true`,
+     * `SearchVehicles` may include the vehicle even if it is currently assigned
+     * to a trip. The default value is `false`.
      * </pre>
      *
      * <code>bool back_to_back_enabled = 23;</code>
@@ -6417,10 +6558,9 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Indicates if the driver accepts back-to-back rides. If
-     * `true`, services include the vehicle for back-to-back matches.
-     * If `false`, services exclude the vehicle from back-to-back matches.
-     * Default value is `false`.
+     * Indicates if the driver accepts back-to-back trips. If `true`,
+     * `SearchVehicles` may include the vehicle even if it is currently assigned
+     * to a trip. The default value is `false`.
      * </pre>
      *
      * <code>bool back_to_back_enabled = 23;</code>
@@ -6436,7 +6576,7 @@ private static final long serialVersionUID = 0L;
     private int navigationStatus_ = 0;
     /**
      * <pre>
-     * Vehicle's navigation status.
+     * The vehicle's navigation status.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.NavigationStatus navigation_status = 26;</code>
@@ -6447,7 +6587,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Vehicle's navigation status.
+     * The vehicle's navigation status.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.NavigationStatus navigation_status = 26;</code>
@@ -6462,7 +6602,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Vehicle's navigation status.
+     * The vehicle's navigation status.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.NavigationStatus navigation_status = 26;</code>
@@ -6476,7 +6616,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Vehicle's navigation status.
+     * The vehicle's navigation status.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.NavigationStatus navigation_status = 26;</code>
@@ -6494,7 +6634,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Vehicle's navigation status.
+     * The vehicle's navigation status.
      * </pre>
      *
      * <code>.maps.fleetengine.v1.NavigationStatus navigation_status = 26;</code>
@@ -6512,11 +6652,10 @@ private static final long serialVersionUID = 0L;
         google.maps.fleetengine.v1.DeviceSettings, google.maps.fleetengine.v1.DeviceSettings.Builder, google.maps.fleetengine.v1.DeviceSettingsOrBuilder> deviceSettingsBuilder_;
     /**
      * <pre>
-     * Information about various device settings. This is internal debug only
-     * field, not included in the response.
+     * Input only. Information about settings in the mobile device being used by the driver.
      * </pre>
      *
-     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      * @return Whether the deviceSettings field is set.
      */
     public boolean hasDeviceSettings() {
@@ -6524,11 +6663,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Information about various device settings. This is internal debug only
-     * field, not included in the response.
+     * Input only. Information about settings in the mobile device being used by the driver.
      * </pre>
      *
-     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      * @return The deviceSettings.
      */
     public google.maps.fleetengine.v1.DeviceSettings getDeviceSettings() {
@@ -6540,11 +6678,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Information about various device settings. This is internal debug only
-     * field, not included in the response.
+     * Input only. Information about settings in the mobile device being used by the driver.
      * </pre>
      *
-     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     public Builder setDeviceSettings(google.maps.fleetengine.v1.DeviceSettings value) {
       if (deviceSettingsBuilder_ == null) {
@@ -6561,11 +6698,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Information about various device settings. This is internal debug only
-     * field, not included in the response.
+     * Input only. Information about settings in the mobile device being used by the driver.
      * </pre>
      *
-     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     public Builder setDeviceSettings(
         google.maps.fleetengine.v1.DeviceSettings.Builder builderForValue) {
@@ -6580,11 +6716,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Information about various device settings. This is internal debug only
-     * field, not included in the response.
+     * Input only. Information about settings in the mobile device being used by the driver.
      * </pre>
      *
-     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     public Builder mergeDeviceSettings(google.maps.fleetengine.v1.DeviceSettings value) {
       if (deviceSettingsBuilder_ == null) {
@@ -6603,11 +6738,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Information about various device settings. This is internal debug only
-     * field, not included in the response.
+     * Input only. Information about settings in the mobile device being used by the driver.
      * </pre>
      *
-     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     public Builder clearDeviceSettings() {
       if (deviceSettingsBuilder_ == null) {
@@ -6622,11 +6756,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Information about various device settings. This is internal debug only
-     * field, not included in the response.
+     * Input only. Information about settings in the mobile device being used by the driver.
      * </pre>
      *
-     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     public google.maps.fleetengine.v1.DeviceSettings.Builder getDeviceSettingsBuilder() {
       
@@ -6635,11 +6768,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Information about various device settings. This is internal debug only
-     * field, not included in the response.
+     * Input only. Information about settings in the mobile device being used by the driver.
      * </pre>
      *
-     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     public google.maps.fleetengine.v1.DeviceSettingsOrBuilder getDeviceSettingsOrBuilder() {
       if (deviceSettingsBuilder_ != null) {
@@ -6651,11 +6783,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Information about various device settings. This is internal debug only
-     * field, not included in the response.
+     * Input only. Information about settings in the mobile device being used by the driver.
      * </pre>
      *
-     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27;</code>
+     * <code>.maps.fleetengine.v1.DeviceSettings device_settings = 27 [(.google.api.field_behavior) = INPUT_ONLY];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         google.maps.fleetengine.v1.DeviceSettings, google.maps.fleetengine.v1.DeviceSettings.Builder, google.maps.fleetengine.v1.DeviceSettingsOrBuilder> 

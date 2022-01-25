@@ -25,6 +25,11 @@ private static final long serialVersionUID = 0L;
     sdkVersion_ = "";
     osVersion_ = "";
     deviceModel_ = "";
+    sdkType_ = 0;
+    mapsSdkVersion_ = "";
+    navSdkVersion_ = "";
+    platform_ = 0;
+    manufacturer_ = "";
   }
 
   @java.lang.Override
@@ -87,6 +92,41 @@ private static final long serialVersionUID = 0L;
             deviceModel_ = s;
             break;
           }
+          case 48: {
+            int rawValue = input.readEnum();
+
+            sdkType_ = rawValue;
+            break;
+          }
+          case 58: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            mapsSdkVersion_ = s;
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            navSdkVersion_ = s;
+            break;
+          }
+          case 72: {
+            int rawValue = input.readEnum();
+
+            platform_ = rawValue;
+            break;
+          }
+          case 82: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            manufacturer_ = s;
+            break;
+          }
+          case 88: {
+
+            androidApiLevel_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -119,14 +159,338 @@ private static final long serialVersionUID = 0L;
             google.maps.fleetengine.v1.RequestHeader.class, google.maps.fleetengine.v1.RequestHeader.Builder.class);
   }
 
+  /**
+   * <pre>
+   * Possible types of SDK.
+   * </pre>
+   *
+   * Protobuf enum {@code maps.fleetengine.v1.RequestHeader.SdkType}
+   */
+  public enum SdkType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     * The default value. This value is used if the `sdk_type` is omitted.
+     * </pre>
+     *
+     * <code>SDK_TYPE_UNSPECIFIED = 0;</code>
+     */
+    SDK_TYPE_UNSPECIFIED(0),
+    /**
+     * <pre>
+     * The calling SDK is Consumer.
+     * </pre>
+     *
+     * <code>CONSUMER = 1;</code>
+     */
+    CONSUMER(1),
+    /**
+     * <pre>
+     * The calling SDK is Driver.
+     * </pre>
+     *
+     * <code>DRIVER = 2;</code>
+     */
+    DRIVER(2),
+    /**
+     * <pre>
+     * The calling SDK is JavaScript.
+     * </pre>
+     *
+     * <code>JAVASCRIPT = 3;</code>
+     */
+    JAVASCRIPT(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <pre>
+     * The default value. This value is used if the `sdk_type` is omitted.
+     * </pre>
+     *
+     * <code>SDK_TYPE_UNSPECIFIED = 0;</code>
+     */
+    public static final int SDK_TYPE_UNSPECIFIED_VALUE = 0;
+    /**
+     * <pre>
+     * The calling SDK is Consumer.
+     * </pre>
+     *
+     * <code>CONSUMER = 1;</code>
+     */
+    public static final int CONSUMER_VALUE = 1;
+    /**
+     * <pre>
+     * The calling SDK is Driver.
+     * </pre>
+     *
+     * <code>DRIVER = 2;</code>
+     */
+    public static final int DRIVER_VALUE = 2;
+    /**
+     * <pre>
+     * The calling SDK is JavaScript.
+     * </pre>
+     *
+     * <code>JAVASCRIPT = 3;</code>
+     */
+    public static final int JAVASCRIPT_VALUE = 3;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static SdkType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static SdkType forNumber(int value) {
+      switch (value) {
+        case 0: return SDK_TYPE_UNSPECIFIED;
+        case 1: return CONSUMER;
+        case 2: return DRIVER;
+        case 3: return JAVASCRIPT;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<SdkType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        SdkType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<SdkType>() {
+            public SdkType findValueByNumber(int number) {
+              return SdkType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return google.maps.fleetengine.v1.RequestHeader.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final SdkType[] VALUES = values();
+
+    public static SdkType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private SdkType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:maps.fleetengine.v1.RequestHeader.SdkType)
+  }
+
+  /**
+   * <pre>
+   * The platform of the calling SDK.
+   * </pre>
+   *
+   * Protobuf enum {@code maps.fleetengine.v1.RequestHeader.Platform}
+   */
+  public enum Platform
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <pre>
+     * The default value. This value is used if the platform is omitted.
+     * </pre>
+     *
+     * <code>PLATFORM_UNSPECIFIED = 0;</code>
+     */
+    PLATFORM_UNSPECIFIED(0),
+    /**
+     * <pre>
+     * The request is coming from Android.
+     * </pre>
+     *
+     * <code>ANDROID = 1;</code>
+     */
+    ANDROID(1),
+    /**
+     * <pre>
+     * The request is coming from iOS.
+     * </pre>
+     *
+     * <code>IOS = 2;</code>
+     */
+    IOS(2),
+    /**
+     * <pre>
+     * The request is coming from the web.
+     * </pre>
+     *
+     * <code>WEB = 3;</code>
+     */
+    WEB(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <pre>
+     * The default value. This value is used if the platform is omitted.
+     * </pre>
+     *
+     * <code>PLATFORM_UNSPECIFIED = 0;</code>
+     */
+    public static final int PLATFORM_UNSPECIFIED_VALUE = 0;
+    /**
+     * <pre>
+     * The request is coming from Android.
+     * </pre>
+     *
+     * <code>ANDROID = 1;</code>
+     */
+    public static final int ANDROID_VALUE = 1;
+    /**
+     * <pre>
+     * The request is coming from iOS.
+     * </pre>
+     *
+     * <code>IOS = 2;</code>
+     */
+    public static final int IOS_VALUE = 2;
+    /**
+     * <pre>
+     * The request is coming from the web.
+     * </pre>
+     *
+     * <code>WEB = 3;</code>
+     */
+    public static final int WEB_VALUE = 3;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static Platform valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static Platform forNumber(int value) {
+      switch (value) {
+        case 0: return PLATFORM_UNSPECIFIED;
+        case 1: return ANDROID;
+        case 2: return IOS;
+        case 3: return WEB;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<Platform>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        Platform> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<Platform>() {
+            public Platform findValueByNumber(int number) {
+              return Platform.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return google.maps.fleetengine.v1.RequestHeader.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final Platform[] VALUES = values();
+
+    public static Platform valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private Platform(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:maps.fleetengine.v1.RequestHeader.Platform)
+  }
+
   public static final int LANGUAGE_CODE_FIELD_NUMBER = 1;
   private volatile java.lang.Object languageCode_;
   /**
    * <pre>
-   * The language requested. The external form of Google International
-   * Identifiers Initiative (III) LanguageCode objects. If none is specified,
-   * return a name in any language, with a preference for English if such a
-   * name exists.
+   * The BCP-47 language code, such as en-US or sr-Latn. For more information,
+   * see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If none
+   * is specified, the response may be in any language, with a preference for
+   * English if such a name exists. Field value example: `en-US`.
    * </pre>
    *
    * <code>string language_code = 1;</code>
@@ -147,10 +511,10 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The language requested. The external form of Google International
-   * Identifiers Initiative (III) LanguageCode objects. If none is specified,
-   * return a name in any language, with a preference for English if such a
-   * name exists.
+   * The BCP-47 language code, such as en-US or sr-Latn. For more information,
+   * see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If none
+   * is specified, the response may be in any language, with a preference for
+   * English if such a name exists. Field value example: `en-US`.
    * </pre>
    *
    * <code>string language_code = 1;</code>
@@ -176,6 +540,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Required. CLDR region code of the region where the request originates.
+   * Field value example: `US`.
    * </pre>
    *
    * <code>string region_code = 2 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -197,6 +562,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Required. CLDR region code of the region where the request originates.
+   * Field value example: `US`.
    * </pre>
    *
    * <code>string region_code = 2 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -222,6 +588,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Version of the calling SDK, if applicable.
+   * The version format is "major.minor.patch", example: `1.1.2`.
    * </pre>
    *
    * <code>string sdk_version = 3;</code>
@@ -243,6 +610,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Version of the calling SDK, if applicable.
+   * The version format is "major.minor.patch", example: `1.1.2`.
    * </pre>
    *
    * <code>string sdk_version = 3;</code>
@@ -268,6 +636,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Version of the operating system on which the calling SDK is running.
+   * Field value examples: `4.4.1`, `12.1`.
    * </pre>
    *
    * <code>string os_version = 4;</code>
@@ -289,6 +658,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Version of the operating system on which the calling SDK is running.
+   * Field value examples: `4.4.1`, `12.1`.
    * </pre>
    *
    * <code>string os_version = 4;</code>
@@ -314,6 +684,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Model of the device on which the calling SDK is running.
+   * Field value examples: `iPhone12,1`, `SM-G920F`.
    * </pre>
    *
    * <code>string device_model = 5;</code>
@@ -335,6 +706,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Model of the device on which the calling SDK is running.
+   * Field value examples: `iPhone12,1`, `SM-G920F`.
    * </pre>
    *
    * <code>string device_model = 5;</code>
@@ -355,6 +727,222 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int SDK_TYPE_FIELD_NUMBER = 6;
+  private int sdkType_;
+  /**
+   * <pre>
+   * The type of SDK sending the request.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.RequestHeader.SdkType sdk_type = 6;</code>
+   * @return The enum numeric value on the wire for sdkType.
+   */
+  @java.lang.Override public int getSdkTypeValue() {
+    return sdkType_;
+  }
+  /**
+   * <pre>
+   * The type of SDK sending the request.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.RequestHeader.SdkType sdk_type = 6;</code>
+   * @return The sdkType.
+   */
+  @java.lang.Override public google.maps.fleetengine.v1.RequestHeader.SdkType getSdkType() {
+    @SuppressWarnings("deprecation")
+    google.maps.fleetengine.v1.RequestHeader.SdkType result = google.maps.fleetengine.v1.RequestHeader.SdkType.valueOf(sdkType_);
+    return result == null ? google.maps.fleetengine.v1.RequestHeader.SdkType.UNRECOGNIZED : result;
+  }
+
+  public static final int MAPS_SDK_VERSION_FIELD_NUMBER = 7;
+  private volatile java.lang.Object mapsSdkVersion_;
+  /**
+   * <pre>
+   * Version of the MapSDK which the calling SDK depends on, if applicable.
+   * The version format is "major.minor.patch", example: `5.2.1`.
+   * </pre>
+   *
+   * <code>string maps_sdk_version = 7;</code>
+   * @return The mapsSdkVersion.
+   */
+  @java.lang.Override
+  public java.lang.String getMapsSdkVersion() {
+    java.lang.Object ref = mapsSdkVersion_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      mapsSdkVersion_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * Version of the MapSDK which the calling SDK depends on, if applicable.
+   * The version format is "major.minor.patch", example: `5.2.1`.
+   * </pre>
+   *
+   * <code>string maps_sdk_version = 7;</code>
+   * @return The bytes for mapsSdkVersion.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getMapsSdkVersionBytes() {
+    java.lang.Object ref = mapsSdkVersion_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      mapsSdkVersion_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int NAV_SDK_VERSION_FIELD_NUMBER = 8;
+  private volatile java.lang.Object navSdkVersion_;
+  /**
+   * <pre>
+   * Version of the NavSDK which the calling SDK depends on, if applicable.
+   * The version format is "major.minor.patch", example: `2.1.0`.
+   * </pre>
+   *
+   * <code>string nav_sdk_version = 8;</code>
+   * @return The navSdkVersion.
+   */
+  @java.lang.Override
+  public java.lang.String getNavSdkVersion() {
+    java.lang.Object ref = navSdkVersion_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      navSdkVersion_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * Version of the NavSDK which the calling SDK depends on, if applicable.
+   * The version format is "major.minor.patch", example: `2.1.0`.
+   * </pre>
+   *
+   * <code>string nav_sdk_version = 8;</code>
+   * @return The bytes for navSdkVersion.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getNavSdkVersionBytes() {
+    java.lang.Object ref = navSdkVersion_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      navSdkVersion_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int PLATFORM_FIELD_NUMBER = 9;
+  private int platform_;
+  /**
+   * <pre>
+   * Platform of the calling SDK.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.RequestHeader.Platform platform = 9;</code>
+   * @return The enum numeric value on the wire for platform.
+   */
+  @java.lang.Override public int getPlatformValue() {
+    return platform_;
+  }
+  /**
+   * <pre>
+   * Platform of the calling SDK.
+   * </pre>
+   *
+   * <code>.maps.fleetengine.v1.RequestHeader.Platform platform = 9;</code>
+   * @return The platform.
+   */
+  @java.lang.Override public google.maps.fleetengine.v1.RequestHeader.Platform getPlatform() {
+    @SuppressWarnings("deprecation")
+    google.maps.fleetengine.v1.RequestHeader.Platform result = google.maps.fleetengine.v1.RequestHeader.Platform.valueOf(platform_);
+    return result == null ? google.maps.fleetengine.v1.RequestHeader.Platform.UNRECOGNIZED : result;
+  }
+
+  public static final int MANUFACTURER_FIELD_NUMBER = 10;
+  private volatile java.lang.Object manufacturer_;
+  /**
+   * <pre>
+   * Manufacturer of the Android device from the calling SDK, only applicable
+   * for the Android SDKs.
+   * Field value example: `Samsung`.
+   * </pre>
+   *
+   * <code>string manufacturer = 10;</code>
+   * @return The manufacturer.
+   */
+  @java.lang.Override
+  public java.lang.String getManufacturer() {
+    java.lang.Object ref = manufacturer_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      manufacturer_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * Manufacturer of the Android device from the calling SDK, only applicable
+   * for the Android SDKs.
+   * Field value example: `Samsung`.
+   * </pre>
+   *
+   * <code>string manufacturer = 10;</code>
+   * @return The bytes for manufacturer.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getManufacturerBytes() {
+    java.lang.Object ref = manufacturer_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      manufacturer_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int ANDROID_API_LEVEL_FIELD_NUMBER = 11;
+  private int androidApiLevel_;
+  /**
+   * <pre>
+   * Android API level of the calling SDK, only applicable for the Android SDKs.
+   * Field value example: `23`.
+   * </pre>
+   *
+   * <code>int32 android_api_level = 11;</code>
+   * @return The androidApiLevel.
+   */
+  @java.lang.Override
+  public int getAndroidApiLevel() {
+    return androidApiLevel_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -369,20 +957,38 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getLanguageCodeBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(languageCode_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, languageCode_);
     }
-    if (!getRegionCodeBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(regionCode_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, regionCode_);
     }
-    if (!getSdkVersionBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sdkVersion_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sdkVersion_);
     }
-    if (!getOsVersionBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(osVersion_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, osVersion_);
     }
-    if (!getDeviceModelBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(deviceModel_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, deviceModel_);
+    }
+    if (sdkType_ != google.maps.fleetengine.v1.RequestHeader.SdkType.SDK_TYPE_UNSPECIFIED.getNumber()) {
+      output.writeEnum(6, sdkType_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(mapsSdkVersion_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, mapsSdkVersion_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(navSdkVersion_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, navSdkVersion_);
+    }
+    if (platform_ != google.maps.fleetengine.v1.RequestHeader.Platform.PLATFORM_UNSPECIFIED.getNumber()) {
+      output.writeEnum(9, platform_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(manufacturer_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, manufacturer_);
+    }
+    if (androidApiLevel_ != 0) {
+      output.writeInt32(11, androidApiLevel_);
     }
     unknownFields.writeTo(output);
   }
@@ -393,20 +999,41 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getLanguageCodeBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(languageCode_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, languageCode_);
     }
-    if (!getRegionCodeBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(regionCode_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, regionCode_);
     }
-    if (!getSdkVersionBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sdkVersion_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sdkVersion_);
     }
-    if (!getOsVersionBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(osVersion_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, osVersion_);
     }
-    if (!getDeviceModelBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(deviceModel_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, deviceModel_);
+    }
+    if (sdkType_ != google.maps.fleetengine.v1.RequestHeader.SdkType.SDK_TYPE_UNSPECIFIED.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(6, sdkType_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(mapsSdkVersion_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, mapsSdkVersion_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(navSdkVersion_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, navSdkVersion_);
+    }
+    if (platform_ != google.maps.fleetengine.v1.RequestHeader.Platform.PLATFORM_UNSPECIFIED.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(9, platform_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(manufacturer_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, manufacturer_);
+    }
+    if (androidApiLevel_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(11, androidApiLevel_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -433,6 +1060,16 @@ private static final long serialVersionUID = 0L;
         .equals(other.getOsVersion())) return false;
     if (!getDeviceModel()
         .equals(other.getDeviceModel())) return false;
+    if (sdkType_ != other.sdkType_) return false;
+    if (!getMapsSdkVersion()
+        .equals(other.getMapsSdkVersion())) return false;
+    if (!getNavSdkVersion()
+        .equals(other.getNavSdkVersion())) return false;
+    if (platform_ != other.platform_) return false;
+    if (!getManufacturer()
+        .equals(other.getManufacturer())) return false;
+    if (getAndroidApiLevel()
+        != other.getAndroidApiLevel()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -454,6 +1091,18 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getOsVersion().hashCode();
     hash = (37 * hash) + DEVICE_MODEL_FIELD_NUMBER;
     hash = (53 * hash) + getDeviceModel().hashCode();
+    hash = (37 * hash) + SDK_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + sdkType_;
+    hash = (37 * hash) + MAPS_SDK_VERSION_FIELD_NUMBER;
+    hash = (53 * hash) + getMapsSdkVersion().hashCode();
+    hash = (37 * hash) + NAV_SDK_VERSION_FIELD_NUMBER;
+    hash = (53 * hash) + getNavSdkVersion().hashCode();
+    hash = (37 * hash) + PLATFORM_FIELD_NUMBER;
+    hash = (53 * hash) + platform_;
+    hash = (37 * hash) + MANUFACTURER_FIELD_NUMBER;
+    hash = (53 * hash) + getManufacturer().hashCode();
+    hash = (37 * hash) + ANDROID_API_LEVEL_FIELD_NUMBER;
+    hash = (53 * hash) + getAndroidApiLevel();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -601,6 +1250,18 @@ private static final long serialVersionUID = 0L;
 
       deviceModel_ = "";
 
+      sdkType_ = 0;
+
+      mapsSdkVersion_ = "";
+
+      navSdkVersion_ = "";
+
+      platform_ = 0;
+
+      manufacturer_ = "";
+
+      androidApiLevel_ = 0;
+
       return this;
     }
 
@@ -632,6 +1293,12 @@ private static final long serialVersionUID = 0L;
       result.sdkVersion_ = sdkVersion_;
       result.osVersion_ = osVersion_;
       result.deviceModel_ = deviceModel_;
+      result.sdkType_ = sdkType_;
+      result.mapsSdkVersion_ = mapsSdkVersion_;
+      result.navSdkVersion_ = navSdkVersion_;
+      result.platform_ = platform_;
+      result.manufacturer_ = manufacturer_;
+      result.androidApiLevel_ = androidApiLevel_;
       onBuilt();
       return result;
     }
@@ -700,6 +1367,27 @@ private static final long serialVersionUID = 0L;
         deviceModel_ = other.deviceModel_;
         onChanged();
       }
+      if (other.sdkType_ != 0) {
+        setSdkTypeValue(other.getSdkTypeValue());
+      }
+      if (!other.getMapsSdkVersion().isEmpty()) {
+        mapsSdkVersion_ = other.mapsSdkVersion_;
+        onChanged();
+      }
+      if (!other.getNavSdkVersion().isEmpty()) {
+        navSdkVersion_ = other.navSdkVersion_;
+        onChanged();
+      }
+      if (other.platform_ != 0) {
+        setPlatformValue(other.getPlatformValue());
+      }
+      if (!other.getManufacturer().isEmpty()) {
+        manufacturer_ = other.manufacturer_;
+        onChanged();
+      }
+      if (other.getAndroidApiLevel() != 0) {
+        setAndroidApiLevel(other.getAndroidApiLevel());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -732,10 +1420,10 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object languageCode_ = "";
     /**
      * <pre>
-     * The language requested. The external form of Google International
-     * Identifiers Initiative (III) LanguageCode objects. If none is specified,
-     * return a name in any language, with a preference for English if such a
-     * name exists.
+     * The BCP-47 language code, such as en-US or sr-Latn. For more information,
+     * see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If none
+     * is specified, the response may be in any language, with a preference for
+     * English if such a name exists. Field value example: `en-US`.
      * </pre>
      *
      * <code>string language_code = 1;</code>
@@ -755,10 +1443,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The language requested. The external form of Google International
-     * Identifiers Initiative (III) LanguageCode objects. If none is specified,
-     * return a name in any language, with a preference for English if such a
-     * name exists.
+     * The BCP-47 language code, such as en-US or sr-Latn. For more information,
+     * see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If none
+     * is specified, the response may be in any language, with a preference for
+     * English if such a name exists. Field value example: `en-US`.
      * </pre>
      *
      * <code>string language_code = 1;</code>
@@ -779,10 +1467,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The language requested. The external form of Google International
-     * Identifiers Initiative (III) LanguageCode objects. If none is specified,
-     * return a name in any language, with a preference for English if such a
-     * name exists.
+     * The BCP-47 language code, such as en-US or sr-Latn. For more information,
+     * see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If none
+     * is specified, the response may be in any language, with a preference for
+     * English if such a name exists. Field value example: `en-US`.
      * </pre>
      *
      * <code>string language_code = 1;</code>
@@ -801,10 +1489,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The language requested. The external form of Google International
-     * Identifiers Initiative (III) LanguageCode objects. If none is specified,
-     * return a name in any language, with a preference for English if such a
-     * name exists.
+     * The BCP-47 language code, such as en-US or sr-Latn. For more information,
+     * see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If none
+     * is specified, the response may be in any language, with a preference for
+     * English if such a name exists. Field value example: `en-US`.
      * </pre>
      *
      * <code>string language_code = 1;</code>
@@ -818,10 +1506,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The language requested. The external form of Google International
-     * Identifiers Initiative (III) LanguageCode objects. If none is specified,
-     * return a name in any language, with a preference for English if such a
-     * name exists.
+     * The BCP-47 language code, such as en-US or sr-Latn. For more information,
+     * see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If none
+     * is specified, the response may be in any language, with a preference for
+     * English if such a name exists. Field value example: `en-US`.
      * </pre>
      *
      * <code>string language_code = 1;</code>
@@ -844,6 +1532,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. CLDR region code of the region where the request originates.
+     * Field value example: `US`.
      * </pre>
      *
      * <code>string region_code = 2 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -864,6 +1553,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. CLDR region code of the region where the request originates.
+     * Field value example: `US`.
      * </pre>
      *
      * <code>string region_code = 2 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -885,6 +1575,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. CLDR region code of the region where the request originates.
+     * Field value example: `US`.
      * </pre>
      *
      * <code>string region_code = 2 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -904,6 +1595,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. CLDR region code of the region where the request originates.
+     * Field value example: `US`.
      * </pre>
      *
      * <code>string region_code = 2 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -918,6 +1610,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Required. CLDR region code of the region where the request originates.
+     * Field value example: `US`.
      * </pre>
      *
      * <code>string region_code = 2 [(.google.api.field_behavior) = REQUIRED];</code>
@@ -940,6 +1633,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Version of the calling SDK, if applicable.
+     * The version format is "major.minor.patch", example: `1.1.2`.
      * </pre>
      *
      * <code>string sdk_version = 3;</code>
@@ -960,6 +1654,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Version of the calling SDK, if applicable.
+     * The version format is "major.minor.patch", example: `1.1.2`.
      * </pre>
      *
      * <code>string sdk_version = 3;</code>
@@ -981,6 +1676,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Version of the calling SDK, if applicable.
+     * The version format is "major.minor.patch", example: `1.1.2`.
      * </pre>
      *
      * <code>string sdk_version = 3;</code>
@@ -1000,6 +1696,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Version of the calling SDK, if applicable.
+     * The version format is "major.minor.patch", example: `1.1.2`.
      * </pre>
      *
      * <code>string sdk_version = 3;</code>
@@ -1014,6 +1711,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Version of the calling SDK, if applicable.
+     * The version format is "major.minor.patch", example: `1.1.2`.
      * </pre>
      *
      * <code>string sdk_version = 3;</code>
@@ -1036,6 +1734,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Version of the operating system on which the calling SDK is running.
+     * Field value examples: `4.4.1`, `12.1`.
      * </pre>
      *
      * <code>string os_version = 4;</code>
@@ -1056,6 +1755,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Version of the operating system on which the calling SDK is running.
+     * Field value examples: `4.4.1`, `12.1`.
      * </pre>
      *
      * <code>string os_version = 4;</code>
@@ -1077,6 +1777,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Version of the operating system on which the calling SDK is running.
+     * Field value examples: `4.4.1`, `12.1`.
      * </pre>
      *
      * <code>string os_version = 4;</code>
@@ -1096,6 +1797,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Version of the operating system on which the calling SDK is running.
+     * Field value examples: `4.4.1`, `12.1`.
      * </pre>
      *
      * <code>string os_version = 4;</code>
@@ -1110,6 +1812,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Version of the operating system on which the calling SDK is running.
+     * Field value examples: `4.4.1`, `12.1`.
      * </pre>
      *
      * <code>string os_version = 4;</code>
@@ -1132,6 +1835,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Model of the device on which the calling SDK is running.
+     * Field value examples: `iPhone12,1`, `SM-G920F`.
      * </pre>
      *
      * <code>string device_model = 5;</code>
@@ -1152,6 +1856,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Model of the device on which the calling SDK is running.
+     * Field value examples: `iPhone12,1`, `SM-G920F`.
      * </pre>
      *
      * <code>string device_model = 5;</code>
@@ -1173,6 +1878,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Model of the device on which the calling SDK is running.
+     * Field value examples: `iPhone12,1`, `SM-G920F`.
      * </pre>
      *
      * <code>string device_model = 5;</code>
@@ -1192,6 +1898,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Model of the device on which the calling SDK is running.
+     * Field value examples: `iPhone12,1`, `SM-G920F`.
      * </pre>
      *
      * <code>string device_model = 5;</code>
@@ -1206,6 +1913,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Model of the device on which the calling SDK is running.
+     * Field value examples: `iPhone12,1`, `SM-G920F`.
      * </pre>
      *
      * <code>string device_model = 5;</code>
@@ -1220,6 +1928,508 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       deviceModel_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int sdkType_ = 0;
+    /**
+     * <pre>
+     * The type of SDK sending the request.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.RequestHeader.SdkType sdk_type = 6;</code>
+     * @return The enum numeric value on the wire for sdkType.
+     */
+    @java.lang.Override public int getSdkTypeValue() {
+      return sdkType_;
+    }
+    /**
+     * <pre>
+     * The type of SDK sending the request.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.RequestHeader.SdkType sdk_type = 6;</code>
+     * @param value The enum numeric value on the wire for sdkType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSdkTypeValue(int value) {
+      
+      sdkType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * The type of SDK sending the request.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.RequestHeader.SdkType sdk_type = 6;</code>
+     * @return The sdkType.
+     */
+    @java.lang.Override
+    public google.maps.fleetengine.v1.RequestHeader.SdkType getSdkType() {
+      @SuppressWarnings("deprecation")
+      google.maps.fleetengine.v1.RequestHeader.SdkType result = google.maps.fleetengine.v1.RequestHeader.SdkType.valueOf(sdkType_);
+      return result == null ? google.maps.fleetengine.v1.RequestHeader.SdkType.UNRECOGNIZED : result;
+    }
+    /**
+     * <pre>
+     * The type of SDK sending the request.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.RequestHeader.SdkType sdk_type = 6;</code>
+     * @param value The sdkType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSdkType(google.maps.fleetengine.v1.RequestHeader.SdkType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      sdkType_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * The type of SDK sending the request.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.RequestHeader.SdkType sdk_type = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSdkType() {
+      
+      sdkType_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object mapsSdkVersion_ = "";
+    /**
+     * <pre>
+     * Version of the MapSDK which the calling SDK depends on, if applicable.
+     * The version format is "major.minor.patch", example: `5.2.1`.
+     * </pre>
+     *
+     * <code>string maps_sdk_version = 7;</code>
+     * @return The mapsSdkVersion.
+     */
+    public java.lang.String getMapsSdkVersion() {
+      java.lang.Object ref = mapsSdkVersion_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        mapsSdkVersion_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Version of the MapSDK which the calling SDK depends on, if applicable.
+     * The version format is "major.minor.patch", example: `5.2.1`.
+     * </pre>
+     *
+     * <code>string maps_sdk_version = 7;</code>
+     * @return The bytes for mapsSdkVersion.
+     */
+    public com.google.protobuf.ByteString
+        getMapsSdkVersionBytes() {
+      java.lang.Object ref = mapsSdkVersion_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        mapsSdkVersion_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Version of the MapSDK which the calling SDK depends on, if applicable.
+     * The version format is "major.minor.patch", example: `5.2.1`.
+     * </pre>
+     *
+     * <code>string maps_sdk_version = 7;</code>
+     * @param value The mapsSdkVersion to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMapsSdkVersion(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      mapsSdkVersion_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Version of the MapSDK which the calling SDK depends on, if applicable.
+     * The version format is "major.minor.patch", example: `5.2.1`.
+     * </pre>
+     *
+     * <code>string maps_sdk_version = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMapsSdkVersion() {
+      
+      mapsSdkVersion_ = getDefaultInstance().getMapsSdkVersion();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Version of the MapSDK which the calling SDK depends on, if applicable.
+     * The version format is "major.minor.patch", example: `5.2.1`.
+     * </pre>
+     *
+     * <code>string maps_sdk_version = 7;</code>
+     * @param value The bytes for mapsSdkVersion to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMapsSdkVersionBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      mapsSdkVersion_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object navSdkVersion_ = "";
+    /**
+     * <pre>
+     * Version of the NavSDK which the calling SDK depends on, if applicable.
+     * The version format is "major.minor.patch", example: `2.1.0`.
+     * </pre>
+     *
+     * <code>string nav_sdk_version = 8;</code>
+     * @return The navSdkVersion.
+     */
+    public java.lang.String getNavSdkVersion() {
+      java.lang.Object ref = navSdkVersion_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        navSdkVersion_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Version of the NavSDK which the calling SDK depends on, if applicable.
+     * The version format is "major.minor.patch", example: `2.1.0`.
+     * </pre>
+     *
+     * <code>string nav_sdk_version = 8;</code>
+     * @return The bytes for navSdkVersion.
+     */
+    public com.google.protobuf.ByteString
+        getNavSdkVersionBytes() {
+      java.lang.Object ref = navSdkVersion_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        navSdkVersion_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Version of the NavSDK which the calling SDK depends on, if applicable.
+     * The version format is "major.minor.patch", example: `2.1.0`.
+     * </pre>
+     *
+     * <code>string nav_sdk_version = 8;</code>
+     * @param value The navSdkVersion to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNavSdkVersion(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      navSdkVersion_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Version of the NavSDK which the calling SDK depends on, if applicable.
+     * The version format is "major.minor.patch", example: `2.1.0`.
+     * </pre>
+     *
+     * <code>string nav_sdk_version = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearNavSdkVersion() {
+      
+      navSdkVersion_ = getDefaultInstance().getNavSdkVersion();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Version of the NavSDK which the calling SDK depends on, if applicable.
+     * The version format is "major.minor.patch", example: `2.1.0`.
+     * </pre>
+     *
+     * <code>string nav_sdk_version = 8;</code>
+     * @param value The bytes for navSdkVersion to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNavSdkVersionBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      navSdkVersion_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int platform_ = 0;
+    /**
+     * <pre>
+     * Platform of the calling SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.RequestHeader.Platform platform = 9;</code>
+     * @return The enum numeric value on the wire for platform.
+     */
+    @java.lang.Override public int getPlatformValue() {
+      return platform_;
+    }
+    /**
+     * <pre>
+     * Platform of the calling SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.RequestHeader.Platform platform = 9;</code>
+     * @param value The enum numeric value on the wire for platform to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPlatformValue(int value) {
+      
+      platform_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Platform of the calling SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.RequestHeader.Platform platform = 9;</code>
+     * @return The platform.
+     */
+    @java.lang.Override
+    public google.maps.fleetengine.v1.RequestHeader.Platform getPlatform() {
+      @SuppressWarnings("deprecation")
+      google.maps.fleetengine.v1.RequestHeader.Platform result = google.maps.fleetengine.v1.RequestHeader.Platform.valueOf(platform_);
+      return result == null ? google.maps.fleetengine.v1.RequestHeader.Platform.UNRECOGNIZED : result;
+    }
+    /**
+     * <pre>
+     * Platform of the calling SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.RequestHeader.Platform platform = 9;</code>
+     * @param value The platform to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPlatform(google.maps.fleetengine.v1.RequestHeader.Platform value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      platform_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Platform of the calling SDK.
+     * </pre>
+     *
+     * <code>.maps.fleetengine.v1.RequestHeader.Platform platform = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPlatform() {
+      
+      platform_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object manufacturer_ = "";
+    /**
+     * <pre>
+     * Manufacturer of the Android device from the calling SDK, only applicable
+     * for the Android SDKs.
+     * Field value example: `Samsung`.
+     * </pre>
+     *
+     * <code>string manufacturer = 10;</code>
+     * @return The manufacturer.
+     */
+    public java.lang.String getManufacturer() {
+      java.lang.Object ref = manufacturer_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        manufacturer_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Manufacturer of the Android device from the calling SDK, only applicable
+     * for the Android SDKs.
+     * Field value example: `Samsung`.
+     * </pre>
+     *
+     * <code>string manufacturer = 10;</code>
+     * @return The bytes for manufacturer.
+     */
+    public com.google.protobuf.ByteString
+        getManufacturerBytes() {
+      java.lang.Object ref = manufacturer_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        manufacturer_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Manufacturer of the Android device from the calling SDK, only applicable
+     * for the Android SDKs.
+     * Field value example: `Samsung`.
+     * </pre>
+     *
+     * <code>string manufacturer = 10;</code>
+     * @param value The manufacturer to set.
+     * @return This builder for chaining.
+     */
+    public Builder setManufacturer(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      manufacturer_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Manufacturer of the Android device from the calling SDK, only applicable
+     * for the Android SDKs.
+     * Field value example: `Samsung`.
+     * </pre>
+     *
+     * <code>string manufacturer = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearManufacturer() {
+      
+      manufacturer_ = getDefaultInstance().getManufacturer();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Manufacturer of the Android device from the calling SDK, only applicable
+     * for the Android SDKs.
+     * Field value example: `Samsung`.
+     * </pre>
+     *
+     * <code>string manufacturer = 10;</code>
+     * @param value The bytes for manufacturer to set.
+     * @return This builder for chaining.
+     */
+    public Builder setManufacturerBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      manufacturer_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int androidApiLevel_ ;
+    /**
+     * <pre>
+     * Android API level of the calling SDK, only applicable for the Android SDKs.
+     * Field value example: `23`.
+     * </pre>
+     *
+     * <code>int32 android_api_level = 11;</code>
+     * @return The androidApiLevel.
+     */
+    @java.lang.Override
+    public int getAndroidApiLevel() {
+      return androidApiLevel_;
+    }
+    /**
+     * <pre>
+     * Android API level of the calling SDK, only applicable for the Android SDKs.
+     * Field value example: `23`.
+     * </pre>
+     *
+     * <code>int32 android_api_level = 11;</code>
+     * @param value The androidApiLevel to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAndroidApiLevel(int value) {
+      
+      androidApiLevel_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Android API level of the calling SDK, only applicable for the Android SDKs.
+     * Field value example: `23`.
+     * </pre>
+     *
+     * <code>int32 android_api_level = 11;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAndroidApiLevel() {
+      
+      androidApiLevel_ = 0;
       onChanged();
       return this;
     }

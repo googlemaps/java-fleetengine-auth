@@ -9,16 +9,8 @@ public interface SearchVehiclesResponseOrBuilder extends
 
   /**
    * <pre>
-   * List of vehicles that match the request options.
-   * Ordered by ascending vehicle_pickup_eta, with ties broken by ascending
-   * trip_type enum value, followed by matches that don't have
-   * vehicle_pickup_eta set.
-   * Example response: (Logically represented, not actual response fields):
-   * * (VehicleId: Vehicle1, ETA: 10 AM, TripType: SHARED),
-   * * (VehicleId: Vehicle2, ETA: 10 AM, TripType: EXCLUSIVE),
-   * * (VehicleId: Vehicle3, ETA: 11 AM, TripType: EXCLUSIVE),
-   * * (VehicleId: Vehicle4, ETA: Not set, TripType: SHARED),
-   * * (VehicleId: Vehicle5, ETA: Not set, TripType: EXCLUSIVE)
+   * List of vehicles that match the `SearchVehiclesRequest` criteria, ordered
+   * according to `SearchVehiclesRequest.order_by` field.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleMatch matches = 1;</code>
@@ -27,16 +19,8 @@ public interface SearchVehiclesResponseOrBuilder extends
       getMatchesList();
   /**
    * <pre>
-   * List of vehicles that match the request options.
-   * Ordered by ascending vehicle_pickup_eta, with ties broken by ascending
-   * trip_type enum value, followed by matches that don't have
-   * vehicle_pickup_eta set.
-   * Example response: (Logically represented, not actual response fields):
-   * * (VehicleId: Vehicle1, ETA: 10 AM, TripType: SHARED),
-   * * (VehicleId: Vehicle2, ETA: 10 AM, TripType: EXCLUSIVE),
-   * * (VehicleId: Vehicle3, ETA: 11 AM, TripType: EXCLUSIVE),
-   * * (VehicleId: Vehicle4, ETA: Not set, TripType: SHARED),
-   * * (VehicleId: Vehicle5, ETA: Not set, TripType: EXCLUSIVE)
+   * List of vehicles that match the `SearchVehiclesRequest` criteria, ordered
+   * according to `SearchVehiclesRequest.order_by` field.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleMatch matches = 1;</code>
@@ -44,16 +28,8 @@ public interface SearchVehiclesResponseOrBuilder extends
   google.maps.fleetengine.v1.VehicleMatch getMatches(int index);
   /**
    * <pre>
-   * List of vehicles that match the request options.
-   * Ordered by ascending vehicle_pickup_eta, with ties broken by ascending
-   * trip_type enum value, followed by matches that don't have
-   * vehicle_pickup_eta set.
-   * Example response: (Logically represented, not actual response fields):
-   * * (VehicleId: Vehicle1, ETA: 10 AM, TripType: SHARED),
-   * * (VehicleId: Vehicle2, ETA: 10 AM, TripType: EXCLUSIVE),
-   * * (VehicleId: Vehicle3, ETA: 11 AM, TripType: EXCLUSIVE),
-   * * (VehicleId: Vehicle4, ETA: Not set, TripType: SHARED),
-   * * (VehicleId: Vehicle5, ETA: Not set, TripType: EXCLUSIVE)
+   * List of vehicles that match the `SearchVehiclesRequest` criteria, ordered
+   * according to `SearchVehiclesRequest.order_by` field.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleMatch matches = 1;</code>
@@ -61,16 +37,8 @@ public interface SearchVehiclesResponseOrBuilder extends
   int getMatchesCount();
   /**
    * <pre>
-   * List of vehicles that match the request options.
-   * Ordered by ascending vehicle_pickup_eta, with ties broken by ascending
-   * trip_type enum value, followed by matches that don't have
-   * vehicle_pickup_eta set.
-   * Example response: (Logically represented, not actual response fields):
-   * * (VehicleId: Vehicle1, ETA: 10 AM, TripType: SHARED),
-   * * (VehicleId: Vehicle2, ETA: 10 AM, TripType: EXCLUSIVE),
-   * * (VehicleId: Vehicle3, ETA: 11 AM, TripType: EXCLUSIVE),
-   * * (VehicleId: Vehicle4, ETA: Not set, TripType: SHARED),
-   * * (VehicleId: Vehicle5, ETA: Not set, TripType: EXCLUSIVE)
+   * List of vehicles that match the `SearchVehiclesRequest` criteria, ordered
+   * according to `SearchVehiclesRequest.order_by` field.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleMatch matches = 1;</code>
@@ -79,16 +47,8 @@ public interface SearchVehiclesResponseOrBuilder extends
       getMatchesOrBuilderList();
   /**
    * <pre>
-   * List of vehicles that match the request options.
-   * Ordered by ascending vehicle_pickup_eta, with ties broken by ascending
-   * trip_type enum value, followed by matches that don't have
-   * vehicle_pickup_eta set.
-   * Example response: (Logically represented, not actual response fields):
-   * * (VehicleId: Vehicle1, ETA: 10 AM, TripType: SHARED),
-   * * (VehicleId: Vehicle2, ETA: 10 AM, TripType: EXCLUSIVE),
-   * * (VehicleId: Vehicle3, ETA: 11 AM, TripType: EXCLUSIVE),
-   * * (VehicleId: Vehicle4, ETA: Not set, TripType: SHARED),
-   * * (VehicleId: Vehicle5, ETA: Not set, TripType: EXCLUSIVE)
+   * List of vehicles that match the `SearchVehiclesRequest` criteria, ordered
+   * according to `SearchVehiclesRequest.order_by` field.
    * </pre>
    *
    * <code>repeated .maps.fleetengine.v1.VehicleMatch matches = 1;</code>

@@ -427,10 +427,10 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The location of the vehicle.
-   * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+   * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
    * When you receive it in a response, the vehicle's location can be either a
-   * GPS location or a supplemental location. The source is specified in the
-   * field 'location_sensor'.
+   * GPS location, a supplemental location, or some other estimated location.
+   * The source is specified in `location_sensor`.
    * </pre>
    *
    * <code>.google.type.LatLng location = 1;</code>
@@ -443,10 +443,10 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The location of the vehicle.
-   * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+   * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
    * When you receive it in a response, the vehicle's location can be either a
-   * GPS location or a supplemental location. The source is specified in the
-   * field 'location_sensor'.
+   * GPS location, a supplemental location, or some other estimated location.
+   * The source is specified in `location_sensor`.
    * </pre>
    *
    * <code>.google.type.LatLng location = 1;</code>
@@ -459,10 +459,10 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * The location of the vehicle.
-   * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+   * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
    * When you receive it in a response, the vehicle's location can be either a
-   * GPS location or a supplemental location. The source is specified in the
-   * field 'location_sensor'.
+   * GPS location, a supplemental location, or some other estimated location.
+   * The source is specified in `location_sensor`.
    * </pre>
    *
    * <code>.google.type.LatLng location = 1;</code>
@@ -476,7 +476,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.DoubleValue horizontalAccuracy_;
   /**
    * <pre>
-   * Deprecated. Use latlng_accuracy instead.
+   * Deprecated: Use `latlng_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -488,7 +488,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Deprecated. Use latlng_accuracy instead.
+   * Deprecated: Use `latlng_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -500,7 +500,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Deprecated. Use latlng_accuracy instead.
+   * Deprecated: Use `latlng_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -514,7 +514,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.DoubleValue latlngAccuracy_;
   /**
    * <pre>
-   * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+   * Accuracy of `location` in meters as a radius.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -526,7 +526,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+   * Accuracy of `location` in meters as a radius.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -538,7 +538,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+   * Accuracy of `location` in meters as a radius.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -593,7 +593,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.DoubleValue bearingAccuracy_;
   /**
    * <pre>
-   * Deprecated. Use heading_accuracy instead.
+   * Deprecated: Use `heading_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -605,7 +605,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Deprecated. Use heading_accuracy instead.
+   * Deprecated: Use `heading_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -617,7 +617,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Deprecated. Use heading_accuracy instead.
+   * Deprecated: Use `heading_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -631,7 +631,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.DoubleValue headingAccuracy_;
   /**
    * <pre>
-   * Accuracy of heading (bearing) in degrees.
+   * Accuracy of `heading` in degrees.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -643,7 +643,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Accuracy of heading (bearing) in degrees.
+   * Accuracy of `heading` in degrees.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -655,7 +655,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Accuracy of heading (bearing) in degrees.
+   * Accuracy of `heading` in degrees.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -707,7 +707,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.DoubleValue verticalAccuracy_;
   /**
    * <pre>
-   * Deprecated. Use altitude_accurarcy instead.
+   * Deprecated: Use `altitude_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -719,7 +719,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Deprecated. Use altitude_accurarcy instead.
+   * Deprecated: Use `altitude_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -731,7 +731,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Deprecated. Use altitude_accurarcy instead.
+   * Deprecated: Use `altitude_accuracy` instead.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -745,7 +745,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.DoubleValue altitudeAccuracy_;
   /**
    * <pre>
-   * Accuracy of altitude measurement in meters.
+   * Accuracy of `altitude` in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -757,7 +757,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Accuracy of altitude measurement in meters.
+   * Accuracy of `altitude` in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -769,7 +769,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Accuracy of altitude measurement in meters.
+   * Accuracy of `altitude` in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -784,7 +784,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Speed of the vehicle in kilometers per hour.
-   * Deprecated. Use speed instead.
+   * Deprecated: Use `speed` instead.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -797,7 +797,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Speed of the vehicle in kilometers per hour.
-   * Deprecated. Use speed instead.
+   * Deprecated: Use `speed` instead.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -810,7 +810,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * Speed of the vehicle in kilometers per hour.
-   * Deprecated. Use speed instead.
+   * Deprecated: Use `speed` instead.
    * </pre>
    *
    * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -862,7 +862,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.DoubleValue speedAccuracy_;
   /**
    * <pre>
-   * Accuracy of speed in meters/second.
+   * Accuracy of `speed` in meters/second.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -874,7 +874,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Accuracy of speed in meters/second.
+   * Accuracy of `speed` in meters/second.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -886,7 +886,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Accuracy of speed in meters/second.
+   * Accuracy of `speed` in meters/second.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -900,7 +900,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Timestamp updateTime_;
   /**
    * <pre>
-   * The time when the location was recorded.
+   * The time when `location` was reported by the sensor.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -912,7 +912,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The time when the location was recorded.
+   * The time when `location` was reported by the sensor.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -924,7 +924,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * The time when the location was recorded.
+   * The time when `location` was reported by the sensor.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -938,8 +938,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Timestamp serverTime_;
   /**
    * <pre>
-   * Output only. The time when the server receives the location information, filled by
-   * FleetEngine.
+   * Output only. The time when the server received the location information.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -951,8 +950,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Output only. The time when the server receives the location information, filled by
-   * FleetEngine.
+   * Output only. The time when the server received the location information.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -964,8 +962,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Output only. The time when the server receives the location information, filled by
-   * FleetEngine.
+   * Output only. The time when the server received the location information.
    * </pre>
    *
    * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -979,7 +976,7 @@ private static final long serialVersionUID = 0L;
   private int locationSensor_;
   /**
    * <pre>
-   * Provider of location data (for example, "gps").
+   * Provider of location data (for example, `GPS`).
    * </pre>
    *
    * <code>.maps.fleetengine.v1.LocationSensor location_sensor = 11;</code>
@@ -990,7 +987,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Provider of location data (for example, "gps").
+   * Provider of location data (for example, `GPS`).
    * </pre>
    *
    * <code>.maps.fleetengine.v1.LocationSensor location_sensor = 11;</code>
@@ -1006,10 +1003,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.BoolValue isRoadSnapped_;
   /**
    * <pre>
-   * Whether the vehicle location given by "location" field is snapped to a road
-   * closest to the location given by "raw_location".
-   * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-   * Unset value will be treated as true.
+   * Whether `location` is snapped to a road.
    * </pre>
    *
    * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -1021,10 +1015,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Whether the vehicle location given by "location" field is snapped to a road
-   * closest to the location given by "raw_location".
-   * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-   * Unset value will be treated as true.
+   * Whether `location` is snapped to a road.
    * </pre>
    *
    * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -1036,10 +1027,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Whether the vehicle location given by "location" field is snapped to a road
-   * closest to the location given by "raw_location".
-   * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-   * Unset value will be treated as true.
+   * Whether `location` is snapped to a road.
    * </pre>
    *
    * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -1053,7 +1041,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.BoolValue isGpsSensorEnabled_;
   /**
    * <pre>
-   * Input only. Indicates whether the GPS sensor is enabled.
+   * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
    * </pre>
    *
    * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -1065,7 +1053,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Input only. Indicates whether the GPS sensor is enabled.
+   * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
    * </pre>
    *
    * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -1077,7 +1065,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Input only. Indicates whether the GPS sensor is enabled.
+   * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
    * </pre>
    *
    * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -1091,7 +1079,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Int32Value timeSinceUpdate_;
   /**
    * <pre>
-   * Input only. Time (in seconds) since this location sample was first sent to the server.
+   * Input only. Time (in seconds) since this location was first sent to the server.
    * This will be zero for the first update. If the time is unknown
    * (for example, when the app restarts), this value resets to zero.
    * </pre>
@@ -1105,7 +1093,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Input only. Time (in seconds) since this location sample was first sent to the server.
+   * Input only. Time (in seconds) since this location was first sent to the server.
    * This will be zero for the first update. If the time is unknown
    * (for example, when the app restarts), this value resets to zero.
    * </pre>
@@ -1119,7 +1107,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Input only. Time (in seconds) since this location sample was first sent to the server.
+   * Input only. Time (in seconds) since this location was first sent to the server.
    * This will be zero for the first update. If the time is unknown
    * (for example, when the app restarts), this value resets to zero.
    * </pre>
@@ -1135,7 +1123,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.Int32Value numStaleUpdates_;
   /**
    * <pre>
-   * Input only. Number of additional attempts to send the current location to the server.
+   * Input only. Number of additional attempts to send this location to the server.
    * If this value is zero, then it is not stale.
    * </pre>
    *
@@ -1148,7 +1136,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Input only. Number of additional attempts to send the current location to the server.
+   * Input only. Number of additional attempts to send this location to the server.
    * If this value is zero, then it is not stale.
    * </pre>
    *
@@ -1161,7 +1149,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Input only. Number of additional attempts to send the current location to the server.
+   * Input only. Number of additional attempts to send this location to the server.
    * If this value is zero, then it is not stale.
    * </pre>
    *
@@ -1279,7 +1267,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.DoubleValue rawLocationAccuracy_;
   /**
    * <pre>
-   * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+   * Input only. Accuracy of `raw_location` as a radius, in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -1291,7 +1279,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+   * Input only. Accuracy of `raw_location` as a radius, in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -1303,7 +1291,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+   * Input only. Accuracy of `raw_location` as a radius, in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -1423,8 +1411,7 @@ private static final long serialVersionUID = 0L;
   private com.google.protobuf.DoubleValue supplementalLocationAccuracy_;
   /**
    * <pre>
-   * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-   * meters.
+   * Input only. Accuracy of `supplemental_location` as a radius, in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -1436,8 +1423,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-   * meters.
+   * Input only. Accuracy of `supplemental_location` as a radius, in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -1449,8 +1435,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-   * meters.
+   * Input only. Accuracy of `supplemental_location` as a radius, in meters.
    * </pre>
    *
    * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -1464,7 +1449,7 @@ private static final long serialVersionUID = 0L;
   private boolean roadSnapped_;
   /**
    * <pre>
-   * Deprecated, use is_road_snapped instead.
+   * Deprecated: Use `is_road_snapped` instead.
    * </pre>
    *
    * <code>bool road_snapped = 26 [deprecated = true];</code>
@@ -2556,10 +2541,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The location of the vehicle.
-     * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+     * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
      * When you receive it in a response, the vehicle's location can be either a
-     * GPS location or a supplemental location. The source is specified in the
-     * field 'location_sensor'.
+     * GPS location, a supplemental location, or some other estimated location.
+     * The source is specified in `location_sensor`.
      * </pre>
      *
      * <code>.google.type.LatLng location = 1;</code>
@@ -2571,10 +2556,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The location of the vehicle.
-     * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+     * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
      * When you receive it in a response, the vehicle's location can be either a
-     * GPS location or a supplemental location. The source is specified in the
-     * field 'location_sensor'.
+     * GPS location, a supplemental location, or some other estimated location.
+     * The source is specified in `location_sensor`.
      * </pre>
      *
      * <code>.google.type.LatLng location = 1;</code>
@@ -2590,10 +2575,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The location of the vehicle.
-     * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+     * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
      * When you receive it in a response, the vehicle's location can be either a
-     * GPS location or a supplemental location. The source is specified in the
-     * field 'location_sensor'.
+     * GPS location, a supplemental location, or some other estimated location.
+     * The source is specified in `location_sensor`.
      * </pre>
      *
      * <code>.google.type.LatLng location = 1;</code>
@@ -2614,10 +2599,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The location of the vehicle.
-     * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+     * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
      * When you receive it in a response, the vehicle's location can be either a
-     * GPS location or a supplemental location. The source is specified in the
-     * field 'location_sensor'.
+     * GPS location, a supplemental location, or some other estimated location.
+     * The source is specified in `location_sensor`.
      * </pre>
      *
      * <code>.google.type.LatLng location = 1;</code>
@@ -2636,10 +2621,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The location of the vehicle.
-     * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+     * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
      * When you receive it in a response, the vehicle's location can be either a
-     * GPS location or a supplemental location. The source is specified in the
-     * field 'location_sensor'.
+     * GPS location, a supplemental location, or some other estimated location.
+     * The source is specified in `location_sensor`.
      * </pre>
      *
      * <code>.google.type.LatLng location = 1;</code>
@@ -2662,10 +2647,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The location of the vehicle.
-     * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+     * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
      * When you receive it in a response, the vehicle's location can be either a
-     * GPS location or a supplemental location. The source is specified in the
-     * field 'location_sensor'.
+     * GPS location, a supplemental location, or some other estimated location.
+     * The source is specified in `location_sensor`.
      * </pre>
      *
      * <code>.google.type.LatLng location = 1;</code>
@@ -2684,10 +2669,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The location of the vehicle.
-     * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+     * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
      * When you receive it in a response, the vehicle's location can be either a
-     * GPS location or a supplemental location. The source is specified in the
-     * field 'location_sensor'.
+     * GPS location, a supplemental location, or some other estimated location.
+     * The source is specified in `location_sensor`.
      * </pre>
      *
      * <code>.google.type.LatLng location = 1;</code>
@@ -2700,10 +2685,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The location of the vehicle.
-     * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+     * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
      * When you receive it in a response, the vehicle's location can be either a
-     * GPS location or a supplemental location. The source is specified in the
-     * field 'location_sensor'.
+     * GPS location, a supplemental location, or some other estimated location.
+     * The source is specified in `location_sensor`.
      * </pre>
      *
      * <code>.google.type.LatLng location = 1;</code>
@@ -2719,10 +2704,10 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * The location of the vehicle.
-     * When it is sent to FleetEngine, the vehicle's location is a GPS location.
+     * When it is sent to Fleet Engine, the vehicle's location is a GPS location.
      * When you receive it in a response, the vehicle's location can be either a
-     * GPS location or a supplemental location. The source is specified in the
-     * field 'location_sensor'.
+     * GPS location, a supplemental location, or some other estimated location.
+     * The source is specified in `location_sensor`.
      * </pre>
      *
      * <code>.google.type.LatLng location = 1;</code>
@@ -2746,7 +2731,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.DoubleValue, com.google.protobuf.DoubleValue.Builder, com.google.protobuf.DoubleValueOrBuilder> horizontalAccuracyBuilder_;
     /**
      * <pre>
-     * Deprecated. Use latlng_accuracy instead.
+     * Deprecated: Use `latlng_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -2757,7 +2742,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use latlng_accuracy instead.
+     * Deprecated: Use `latlng_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -2772,7 +2757,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use latlng_accuracy instead.
+     * Deprecated: Use `latlng_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -2792,7 +2777,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use latlng_accuracy instead.
+     * Deprecated: Use `latlng_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -2810,7 +2795,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use latlng_accuracy instead.
+     * Deprecated: Use `latlng_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -2832,7 +2817,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use latlng_accuracy instead.
+     * Deprecated: Use `latlng_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -2850,7 +2835,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use latlng_accuracy instead.
+     * Deprecated: Use `latlng_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -2862,7 +2847,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use latlng_accuracy instead.
+     * Deprecated: Use `latlng_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -2877,7 +2862,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use latlng_accuracy instead.
+     * Deprecated: Use `latlng_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue horizontal_accuracy = 8 [deprecated = true];</code>
@@ -2901,7 +2886,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.DoubleValue, com.google.protobuf.DoubleValue.Builder, com.google.protobuf.DoubleValueOrBuilder> latlngAccuracyBuilder_;
     /**
      * <pre>
-     * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+     * Accuracy of `location` in meters as a radius.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -2912,7 +2897,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+     * Accuracy of `location` in meters as a radius.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -2927,7 +2912,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+     * Accuracy of `location` in meters as a radius.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -2947,7 +2932,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+     * Accuracy of `location` in meters as a radius.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -2965,7 +2950,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+     * Accuracy of `location` in meters as a radius.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -2987,7 +2972,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+     * Accuracy of `location` in meters as a radius.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -3005,7 +2990,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+     * Accuracy of `location` in meters as a radius.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -3017,7 +3002,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+     * Accuracy of `location` in meters as a radius.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -3032,7 +3017,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of horizontal measurements (lat/lng) in meters as a radius.
+     * Accuracy of `location` in meters as a radius.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue latlng_accuracy = 22;</code>
@@ -3220,7 +3205,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.DoubleValue, com.google.protobuf.DoubleValue.Builder, com.google.protobuf.DoubleValueOrBuilder> bearingAccuracyBuilder_;
     /**
      * <pre>
-     * Deprecated. Use heading_accuracy instead.
+     * Deprecated: Use `heading_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -3231,7 +3216,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use heading_accuracy instead.
+     * Deprecated: Use `heading_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -3246,7 +3231,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use heading_accuracy instead.
+     * Deprecated: Use `heading_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -3266,7 +3251,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use heading_accuracy instead.
+     * Deprecated: Use `heading_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -3284,7 +3269,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use heading_accuracy instead.
+     * Deprecated: Use `heading_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -3306,7 +3291,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use heading_accuracy instead.
+     * Deprecated: Use `heading_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -3324,7 +3309,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use heading_accuracy instead.
+     * Deprecated: Use `heading_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -3336,7 +3321,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use heading_accuracy instead.
+     * Deprecated: Use `heading_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -3351,7 +3336,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use heading_accuracy instead.
+     * Deprecated: Use `heading_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue bearing_accuracy = 10 [deprecated = true];</code>
@@ -3375,7 +3360,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.DoubleValue, com.google.protobuf.DoubleValue.Builder, com.google.protobuf.DoubleValueOrBuilder> headingAccuracyBuilder_;
     /**
      * <pre>
-     * Accuracy of heading (bearing) in degrees.
+     * Accuracy of `heading` in degrees.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -3386,7 +3371,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of heading (bearing) in degrees.
+     * Accuracy of `heading` in degrees.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -3401,7 +3386,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of heading (bearing) in degrees.
+     * Accuracy of `heading` in degrees.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -3421,7 +3406,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of heading (bearing) in degrees.
+     * Accuracy of `heading` in degrees.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -3439,7 +3424,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of heading (bearing) in degrees.
+     * Accuracy of `heading` in degrees.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -3461,7 +3446,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of heading (bearing) in degrees.
+     * Accuracy of `heading` in degrees.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -3479,7 +3464,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of heading (bearing) in degrees.
+     * Accuracy of `heading` in degrees.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -3491,7 +3476,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of heading (bearing) in degrees.
+     * Accuracy of `heading` in degrees.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -3506,7 +3491,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of heading (bearing) in degrees.
+     * Accuracy of `heading` in degrees.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue heading_accuracy = 23;</code>
@@ -3685,7 +3670,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.DoubleValue, com.google.protobuf.DoubleValue.Builder, com.google.protobuf.DoubleValueOrBuilder> verticalAccuracyBuilder_;
     /**
      * <pre>
-     * Deprecated. Use altitude_accurarcy instead.
+     * Deprecated: Use `altitude_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -3696,7 +3681,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use altitude_accurarcy instead.
+     * Deprecated: Use `altitude_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -3711,7 +3696,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use altitude_accurarcy instead.
+     * Deprecated: Use `altitude_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -3731,7 +3716,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use altitude_accurarcy instead.
+     * Deprecated: Use `altitude_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -3749,7 +3734,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use altitude_accurarcy instead.
+     * Deprecated: Use `altitude_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -3771,7 +3756,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use altitude_accurarcy instead.
+     * Deprecated: Use `altitude_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -3789,7 +3774,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use altitude_accurarcy instead.
+     * Deprecated: Use `altitude_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -3801,7 +3786,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use altitude_accurarcy instead.
+     * Deprecated: Use `altitude_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -3816,7 +3801,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated. Use altitude_accurarcy instead.
+     * Deprecated: Use `altitude_accuracy` instead.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue vertical_accuracy = 9 [deprecated = true];</code>
@@ -3840,7 +3825,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.DoubleValue, com.google.protobuf.DoubleValue.Builder, com.google.protobuf.DoubleValueOrBuilder> altitudeAccuracyBuilder_;
     /**
      * <pre>
-     * Accuracy of altitude measurement in meters.
+     * Accuracy of `altitude` in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -3851,7 +3836,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of altitude measurement in meters.
+     * Accuracy of `altitude` in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -3866,7 +3851,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of altitude measurement in meters.
+     * Accuracy of `altitude` in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -3886,7 +3871,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of altitude measurement in meters.
+     * Accuracy of `altitude` in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -3904,7 +3889,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of altitude measurement in meters.
+     * Accuracy of `altitude` in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -3926,7 +3911,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of altitude measurement in meters.
+     * Accuracy of `altitude` in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -3944,7 +3929,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of altitude measurement in meters.
+     * Accuracy of `altitude` in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -3956,7 +3941,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of altitude measurement in meters.
+     * Accuracy of `altitude` in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -3971,7 +3956,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of altitude measurement in meters.
+     * Accuracy of `altitude` in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue altitude_accuracy = 24;</code>
@@ -3996,7 +3981,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Speed of the vehicle in kilometers per hour.
-     * Deprecated. Use speed instead.
+     * Deprecated: Use `speed` instead.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -4008,7 +3993,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Speed of the vehicle in kilometers per hour.
-     * Deprecated. Use speed instead.
+     * Deprecated: Use `speed` instead.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -4024,7 +4009,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Speed of the vehicle in kilometers per hour.
-     * Deprecated. Use speed instead.
+     * Deprecated: Use `speed` instead.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -4045,7 +4030,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Speed of the vehicle in kilometers per hour.
-     * Deprecated. Use speed instead.
+     * Deprecated: Use `speed` instead.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -4064,7 +4049,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Speed of the vehicle in kilometers per hour.
-     * Deprecated. Use speed instead.
+     * Deprecated: Use `speed` instead.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -4087,7 +4072,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Speed of the vehicle in kilometers per hour.
-     * Deprecated. Use speed instead.
+     * Deprecated: Use `speed` instead.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -4106,7 +4091,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Speed of the vehicle in kilometers per hour.
-     * Deprecated. Use speed instead.
+     * Deprecated: Use `speed` instead.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -4119,7 +4104,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Speed of the vehicle in kilometers per hour.
-     * Deprecated. Use speed instead.
+     * Deprecated: Use `speed` instead.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -4135,7 +4120,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * Speed of the vehicle in kilometers per hour.
-     * Deprecated. Use speed instead.
+     * Deprecated: Use `speed` instead.
      * </pre>
      *
      * <code>.google.protobuf.Int32Value speed_kmph = 3 [deprecated = true];</code>
@@ -4314,7 +4299,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.DoubleValue, com.google.protobuf.DoubleValue.Builder, com.google.protobuf.DoubleValueOrBuilder> speedAccuracyBuilder_;
     /**
      * <pre>
-     * Accuracy of speed in meters/second.
+     * Accuracy of `speed` in meters/second.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -4325,7 +4310,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of speed in meters/second.
+     * Accuracy of `speed` in meters/second.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -4340,7 +4325,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of speed in meters/second.
+     * Accuracy of `speed` in meters/second.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -4360,7 +4345,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of speed in meters/second.
+     * Accuracy of `speed` in meters/second.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -4378,7 +4363,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of speed in meters/second.
+     * Accuracy of `speed` in meters/second.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -4400,7 +4385,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of speed in meters/second.
+     * Accuracy of `speed` in meters/second.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -4418,7 +4403,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of speed in meters/second.
+     * Accuracy of `speed` in meters/second.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -4430,7 +4415,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of speed in meters/second.
+     * Accuracy of `speed` in meters/second.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -4445,7 +4430,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Accuracy of speed in meters/second.
+     * Accuracy of `speed` in meters/second.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue speed_accuracy = 7;</code>
@@ -4469,7 +4454,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> updateTimeBuilder_;
     /**
      * <pre>
-     * The time when the location was recorded.
+     * The time when `location` was reported by the sensor.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -4480,7 +4465,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The time when the location was recorded.
+     * The time when `location` was reported by the sensor.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -4495,7 +4480,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The time when the location was recorded.
+     * The time when `location` was reported by the sensor.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -4515,7 +4500,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The time when the location was recorded.
+     * The time when `location` was reported by the sensor.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -4533,7 +4518,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The time when the location was recorded.
+     * The time when `location` was reported by the sensor.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -4555,7 +4540,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The time when the location was recorded.
+     * The time when `location` was reported by the sensor.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -4573,7 +4558,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The time when the location was recorded.
+     * The time when `location` was reported by the sensor.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -4585,7 +4570,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The time when the location was recorded.
+     * The time when `location` was reported by the sensor.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -4600,7 +4585,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * The time when the location was recorded.
+     * The time when `location` was reported by the sensor.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp update_time = 4;</code>
@@ -4624,8 +4609,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> serverTimeBuilder_;
     /**
      * <pre>
-     * Output only. The time when the server receives the location information, filled by
-     * FleetEngine.
+     * Output only. The time when the server received the location information.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -4636,8 +4620,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Output only. The time when the server receives the location information, filled by
-     * FleetEngine.
+     * Output only. The time when the server received the location information.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -4652,8 +4635,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Output only. The time when the server receives the location information, filled by
-     * FleetEngine.
+     * Output only. The time when the server received the location information.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -4673,8 +4655,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Output only. The time when the server receives the location information, filled by
-     * FleetEngine.
+     * Output only. The time when the server received the location information.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -4692,8 +4673,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Output only. The time when the server receives the location information, filled by
-     * FleetEngine.
+     * Output only. The time when the server received the location information.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -4715,8 +4695,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Output only. The time when the server receives the location information, filled by
-     * FleetEngine.
+     * Output only. The time when the server received the location information.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -4734,8 +4713,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Output only. The time when the server receives the location information, filled by
-     * FleetEngine.
+     * Output only. The time when the server received the location information.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -4747,8 +4725,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Output only. The time when the server receives the location information, filled by
-     * FleetEngine.
+     * Output only. The time when the server received the location information.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -4763,8 +4740,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Output only. The time when the server receives the location information, filled by
-     * FleetEngine.
+     * Output only. The time when the server received the location information.
      * </pre>
      *
      * <code>.google.protobuf.Timestamp server_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -4786,7 +4762,7 @@ private static final long serialVersionUID = 0L;
     private int locationSensor_ = 0;
     /**
      * <pre>
-     * Provider of location data (for example, "gps").
+     * Provider of location data (for example, `GPS`).
      * </pre>
      *
      * <code>.maps.fleetengine.v1.LocationSensor location_sensor = 11;</code>
@@ -4797,7 +4773,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Provider of location data (for example, "gps").
+     * Provider of location data (for example, `GPS`).
      * </pre>
      *
      * <code>.maps.fleetengine.v1.LocationSensor location_sensor = 11;</code>
@@ -4812,7 +4788,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Provider of location data (for example, "gps").
+     * Provider of location data (for example, `GPS`).
      * </pre>
      *
      * <code>.maps.fleetengine.v1.LocationSensor location_sensor = 11;</code>
@@ -4826,7 +4802,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Provider of location data (for example, "gps").
+     * Provider of location data (for example, `GPS`).
      * </pre>
      *
      * <code>.maps.fleetengine.v1.LocationSensor location_sensor = 11;</code>
@@ -4844,7 +4820,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Provider of location data (for example, "gps").
+     * Provider of location data (for example, `GPS`).
      * </pre>
      *
      * <code>.maps.fleetengine.v1.LocationSensor location_sensor = 11;</code>
@@ -4862,10 +4838,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.BoolValue, com.google.protobuf.BoolValue.Builder, com.google.protobuf.BoolValueOrBuilder> isRoadSnappedBuilder_;
     /**
      * <pre>
-     * Whether the vehicle location given by "location" field is snapped to a road
-     * closest to the location given by "raw_location".
-     * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-     * Unset value will be treated as true.
+     * Whether `location` is snapped to a road.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -4876,10 +4849,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Whether the vehicle location given by "location" field is snapped to a road
-     * closest to the location given by "raw_location".
-     * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-     * Unset value will be treated as true.
+     * Whether `location` is snapped to a road.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -4894,10 +4864,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Whether the vehicle location given by "location" field is snapped to a road
-     * closest to the location given by "raw_location".
-     * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-     * Unset value will be treated as true.
+     * Whether `location` is snapped to a road.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -4917,10 +4884,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Whether the vehicle location given by "location" field is snapped to a road
-     * closest to the location given by "raw_location".
-     * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-     * Unset value will be treated as true.
+     * Whether `location` is snapped to a road.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -4938,10 +4902,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Whether the vehicle location given by "location" field is snapped to a road
-     * closest to the location given by "raw_location".
-     * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-     * Unset value will be treated as true.
+     * Whether `location` is snapped to a road.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -4963,10 +4924,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Whether the vehicle location given by "location" field is snapped to a road
-     * closest to the location given by "raw_location".
-     * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-     * Unset value will be treated as true.
+     * Whether `location` is snapped to a road.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -4984,10 +4942,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Whether the vehicle location given by "location" field is snapped to a road
-     * closest to the location given by "raw_location".
-     * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-     * Unset value will be treated as true.
+     * Whether `location` is snapped to a road.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -4999,10 +4954,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Whether the vehicle location given by "location" field is snapped to a road
-     * closest to the location given by "raw_location".
-     * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-     * Unset value will be treated as true.
+     * Whether `location` is snapped to a road.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -5017,10 +4969,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Whether the vehicle location given by "location" field is snapped to a road
-     * closest to the location given by "raw_location".
-     * Driver SDK 1.15.1/2.1.1 and up will always set this field.
-     * Unset value will be treated as true.
+     * Whether `location` is snapped to a road.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_road_snapped = 27;</code>
@@ -5044,7 +4993,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.BoolValue, com.google.protobuf.BoolValue.Builder, com.google.protobuf.BoolValueOrBuilder> isGpsSensorEnabledBuilder_;
     /**
      * <pre>
-     * Input only. Indicates whether the GPS sensor is enabled.
+     * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5055,7 +5004,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Indicates whether the GPS sensor is enabled.
+     * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5070,7 +5019,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Indicates whether the GPS sensor is enabled.
+     * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5090,7 +5039,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Indicates whether the GPS sensor is enabled.
+     * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5108,7 +5057,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Indicates whether the GPS sensor is enabled.
+     * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5130,7 +5079,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Indicates whether the GPS sensor is enabled.
+     * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5148,7 +5097,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Indicates whether the GPS sensor is enabled.
+     * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5160,7 +5109,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Indicates whether the GPS sensor is enabled.
+     * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5175,7 +5124,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Indicates whether the GPS sensor is enabled.
+     * Input only. Indicates whether the GPS sensor is enabled on the mobile device.
      * </pre>
      *
      * <code>.google.protobuf.BoolValue is_gps_sensor_enabled = 12 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5199,7 +5148,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Int32Value, com.google.protobuf.Int32Value.Builder, com.google.protobuf.Int32ValueOrBuilder> timeSinceUpdateBuilder_;
     /**
      * <pre>
-     * Input only. Time (in seconds) since this location sample was first sent to the server.
+     * Input only. Time (in seconds) since this location was first sent to the server.
      * This will be zero for the first update. If the time is unknown
      * (for example, when the app restarts), this value resets to zero.
      * </pre>
@@ -5212,7 +5161,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Time (in seconds) since this location sample was first sent to the server.
+     * Input only. Time (in seconds) since this location was first sent to the server.
      * This will be zero for the first update. If the time is unknown
      * (for example, when the app restarts), this value resets to zero.
      * </pre>
@@ -5229,7 +5178,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Time (in seconds) since this location sample was first sent to the server.
+     * Input only. Time (in seconds) since this location was first sent to the server.
      * This will be zero for the first update. If the time is unknown
      * (for example, when the app restarts), this value resets to zero.
      * </pre>
@@ -5251,7 +5200,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Time (in seconds) since this location sample was first sent to the server.
+     * Input only. Time (in seconds) since this location was first sent to the server.
      * This will be zero for the first update. If the time is unknown
      * (for example, when the app restarts), this value resets to zero.
      * </pre>
@@ -5271,7 +5220,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Time (in seconds) since this location sample was first sent to the server.
+     * Input only. Time (in seconds) since this location was first sent to the server.
      * This will be zero for the first update. If the time is unknown
      * (for example, when the app restarts), this value resets to zero.
      * </pre>
@@ -5295,7 +5244,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Time (in seconds) since this location sample was first sent to the server.
+     * Input only. Time (in seconds) since this location was first sent to the server.
      * This will be zero for the first update. If the time is unknown
      * (for example, when the app restarts), this value resets to zero.
      * </pre>
@@ -5315,7 +5264,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Time (in seconds) since this location sample was first sent to the server.
+     * Input only. Time (in seconds) since this location was first sent to the server.
      * This will be zero for the first update. If the time is unknown
      * (for example, when the app restarts), this value resets to zero.
      * </pre>
@@ -5329,7 +5278,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Time (in seconds) since this location sample was first sent to the server.
+     * Input only. Time (in seconds) since this location was first sent to the server.
      * This will be zero for the first update. If the time is unknown
      * (for example, when the app restarts), this value resets to zero.
      * </pre>
@@ -5346,7 +5295,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Time (in seconds) since this location sample was first sent to the server.
+     * Input only. Time (in seconds) since this location was first sent to the server.
      * This will be zero for the first update. If the time is unknown
      * (for example, when the app restarts), this value resets to zero.
      * </pre>
@@ -5372,7 +5321,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.Int32Value, com.google.protobuf.Int32Value.Builder, com.google.protobuf.Int32ValueOrBuilder> numStaleUpdatesBuilder_;
     /**
      * <pre>
-     * Input only. Number of additional attempts to send the current location to the server.
+     * Input only. Number of additional attempts to send this location to the server.
      * If this value is zero, then it is not stale.
      * </pre>
      *
@@ -5384,7 +5333,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Number of additional attempts to send the current location to the server.
+     * Input only. Number of additional attempts to send this location to the server.
      * If this value is zero, then it is not stale.
      * </pre>
      *
@@ -5400,7 +5349,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Number of additional attempts to send the current location to the server.
+     * Input only. Number of additional attempts to send this location to the server.
      * If this value is zero, then it is not stale.
      * </pre>
      *
@@ -5421,7 +5370,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Number of additional attempts to send the current location to the server.
+     * Input only. Number of additional attempts to send this location to the server.
      * If this value is zero, then it is not stale.
      * </pre>
      *
@@ -5440,7 +5389,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Number of additional attempts to send the current location to the server.
+     * Input only. Number of additional attempts to send this location to the server.
      * If this value is zero, then it is not stale.
      * </pre>
      *
@@ -5463,7 +5412,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Number of additional attempts to send the current location to the server.
+     * Input only. Number of additional attempts to send this location to the server.
      * If this value is zero, then it is not stale.
      * </pre>
      *
@@ -5482,7 +5431,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Number of additional attempts to send the current location to the server.
+     * Input only. Number of additional attempts to send this location to the server.
      * If this value is zero, then it is not stale.
      * </pre>
      *
@@ -5495,7 +5444,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Number of additional attempts to send the current location to the server.
+     * Input only. Number of additional attempts to send this location to the server.
      * If this value is zero, then it is not stale.
      * </pre>
      *
@@ -5511,7 +5460,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Number of additional attempts to send the current location to the server.
+     * Input only. Number of additional attempts to send this location to the server.
      * If this value is zero, then it is not stale.
      * </pre>
      *
@@ -5920,7 +5869,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.DoubleValue, com.google.protobuf.DoubleValue.Builder, com.google.protobuf.DoubleValueOrBuilder> rawLocationAccuracyBuilder_;
     /**
      * <pre>
-     * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+     * Input only. Accuracy of `raw_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5931,7 +5880,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+     * Input only. Accuracy of `raw_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5946,7 +5895,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+     * Input only. Accuracy of `raw_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5966,7 +5915,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+     * Input only. Accuracy of `raw_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -5984,7 +5933,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+     * Input only. Accuracy of `raw_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6006,7 +5955,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+     * Input only. Accuracy of `raw_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6024,7 +5973,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+     * Input only. Accuracy of `raw_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6036,7 +5985,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+     * Input only. Accuracy of `raw_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6051,7 +6000,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of the raw location (lat/lng) as a radius, measured in meters.
+     * Input only. Accuracy of `raw_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue raw_location_accuracy = 25 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6468,8 +6417,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.DoubleValue, com.google.protobuf.DoubleValue.Builder, com.google.protobuf.DoubleValueOrBuilder> supplementalLocationAccuracyBuilder_;
     /**
      * <pre>
-     * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-     * meters.
+     * Input only. Accuracy of `supplemental_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6480,8 +6428,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-     * meters.
+     * Input only. Accuracy of `supplemental_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6496,8 +6443,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-     * meters.
+     * Input only. Accuracy of `supplemental_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6517,8 +6463,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-     * meters.
+     * Input only. Accuracy of `supplemental_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6536,8 +6481,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-     * meters.
+     * Input only. Accuracy of `supplemental_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6559,8 +6503,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-     * meters.
+     * Input only. Accuracy of `supplemental_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6578,8 +6521,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-     * meters.
+     * Input only. Accuracy of `supplemental_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6591,8 +6533,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-     * meters.
+     * Input only. Accuracy of `supplemental_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6607,8 +6548,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Input only. Accuracy of supplemental location (lat/lng) as a radius, measured in
-     * meters.
+     * Input only. Accuracy of `supplemental_location` as a radius, in meters.
      * </pre>
      *
      * <code>.google.protobuf.DoubleValue supplemental_location_accuracy = 21 [(.google.api.field_behavior) = INPUT_ONLY];</code>
@@ -6630,7 +6570,7 @@ private static final long serialVersionUID = 0L;
     private boolean roadSnapped_ ;
     /**
      * <pre>
-     * Deprecated, use is_road_snapped instead.
+     * Deprecated: Use `is_road_snapped` instead.
      * </pre>
      *
      * <code>bool road_snapped = 26 [deprecated = true];</code>
@@ -6642,7 +6582,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated, use is_road_snapped instead.
+     * Deprecated: Use `is_road_snapped` instead.
      * </pre>
      *
      * <code>bool road_snapped = 26 [deprecated = true];</code>
@@ -6657,7 +6597,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Deprecated, use is_road_snapped instead.
+     * Deprecated: Use `is_road_snapped` instead.
      * </pre>
      *
      * <code>bool road_snapped = 26 [deprecated = true];</code>
