@@ -3,8 +3,9 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Publish package to the Maven Central Repository
+name: Publish to Maven Central Repository
 on:
+  workflow_dispatch:
   release:
     types: [created]
 jobs:
