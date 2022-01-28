@@ -12,6 +12,10 @@ The other options run hardcoded commands such as:
 You can use these examples as a starting point when first using the generated
 client libraries.
 
+For directions on how to call Fleet Engine in your project, see:
+https://developers.google.com/maps/documentation/transportation-logistics/on-demand-rides-deliveries-solution/trip-order-progress/fleet-engine/gapic_client
+
+
 ## Configuring
 
 The scripts are configured with a service account to run under. Each service
@@ -33,33 +37,3 @@ setup, simply run:
 ```
 ./gradlew run
 ```
-
-## Installing the gRPC client
-
-Copy the generated source directories into the root directory of your java project:
-
-```
-cp gapic-google-maps-fleetengine-v1-java ~/java-project-directory/
-cp grpc-google-maps-fleetengine-v1-java ~/java-project-directory/
-cp proto-google-maps-fleetengine-v1-java ~/java-project-directory/
-```
-
-Include the generated source code directories created within your project's
-`settings.gradle` file:
-
-```groovy
-include 'gapic-google-maps-fleetengine-v1-java'
-include 'grpc-google-maps-fleetengine-v1-java'
-include 'proto-google-maps-fleetengine-v1-java'
-```
-
-Point to the projects within the `dependencies` stanza in `build.gradle`:
-
-```groovy
-implementation project(':gapic-google-maps-fleetengine-v1-java')
-implementation project(':grpc-google-maps-fleetengine-v1-java')
-implementation project(':proto-google-maps-fleetengine-v1-java')
-```
-
-You are now able to references classes under the
-`google.maps.fleetengine.v1` package.

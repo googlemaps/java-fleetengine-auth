@@ -2,7 +2,3 @@ rootProject.name = 'fleetengine-auth-sample'
 
 include(':fleetengine-auth')
 project(':fleetengine-auth').projectDir = new File('..')
-
-include 'proto-google-maps-fleetengine-v1-java'
-include 'gapic-google-maps-fleetengine-v1-java'
-include 'grpc-google-maps-fleetengine-v1-java'

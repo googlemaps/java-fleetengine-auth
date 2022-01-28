@@ -10,8 +10,8 @@ buildscript {    // Configuration for building
 
 plugins {
     id 'application'
+    id 'com.google.cloud.artifactregistry.gradle-plugin' version '2.1.1'
 }
-
 
 repositories {   // repositories for Jar's you access in your code
     maven {
@@ -19,6 +19,9 @@ repositories {   // repositories for Jar's you access in your code
     }
     mavenCentral()
     jcenter()
+    maven {
+        url "artifactregistry://us-maven.pkg.dev/fleetengine-gapic/maven"
+    }
 }
 
 application {
@@ -41,9 +44,7 @@ dependencies {
     implementation 'com.google.api:gax:1.65.1'
     implementation 'com.google.api:gax-grpc:1.65.1'
 
-    implementation project(':proto-google-maps-fleetengine-v1-java')
-    implementation project(':gapic-google-maps-fleetengine-v1-java')
-    implementation project(':grpc-google-maps-fleetengine-v1-java')
+    implementation 'com.google.maps:gapic-google-maps-fleetengine-v1-java:0.0.197'
     implementation project(':fleetengine-auth')
 
     testImplementation 'junit:junit:4.13.1'
