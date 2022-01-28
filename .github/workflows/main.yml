@@ -28,7 +28,7 @@ jobs:
     - name: Run tests in sample directory
       run: |
         cd ./sample/
-        ./gradlew test
+        ./gradlew --debug test
     - name: Release
       uses: cycjimmy/semantic-release-action@v2
       with:
