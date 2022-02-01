@@ -80,7 +80,7 @@ public class FleetEngineAuthClientHeaderProvider implements HeaderProvider {
           .put(
               AUTHORIZATION_HEADER_NAME,
               String.format("Bearer %s", tokenProvider.getSignedToken().jwt()))
-          .build();
+          .buildOrThrow();
     } catch (SigningTokenException e) {
       throw new WritingAuthorizationHeaderException("Exception while getting server token.", e);
     }
