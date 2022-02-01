@@ -168,7 +168,7 @@ public final class FleetEngineTokenFactory implements TokenFactory {
       // Flag as wildcard if all claims are wildcards
       isWildcard = isWildcard && c.isWildcard();
     }
-    ImmutableMap<String, String> map = builder.build();
+    ImmutableMap<String, String> map = builder.buildOrThrow();
     return new MergedClaims(map, isWildcard);
   }
 
