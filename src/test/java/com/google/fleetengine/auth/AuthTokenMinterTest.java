@@ -92,6 +92,37 @@ public class AuthTokenMinterTest {
   }
 
   @Test
+  public void getSignedToken_whenServerSignerSet_signsWithSetServerSigner()
+      throws SigningTokenException {
+    AuthTokenMinter baseFleetEngineAuth =
+        defaultFleetEngineAuthBuilder.setServerSigner(serverSigner).build();
+    when(tokenFactory.createServerToken()).thenReturn(fleetEngineToken);
+
+    baseFleetEngineAuth.getServerToken();
+
+    verify(authStateManager, times(1)).signToken(eq(serverSigner), eq(fleetEngineToken));
+  }
+
+  @Test
+  public void getSignedToken_whenDeliveryBuilder_signsWithSetDeliveryServerSigner()
+      throws SigningTokenException {
+    AuthTokenMinter.Builder defaultDeliveryFleetEngineAuthBuilder =
+        // Use delivery builder method
+        AuthTokenMinter.deliveryBuilder()
+            .setDeliveryServerSigner(deliveryServerSigner)
+            .setTokenStateManager(authStateManager)
+            .setTokenFactory(tokenFactory);
+
+    AuthTokenMinter baseFleetEngineAuth =
+        defaultDeliveryFleetEngineAuthBuilder.setDeliveryServerSigner(deliveryServerSigner).build();
+    when(tokenFactory.createDeliveryServerToken()).thenReturn(fleetEngineToken);
+
+    baseFleetEngineAuth.getSignedToken();
+
+    verify(authStateManager, times(1)).signToken(eq(deliveryServerSigner), eq(fleetEngineToken));
+  }
+
+  @Test
   public void getServerToken_whenServerSignerSet_signsWithSetServerSigner()
       throws SigningTokenException {
     AuthTokenMinter baseFleetEngineAuth =

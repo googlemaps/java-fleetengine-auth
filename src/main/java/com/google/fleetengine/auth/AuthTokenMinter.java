@@ -101,8 +101,12 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
   /** Authorization state manager responsible for caching signed JWTs. */
   public abstract FleetEngineAuthTokenStateManager tokenStateManager();
 
+  /** Specifies which server signer to use by default. */
+  abstract DefaultServerTokenType defaultServerTokenType();
+
   /**
-   * Provides a builder for FleetEngineToken.
+   * Provides a builder for FleetEngineToken. Signs with {@link #serverSigner()} when acting as
+   * {@link FleetEngineTokenProvider}.
    *
    * <p>{@link NaiveAuthStateManager} set as default state manager.
    */
@@ -110,7 +114,22 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
     FleetEngineTokenFactorySettings settings = FleetEngineTokenFactorySettings.builder().build();
     return new AutoValue_AuthTokenMinter.Builder()
         .setTokenStateManager(new NaiveAuthStateManager())
-        .setTokenFactory(new FleetEngineTokenFactory(settings));
+        .setTokenFactory(new FleetEngineTokenFactory(settings))
+        .setDefaultServerTokenType(DefaultServerTokenType.ODRD);
+  }
+
+  /**
+   * Provides a builder for FleetEngineToken.<br>
+   * Signs with {@link #deliveryServerSigner()} when acting as {@link FleetEngineTokenProvider}.
+   *
+   * <p>{@link NaiveAuthStateManager} set as default state manager.
+   */
+  public static AuthTokenMinter.Builder deliveryBuilder() {
+    FleetEngineTokenFactorySettings settings = FleetEngineTokenFactorySettings.builder().build();
+    return new AutoValue_AuthTokenMinter.Builder()
+        .setTokenStateManager(new NaiveAuthStateManager())
+        .setTokenFactory(new FleetEngineTokenFactory(settings))
+        .setDefaultServerTokenType(DefaultServerTokenType.LMFS);
   }
 
   /**
@@ -352,6 +371,9 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
   /** Returns a non-expired server token with a base64 signed JWT. */
   @Override
   public FleetEngineToken getSignedToken() throws SigningTokenException {
+    if (defaultServerTokenType() == DefaultServerTokenType.LMFS) {
+      return getDeliveryServerToken();
+    }
     return getServerToken();
   }
 
@@ -397,7 +419,7 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
     public abstract Builder setTokenFactory(TokenFactory tokenFactory);
 
     /**
-     * Sets the authorization state manager responsible for caching signed JWTs
+     * Sets the authorization state manager responsible for caching signed JWTs.
      *
      * <p>By default, uses a naive manager that only caches server tokens.
      *
@@ -405,7 +427,20 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
      */
     public abstract Builder setTokenStateManager(FleetEngineAuthTokenStateManager manager);
 
+    /**
+     * Specifies whether to provide default Odrd or Lmfs token by default.
+     *
+     * @param defaultServerTokenType specifies the type of token to produce by default
+     */
+    abstract Builder setDefaultServerTokenType(DefaultServerTokenType defaultServerTokenType);
+
     /** Builds {@link AuthTokenMinter}. */
     public abstract AuthTokenMinter build();
+  }
+
+  /** Used internally to specify whether to provide ODRD or LMFS tokens by default. */
+  enum DefaultServerTokenType {
+    ODRD,
+    LMFS;
   }
 }

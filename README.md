@@ -113,13 +113,25 @@ minting tokens straightforward.
 
 To use, first associate a `Signer` with a service account and a type of token.
 
-For example:
+For example, when creating tokens for use with the On Demand Rides and Deliveries APIs:
 
 ```java
 AuthTokenMinter minter = AuthTokenMinter.builder()
   .setServerTokenSigner(DefaultServiceAccountSigner.create())
   .setDriverSigner(ImpersonatedAccountSignerCredentials.create("driver@gcp-project.com")
   .setConsumerSigner(ImpersonatedAccountSignerCredentials.create("consumer@gcp-project.iam.gserviceaccount.com")
+  .build();
+```
+
+When creating tokens for use with the Last Mile Fleet Services, use:
+
+```java
+AuthTokenMinter minter = AuthTokenMinter.deliveryBuilder()
+  .setDeliveryServerSigner(DefaultServiceAccountSigner.create())
+  .setDeliveryConsumerSigner(ImpersonatedAccountSignerCredentials.create("delivery-consumer@gcp-project.com")
+  .setUntrustedDeliveryDriverSigner(ImpersonatedAccountSignerCredentials.create("untrusted-delivery-driver-signer@gcp-project.iam.gserviceaccount.com")
+  .setTrustedDeliveryDriverSigner(ImpersonatedAccountSignerCredentials.create("trusted-delivery-driver-signer@gcp-project.iam.gserviceaccount.com")
+  .setDeliveryFleetReaderSigner(ImpersonatedAccountSignerCredentials.create("delivery-fleet-reader@gcp-project.iam.gserviceaccount.com")
   .build();
 ```
 
