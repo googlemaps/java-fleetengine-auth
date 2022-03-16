@@ -65,18 +65,20 @@ public final class SampleApp {
   public static void main(String[] args) throws Throwable {
     System.out.println(
         "\n\n\n=== Choose example: ===\n"
-            + "0. Validate Configured Roles\n"
+            + "0. Validate Configured ODRD Roles\n"
             + "1. Create Vehicle\n"
             + "2. Create Trip\n"
             + "3. List Vehicles\n"
             + "4. Search for Vehicles\n"
-            + "5. Search for Trips\n");
+            + "5. Search for Trips\n"
+            + "----------------------------------------\n"
+            + "10. Validate Configured LMFS Roles\n");
     Scanner scanner = new Scanner(System.in, UTF_8.name());
     int choice = scanner.nextInt();
 
     switch (choice) {
       case 0:
-        ValidateRoles.run();
+        ValidateOdrdRoles.run();
         break;
       case 1:
         createVehicle();
@@ -93,7 +95,9 @@ public final class SampleApp {
       case 5:
         searchTrips();
         break;
-      case 6:
+      case 10:
+        ValidateLmfsRoles.run();
+        break;
       default:
         throw new IllegalArgumentException("Invalid choice provided.");
     }
@@ -109,7 +113,7 @@ public final class SampleApp {
             // Set the vehicle name to the specified format
             .setName(
                 String.format(
-                    "providers/%s/vehicles/%s", Configuration.PROVIDER_ID, randomVehicleId))
+                    "providers/%s/vehicles/%s", OdrdConfiguration.PROVIDER_ID, randomVehicleId))
 
             // Set maximum capacity of vehicle to 1
             .setMaximumCapacity(1)
@@ -137,14 +141,14 @@ public final class SampleApp {
             .setVehicle(vehicle)
 
             // Set the parent to the specified format
-            .setParent(String.format("providers/%s", Configuration.PROVIDER_ID))
+            .setParent(String.format("providers/%s", OdrdConfiguration.PROVIDER_ID))
             .build();
 
     VehicleServiceSettings settings =
         new FleetEngineClientSettingsModifier<
                 VehicleServiceSettings, VehicleServiceSettings.Builder>(createMinter())
             .updateBuilder(VehicleServiceSettings.newBuilder())
-            .setEndpoint(Configuration.FLEET_ENGINE_ADDRESS)
+            .setEndpoint(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
     VehicleServiceClient client = VehicleServiceClient.create(settings);
@@ -158,7 +162,7 @@ public final class SampleApp {
         Trip.newBuilder()
             // Set the trip name to the specified format
             .setName(
-                String.format("providers/%s/trips/%s", Configuration.PROVIDER_ID, randomTripId))
+                String.format("providers/%s/trips/%s", OdrdConfiguration.PROVIDER_ID, randomTripId))
 
             // Set the trip type to be exclusive as opposed to SHARED
             .setTripType(TripType.EXCLUSIVE)
@@ -180,14 +184,14 @@ public final class SampleApp {
             .setTrip(trip)
 
             // Set the parent to the specified format
-            .setParent(String.format("providers/%s", Configuration.PROVIDER_ID))
+            .setParent(String.format("providers/%s", OdrdConfiguration.PROVIDER_ID))
             .build();
 
     TripServiceSettings settings =
         new FleetEngineClientSettingsModifier<TripServiceSettings, TripServiceSettings.Builder>(
                 createMinter())
             .updateBuilder(TripServiceSettings.newBuilder())
-            .setEndpoint(Configuration.FLEET_ENGINE_ADDRESS)
+            .setEndpoint(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
     TripServiceClient client = TripServiceClient.create(settings);
@@ -199,14 +203,14 @@ public final class SampleApp {
     ListVehiclesRequest request =
         ListVehiclesRequest.newBuilder()
             // Set the parent to the format providers/{providerId}
-            .setParent(String.format("providers/%s", Configuration.PROVIDER_ID))
+            .setParent(String.format("providers/%s", OdrdConfiguration.PROVIDER_ID))
             .build();
 
     VehicleServiceSettings settings =
         new FleetEngineClientSettingsModifier<
                 VehicleServiceSettings, VehicleServiceSettings.Builder>(createMinter())
             .updateBuilder(VehicleServiceSettings.newBuilder())
-            .setEndpoint(Configuration.FLEET_ENGINE_ADDRESS)
+            .setEndpoint(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
     VehicleServiceClient client = VehicleServiceClient.create(settings);
@@ -224,7 +228,7 @@ public final class SampleApp {
     SearchVehiclesRequest request =
         SearchVehiclesRequest.newBuilder()
             // Set the parent to the format providers/{providerId}
-            .setParent(String.format("providers/%s", Configuration.PROVIDER_ID))
+            .setParent(String.format("providers/%s", OdrdConfiguration.PROVIDER_ID))
 
             // Look for vehicles around a specific Lat \ Lng
             .setPickupPoint(TerminalLocation.newBuilder().setPoint(EXAMPLE_LAT_LNG).build())
@@ -247,7 +251,7 @@ public final class SampleApp {
         new FleetEngineClientSettingsModifier<
                 VehicleServiceSettings, VehicleServiceSettings.Builder>(createMinter())
             .updateBuilder(VehicleServiceSettings.newBuilder())
-            .setEndpoint(Configuration.FLEET_ENGINE_ADDRESS)
+            .setEndpoint(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
     VehicleServiceClient client = VehicleServiceClient.create(settings);
@@ -265,7 +269,7 @@ public final class SampleApp {
     SearchTripsRequest request =
         SearchTripsRequest.newBuilder()
             // Set the parent to the format providers/{providerId}
-            .setParent(String.format("providers/%s", Configuration.PROVIDER_ID))
+            .setParent(String.format("providers/%s", OdrdConfiguration.PROVIDER_ID))
 
             // Look for both active and inactive trips
             .setActiveTripsOnly(false)
@@ -275,7 +279,7 @@ public final class SampleApp {
         new FleetEngineClientSettingsModifier<TripServiceSettings, TripServiceSettings.Builder>(
                 createMinter())
             .updateBuilder(TripServiceSettings.newBuilder())
-            .setEndpoint(Configuration.FLEET_ENGINE_ADDRESS)
+            .setEndpoint(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
     TripServiceClient client = TripServiceClient.create(settings);
@@ -292,14 +296,14 @@ public final class SampleApp {
   private static FleetEngineTokenProvider createMinter() throws SignerInitializationException {
     return AuthTokenMinter.builder()
         // Only the account for the server signer is needed in this example
-        .setServerSigner(ImpersonatedSigner.create(Configuration.SERVER_TOKEN_ACCOUNT))
+        .setServerSigner(ImpersonatedSigner.create(OdrdConfiguration.SERVER_TOKEN_ACCOUNT))
 
         // When the audience is not set, it defaults to https://fleetengine.googleapis.com/.
         // This is fine in the vast majority of cases.
         .setTokenFactory(
             new FleetEngineTokenFactory(
                 FleetEngineTokenFactorySettings.builder()
-                    .setAudience(Configuration.FLEET_ENGINE_AUDIENCE)
+                    .setAudience(OdrdConfiguration.FLEET_ENGINE_AUDIENCE)
                     .build()))
 
         // Build the minter

@@ -16,10 +16,13 @@ package com.google.fleetengine.auth.sample;
 
 import com.google.fleetengine.auth.client.FleetEngineTokenProvider;
 import com.google.fleetengine.auth.sample.validation.CommandsFactory;
+import com.google.fleetengine.auth.sample.validation.DeliveryServiceCommands;
 import com.google.fleetengine.auth.sample.validation.TripCommands;
 import com.google.fleetengine.auth.sample.validation.TripStub;
 import com.google.fleetengine.auth.sample.validation.VehicleCommands;
 import com.google.fleetengine.auth.sample.validation.VehicleStub;
+import google.maps.fleetengine.delivery.v1.DeliveryServiceClient;
+import google.maps.fleetengine.delivery.v1.DeliveryServiceSettings;
 import google.maps.fleetengine.v1.TripServiceClient;
 import google.maps.fleetengine.v1.TripServiceSettings;
 import google.maps.fleetengine.v1.VehicleServiceClient;
@@ -57,5 +60,20 @@ class CommandsFactoryServiceClient implements CommandsFactory {
     VehicleServiceClient client = VehicleServiceClient.create(settings);
     VehicleStub vehicleStub = new VehicleStubClient(client);
     return new VehicleCommands(vehicleStub, providerId);
+  }
+
+  /** {@inheritDoc} */
+  public DeliveryServiceCommands createDeliveryServiceCommands(
+      String fleetEngineAddress, String providerId, FleetEngineTokenProvider tokenProvider)
+      throws IOException {
+    DeliveryServiceSettings settings =
+        new com.google.fleetengine.auth.client.FleetEngineClientSettingsModifier<
+                DeliveryServiceSettings, DeliveryServiceSettings.Builder>(tokenProvider)
+            .updateBuilder(DeliveryServiceSettings.newBuilder())
+            .setEndpoint(fleetEngineAddress)
+            .build();
+
+    return new DeliveryServiceCommands(
+        new DeliveryServiceStubClient(DeliveryServiceClient.create(settings)), providerId);
   }
 }

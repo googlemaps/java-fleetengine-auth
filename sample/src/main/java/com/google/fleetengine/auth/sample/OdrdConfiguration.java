@@ -14,7 +14,7 @@
 
 package com.google.fleetengine.auth.sample;
 
-class Configuration {
+class OdrdConfiguration {
 
   // XXX_TOKEN_ACCOUNT are the names of the service accounts with the Fleet
   // Engine pre defined roles.  The name is always in the format of:
@@ -46,5 +46,5 @@ class Configuration {
   public static final String FLEET_ENGINE_AUDIENCE =
       "https://fleetengine.googleapis.com/";
 
-  private Configuration() {}
+  private OdrdConfiguration() {}
 }

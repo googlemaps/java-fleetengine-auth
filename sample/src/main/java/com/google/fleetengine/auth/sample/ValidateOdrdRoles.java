@@ -25,8 +25,8 @@ import com.google.fleetengine.auth.token.factory.FleetEngineTokenFactory;
 import com.google.fleetengine.auth.token.factory.FleetEngineTokenFactorySettings;
 import com.google.fleetengine.auth.token.factory.signer.ImpersonatedSigner;
 
-/** Validates that the roles configured in {@link Configuration} are setup correctly. */
-final class ValidateRoles {
+/** Validates that the roles configured in {@link OdrdConfiguration} are setup correctly. */
+final class ValidateOdrdRoles {
   private static final String SERVER = "server";
   private static final String CONSUMER = "consumer";
   private static final String DRIVER = "driver";
@@ -34,20 +34,20 @@ final class ValidateRoles {
   public static void run() throws Throwable {
     AuthTokenMinter minter =
         AuthTokenMinter.builder()
-            .setServerSigner(ImpersonatedSigner.create(Configuration.SERVER_TOKEN_ACCOUNT))
-            .setConsumerSigner(ImpersonatedSigner.create(Configuration.CONSUMER_TOKEN_ACCOUNT))
-            .setDriverSigner(ImpersonatedSigner.create(Configuration.DRIVER_TOKEN_ACCOUNT))
+            .setServerSigner(ImpersonatedSigner.create(OdrdConfiguration.SERVER_TOKEN_ACCOUNT))
+            .setConsumerSigner(ImpersonatedSigner.create(OdrdConfiguration.CONSUMER_TOKEN_ACCOUNT))
+            .setDriverSigner(ImpersonatedSigner.create(OdrdConfiguration.DRIVER_TOKEN_ACCOUNT))
             .setTokenFactory(
                 new FleetEngineTokenFactory(
                     FleetEngineTokenFactorySettings.builder()
-                        .setAudience(Configuration.FLEET_ENGINE_AUDIENCE)
+                        .setAudience(OdrdConfiguration.FLEET_ENGINE_AUDIENCE)
                         .build()))
             .build();
 
     SampleScriptConfiguration configuration =
         SampleScriptConfiguration.builder()
-            .setFleetEngineAddress(Configuration.FLEET_ENGINE_ADDRESS)
-            .setProviderId(Configuration.PROVIDER_ID)
+            .setFleetEngineAddress(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
+            .setProviderId(OdrdConfiguration.PROVIDER_ID)
             .setMinter(minter)
             .build();
 
@@ -72,5 +72,5 @@ final class ValidateRoles {
     }
   }
 
-  private ValidateRoles() {}
+  private ValidateOdrdRoles() {}
 }

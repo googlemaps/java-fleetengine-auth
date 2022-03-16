@@ -17,7 +17,6 @@ package com.google.fleetengine.auth.sample.validation;
 import google.maps.fleetengine.v1.CreateTripRequest;
 import google.maps.fleetengine.v1.GetTripRequest;
 import google.maps.fleetengine.v1.Trip;
-import google.maps.fleetengine.v1.TripServiceClient;
 import google.maps.fleetengine.v1.UpdateTripRequest;
 
 /**
@@ -26,12 +25,12 @@ import google.maps.fleetengine.v1.UpdateTripRequest;
  */
 public interface TripStub {
 
-  /** see: {@link TripServiceClient#createTrip(CreateTripRequest)} */
+  /** see: {@link google.maps.fleetengine.v1.TripServiceClient#createTrip(CreateTripRequest)} */
   Trip createTrip(CreateTripRequest createTripRequest);
 
-  /** see: {@link TripServiceClient#getTrip(GetTripRequest)} */
+  /** see: {@link google.maps.fleetengine.v1.TripServiceClient#getTrip(GetTripRequest)} */
   Trip getTrip(GetTripRequest getTripRequest);
 
-  /** see: {@link TripServiceClient#updateTrip(UpdateTripRequest)} */
+  /** see: {@link google.maps.fleetengine.v1.TripServiceClient#updateTrip(UpdateTripRequest)} */
   Trip updateTrip(UpdateTripRequest updateTripRequest);
 }

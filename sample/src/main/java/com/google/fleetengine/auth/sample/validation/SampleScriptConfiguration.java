@@ -30,9 +30,8 @@ public abstract class SampleScriptConfiguration {
   public abstract AuthTokenMinter getMinter();
 
   /** Create SampleScriptConfiguration builder */
-  public static SampleScriptConfiguration.Builder builder() {
-    return new com.google.fleetengine.auth.sample.validation.AutoValue_SampleScriptConfiguration
-        .Builder();
+  public static Builder builder() {
+    return new AutoValue_SampleScriptConfiguration.Builder();
   }
 
   /** SampleScriptConfiguration builder */

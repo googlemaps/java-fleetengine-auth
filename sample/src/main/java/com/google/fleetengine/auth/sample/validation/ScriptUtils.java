@@ -35,4 +35,16 @@ final class ScriptUtils {
   public static String generateRandomTripId() {
     return String.format("trip-%s", UUID.randomUUID());
   }
+
+  public static String generateRandomTaskId() {
+    return String.format("task-%s", UUID.randomUUID());
+  }
+
+  public static String generateRandomDeliveryVehicleId() {
+    return String.format("delivery-vehicle-%s", UUID.randomUUID());
+  }
+
+  public static String generateRandomTrackingId() {
+    return String.format("tracking-%s", UUID.randomUUID());
+  }
 }

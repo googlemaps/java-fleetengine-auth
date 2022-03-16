@@ -29,4 +29,9 @@ public interface CommandsFactory {
   VehicleCommands createVehicleCommands(
       String fleetEngineAddress, String providerId, FleetEngineTokenProvider tokenProvider)
       throws IOException;
+
+  /** Creates delivery task command class. */
+  DeliveryServiceCommands createDeliveryServiceCommands(
+      String fleetEngineAddress, String providerId, FleetEngineTokenProvider tokenProvider)
+      throws IOException;
 }

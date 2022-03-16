@@ -20,22 +20,30 @@ import google.maps.fleetengine.v1.SearchVehiclesRequest;
 import google.maps.fleetengine.v1.SearchVehiclesResponse;
 import google.maps.fleetengine.v1.UpdateVehicleRequest;
 import google.maps.fleetengine.v1.Vehicle;
-import google.maps.fleetengine.v1.VehicleServiceClient;
 
 /**
  * Wraps {@link google.maps.fleetengine.v1.VehicleServiceClient} for
  * testing purposes.
  */
 public interface VehicleStub {
-  /** see: {@link VehicleServiceClient#createVehicle(CreateVehicleRequest)} */
+  /**
+   * see: {@link
+   * google.maps.fleetengine.v1.VehicleServiceClient#createVehicle(CreateVehicleRequest)}
+   */
   Vehicle createVehicle(CreateVehicleRequest request);
 
-  /** see: {@link VehicleServiceClient#getVehicle(GetVehicleRequest)} */
+  /** see: {@link google.maps.fleetengine.v1.VehicleServiceClient#getVehicle(GetVehicleRequest)} */
   Vehicle getVehicle(GetVehicleRequest request);
 
-  /** see: {@link VehicleServiceClient#updateVehicle(UpdateVehicleRequest)} */
+  /**
+   * see: {@link
+   * google.maps.fleetengine.v1.VehicleServiceClient#updateVehicle(UpdateVehicleRequest)}
+   */
   Vehicle updateVehicle(UpdateVehicleRequest request);
 
-  /** see: {@link VehicleServiceClient#searchVehicles(SearchVehiclesRequest)} */
+  /**
+   * see: {@link
+   * google.maps.fleetengine.v1.VehicleServiceClient#searchVehicles(SearchVehiclesRequest)}
+   */
   SearchVehiclesResponse searchVehicles(SearchVehiclesRequest request);
 }
