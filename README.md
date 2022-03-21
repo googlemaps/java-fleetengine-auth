@@ -2,11 +2,16 @@
 
 Fleet Engine use JSON Web Tokens (JWTs) to both authenticate and authorize
 incoming requests. This process has several aspects to it and is non-trivial to
-set up.
+set up. This Fleet Engine Auth Library provides a set of tools to simplify the
+setup process.
 
-The Fleet Engine Auth Library provides a set of tools to simplify the setup
-process. The functionality is best thought of in two buckets, Fleet Engine Roles
-and JWT Signers.
+This library provides the following benefits:
+
+* Simplifies the process of creating Fleet Engine Tokens.
+* Provides token signing mechanisms other than using credential files (such as
+  impersonating a service account.)
+* Attaches signed tokens to outbound requests made from either a gRPC stub or
+  GAPIC client.
 
 Sample scripts are provided in the sample directory. To learn more, see:
 [sample/README.md](sample/README.md).
