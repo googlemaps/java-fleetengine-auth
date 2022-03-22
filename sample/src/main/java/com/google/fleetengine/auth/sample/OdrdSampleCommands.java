@@ -42,6 +42,8 @@ final class OdrdSampleCommands {
 
   private OdrdSampleCommands() {}
 
+  private static FleetEngineTokenProvider minter;
+
   static void createVehicle() throws SignerInitializationException, IOException {
     String randomVehicleId = String.format("vehicle-%s", UUID.randomUUID());
 
@@ -85,7 +87,7 @@ final class OdrdSampleCommands {
 
     VehicleServiceSettings settings =
         new FleetEngineClientSettingsModifier<
-                VehicleServiceSettings, VehicleServiceSettings.Builder>(createMinter())
+                VehicleServiceSettings, VehicleServiceSettings.Builder>(getMinter())
             .updateBuilder(VehicleServiceSettings.newBuilder())
             .setEndpoint(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
@@ -128,14 +130,16 @@ final class OdrdSampleCommands {
 
     TripServiceSettings settings =
         new FleetEngineClientSettingsModifier<TripServiceSettings, TripServiceSettings.Builder>(
-                createMinter())
+                getMinter())
             .updateBuilder(TripServiceSettings.newBuilder())
             .setEndpoint(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
-    TripServiceClient client = TripServiceClient.create(settings);
-    client.createTrip(request);
+    try (TripServiceClient client = TripServiceClient.create(settings)) {
+      client.createTrip(request);
+    }
     System.out.printf("Trip with id '%s' created\n", randomTripId);
+
   }
 
   static void listVehicles() throws SignerInitializationException, IOException {
@@ -147,13 +151,15 @@ final class OdrdSampleCommands {
 
     VehicleServiceSettings settings =
         new FleetEngineClientSettingsModifier<
-                VehicleServiceSettings, VehicleServiceSettings.Builder>(createMinter())
+                VehicleServiceSettings, VehicleServiceSettings.Builder>(getMinter())
             .updateBuilder(VehicleServiceSettings.newBuilder())
             .setEndpoint(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
-    VehicleServiceClient client = VehicleServiceClient.create(settings);
-    ListVehiclesPagedResponse response = client.listVehicles(request);
+    ListVehiclesPagedResponse response;
+    try (VehicleServiceClient client = VehicleServiceClient.create(settings)) {
+      response = client.listVehicles(request);
+    }
 
     for (Vehicle vehicle : response.getPage().getValues()) {
       System.out.printf("Vehicle Name: %s\n", vehicle.getName());
@@ -188,13 +194,15 @@ final class OdrdSampleCommands {
 
     VehicleServiceSettings settings =
         new FleetEngineClientSettingsModifier<
-                VehicleServiceSettings, VehicleServiceSettings.Builder>(createMinter())
+                VehicleServiceSettings, VehicleServiceSettings.Builder>(getMinter())
             .updateBuilder(VehicleServiceSettings.newBuilder())
             .setEndpoint(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
-    VehicleServiceClient client = VehicleServiceClient.create(settings);
-    SearchVehiclesResponse response = client.searchVehicles(request);
+    SearchVehiclesResponse response;
+    try (VehicleServiceClient client = VehicleServiceClient.create(settings)) {
+      response = client.searchVehicles(request);
+    }
     for (VehicleMatch vehicleMatch : response.getMatchesList()) {
       Vehicle vehicle = vehicleMatch.getVehicle();
       System.out.printf("Vehicle Name: %s\n", vehicle.getName());
@@ -216,13 +224,15 @@ final class OdrdSampleCommands {
 
     TripServiceSettings settings =
         new FleetEngineClientSettingsModifier<TripServiceSettings, TripServiceSettings.Builder>(
-                createMinter())
+                getMinter())
             .updateBuilder(TripServiceSettings.newBuilder())
             .setEndpoint(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
-    TripServiceClient client = TripServiceClient.create(settings);
-    SearchTripsPagedResponse response = client.searchTrips(request);
+    SearchTripsPagedResponse response;
+    try (TripServiceClient client = TripServiceClient.create(settings)) {
+      response = client.searchTrips(request);
+    }
 
     for (Trip trip : response.getPage().getValues()) {
       System.out.printf("Trip Name: %s\n", trip.getName());
@@ -232,20 +242,24 @@ final class OdrdSampleCommands {
     }
   }
 
-  private static FleetEngineTokenProvider createMinter() throws SignerInitializationException {
-    return AuthTokenMinter.builder()
-        // Only the account for the server signer is needed in this example
-        .setServerSigner(ImpersonatedSigner.create(OdrdConfiguration.SERVER_TOKEN_ACCOUNT))
+  private static FleetEngineTokenProvider getMinter() throws SignerInitializationException {
+    // Only create one minter across all calls to Fleet Engine
+    if (minter == null) {
+      minter = AuthTokenMinter.builder()
+          // Only the account for the server signer is needed in this example
+          .setServerSigner(ImpersonatedSigner.create(OdrdConfiguration.SERVER_TOKEN_ACCOUNT))
 
-        // When the audience is not set, it defaults to https://fleetengine.googleapis.com/.
-        // This is fine in the vast majority of cases.
-        .setTokenFactory(
-            new FleetEngineTokenFactory(
-                FleetEngineTokenFactorySettings.builder()
-                    .setAudience(OdrdConfiguration.FLEET_ENGINE_AUDIENCE)
-                    .build()))
+          // When the audience is not set, it defaults to https://fleetengine.googleapis.com/.
+          // This is fine in the vast majority of cases.
+          .setTokenFactory(
+              new FleetEngineTokenFactory(
+                  FleetEngineTokenFactorySettings.builder()
+                      .setAudience(OdrdConfiguration.FLEET_ENGINE_AUDIENCE)
+                      .build()))
 
-        // Build the minter
-        .build();
+          // Build the minter
+          .build();
+    }
+    return minter;
   }
 }

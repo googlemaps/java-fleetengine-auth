@@ -30,6 +30,8 @@ final class LmfsSampleCommands {
 
   private LmfsSampleCommands() {}
 
+  private static FleetEngineTokenProvider minter;
+
   static void createDeliveryVehicle() throws SignerInitializationException, IOException {
     String randomDeliveryVehicleId = String.format("delivery-vehicle-%s", UUID.randomUUID());
 
@@ -66,14 +68,15 @@ final class LmfsSampleCommands {
 
     DeliveryServiceSettings settings =
         new FleetEngineClientSettingsModifier<
-                DeliveryServiceSettings, DeliveryServiceSettings.Builder>(createMinter())
+                DeliveryServiceSettings, DeliveryServiceSettings.Builder>(getMinter())
             .updateBuilder(DeliveryServiceSettings.newBuilder())
             .setEndpoint(LmfsConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
-    DeliveryServiceClient client = DeliveryServiceClient.create(settings);
-    client.createDeliveryVehicle(createDeliveryVehicleRequest);
-    System.out.printf("Delivery Vehicle with id '%s' created\n", randomDeliveryVehicleId);
+    try (DeliveryServiceClient client = DeliveryServiceClient.create(settings)) {
+      client.createDeliveryVehicle(createDeliveryVehicleRequest);
+      System.out.printf("Delivery Vehicle with id '%s' created\n", randomDeliveryVehicleId);
+    }
   }
 
   static void createTask() throws SignerInitializationException, IOException {
@@ -119,14 +122,15 @@ final class LmfsSampleCommands {
 
     DeliveryServiceSettings settings =
         new FleetEngineClientSettingsModifier<
-                DeliveryServiceSettings, DeliveryServiceSettings.Builder>(createMinter())
+                DeliveryServiceSettings, DeliveryServiceSettings.Builder>(getMinter())
             .updateBuilder(DeliveryServiceSettings.newBuilder())
             .setEndpoint(LmfsConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
-    DeliveryServiceClient client = DeliveryServiceClient.create(settings);
-    client.createTask(createTaskRequest);
-    System.out.printf("Task with id '%s' created\n", randomTaskId);
+    try (DeliveryServiceClient client = DeliveryServiceClient.create(settings)) {
+      client.createTask(createTaskRequest);
+      System.out.printf("Task with id '%s' created\n", randomTaskId);
+    }
   }
 
   static void listDeliveryVehicles() throws SignerInitializationException, IOException {
@@ -138,13 +142,15 @@ final class LmfsSampleCommands {
 
     DeliveryServiceSettings settings =
         new FleetEngineClientSettingsModifier<
-                DeliveryServiceSettings, DeliveryServiceSettings.Builder>(createMinter())
+                DeliveryServiceSettings, DeliveryServiceSettings.Builder>(getMinter())
             .updateBuilder(DeliveryServiceSettings.newBuilder())
             .setEndpoint(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
-    DeliveryServiceClient client = DeliveryServiceClient.create(settings);
-    ListDeliveryVehiclesPagedResponse response = client.listDeliveryVehicles(request);
+    ListDeliveryVehiclesPagedResponse response;
+    try (DeliveryServiceClient client = DeliveryServiceClient.create(settings)) {
+      response = client.listDeliveryVehicles(request);
+    }
 
     for (DeliveryVehicle vehicle : response.getPage().getValues()) {
       System.out.printf("Delivery Vehicle Name: %s\n", vehicle.getName());
@@ -153,22 +159,25 @@ final class LmfsSampleCommands {
     }
   }
 
-  private static FleetEngineTokenProvider createMinter() throws SignerInitializationException {
-    // Create minter with delivery builder in order to produce lmfs server tokens by default
-    return AuthTokenMinter.deliveryBuilder()
-        // Only the account for the server signer is needed in this example
-        .setDeliveryServerSigner(
-            ImpersonatedSigner.create(LmfsConfiguration.DELIVERY_SERVER_TOKEN_ACCOUNT))
+  private static FleetEngineTokenProvider getMinter() throws SignerInitializationException {
+    if (minter == null) {
+      // Create minter with delivery builder in order to produce lmfs server tokens by default
+      minter = AuthTokenMinter.deliveryBuilder()
+          // Only the account for the server signer is needed in this example
+          .setDeliveryServerSigner(
+              ImpersonatedSigner.create(LmfsConfiguration.DELIVERY_SERVER_TOKEN_ACCOUNT))
 
-        // When the audience is not set, it defaults to https://fleetengine.googleapis.com/.
-        // This is fine in the vast majority of cases.
-        .setTokenFactory(
-            new FleetEngineTokenFactory(
-                FleetEngineTokenFactorySettings.builder()
-                    .setAudience(LmfsConfiguration.FLEET_ENGINE_AUDIENCE)
-                    .build()))
+          // When the audience is not set, it defaults to https://fleetengine.googleapis.com/.
+          // This is fine in the vast majority of cases.
+          .setTokenFactory(
+              new FleetEngineTokenFactory(
+                  FleetEngineTokenFactorySettings.builder()
+                      .setAudience(LmfsConfiguration.FLEET_ENGINE_AUDIENCE)
+                      .build()))
 
-        // Build the minter
-        .build();
+          // Build the minter
+          .build();
+    }
+    return minter;
   }
 }

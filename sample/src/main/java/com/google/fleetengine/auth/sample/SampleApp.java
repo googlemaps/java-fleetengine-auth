@@ -20,12 +20,16 @@ import java.util.Scanner;
 
 /** Sample app for auth library. */
 public final class SampleApp {
+  private static final String ANSI_GREEN = "\u001B[32m";
+  private static final String ANSI_RED = "\u001B[31m";
+  private static final String ANSI_RESET = "\u001B[0m";
 
   private SampleApp() {}
 
   /** Entry point. */
   public static void main(String[] args) throws Throwable {
-    System.out.println(
+    while (true) {
+      System.out.println(
         "\n\n\n=== Choose example: ===\n"
             + "0. Validate Configured ODRD Roles\n"
             + "1. Create Vehicle\n"
@@ -37,43 +41,67 @@ public final class SampleApp {
             + "10. Validate Configured LMFS Roles\n"
             + "11. Create Delivery Vehicle\n"
             + "12. Create Task\n"
-            + "13. List Delivery Vehicles\n");
-    Scanner scanner = new Scanner(System.in, UTF_8.name());
-    int choice = scanner.nextInt();
-
-    switch (choice) {
-      case 0:
-        ValidateOdrdRoles.run();
-        break;
-      case 1:
-        OdrdSampleCommands.createVehicle();
-        break;
-      case 2:
-        OdrdSampleCommands.createTrip();
-        break;
-      case 3:
-        OdrdSampleCommands.listVehicles();
-        break;
-      case 4:
-        OdrdSampleCommands.searchVehicles();
-        break;
-      case 5:
-        OdrdSampleCommands.searchTrips();
-        break;
-      case 10:
-        ValidateLmfsRoles.run();
-        break;
-      case 11:
-        LmfsSampleCommands.createDeliveryVehicle();
-        break;
-      case 12:
-        LmfsSampleCommands.createTask();
-        break;
-      case 13:
-        LmfsSampleCommands.listDeliveryVehicles();
-        break;
-      default:
-        throw new IllegalArgumentException("Invalid choice provided.");
+            + "13. List Delivery Vehicles\n"
+            + "----------------------------------------\n"
+            + "100. Run all commands\n");
+      Scanner scanner = new Scanner(System.in, UTF_8.name());
+      int choice = scanner.nextInt();
+      switch (choice) {
+        case 0:
+          ValidateOdrdRoles.run();
+          break;
+        case 1:
+          OdrdSampleCommands.createVehicle();
+          break;
+        case 2:
+          OdrdSampleCommands.createTrip();
+          break;
+        case 3:
+          OdrdSampleCommands.listVehicles();
+          break;
+        case 4:
+          OdrdSampleCommands.searchVehicles();
+          break;
+        case 5:
+          OdrdSampleCommands.searchTrips();
+          break;
+        case 10:
+          ValidateLmfsRoles.run();
+          break;
+        case 11:
+          LmfsSampleCommands.createDeliveryVehicle();
+          break;
+        case 12:
+          LmfsSampleCommands.createTask();
+          break;
+        case 13:
+          LmfsSampleCommands.listDeliveryVehicles();
+          break;
+        case 100:
+          runAll();
+          break;
+        default:
+          throw new IllegalArgumentException("Invalid choice provided.");
+      }
     }
+  }
+
+  private static void runAll() throws Throwable {
+    try {
+      ValidateOdrdRoles.run();
+      OdrdSampleCommands.createVehicle();
+      OdrdSampleCommands.createTrip();
+      OdrdSampleCommands.listVehicles();
+      OdrdSampleCommands.searchVehicles();
+      OdrdSampleCommands.searchTrips();
+      ValidateLmfsRoles.run();
+      LmfsSampleCommands.createDeliveryVehicle();
+      LmfsSampleCommands.createTask();
+      LmfsSampleCommands.listDeliveryVehicles();
+    } catch (Exception ex) {
+      System.out.printf("%sRUN ALL FAILED, EXITING...%s\n", ANSI_RED, ANSI_RESET);
+      throw ex;
+    }
+    System.out.printf("%sRUN ALL SUCCEEDED%s\n", ANSI_GREEN, ANSI_RESET);
   }
 }
