@@ -10,8 +10,8 @@ This library provides the following benefits:
 * Simplifies the process of creating Fleet Engine Tokens.
 * Provides token signing mechanisms other than using credential files (such as
   impersonating a service account.)
-* Attaches signed tokens to outbound requests made from either a gRPC stub or
-  GAPIC client.
+* Attaches signed tokens to outbound requests made from either a GAPIC client or
+  gRPC stub.
 
 Sample scripts are provided in the sample directory. To learn more, see:
 [sample/README.md](sample/README.md).
@@ -176,8 +176,12 @@ Authorization: Bearer xxxxx.yyyyy.zzzzz
 
 Alongside token minting functionality, the library also provides a set of
 components that work with Fleet Engine protobuf generated classes. There are two
-sets of generated classes that make requests to the fleet engine server, gRPC
-stubs and GAPIC clients.
+sets of generated classes that make requests to the fleet engine server, GAPIC
+clients and gRPC stubs. Using GAPIC clients over gRPC stubs is recommended.
+
+To learn more about GAPIC clients, see:
+https://developers.google.com/maps/documentation/transportation-logistics/on-demand-rides-deliveries-solution/trip-order-progress/fleet-engine/gapic_client
+https://developers.google.com/maps/documentation/transportation-logistics/last-mile-fleet-solution/shipment-tracking/fleet-engine/gapic_client
 
 Both mechanisms require a FleetEngineTokenProvider which is an interface that
 has just one method:
@@ -196,35 +200,50 @@ For convenience, `com.google.fleetengine.auth.AuthTokenMinter` implements
 `FleetEngineTokenProvider` and returns server tokens when called through
 `FleetEngineTokenProvider#getSignedToken`. Any type of token can be returned.
 
-### Generated gRPC Stubs
+### Sharing Minters
 
-gRPC stubs are initialized from `io.grpc.ManagedChannel`s and allows
-functionality to be injected using interceptors:
+By default, `AuthTokenMinter` caches signed tokens with a five-minute
+expiration. In order to take advantage of its internal cache, it must be shared
+across uses. Having one singleton instance is recommended.
 
-```java
-FleetEngineTokenProvider fleetEngineTokenProvider = getTokenProvider();
-
-ManagedChannel channel = ManagedChannelBuilder.forTarget(fleetEngineAddress)
-  .intercept(FleetEngineAuthClientInterceptor.create(fleetEngineTokenProvider))
-  .build();
-
-VehicleServiceBlockingStub stub = VehicleServiceGrpc.newBlockingStub(channel);
-```
-
-### Generated GAPIC Clients
+### Integrating with GAPIC Clients
 
 GAPIC clients are configured using `com.google.api.gax.rpc.ClientSettings` which
-are built with using a builder. The
+are created with a builder. The
 `com.google.fleetengine.auth.client.FleetEngineClientSettingsModifier` updates
 `ClientSettings.Builder`s such that outbound requests made from the
 corresponding client have valid authorization headers.
 
 ```java
 FleetEngineClientSettingsModifier<VehicleServiceSettings, VehicleServiceSettings.Builder> modifier =
-  new FleetEngineClientSettingsModifier<>(tokenProvider);
+  //In most cases, tokenProvider will be a singleton instance of AuthTokenMinter
+  new FleetEngineClientSettingsModifier<>(tokenProvider); 
 
 VehicleServiceSettings.Builder builder = VehicleServiceSettings.newBuilder();
 VehicleServiceSettings settings = modifier.updateBuilder(builder).build();
 
-VehicleServiceClient client = VehicleServiceClient.create(settings);
+try (VehicleServiceClient client = VehicleServiceClient.create(settings)) {
+  // make request
+}
+```
+
+For more information around the Fleet Engine GAPIC clients, see:
+https://developers.google.com/maps/documentation/transportation-logistics/on-demand-rides-deliveries-solution/trip-order-progress/fleet-engine/gapic_client
+https://developers.google.com/maps/documentation/transportation-logistics/last-mile-fleet-solution/shipment-tracking/fleet-engine/gapic_client
+### Generated gRPC Stubs
+
+gRPC stubs are initialized from `io.grpc.ManagedChannel`s and allows
+functionality to be injected using interceptors.
+
+Using GAPIC clients in lieu of gRPC stubs is recommended.
+
+```java
+FleetEngineTokenProvider fleetEngineTokenProvider = getTokenProvider();
+
+ManagedChannel channel = ManagedChannelBuilder.forTarget(fleetEngineAddress)
+  //In most cases, tokenProvider will be a singleton instance of AuthTokenMinter
+  .intercept(FleetEngineAuthClientInterceptor.create(fleetEngineTokenProvider))
+  .build();
+
+VehicleServiceBlockingStub stub = VehicleServiceGrpc.newBlockingStub(channel);
 ```
