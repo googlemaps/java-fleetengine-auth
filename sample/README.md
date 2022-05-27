@@ -26,13 +26,13 @@ NOTE: Whatever account the application runs under, MUST have the
 `iam.serviceAccounts.signBlob` permission. This is typically acquired through
 the `Service Account Token Creator` role.
 
-The service accounts with other configuration options are configured here:
-`src/main/java/com/google/fleetengine/auth/sample/Configuration.java`
+The service accounts with other configuration options are configured in
+`src/main/java/com/google/fleetengine/auth/sample/LmfsConfiguration.java` and
+`src/main/java/com/google/fleetengine/auth/sample/OdrdConfiguration.java`
 
 ## Running
 
-Once `src/main/java/com/google/fleetengine/auth/sample/Configuration.java` is
-setup, simply run:
+Once configured, simply run:
 
 ```
 ./gradlew run
