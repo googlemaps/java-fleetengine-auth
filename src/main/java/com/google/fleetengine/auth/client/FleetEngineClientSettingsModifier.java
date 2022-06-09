@@ -15,7 +15,9 @@
 package com.google.fleetengine.auth.client;
 
 import com.google.api.gax.core.FixedCredentialsProvider;
+import com.google.api.gax.grpc.InstantiatingGrpcChannelProvider;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.common.collect.Lists;
 
 /**
  * Updates a fleet engine {@link ClientSettings.Builder} so that a valid Fleet Engine JWT is
@@ -49,9 +51,22 @@ public class FleetEngineClientSettingsModifier<
   }
 
   public B updateBuilder(B builder) {
+    if (!(builder.getTransportChannelProvider() instanceof InstantiatingGrpcChannelProvider)) {
+      throw new IllegalArgumentException(
+          "Transport channel provider must be of type InstantiatingGrpcChannelProvider");
+    }
+
+    // Reuse existing channel provider
+    InstantiatingGrpcChannelProvider provider =
+        (InstantiatingGrpcChannelProvider) builder.getTransportChannelProvider();
     return builder
         .setCredentialsProvider(FixedCredentialsProvider.create(null))
-        .setHeaderProvider(
-            FleetEngineAuthClientHeaderProvider.create(tokenProvider, builder.getHeaderProvider()));
+        .setTransportChannelProvider(
+            provider.toBuilder()
+                .setInterceptorProvider(
+                    () ->
+                        Lists.newArrayList(
+                            FleetEngineAuthClientInterceptor.create(this.tokenProvider)))
+                .build());
   }
 }

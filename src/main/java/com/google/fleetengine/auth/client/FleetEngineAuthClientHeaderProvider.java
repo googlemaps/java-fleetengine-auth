@@ -31,6 +31,7 @@ import java.util.Map;
  * <p>Works with generated GAPIC classes. For correct usage, see {@link
  * FleetEngineClientSettingsModifier}.
  */
+@Deprecated
 public class FleetEngineAuthClientHeaderProvider implements HeaderProvider {
   private static final String AUTHORIZATION_HEADER_NAME = "authorization";
 

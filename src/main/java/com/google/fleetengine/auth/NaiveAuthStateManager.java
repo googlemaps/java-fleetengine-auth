@@ -66,16 +66,32 @@ public class NaiveAuthStateManager implements FleetEngineAuthTokenStateManager {
       return signer.sign(token);
     }
 
+    FleetEngineToken cachedToken = getNonExpiredCachedToken(token);
+    if (cachedToken != null) {
+      return cachedToken;
+    }
+
+    synchronized (cachedWildcardTokens) {
+      // The token may have been refreshed by another thread.
+      cachedToken = getNonExpiredCachedToken(token);
+      if (cachedToken != null) {
+        return cachedToken;
+      }
+
+      // The cached token is either null or expired, in either case, sign the token and cache it.
+      FleetEngineToken signedToken = signer.sign(token);
+      cachedWildcardTokens.put(signedToken.tokenType(), signedToken);
+      return signedToken;
+    }
+  }
+
+  private FleetEngineToken getNonExpiredCachedToken(FleetEngineToken token) {
     FleetEngineToken cachedToken = cachedWildcardTokens.get(token.tokenType());
     if (cachedToken != null
         && !tokenExpiryValidator.isTokenExpired(cachedToken, EXPIRATION_WINDOW_DURATION)) {
       // Cached token exists and is not expired.
       return cachedToken;
     }
-
-    // The cached token is either null or expired, in either case, sign the token and cache it.
-    FleetEngineToken signedToken = signer.sign(token);
-    cachedWildcardTokens.put(signedToken.tokenType(), signedToken);
-    return signedToken;
+    return null;
   }
 }
