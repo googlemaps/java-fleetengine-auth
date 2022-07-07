@@ -137,14 +137,14 @@ final class LmfsSampleCommands {
     ListDeliveryVehiclesRequest request =
         ListDeliveryVehiclesRequest.newBuilder()
             // Set the parent to the format providers/{providerId}
-            .setParent(String.format("providers/%s", OdrdConfiguration.PROVIDER_ID))
+            .setParent(String.format("providers/%s", LmfsConfiguration.PROVIDER_ID))
             .build();
 
     DeliveryServiceSettings settings =
         new FleetEngineClientSettingsModifier<
                 DeliveryServiceSettings, DeliveryServiceSettings.Builder>(getMinter())
             .updateBuilder(DeliveryServiceSettings.newBuilder())
-            .setEndpoint(OdrdConfiguration.FLEET_ENGINE_ADDRESS)
+            .setEndpoint(LmfsConfiguration.FLEET_ENGINE_ADDRESS)
             .build();
 
     ListDeliveryVehiclesPagedResponse response;
