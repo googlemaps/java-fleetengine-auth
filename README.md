@@ -238,11 +238,20 @@ functionality to be injected using interceptors.
 Using GAPIC clients in lieu of gRPC stubs is recommended.
 
 ```java
+// In most cases, tokenProvider will be a singleton instance of AuthTokenMinter.
 FleetEngineTokenProvider fleetEngineTokenProvider = getTokenProvider();
 
+// Cloud resource prefix allows optimised request handling.
+Metadata headers = new Metadata();
+headers.put(
+          Metadata.Key.of(
+              "google-cloud-resource-prefix", Metadata.ASCII_STRING_MARSHALLER),
+          String.format("providers/%s", PROVIDER_ID));
+
 ManagedChannel channel = ManagedChannelBuilder.forTarget(fleetEngineAddress)
-  //In most cases, tokenProvider will be a singleton instance of AuthTokenMinter
-  .intercept(FleetEngineAuthClientInterceptor.create(fleetEngineTokenProvider))
+  .intercept(
+      FleetEngineAuthClientInterceptor.create(fleetEngineTokenProvider),
+      MetadataUtils.newAttachHeadersInterceptor(headers))
   .build();
 
 VehicleServiceBlockingStub stub = VehicleServiceGrpc.newBlockingStub(channel);
