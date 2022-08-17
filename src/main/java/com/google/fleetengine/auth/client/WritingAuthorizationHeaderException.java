@@ -15,6 +15,7 @@
 package com.google.fleetengine.auth.client;
 
 /** Signals that an exception occurred while writing the authorization header. */
+@Deprecated
 public class WritingAuthorizationHeaderException extends RuntimeException {
 
   /**

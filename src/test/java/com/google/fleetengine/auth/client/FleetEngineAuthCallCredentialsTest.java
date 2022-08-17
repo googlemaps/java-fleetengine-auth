@@ -15,39 +15,41 @@
 package com.google.fleetengine.auth.client;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.google.fleetengine.auth.EmptyFleetEngineTokenClaims;
 import com.google.fleetengine.auth.token.FleetEngineToken;
 import com.google.fleetengine.auth.token.FleetEngineTokenType;
 import com.google.fleetengine.auth.token.factory.signer.SigningTokenException;
+import io.grpc.CallCredentials;
 import io.grpc.Metadata;
 import java.time.Instant;
 import java.util.Date;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 @RunWith(JUnit4.class)
-public class FleetEngineAuthClientInterceptorTest {
+public class FleetEngineAuthCallCredentialsTest {
 
   private static final Metadata.Key<String> AUTHORIZATION_HEADER =
       Metadata.Key.of("authorization", Metadata.ASCII_STRING_MARSHALLER);
   private static final String FAKE_JWT = "fake.jwt.token";
   private static final String FAKE_AUTHORIZATION_HEADER = String.format("Bearer %s", FAKE_JWT);
-  private Metadata headers = new Metadata();
   @Mock private FleetEngineTokenProvider tokenProvider;
+  @Mock private CallCredentials.MetadataApplier applier;
   private FleetEngineToken fleetEngineToken;
 
   @Before
   public void setUp() {
     MockitoAnnotations.openMocks(this);
-    headers = new Metadata();
 
     fleetEngineToken =
         FleetEngineToken.builder()
@@ -59,27 +61,28 @@ public class FleetEngineAuthClientInterceptorTest {
   }
 
   @Test
-  public void addAuthorizationHeader_addsHeaderCorrectly() throws SigningTokenException {
+  public void applyRequestMetadata_addsHeaderCorrectly() throws SigningTokenException {
     fleetEngineToken = fleetEngineToken.toBuilder().setJwt(FAKE_JWT).build();
     when(tokenProvider.getSignedToken()).thenReturn(fleetEngineToken);
-    FleetEngineAuthClientInterceptor clientInterceptor =
-        FleetEngineAuthClientInterceptor.create(this.tokenProvider);
+    FleetEngineAuthCallCredentials callCredentials =
+        FleetEngineAuthCallCredentials.create(this.tokenProvider);
 
-    clientInterceptor.addAuthorizationHeader(headers);
+    callCredentials.applyRequestMetadata(null, null, applier);
 
-    assertThat(headers.get(AUTHORIZATION_HEADER)).isEqualTo(FAKE_AUTHORIZATION_HEADER);
+    ArgumentCaptor<Metadata> metadataCaptor = ArgumentCaptor.forClass(Metadata.class);
+    verify(applier).apply(metadataCaptor.capture());
+    assertThat(metadataCaptor.getValue().get(AUTHORIZATION_HEADER))
+        .isEqualTo(FAKE_AUTHORIZATION_HEADER);
   }
 
   @Test
-  public void addAuthorizationHeader_onException_throwsException() throws SigningTokenException {
+  public void applyRequestMetadata_onException_callsDail() throws SigningTokenException {
     fleetEngineToken = fleetEngineToken.toBuilder().setJwt(FAKE_JWT).build();
     when(tokenProvider.getSignedToken()).thenThrow(mock(SigningTokenException.class));
+    FleetEngineAuthCallCredentials callCredentials =
+        FleetEngineAuthCallCredentials.create(this.tokenProvider);
 
-    FleetEngineAuthClientInterceptor clientInterceptor =
-        FleetEngineAuthClientInterceptor.create(this.tokenProvider);
-
-    Assert.assertThrows(
-        WritingAuthorizationHeaderException.class,
-        () -> clientInterceptor.addAuthorizationHeader(headers));
+    callCredentials.applyRequestMetadata(null, null, applier);
+    verify(applier).fail(any());
   }
 }

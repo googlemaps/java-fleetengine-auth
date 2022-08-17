@@ -14,19 +14,15 @@
 
 package com.google.fleetengine.auth.client;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.google.fleetengine.auth.token.FleetEngineToken;
-import com.google.fleetengine.auth.token.factory.signer.SigningTokenException;
 import io.grpc.CallOptions;
 import io.grpc.Channel;
 import io.grpc.ClientCall;
 import io.grpc.ClientInterceptor;
-import io.grpc.ForwardingClientCall;
-import io.grpc.Metadata;
 import io.grpc.MethodDescriptor;
 
 /**
- * Intercepts an outgoing gRPC request and attaches a valid Fleet Engine JWT to the header.
+ * Intercepts an outgoing gRPC request and attaches a valid Fleet Engine JWT to the header by using
+ * {@link FleetEngineAuthCallCredentials}.
  *
  * <p>Works with generated gRPC stubby classes:
  *
@@ -37,11 +33,7 @@ import io.grpc.MethodDescriptor;
  */
 public class FleetEngineAuthClientInterceptor implements ClientInterceptor {
 
-  /** Authorization header name. */
-  private static final Metadata.Key<String> AUTHORIZATION_HEADER =
-      Metadata.Key.of("authorization", Metadata.ASCII_STRING_MARSHALLER);
-
-  private final FleetEngineTokenProvider tokenProvider;
+  private final FleetEngineAuthCallCredentials callCredentials;
 
   /**
    * Creates a gRPC client interceptor that attaches tokens from {@code tokenProvider} to outgoing
@@ -50,39 +42,22 @@ public class FleetEngineAuthClientInterceptor implements ClientInterceptor {
    * @param tokenProvider provides valid Fleet Engine JWTs for an outgoing gRPC request.
    */
   public static FleetEngineAuthClientInterceptor create(FleetEngineTokenProvider tokenProvider) {
-    return new FleetEngineAuthClientInterceptor(tokenProvider);
+    return new FleetEngineAuthClientInterceptor(
+        FleetEngineAuthCallCredentials.create(tokenProvider));
   }
 
   /** Constructor. */
-  private FleetEngineAuthClientInterceptor(FleetEngineTokenProvider tokenProvider) {
-    this.tokenProvider = tokenProvider;
+  private FleetEngineAuthClientInterceptor(FleetEngineAuthCallCredentials callCredentials) {
+    this.callCredentials = callCredentials;
   }
 
   /**
-   * Overrides {@link ClientInterceptor#interceptCall(MethodDescriptor, CallOptions, Channel)} and
-   * attaches a Fleet Engine JWT to the header of the outgoing gRPC request.
+   * Returns a new call with the {@link FleetEngineAuthCallCredentials} added to the {@code
+   * callOptions}.
    */
   @Override
   public <ReqT, RespT> ClientCall<ReqT, RespT> interceptCall(
       MethodDescriptor<ReqT, RespT> method, CallOptions callOptions, Channel next) {
-    ClientCall<ReqT, RespT> call = next.newCall(method, callOptions);
-    return new ForwardingClientCall.SimpleForwardingClientCall<ReqT, RespT>(call) {
-      @Override
-      public void start(Listener<RespT> responseListener, Metadata headers) {
-        addAuthorizationHeader(headers);
-        super.start(responseListener, headers);
-      }
-    };
-  }
-
-  /** Adds the signed base64 encode JWT to the header. */
-  @VisibleForTesting
-  void addAuthorizationHeader(Metadata headers) {
-    try {
-      FleetEngineToken token = tokenProvider.getSignedToken();
-      headers.put(AUTHORIZATION_HEADER, String.format("Bearer %s", token.jwt()));
-    } catch (SigningTokenException e) {
-      throw new WritingAuthorizationHeaderException("Exception while getting token.", e);
-    }
+    return next.newCall(method, callOptions.withCallCredentials(this.callCredentials));
   }
 }
