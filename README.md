@@ -109,7 +109,7 @@ Note: GCP Required denotes that the Signer works with applications that are
 hosted on GCP or are otherwise authenticated with GCP. To use Signers that
 require GCP, the
 "[IAM Service Account Credentials API](https://console.cloud.google.com/apis/library/iam.googleapis.com)"
-<b>MUST</b> be enabled in your GCP project the  For more information, see:
+<b>MUST</b> be enabled in your GCP project. For more information, see:
 https://cloud.google.com/docs/authentication/getting-started.
 
 ## Using the library
