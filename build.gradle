@@ -1,6 +1,5 @@
 buildscript {    // Configuration for building
     repositories {
-        jcenter()    // Bintray's repository - a fast Maven Central mirror & more
         mavenCentral()
     }
 }
@@ -28,7 +27,6 @@ repositories {   // repositories for Jar's you access in your code
         url 'https://oss.sonatype.org/content/repositories/snapshots' // SNAPSHOT repository (if needed)
     }
     mavenCentral()
-    jcenter()
 }
 
 publishing {

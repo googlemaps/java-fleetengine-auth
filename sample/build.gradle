@@ -1,6 +1,5 @@
 buildscript {    // Configuration for building
     repositories {
-        jcenter()    // Bintray's repository - a fast Maven Central mirror & more
         mavenCentral()
         flatDir {
             dirs 'libs'
@@ -18,7 +17,6 @@ repositories {   // repositories for Jar's you access in your code
         url 'https://oss.sonatype.org/content/repositories/snapshots' // SNAPSHOT repository (if needed)
     }
     mavenCentral()
-    jcenter()
     maven {
         url "artifactregistry://us-maven.pkg.dev/fleetengine-gapic/maven"
     }
