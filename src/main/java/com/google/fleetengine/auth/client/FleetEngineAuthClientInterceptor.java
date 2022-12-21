@@ -18,6 +18,8 @@ import io.grpc.CallOptions;
 import io.grpc.Channel;
 import io.grpc.ClientCall;
 import io.grpc.ClientInterceptor;
+import io.grpc.ForwardingClientCall.SimpleForwardingClientCall;
+import io.grpc.Metadata;
 import io.grpc.MethodDescriptor;
 
 /**
@@ -58,6 +60,23 @@ public class FleetEngineAuthClientInterceptor implements ClientInterceptor {
   @Override
   public <ReqT, RespT> ClientCall<ReqT, RespT> interceptCall(
       MethodDescriptor<ReqT, RespT> method, CallOptions callOptions, Channel next) {
-    return next.newCall(method, callOptions.withCallCredentials(this.callCredentials));
+    return new ApiClientHeaderAttachingClientCall<>(
+        next.newCall(method, callOptions.withCallCredentials(this.callCredentials)));
+  }
+
+  private final class ApiClientHeaderAttachingClientCall<ReqT, RespT>
+      extends SimpleForwardingClientCall<ReqT, RespT> {
+
+    private ApiClientHeaderAttachingClientCall(ClientCall<ReqT, RespT> call) {
+      super(call);
+    }
+
+    @Override
+    public void start(Listener<RespT> responseListener, Metadata headers) {
+      headers.put(
+          Metadata.Key.of("x-goog-api-client", Metadata.ASCII_STRING_MARSHALLER),
+          "java-fleetengine-auth/"); // TODO: add the version
+      super.start(responseListener, headers);
+    }
   }
 }
