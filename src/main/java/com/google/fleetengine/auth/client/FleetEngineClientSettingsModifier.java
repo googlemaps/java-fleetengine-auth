@@ -17,7 +17,11 @@ package com.google.fleetengine.auth.client;
 import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.api.gax.grpc.InstantiatingGrpcChannelProvider;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.FixedHeaderProvider;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Updates a fleet engine {@link ClientSettings.Builder} so that a valid Fleet Engine JWT is
@@ -56,11 +60,28 @@ public class FleetEngineClientSettingsModifier<
           "Transport channel provider must be of type InstantiatingGrpcChannelProvider");
     }
 
+    Map<String, String> headers = new HashMap<>();
+    if (builder.getHeaderProvider() != null && builder.getHeaderProvider().getHeaders() != null) {
+      headers.putAll(builder.getHeaderProvider().getHeaders());
+    }
+    String libraryUserAgent = "java-fleetengine-auth/";
+    if (this.getClass().getPackage().getImplementationVersion() != null) {
+      libraryUserAgent = libraryUserAgent + this.getClass().getPackage().getImplementationVersion();
+    }
+    String userAgent = headers.get("user-agent");
+    if (Strings.isNullOrEmpty(userAgent)) {
+      userAgent = libraryUserAgent;
+    } else {
+      userAgent = userAgent + " " + libraryUserAgent;
+    }
+    headers.put("user-agent", userAgent);
+
     // Reuse existing channel provider
     InstantiatingGrpcChannelProvider provider =
         (InstantiatingGrpcChannelProvider) builder.getTransportChannelProvider();
     return builder
         .setCredentialsProvider(FixedCredentialsProvider.create(null))
+        .setHeaderProvider(FixedHeaderProvider.create(headers))
         .setTransportChannelProvider(
             provider.toBuilder()
                 .setInterceptorProvider(
