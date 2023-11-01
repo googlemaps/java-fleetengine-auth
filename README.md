@@ -27,21 +27,6 @@ You can add the library to your project via Maven or Gradle.
   <artifactId>fleetengine-auth</artifactId>
   <version>(insert latest version)</version>
 </dependency>
-<dependency>
-  <groupId>com.auth0</groupId>
-  <artifactId>java-jwt</artifactId>
-  <version>3.10.2</version>
-</dependency>
-<dependency>
-  <groupId>com.google.guava</groupId>
-  <artifactId>guava</artifactId>
-  <version>1.55.0</version>
-</dependency>
-<dependency>
-  <groupId>com.google.auth</groupId>
-  <artifactId>google-auth-library-oauth2-http</artifactId>
-  <version>0.26.0</version>
-</dependency>
 ```
 
 
@@ -49,9 +34,6 @@ You can add the library to your project via Maven or Gradle.
 ```groovy
 dependencies {
   implementation 'com.google.maps:fleetengine-auth:(insert latest version here)'
-  implementation 'com.auth0:java-jwt:3.10.2'
-  implementation 'com.google.guava:guava:1.55.0'
-  implementation 'com.google.auth:google-auth-library-oauth2-http:0.26.0'
 }
 ```
 
