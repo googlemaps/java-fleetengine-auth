@@ -25,6 +25,10 @@ public class LmfsConfiguration {
   public static final String DELIVERY_FLEET_READER_TOKEN_ACCOUNT =
       "<service account name>@<project id>.iam.gserviceaccount.com";
 
+  // Set to service account with the Fleet Engine Fleet Read SDK role.
+  public static final String FLEET_READER_TOKEN_ACCOUNT =
+      "<service account name>@<project id>.iam.gserviceaccount.com";
+
   // Provider Id is the same as your GCP Project Id.
     public static final String PROVIDER_ID = "<project id>";
 

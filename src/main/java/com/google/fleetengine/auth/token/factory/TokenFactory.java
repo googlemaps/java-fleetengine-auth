@@ -90,6 +90,12 @@ public interface TokenFactory {
   FleetEngineToken createDeliveryFleetReaderToken();
 
   /**
+   * Creates tokens for the {@link
+   * com.google.fleetengine.auth.token.FleetEngineTokenType#FLEET_READER} role.
+   */
+  FleetEngineToken createFleetReaderToken();
+
+  /**
    * Creates tokens for tokens of type {@link
    * com.google.fleetengine.auth.token.FleetEngineTokenType#CUSTOM} and can be associated to any
    * Fleet Engine role.

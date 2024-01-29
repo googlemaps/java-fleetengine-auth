@@ -64,6 +64,12 @@ public enum FleetEngineTokenType {
    */
   DELIVERY_FLEET_READER,
 
+  /**
+   * Fleet reader tokens are usually service accounts associated with the Fleet Engine Fleet Reader
+   * User role on the Google Cloud project.
+   */
+  FLEET_READER,
+
   /** Custom token type associated with any Fleet Engine Role on the Google Cloud project. */
   CUSTOM,
 }

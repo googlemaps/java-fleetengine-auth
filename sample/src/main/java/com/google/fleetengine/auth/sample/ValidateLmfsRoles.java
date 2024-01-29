@@ -1,7 +1,9 @@
 package com.google.fleetengine.auth.sample;
 
 import com.google.fleetengine.auth.AuthTokenMinter;
+import com.google.fleetengine.auth.sample.validation.DeliveryConsumerFleetReaderTokenValidationScript;
 import com.google.fleetengine.auth.sample.validation.DeliveryConsumerTokenValidationScript;
+import com.google.fleetengine.auth.sample.validation.DeliveryDriverFleetReaderTokenValidationScript;
 import com.google.fleetengine.auth.sample.validation.DeliveryFleetReaderTokenValidationScript;
 import com.google.fleetengine.auth.sample.validation.DeliveryServerTokenValidationScript;
 import com.google.fleetengine.auth.sample.validation.DeliveryServerTokenValidationScript.Ids;
@@ -18,6 +20,7 @@ public class ValidateLmfsRoles {
   private static final String CONSUMER = "deliver consumer";
   private static final String UNTRUSTED_DRIVER = "untrusted driver";
   private static final String TRUSTED_DRIVER = "trusted driver";
+  private static final String DELIVERY_FLEET_READER = "delivery fleet reader";
   private static final String FLEET_READER = "fleet reader";
 
   public static void run() throws Throwable {
@@ -34,6 +37,8 @@ public class ValidateLmfsRoles {
                     LmfsConfiguration.DELIVERY_UNTRUSTED_DRIVER_TOKEN_ACCOUNT))
             .setDeliveryFleetReaderSigner(
                 ImpersonatedSigner.create(LmfsConfiguration.DELIVERY_FLEET_READER_TOKEN_ACCOUNT))
+            .setFleetReaderSigner(
+                ImpersonatedSigner.create(LmfsConfiguration.FLEET_READER_TOKEN_ACCOUNT))
             .setTokenFactory(
                 new FleetEngineTokenFactory(
                     FleetEngineTokenFactorySettings.builder()
@@ -78,11 +83,27 @@ public class ValidateLmfsRoles {
     }
 
     if (configuration.getMinter().deliveryFleetReaderSigner() != null) {
-      CommandLineRuntime.printRunScriptMessage(FLEET_READER);
+      CommandLineRuntime.printRunScriptMessage(DELIVERY_FLEET_READER);
       new DeliveryFleetReaderTokenValidationScript(runtime, configuration, clientFactory)
           .run(ids.getDeliveryVehicleId());
     } else {
-      CommandLineRuntime.printSkipScriptMessage(TRUSTED_DRIVER);
+      CommandLineRuntime.printSkipScriptMessage(DELIVERY_FLEET_READER);
+    }
+
+    if (configuration.getMinter().deliveryFleetReaderSigner() != null) {
+      CommandLineRuntime.printRunScriptMessage(FLEET_READER);
+      new DeliveryConsumerFleetReaderTokenValidationScript(runtime, configuration, clientFactory)
+          .run(ids.getTrackingId());
+    } else {
+      CommandLineRuntime.printSkipScriptMessage(FLEET_READER);
+    }
+
+    if (configuration.getMinter().deliveryFleetReaderSigner() != null) {
+      CommandLineRuntime.printRunScriptMessage(FLEET_READER);
+      new DeliveryDriverFleetReaderTokenValidationScript(runtime, configuration, clientFactory)
+          .run(ids.getDeliveryVehicleId());
+    } else {
+      CommandLineRuntime.printSkipScriptMessage(FLEET_READER);
     }
   }
 }

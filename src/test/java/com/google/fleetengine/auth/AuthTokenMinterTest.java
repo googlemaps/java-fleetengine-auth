@@ -54,6 +54,7 @@ public class AuthTokenMinterTest {
   private Signer untrustedDeliveryDriverSigner;
   private Signer trustedDeliveryDriverSigner;
   private Signer deliveryFleetReaderSigner;
+  private Signer fleetReaderSigner;
   private Signer customSigner;
   private FleetEngineAuthTokenStateManager authStateManager;
   private AuthTokenMinter.Builder defaultFleetEngineAuthBuilder;
@@ -70,6 +71,7 @@ public class AuthTokenMinterTest {
     this.untrustedDeliveryDriverSigner = mock(Signer.class);
     this.trustedDeliveryDriverSigner = mock(Signer.class);
     this.deliveryFleetReaderSigner = mock(Signer.class);
+    this.fleetReaderSigner = mock(Signer.class);
     this.customSigner = mock(Signer.class);
     this.authStateManager = mock(FleetEngineAuthTokenStateManager.class);
     this.tokenFactory = mock(TokenFactory.class);
@@ -248,6 +250,18 @@ public class AuthTokenMinterTest {
 
     verify(authStateManager, times(1))
         .signToken(eq(deliveryFleetReaderSigner), eq(fleetEngineToken));
+  }
+
+  @Test
+  public void getFleetReaderToken_whenFleetReaderSignerSet_signsWithSetFleetReaderSigner()
+      throws SigningTokenException {
+    AuthTokenMinter baseFleetEngineAuth =
+        defaultFleetEngineAuthBuilder.setFleetReaderSigner(fleetReaderSigner).build();
+    when(tokenFactory.createFleetReaderToken()).thenReturn(fleetEngineToken);
+
+    var unused = baseFleetEngineAuth.getFleetReaderToken();
+
+    verify(authStateManager, times(1)).signToken(eq(fleetReaderSigner), eq(fleetEngineToken));
   }
 
   @Test

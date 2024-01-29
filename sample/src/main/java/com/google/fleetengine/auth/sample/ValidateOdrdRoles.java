@@ -17,6 +17,7 @@ package com.google.fleetengine.auth.sample;
 import com.google.fleetengine.auth.AuthTokenMinter;
 import com.google.fleetengine.auth.sample.validation.ConsumerTokenValidationScript;
 import com.google.fleetengine.auth.sample.validation.DriverTokenValidationScript;
+import com.google.fleetengine.auth.sample.validation.ConsumerFleetReaderTokenValidationScript;
 import com.google.fleetengine.auth.sample.validation.SampleScriptConfiguration;
 import com.google.fleetengine.auth.sample.validation.SampleScriptRuntime;
 import com.google.fleetengine.auth.sample.validation.ServerTokenValidationScript;
@@ -30,6 +31,7 @@ final class ValidateOdrdRoles {
   private static final String SERVER = "server";
   private static final String CONSUMER = "consumer";
   private static final String DRIVER = "driver";
+  private static final String FLEET_READER = "fleet reader";
 
   public static void run() throws Throwable {
     AuthTokenMinter minter =
@@ -37,6 +39,8 @@ final class ValidateOdrdRoles {
             .setServerSigner(ImpersonatedSigner.create(OdrdConfiguration.SERVER_TOKEN_ACCOUNT))
             .setConsumerSigner(ImpersonatedSigner.create(OdrdConfiguration.CONSUMER_TOKEN_ACCOUNT))
             .setDriverSigner(ImpersonatedSigner.create(OdrdConfiguration.DRIVER_TOKEN_ACCOUNT))
+            .setFleetReaderSigner(
+                ImpersonatedSigner.create(OdrdConfiguration.FLEET_READER_TOKEN_ACCOUNT))
             .setTokenFactory(
                 new FleetEngineTokenFactory(
                     FleetEngineTokenFactorySettings.builder()
@@ -69,6 +73,14 @@ final class ValidateOdrdRoles {
           .run(ids.getVehicleId());
     } else {
       CommandLineRuntime.printSkipScriptMessage(DRIVER);
+    }
+
+    if (configuration.getMinter().fleetReaderSigner() != null) {
+      CommandLineRuntime.printRunScriptMessage(FLEET_READER);
+      new ConsumerFleetReaderTokenValidationScript(runtime, configuration, clientFactory)
+          .run(ids.getTripId());
+    } else {
+      CommandLineRuntime.printSkipScriptMessage(FLEET_READER);
     }
   }
 

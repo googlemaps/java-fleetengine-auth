@@ -22,6 +22,7 @@ import com.google.fleetengine.auth.token.DeliveryVehicleClaims;
 import com.google.fleetengine.auth.token.FleetEngineToken;
 import com.google.fleetengine.auth.token.FleetEngineTokenClaims;
 import com.google.fleetengine.auth.token.FleetEngineTokenType;
+import com.google.fleetengine.auth.token.FleetReaderClaims;
 import com.google.fleetengine.auth.token.ServerTokenClaims;
 import com.google.fleetengine.auth.token.TaskClaims;
 import com.google.fleetengine.auth.token.TrackingClaims;
@@ -131,6 +132,12 @@ public final class FleetEngineTokenFactory implements TokenFactory {
   public FleetEngineToken createDeliveryFleetReaderToken() {
     return createToken(
         FleetEngineTokenType.DELIVERY_FLEET_READER, DeliveryFleetReaderClaims.create());
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public FleetEngineToken createFleetReaderToken() {
+    return createToken(FleetEngineTokenType.FLEET_READER, FleetReaderClaims.create());
   }
 
   /** {@inheritDoc} */

@@ -1,12 +1,13 @@
 package com.google.fleetengine.auth.sample.validation;
 
-public class DeliveryFleetReaderTokenValidationScript {
+/** Validates that fleet reader tokens provide the correct access. */
+public class DeliveryConsumerFleetReaderTokenValidationScript {
+
   private final SampleScriptRuntime runtime;
   private final SampleScriptConfiguration configuration;
   private final CommandsFactory commandsFactory;
 
-  /** Constructor. */
-  public DeliveryFleetReaderTokenValidationScript(
+  public DeliveryConsumerFleetReaderTokenValidationScript(
       SampleScriptRuntime runtime,
       SampleScriptConfiguration configuration,
       CommandsFactory commandsFactory) {
@@ -15,15 +16,20 @@ public class DeliveryFleetReaderTokenValidationScript {
     this.commandsFactory = commandsFactory;
   }
 
-  /** Run validation script. */
+  /**
+   * Run validation script.
+   *
+   * @param trackingId existing tracking id
+   */
   public void run(String trackingId) throws Throwable {
+    // Tokens are minted with the fleet reader role and authorized to access trackingId.
     DeliveryServiceCommands commands =
         commandsFactory.createDeliveryServiceCommands(
             configuration.getFleetEngineAddress(),
             configuration.getProviderId(),
-            () -> configuration.getMinter().getDeliveryFleetReaderToken());
+            () -> configuration.getMinter().getFleetReaderToken());
 
     runtime.runCommand(
-        "Search tasks with delivery fleet reader token", () -> commands.searchTasks(trackingId));
+        "Search tasks with fleet reader token", () -> commands.searchTasks(trackingId));
   }
 }

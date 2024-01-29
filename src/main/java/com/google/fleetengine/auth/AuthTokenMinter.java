@@ -91,6 +91,10 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
   @Nullable
   public abstract Signer deliveryFleetReaderSigner();
 
+  /** Signer responsible for signing JWTs with a fleet reader key. */
+  @Nullable
+  public abstract Signer fleetReaderSigner();
+
   /** Signer responsible for signing JWTs with that aren't tied to the standard role set. */
   @Nullable
   public abstract Signer customSigner();
@@ -346,6 +350,22 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
   }
 
   /**
+   * Returns a non expired Fleet Engine Token that was signed with the fleet reader signer.
+   *
+   * <p>Tokens will have an expiration of at least {@link
+   * FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION}.
+   *
+   * @throws SigningTokenException if the fleet reader server signer was not set, or if there is an
+   *     issue while signing the token.
+   * @return Fleet Engine token with the "Fleet Reader" role, guaranteed to be valid for {@link
+   *     FleetEngineAuthTokenStateManager#EXPIRATION_WINDOW_DURATION} minutes.
+   */
+  public FleetEngineToken getFleetReaderToken() throws SigningTokenException {
+    FleetEngineToken unsignedToken = tokenFactory().createFleetReaderToken();
+    return tokenStateManager().signToken(fleetReaderSigner(), unsignedToken);
+  }
+
+  /**
    * Returns a non expired Fleet Engine Token that was signed with the custom signer
    * and authorized for use with entities matching the specified claim.
    *
@@ -410,6 +430,9 @@ public abstract class AuthTokenMinter implements FleetEngineTokenProvider {
 
     /** Sets the signer responsible for signing delivery fleet JWTs. */
     public abstract Builder setDeliveryFleetReaderSigner(Signer deliveryFleetReaderSigner);
+
+    /** Sets the signer responsible for signing fleet reader JWTs. */
+    public abstract Builder setFleetReaderSigner(Signer fleetReaderSigner);
 
     /**
      * Sets token factory that creates unsigned tokens.
