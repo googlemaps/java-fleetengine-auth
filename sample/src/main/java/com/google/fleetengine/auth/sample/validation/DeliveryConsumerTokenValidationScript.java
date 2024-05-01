@@ -29,8 +29,10 @@ public class DeliveryConsumerTokenValidationScript {
                     .getDeliveryConsumerToken(TrackingClaims.create(trackingId)));
 
     runtime.runCommand(
-        "Search tasks with delivery consumer token",
-        () -> taskCommandsWithTrackingId.searchTasks(trackingId));
+        "Get task tracking info with delivery consumer token",
+        () -> {
+          var unused = taskCommandsWithTrackingId.getTaskTrackingInfo(trackingId);
+        });
 
     DeliveryServiceCommands taskCommandsWithIncorrectTrackingId =
         commandsFactory.createDeliveryServiceCommands(
@@ -43,7 +45,10 @@ public class DeliveryConsumerTokenValidationScript {
                         TrackingClaims.create(ScriptUtils.generateRandomTrackingId())));
 
     runtime.expectPermissionDenied(
-        "Search task fails when tracking id of task different than delivery " + "consumer token",
-        () -> taskCommandsWithIncorrectTrackingId.searchTasks(trackingId));
+        "Get task tracking info fails when tracking id of task different than delivery "
+            + "consumer token",
+        () -> {
+          var unused = taskCommandsWithIncorrectTrackingId.getTaskTrackingInfo(trackingId);
+        });
   }
 }

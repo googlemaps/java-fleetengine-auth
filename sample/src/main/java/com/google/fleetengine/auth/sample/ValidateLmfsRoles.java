@@ -85,7 +85,7 @@ public class ValidateLmfsRoles {
     if (configuration.getMinter().deliveryFleetReaderSigner() != null) {
       CommandLineRuntime.printRunScriptMessage(DELIVERY_FLEET_READER);
       new DeliveryFleetReaderTokenValidationScript(runtime, configuration, clientFactory)
-          .run(ids.getDeliveryVehicleId());
+          .run(ids.getTrackingId());
     } else {
       CommandLineRuntime.printSkipScriptMessage(DELIVERY_FLEET_READER);
     }

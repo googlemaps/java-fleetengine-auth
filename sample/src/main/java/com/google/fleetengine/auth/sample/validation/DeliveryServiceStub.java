@@ -5,8 +5,9 @@ import google.maps.fleetengine.delivery.v1.CreateTaskRequest;
 import google.maps.fleetengine.delivery.v1.DeliveryVehicle;
 import google.maps.fleetengine.delivery.v1.GetDeliveryVehicleRequest;
 import google.maps.fleetengine.delivery.v1.GetTaskRequest;
-import google.maps.fleetengine.delivery.v1.SearchTasksRequest;
+import google.maps.fleetengine.delivery.v1.GetTaskTrackingInfoRequest;
 import google.maps.fleetengine.delivery.v1.Task;
+import google.maps.fleetengine.delivery.v1.TaskTrackingInfo;
 import google.maps.fleetengine.delivery.v1.UpdateTaskRequest;
 
 /** Wraps {@link google.maps.fleetengine.delivery.v1.DeliveryServiceClient} for testing purposes. */
@@ -25,9 +26,9 @@ public interface DeliveryServiceStub {
 
   /**
    * see: {@link
-   * google.maps.fleetengine.delivery.v1.DeliveryServiceClient#searchTasks(SearchTasksRequest)}
+   * google.maps.fleetengine.delivery.v1.DeliveryServiceClient#getTaskTrackingInfo(GetTaskTrackingInfoRequest)}
    */
-  void searchTasks(SearchTasksRequest searchTripRequest);
+  TaskTrackingInfo getTaskTrackingInfo(GetTaskTrackingInfoRequest getTaskTrackingInfoRequest);
 
   /**
    * see: {@link

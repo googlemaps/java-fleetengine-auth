@@ -30,6 +30,9 @@ public class DeliveryConsumerFleetReaderTokenValidationScript {
             () -> configuration.getMinter().getFleetReaderToken());
 
     runtime.runCommand(
-        "Search tasks with fleet reader token", () -> commands.searchTasks(trackingId));
+        "Get task tracking info with fleet reader token",
+        () -> {
+          var unused = commands.getTaskTrackingInfo(trackingId);
+        });
   }
 }

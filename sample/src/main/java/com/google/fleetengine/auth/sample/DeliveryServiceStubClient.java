@@ -7,8 +7,9 @@ import google.maps.fleetengine.delivery.v1.DeliveryServiceClient;
 import google.maps.fleetengine.delivery.v1.DeliveryVehicle;
 import google.maps.fleetengine.delivery.v1.GetDeliveryVehicleRequest;
 import google.maps.fleetengine.delivery.v1.GetTaskRequest;
-import google.maps.fleetengine.delivery.v1.SearchTasksRequest;
+import google.maps.fleetengine.delivery.v1.GetTaskTrackingInfoRequest;
 import google.maps.fleetengine.delivery.v1.Task;
+import google.maps.fleetengine.delivery.v1.TaskTrackingInfo;
 import google.maps.fleetengine.delivery.v1.UpdateTaskRequest;
 
 public class DeliveryServiceStubClient implements DeliveryServiceStub {
@@ -31,8 +32,9 @@ public class DeliveryServiceStubClient implements DeliveryServiceStub {
   }
 
   @Override
-  public void searchTasks(SearchTasksRequest searchTripRequest) {
-    client.searchTasks(searchTripRequest);
+  public TaskTrackingInfo getTaskTrackingInfo(
+      GetTaskTrackingInfoRequest getTaskTrackingInfoRequest) {
+    return client.getTaskTrackingInfo(getTaskTrackingInfoRequest);
   }
 
   @Override

@@ -8,11 +8,12 @@ import google.maps.fleetengine.delivery.v1.CreateTaskRequest;
 import google.maps.fleetengine.delivery.v1.DeliveryVehicle;
 import google.maps.fleetengine.delivery.v1.GetDeliveryVehicleRequest;
 import google.maps.fleetengine.delivery.v1.GetTaskRequest;
+import google.maps.fleetengine.delivery.v1.GetTaskTrackingInfoRequest;
 import google.maps.fleetengine.delivery.v1.LocationInfo;
-import google.maps.fleetengine.delivery.v1.SearchTasksRequest;
 import google.maps.fleetengine.delivery.v1.Task;
 import google.maps.fleetengine.delivery.v1.Task.State;
 import google.maps.fleetengine.delivery.v1.Task.TaskOutcome;
+import google.maps.fleetengine.delivery.v1.TaskTrackingInfo;
 import google.maps.fleetengine.delivery.v1.UpdateTaskRequest;
 
 public class DeliveryServiceCommands {
@@ -56,13 +57,12 @@ public class DeliveryServiceCommands {
   }
 
   /** Search existing tasks by tracking id. */
-  public void searchTasks(String trackingId) {
-    SearchTasksRequest searchTasksRequest =
-        SearchTasksRequest.newBuilder()
-            .setParent(ScriptUtils.getProviderName(providerId))
-            .setTrackingId(trackingId)
+  public TaskTrackingInfo getTaskTrackingInfo(String trackingId) {
+    GetTaskTrackingInfoRequest getTaskTrackingInfoRequest =
+        GetTaskTrackingInfoRequest.newBuilder()
+            .setName(getTaskTrackingInfoName(trackingId))
             .build();
-    stub.searchTasks(searchTasksRequest);
+    return stub.getTaskTrackingInfo(getTaskTrackingInfoRequest);
   }
 
   /** Update task outcome to succeed. */
@@ -82,6 +82,10 @@ public class DeliveryServiceCommands {
   /** Task names must be in the given format. */
   private String getTaskName(String taskId) {
     return String.format("providers/%s/tasks/%s", providerId, taskId);
+  }
+
+  private String getTaskTrackingInfoName(String trackingId) {
+    return String.format("providers/%s/taskTrackingInfo/%s", providerId, trackingId);
   }
 
   public DeliveryVehicle createDeliveryVehicle(String deliveryVehicleId) {
