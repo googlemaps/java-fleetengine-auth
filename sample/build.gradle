@@ -36,14 +36,22 @@ run {
     standardInput = System.in
 }
 
+sourceSets.all {
+  configurations.getByName(runtimeClasspathConfigurationName) {
+    attributes.attribute(Attribute.of("org.gradle.jvm.environment", String), "standard-jvm")
+  }
+  configurations.getByName(compileClasspathConfigurationName) {
+    attributes.attribute(Attribute.of("org.gradle.jvm.environment", String), "standard-jvm")
+  }
+}
 dependencies {
     annotationProcessor 'com.google.auto.value:auto-value:1.6.2'
 
     implementation 'com.google.api:gax:1.65.1'
     implementation 'com.google.api:gax-grpc:1.65.1'
 
-    implementation 'com.google.maps:gapic-google-maps-fleetengine-v1-java:0.0.348'
-    implementation 'com.google.maps:gapic-google-maps-fleetengine-delivery-v1-java:0.0.348'
+    implementation 'com.google.maps:gapic-google-maps-fleetengine-v1-java:0.0.3231'
+    implementation 'com.google.maps:gapic-google-maps-fleetengine-delivery-v1-java:0.0.3231'
     implementation project(':fleetengine-auth')
 
     testImplementation 'junit:junit:4.13.1'
