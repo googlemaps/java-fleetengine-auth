@@ -259,7 +259,7 @@ public class AuthTokenMinterTest {
         defaultFleetEngineAuthBuilder.setFleetReaderSigner(fleetReaderSigner).build();
     when(tokenFactory.createFleetReaderToken()).thenReturn(fleetEngineToken);
 
-    var unused = baseFleetEngineAuth.getFleetReaderToken();
+    FleetEngineToken unused = baseFleetEngineAuth.getFleetReaderToken();
 
     verify(authStateManager, times(1)).signToken(eq(fleetReaderSigner), eq(fleetEngineToken));
   }
