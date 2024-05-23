@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -46,13 +45,13 @@ public class DeliveryFleetReaderTokenValidationScriptTest {
   }
 
   @Test
-  public void run_callsSearchTasks_withTrackingId() throws Throwable {
+  public void run_callsGetTaskTrackingInfo_withTrackingId() throws Throwable {
     DeliveryFleetReaderTokenValidationScript script =
         new DeliveryFleetReaderTokenValidationScript(runtime, configuration, commandsFactory);
     script.run(TEST_TRACKING_ID);
 
     ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
-    verify(deliveryServiceCommands, times(1)).searchTasks(captor.capture());
+    verify(deliveryServiceCommands).getTaskTrackingInfo(captor.capture());
     assertEquals(TEST_TRACKING_ID, captor.getValue());
   }
 }
