@@ -30,14 +30,11 @@ jobs:
         cd ./sample/
         ./gradlew test
     - name: Release
-      uses: cycjimmy/semantic-release-action@v3
+      uses: cycjimmy/semantic-release-action@v4
       with:
         extra_plugins: |
-          "@semantic-release/commit-analyzer"
-          "@semantic-release/release-notes-generator"
           "@google/semantic-release-replace-plugin"
           "@semantic-release/exec"
-          "@semantic-release/git"
           "@semantic-release/github"
       env:
         GH_TOKEN: ${{ secrets.SYNCED_GITHUB_TOKEN_REPO }}
