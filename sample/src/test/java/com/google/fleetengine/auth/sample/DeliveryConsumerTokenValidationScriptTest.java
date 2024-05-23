@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -49,17 +48,17 @@ public class DeliveryConsumerTokenValidationScriptTest {
   }
 
   @Test
-  public void run_callsSearchTasks_withTrackingId() throws Throwable {
+  public void run_callsGetTaskTrackingInfo_withTrackingId() throws Throwable {
     DeliveryConsumerTokenValidationScript script =
         new DeliveryConsumerTokenValidationScript(runtime, configuration, commandsFactory);
     script.run(TEST_TRACKING_ID);
 
     ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
-    verify(deliveryServiceCommandsSuccess, times(1)).searchTasks(captor.capture());
+    verify(deliveryServiceCommandsSuccess).getTaskTrackingInfo(captor.capture());
     assertEquals(TEST_TRACKING_ID, captor.getValue());
 
     runtime.wasExpectPermissionDeniedCalled();
-    verify(deliveryServiceCommandsFails, times(1)).searchTasks(captor.capture());
+    verify(deliveryServiceCommandsFails).getTaskTrackingInfo(captor.capture());
     assertEquals(TEST_TRACKING_ID, captor.getValue());
   }
 }
