@@ -1,50 +1,50 @@
 package com.google.fleetengine.auth.sample.validation;
 
-import google.maps.fleetengine.delivery.v1.CreateDeliveryVehicleRequest;
-import google.maps.fleetengine.delivery.v1.CreateTaskRequest;
-import google.maps.fleetengine.delivery.v1.DeliveryVehicle;
-import google.maps.fleetengine.delivery.v1.GetDeliveryVehicleRequest;
-import google.maps.fleetengine.delivery.v1.GetTaskRequest;
-import google.maps.fleetengine.delivery.v1.GetTaskTrackingInfoRequest;
-import google.maps.fleetengine.delivery.v1.Task;
-import google.maps.fleetengine.delivery.v1.TaskTrackingInfo;
-import google.maps.fleetengine.delivery.v1.UpdateTaskRequest;
+import com.google.maps.fleetengine.delivery.v1.CreateDeliveryVehicleRequest;
+import com.google.maps.fleetengine.delivery.v1.CreateTaskRequest;
+import com.google.maps.fleetengine.delivery.v1.DeliveryVehicle;
+import com.google.maps.fleetengine.delivery.v1.GetDeliveryVehicleRequest;
+import com.google.maps.fleetengine.delivery.v1.GetTaskRequest;
+import com.google.maps.fleetengine.delivery.v1.GetTaskTrackingInfoRequest;
+import com.google.maps.fleetengine.delivery.v1.Task;
+import com.google.maps.fleetengine.delivery.v1.TaskTrackingInfo;
+import com.google.maps.fleetengine.delivery.v1.UpdateTaskRequest;
 
-/** Wraps {@link google.maps.fleetengine.delivery.v1.DeliveryServiceClient} for testing purposes. */
+/** Wraps {@link com.google.maps.fleetengine.delivery.v1.DeliveryServiceClient} for testing purposes. */
 public interface DeliveryServiceStub {
 
   /**
    * see: {@link
-   * google.maps.fleetengine.delivery.v1.DeliveryServiceClient#createTask(CreateTaskRequest)}
+   * com.google.maps.fleetengine.delivery.v1.DeliveryServiceClient#createTask(CreateTaskRequest)}
    */
   Task createTask(CreateTaskRequest createTaskRequest);
 
   /**
-   * see: {@link google.maps.fleetengine.delivery.v1.DeliveryServiceClient#getTask(GetTaskRequest)}
+   * see: {@link com.google.maps.fleetengine.delivery.v1.DeliveryServiceClient#getTask(GetTaskRequest)}
    */
   Task getTask(GetTaskRequest getTripRequest);
 
   /**
    * see: {@link
-   * google.maps.fleetengine.delivery.v1.DeliveryServiceClient#getTaskTrackingInfo(GetTaskTrackingInfoRequest)}
+   * com.google.maps.fleetengine.delivery.v1.DeliveryServiceClient#getTaskTrackingInfo(GetTaskTrackingInfoRequest)}
    */
   TaskTrackingInfo getTaskTrackingInfo(GetTaskTrackingInfoRequest getTaskTrackingInfoRequest);
 
   /**
    * see: {@link
-   * google.maps.fleetengine.delivery.v1.DeliveryServiceClient#updateTask(UpdateTaskRequest)}
+   * com.google.maps.fleetengine.delivery.v1.DeliveryServiceClient#updateTask(UpdateTaskRequest)}
    */
   Task updateTask(UpdateTaskRequest updateTaskRequest);
 
   /**
    * see: {@link
-   * google.maps.fleetengine.delivery.v1.DeliveryServiceClient#createDeliveryVehicle(CreateDeliveryVehicleRequest)}
+   * com.google.maps.fleetengine.delivery.v1.DeliveryServiceClient#createDeliveryVehicle(CreateDeliveryVehicleRequest)}
    */
   DeliveryVehicle createDeliveryVehicle(CreateDeliveryVehicleRequest createDeliveryVehicleRequest);
 
   /**
    * see: {@link
-   * google.maps.fleetengine.delivery.v1.DeliveryServiceClient#getDeliveryVehicle(GetDeliveryVehicleRequest)}
+   * com.google.maps.fleetengine.delivery.v1.DeliveryServiceClient#getDeliveryVehicle(GetDeliveryVehicleRequest)}
    */
   DeliveryVehicle getDeliveryVehicle(GetDeliveryVehicleRequest deliveryVehicleRequest);
 }
