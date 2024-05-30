@@ -1,5 +1,7 @@
 package com.google.fleetengine.auth.sample.validation;
 
+import google.maps.fleetengine.delivery.v1.TaskTrackingInfo;
+
 /** Validates that fleet reader tokens provide the correct access. */
 public class DeliveryConsumerFleetReaderTokenValidationScript {
 
@@ -32,7 +34,7 @@ public class DeliveryConsumerFleetReaderTokenValidationScript {
     runtime.runCommand(
         "Get task tracking info with fleet reader token",
         () -> {
-          var unused = commands.getTaskTrackingInfo(trackingId);
+          TaskTrackingInfo unused = commands.getTaskTrackingInfo(trackingId);
         });
   }
 }

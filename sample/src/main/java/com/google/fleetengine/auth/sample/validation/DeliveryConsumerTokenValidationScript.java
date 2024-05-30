@@ -1,7 +1,9 @@
 package com.google.fleetengine.auth.sample.validation;
 
 import com.google.fleetengine.auth.token.TrackingClaims;
+import google.maps.fleetengine.delivery.v1.TaskTrackingInfo;
 
+/** Validates that consumer tokens provide the correct access. */
 public class DeliveryConsumerTokenValidationScript {
   private final SampleScriptRuntime runtime;
   private final SampleScriptConfiguration configuration;
@@ -31,7 +33,7 @@ public class DeliveryConsumerTokenValidationScript {
     runtime.runCommand(
         "Get task tracking info with delivery consumer token",
         () -> {
-          var unused = taskCommandsWithTrackingId.getTaskTrackingInfo(trackingId);
+          TaskTrackingInfo unused = taskCommandsWithTrackingId.getTaskTrackingInfo(trackingId);
         });
 
     DeliveryServiceCommands taskCommandsWithIncorrectTrackingId =
@@ -48,7 +50,8 @@ public class DeliveryConsumerTokenValidationScript {
         "Get task tracking info fails when tracking id of task different than delivery "
             + "consumer token",
         () -> {
-          var unused = taskCommandsWithIncorrectTrackingId.getTaskTrackingInfo(trackingId);
+          TaskTrackingInfo unused =
+              taskCommandsWithIncorrectTrackingId.getTaskTrackingInfo(trackingId);
         });
   }
 }
