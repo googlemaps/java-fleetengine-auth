@@ -15,11 +15,11 @@
 package com.google.fleetengine.auth.sample;
 
 import com.google.fleetengine.auth.sample.validation.TripStub;
-import google.maps.fleetengine.v1.CreateTripRequest;
-import google.maps.fleetengine.v1.GetTripRequest;
-import google.maps.fleetengine.v1.Trip;
-import google.maps.fleetengine.v1.TripServiceClient;
-import google.maps.fleetengine.v1.UpdateTripRequest;
+import com.google.maps.fleetengine.v1.CreateTripRequest;
+import com.google.maps.fleetengine.v1.GetTripRequest;
+import com.google.maps.fleetengine.v1.Trip;
+import com.google.maps.fleetengine.v1.TripServiceClient;
+import com.google.maps.fleetengine.v1.UpdateTripRequest;
 
 public class TripStubClient implements TripStub {
 

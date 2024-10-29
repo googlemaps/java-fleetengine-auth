@@ -21,7 +21,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.google.fleetengine.auth.AuthTokenMinter;
-import google.maps.fleetengine.v1.VehicleMatch;
+import com.google.maps.fleetengine.v1.VehicleMatch;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

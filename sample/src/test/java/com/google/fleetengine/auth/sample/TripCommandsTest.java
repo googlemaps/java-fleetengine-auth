@@ -18,9 +18,9 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-import google.maps.fleetengine.v1.CreateTripRequest;
-import google.maps.fleetengine.v1.GetTripRequest;
-import google.maps.fleetengine.v1.UpdateTripRequest;
+import com.google.maps.fleetengine.v1.CreateTripRequest;
+import com.google.maps.fleetengine.v1.GetTripRequest;
+import com.google.maps.fleetengine.v1.UpdateTripRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

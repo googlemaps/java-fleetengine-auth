@@ -14,7 +14,7 @@
 
 package com.google.fleetengine.auth.sample.validation;
 
-import google.maps.fleetengine.v1.VehicleMatch;
+import com.google.maps.fleetengine.v1.VehicleMatch;
 import java.util.List;
 
 /** Validates that server tokens provide the correct level of access. */

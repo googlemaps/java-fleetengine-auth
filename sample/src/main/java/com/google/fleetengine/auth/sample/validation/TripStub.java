@@ -14,23 +14,20 @@
 
 package com.google.fleetengine.auth.sample.validation;
 
-import google.maps.fleetengine.v1.CreateTripRequest;
-import google.maps.fleetengine.v1.GetTripRequest;
-import google.maps.fleetengine.v1.Trip;
-import google.maps.fleetengine.v1.UpdateTripRequest;
+import com.google.maps.fleetengine.v1.CreateTripRequest;
+import com.google.maps.fleetengine.v1.GetTripRequest;
+import com.google.maps.fleetengine.v1.Trip;
+import com.google.maps.fleetengine.v1.UpdateTripRequest;
 
-/**
- * Wraps {@link google.maps.fleetengine.v1.TripServiceClient} for testing
- * purposes.
- */
+/** Wraps {@link com.google.maps.fleetengine.v1.TripServiceClient} for testing purposes. */
 public interface TripStub {
 
-  /** see: {@link google.maps.fleetengine.v1.TripServiceClient#createTrip(CreateTripRequest)} */
+  /** see: {@link com.google.maps.fleetengine.v1.TripServiceClient#createTrip(CreateTripRequest)} */
   Trip createTrip(CreateTripRequest createTripRequest);
 
-  /** see: {@link google.maps.fleetengine.v1.TripServiceClient#getTrip(GetTripRequest)} */
+  /** see: {@link com.google.maps.fleetengine.v1.TripServiceClient#getTrip(GetTripRequest)} */
   Trip getTrip(GetTripRequest getTripRequest);
 
-  /** see: {@link google.maps.fleetengine.v1.TripServiceClient#updateTrip(UpdateTripRequest)} */
+  /** see: {@link com.google.maps.fleetengine.v1.TripServiceClient#updateTrip(UpdateTripRequest)} */
   Trip updateTrip(UpdateTripRequest updateTripRequest);
 }
