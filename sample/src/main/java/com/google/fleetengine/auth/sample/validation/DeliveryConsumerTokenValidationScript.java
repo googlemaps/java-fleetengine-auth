@@ -1,7 +1,7 @@
 package com.google.fleetengine.auth.sample.validation;
 
 import com.google.fleetengine.auth.token.TrackingClaims;
-import google.maps.fleetengine.delivery.v1.TaskTrackingInfo;
+import com.google.maps.fleetengine.delivery.v1.TaskTrackingInfo;
 
 /** Validates that consumer tokens provide the correct access. */
 public class DeliveryConsumerTokenValidationScript {

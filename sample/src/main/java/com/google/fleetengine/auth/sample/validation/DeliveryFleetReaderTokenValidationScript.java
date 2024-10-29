@@ -1,6 +1,6 @@
 package com.google.fleetengine.auth.sample.validation;
 
-import google.maps.fleetengine.delivery.v1.TaskTrackingInfo;
+import com.google.maps.fleetengine.delivery.v1.TaskTrackingInfo;
 
 /** Validates that fleet reader tokens provide the correct access. */
 public class DeliveryFleetReaderTokenValidationScript {
