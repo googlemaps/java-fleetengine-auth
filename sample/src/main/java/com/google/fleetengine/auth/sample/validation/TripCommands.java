@@ -14,15 +14,15 @@
 
 package com.google.fleetengine.auth.sample.validation;
 
+import com.google.maps.fleetengine.v1.CreateTripRequest;
+import com.google.maps.fleetengine.v1.GetTripRequest;
+import com.google.maps.fleetengine.v1.TerminalLocation;
+import com.google.maps.fleetengine.v1.Trip;
+import com.google.maps.fleetengine.v1.TripStatus;
+import com.google.maps.fleetengine.v1.TripType;
+import com.google.maps.fleetengine.v1.UpdateTripRequest;
 import com.google.protobuf.FieldMask;
 import com.google.type.LatLng;
-import google.maps.fleetengine.v1.CreateTripRequest;
-import google.maps.fleetengine.v1.GetTripRequest;
-import google.maps.fleetengine.v1.TerminalLocation;
-import google.maps.fleetengine.v1.Trip;
-import google.maps.fleetengine.v1.TripStatus;
-import google.maps.fleetengine.v1.TripType;
-import google.maps.fleetengine.v1.UpdateTripRequest;
 
 /** Hardcoded commands against the trip service. */
 public class TripCommands {

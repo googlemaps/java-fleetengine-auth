@@ -15,13 +15,13 @@
 package com.google.fleetengine.auth.sample;
 
 import com.google.fleetengine.auth.sample.validation.VehicleStub;
-import google.maps.fleetengine.v1.CreateVehicleRequest;
-import google.maps.fleetengine.v1.GetVehicleRequest;
-import google.maps.fleetengine.v1.SearchVehiclesRequest;
-import google.maps.fleetengine.v1.SearchVehiclesResponse;
-import google.maps.fleetengine.v1.UpdateVehicleRequest;
-import google.maps.fleetengine.v1.Vehicle;
-import google.maps.fleetengine.v1.VehicleServiceClient;
+import com.google.maps.fleetengine.v1.CreateVehicleRequest;
+import com.google.maps.fleetengine.v1.GetVehicleRequest;
+import com.google.maps.fleetengine.v1.SearchVehiclesRequest;
+import com.google.maps.fleetengine.v1.SearchVehiclesResponse;
+import com.google.maps.fleetengine.v1.UpdateVehicleRequest;
+import com.google.maps.fleetengine.v1.Vehicle;
+import com.google.maps.fleetengine.v1.VehicleServiceClient;
 
 public class VehicleStubClient implements VehicleStub {
   private final VehicleServiceClient client;

@@ -23,10 +23,10 @@ import com.google.fleetengine.auth.sample.validation.VehicleCommands;
 import com.google.fleetengine.auth.sample.validation.VehicleStub;
 import com.google.maps.fleetengine.delivery.v1.DeliveryServiceClient;
 import com.google.maps.fleetengine.delivery.v1.DeliveryServiceSettings;
-import google.maps.fleetengine.v1.TripServiceClient;
-import google.maps.fleetengine.v1.TripServiceSettings;
-import google.maps.fleetengine.v1.VehicleServiceClient;
-import google.maps.fleetengine.v1.VehicleServiceSettings;
+import com.google.maps.fleetengine.v1.TripServiceClient;
+import com.google.maps.fleetengine.v1.TripServiceSettings;
+import com.google.maps.fleetengine.v1.VehicleServiceClient;
+import com.google.maps.fleetengine.v1.VehicleServiceSettings;
 import java.io.IOException;
 
 class CommandsFactoryServiceClient implements CommandsFactory {

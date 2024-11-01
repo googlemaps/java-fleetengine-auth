@@ -14,36 +14,35 @@
 
 package com.google.fleetengine.auth.sample.validation;
 
-import google.maps.fleetengine.v1.CreateVehicleRequest;
-import google.maps.fleetengine.v1.GetVehicleRequest;
-import google.maps.fleetengine.v1.SearchVehiclesRequest;
-import google.maps.fleetengine.v1.SearchVehiclesResponse;
-import google.maps.fleetengine.v1.UpdateVehicleRequest;
-import google.maps.fleetengine.v1.Vehicle;
+import com.google.maps.fleetengine.v1.CreateVehicleRequest;
+import com.google.maps.fleetengine.v1.GetVehicleRequest;
+import com.google.maps.fleetengine.v1.SearchVehiclesRequest;
+import com.google.maps.fleetengine.v1.SearchVehiclesResponse;
+import com.google.maps.fleetengine.v1.UpdateVehicleRequest;
+import com.google.maps.fleetengine.v1.Vehicle;
 
-/**
- * Wraps {@link google.maps.fleetengine.v1.VehicleServiceClient} for
- * testing purposes.
- */
+/** Wraps {@link com.google.maps.fleetengine.v1.VehicleServiceClient} for testing purposes. */
 public interface VehicleStub {
   /**
    * see: {@link
-   * google.maps.fleetengine.v1.VehicleServiceClient#createVehicle(CreateVehicleRequest)}
+   * com.google.maps.fleetengine.v1.VehicleServiceClient#createVehicle(CreateVehicleRequest)}
    */
   Vehicle createVehicle(CreateVehicleRequest request);
 
-  /** see: {@link google.maps.fleetengine.v1.VehicleServiceClient#getVehicle(GetVehicleRequest)} */
+  /**
+   * see: {@link com.google.maps.fleetengine.v1.VehicleServiceClient#getVehicle(GetVehicleRequest)}
+   */
   Vehicle getVehicle(GetVehicleRequest request);
 
   /**
    * see: {@link
-   * google.maps.fleetengine.v1.VehicleServiceClient#updateVehicle(UpdateVehicleRequest)}
+   * com.google.maps.fleetengine.v1.VehicleServiceClient#updateVehicle(UpdateVehicleRequest)}
    */
   Vehicle updateVehicle(UpdateVehicleRequest request);
 
   /**
    * see: {@link
-   * google.maps.fleetengine.v1.VehicleServiceClient#searchVehicles(SearchVehiclesRequest)}
+   * com.google.maps.fleetengine.v1.VehicleServiceClient#searchVehicles(SearchVehiclesRequest)}
    */
   SearchVehiclesResponse searchVehicles(SearchVehiclesRequest request);
 }
