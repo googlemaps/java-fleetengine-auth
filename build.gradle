@@ -18,7 +18,7 @@ def props = new Properties()
 file("version.properties").withInputStream { props.load(it) }
 
 group 'com.google.maps'
-version "SNAPSHOT"
+version props.libVersion
 ext.artifactId = 'fleetengine-auth'
 
 sourceCompatibility = 1.8
