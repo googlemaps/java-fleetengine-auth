@@ -8,7 +8,6 @@ buildscript {    // Configuration for building
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'signing'
     id "com.vanniktech.maven.publish" version "0.34.0"
 }
 
