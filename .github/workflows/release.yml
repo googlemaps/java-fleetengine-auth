@@ -15,7 +15,7 @@
 name: Release
 on:
   push:
-    branches: [ main ]
+    branches: [ main,  revert-commits]
   workflow_dispatch:
 
 jobs:
