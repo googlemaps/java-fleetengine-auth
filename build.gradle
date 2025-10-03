@@ -66,10 +66,6 @@ mavenPublishing {
                 name.set("Google Inc.")
             }
         }
-        groupId group
-        artifactId project.ext.artifactId
-        version version
-        from components.java
     }
 }
 //
