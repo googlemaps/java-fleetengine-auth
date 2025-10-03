@@ -35,8 +35,6 @@ jobs:
         gpg --quiet --output $GITHUB_WORKSPACE/release.gpg --dearmor ./release.asc
 
         SONATYPE_PASSWORD_ESCAPED=$(printf '%s\n' "$SONATYPE_PASSWORD" | sed -e 's/[\/&]/\\&/g')
-        sed -i -e "s,sonatypeUsername=,sonatypeUsername=$SONATYPE_USERNAME,g" gradle.properties
-        sed -i -e "s,sonatypePassword=,sonatypePassword=$SONATYPE_PASSWORD_ESCAPED,g" gradle.properties
         sed -i -e "s,mavenCentralUsername=,mavenCentralUsername=$SONATYPE_USERNAME,g" gradle.properties
         sed -i -e "s,mavenCentralPassword=,mavenCentralPassword=$SONATYPE_PASSWORD_ESCAPED,g" gradle.properties
         sed -i -e "s,githubPassword=,githubPassword=$GITHUB_PASSWORD,g" gradle.properties
