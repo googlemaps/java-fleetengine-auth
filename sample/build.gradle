@@ -31,14 +31,6 @@ run {
     standardInput = System.in
 }
 
-sourceSets.all {
-  configurations.getByName(runtimeClasspathConfigurationName) {
-    attributes.attribute(Attribute.of("org.gradle.jvm.environment", String), "standard-jvm")
-  }
-  configurations.getByName(compileClasspathConfigurationName) {
-    attributes.attribute(Attribute.of("org.gradle.jvm.environment", String), "standard-jvm")
-  }
-}
 dependencies {
     annotationProcessor 'com.google.auto.value:auto-value:1.6.2'
 
